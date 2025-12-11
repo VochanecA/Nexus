@@ -1,0 +1,1488 @@
+[00:00:25.638] Server  LOG      ○ Compiling proxy ...
+[00:00:34.491] Server  LOG      ✓ Ready in 28.8s
+[00:00:37.996] Server  LOG      ○ Compiling / ...
+[00:00:56.432] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:00:59.294] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:00.166] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:00.166] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:00.166] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765447138850}
+[00:01:15.120] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765447153806}
+[00:01:31.431] Server  ERROR    ⨯ ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+
+./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+[00:01:31.719] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:31.719] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:31.719] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:31.719] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:34.496] Server  LOG      ○ Compiling /_error ...
+[00:01:35.189] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:35.189] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:35.526] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:35.526] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:37.736] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:37.736] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:37.883] Server  ERROR    ⨯ ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+
+./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+[00:01:38.031] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:38.031] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:38.542] Server  ERROR    ⨯ ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+
+./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+[00:01:39.487] Browser ERROR   uncaughtError: Error: ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+[00:01:39.598] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:39.598] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:39.722] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:39.722] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:39.916] Server  ERROR    ⨯ ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+
+./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+
+[00:01:40.066] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-client] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:01:40.066] Browser ERROR   ./lib/feed-engine/generator.ts:4:1
+Export ChronologicalAlgorithm doesn't exist in target module
+  2 | import { createClient } from '@/lib/supabase/client';
+  3 | import { FeedEngine } from './engine';
+> 4 | import { ChronologicalAlgorithm } from './algorithms/chronological';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { SocialAlgorithm } from './algorithms/social';
+  6 | import { QualityAlgorithm } from './algorithms/quality';
+  7 | import { BaseAlgorithm, PostData } from './algorithms/base';
+
+The export ChronologicalAlgorithm was not found in module [project]/lib/feed-engine/algorithms/chronological.ts [app-ssr] (ecmascript).
+The module has no exports at all.
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:04:15.278] Server  LOG      ✓ Compiled in 661ms
+[00:04:17.056] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:04:20.214] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:23.405] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:23.405] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:04:23.405] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765447341235}
+[00:04:31.394] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:04:31.394] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:04:33.811] Server  LOG      ✓ Compiled in 1119ms
+[00:04:37.404] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:07:46.893] Server  LOG      ✓ Compiled in 272ms
+[00:07:48.405] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:09:08.320] Server  LOG      ✓ Compiled in 336ms
+[00:09:09.396] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:12:57.805] Server  LOG      ✓ Compiled in 3.7s
+[00:12:58.400] Browser ERROR   ./lib/feed-engine/generator.ts:2:9
+Parsing ecmascript source code failed
+  1 | // lib/feed-engine/generator.ts (popravite samo getBasePosts metodu)
+> 2 | private async getBasePosts(request: FeedRequest): Promise<PostWithProfile[]> {
+    |         ^^^^^
+  3 |   try {
+  4 |     let query = this.supabase
+  5 |       .from('posts')
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:13:21.753] Server  LOG      ✓ Compiled in 778ms
+[00:13:23.082] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:13:29.583] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:13:34.096] Server  LOG      ✓ Compiled in 927ms
+[00:13:35.404] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:16:07.693] Server  LOG      ✓ Compiled in 537ms
+[00:16:08.400] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:16:08.400] Browser LOG     Using algorithm: Chronological
+[00:16:09.404] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:16:09.404] Browser LOG     Fetched posts: 0
+[00:16:09.404] Browser LOG     No posts found. Creating dummy posts for testing...
+[00:16:09.404] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:16:09.404] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:16:09.404] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:16:18.065] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:16:20.985] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:21.537] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:16:21.537] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:16:21.537] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765448060232}
+[00:16:23.669] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:16:23.669] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:16:24.385] Browser LOG     Using algorithm: Chronological
+[00:16:24.620] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:16:24.620] Browser LOG     Fetched posts: 0
+[00:16:24.620] Browser LOG     No posts found. Creating dummy posts for testing...
+[00:16:24.620] Browser LOG     Using algorithm: Chronological
+[00:16:25.091] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:16:25.091] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:16:25.091] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:16:25.091] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:16:25.091] Browser LOG     Fetched posts: 0
+[00:16:25.091] Browser LOG     No posts found. Creating dummy posts for testing...
+[00:16:25.638] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:16:25.638] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:16:25.638] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:18:38.838] Server  LOG      ✓ Compiled in 1263ms
+[00:18:39.395] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:18:40.411] Browser LOG     Using algorithm: Chronological
+[00:18:40.411] Browser ERROR   Supabase error details: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:18:40.411] Browser ERROR   Error in generateFeed: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:18:41.410] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:18:41.410] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:18:41.410] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:19:40.329] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:19:42.406] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:43.878] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:19:43.878] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:19:43.878] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765448261699}
+[00:19:45.411] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:19:45.411] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:19:45.411] Browser LOG     Using algorithm: Chronological
+[00:19:45.411] Browser LOG     Using algorithm: Chronological
+[00:19:45.411] Browser ERROR   Supabase error details: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:19:45.411] Browser ERROR   Error in generateFeed: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:19:46.413] Browser ERROR   Supabase error details: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:19:46.413] Browser ERROR   Error in generateFeed: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"1\""}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"3\""}
+[00:19:46.413] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"2\""}
+[00:22:36.909] Server  LOG      ✓ Compiled in 3.3s
+[00:22:37.405] Browser ERROR   ./lib/feed-engine/generator.ts:213:7
+Ecmascript file had an error
+  211 |       }
+  212 |       
+> 213 |       data = altResult.data;
+      |       ^^^^
+  214 |     }
+  215 |     
+  216 |     if (!data || data.length === 0) {
+
+cannot reassign to a variable declared with `const`
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:25:10.912] Server  LOG      ✓ Compiled in 2.4s
+[00:25:11.410] Browser ERROR   ./lib/feed-engine/generator.ts:148:7
+Ecmascript file had an error
+  146 |       }
+  147 |       
+> 148 |       data = altResult.data;
+      |       ^^^^
+  149 |     }
+  150 |     
+  151 |     if (!data || data.length === 0) {
+
+cannot reassign to a variable declared with `const`
+
+Import traces:
+  Client Component Browser:
+    ./lib/feed-engine/generator.ts [Client Component Browser]
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./lib/feed-engine/generator.ts [Client Component SSR]
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[00:26:13.836] Server  LOG      ✓ Compiled in 1439ms
+[00:26:14.810] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:26:15.380] Browser LOG     Using algorithm: Chronological
+[00:26:15.380] Browser LOG     Fetching posts with profiles...
+[00:26:15.791] Browser LOG     Query results: {"error":{"code":"42703","details":null,"message":"column profiles_1.verified does not exist"}}
+[00:26:15.791] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:26:15.791] Browser LOG     Trying alternative query...
+[00:26:15.997] Browser LOG     Successfully fetched 2 posts
+[00:26:15.997] Browser LOG     Processing post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:15.997] Browser LOG     Processing post: bad3f1c5-1983-4ecd-a667-cb6771ca2307 - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:15.997] Browser LOG     Fetched posts: 2
+[00:26:16.075] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:26:16.075] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:26:19.090] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:26:23.021] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:23.983] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:23.983] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:26:23.983] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765448662657}
+[00:26:25.342] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:26:25.342] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:26:25.900] Browser LOG     Using algorithm: Chronological
+[00:26:25.900] Browser LOG     Fetching posts with profiles...
+[00:26:26.078] Browser LOG     Query results: {"error":{"code":"42703","details":null,"message":"column profiles_1.verified does not exist"}}
+[00:26:26.078] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:26:26.078] Browser LOG     Trying alternative query...
+[00:26:26.078] Browser LOG     Using algorithm: Chronological
+[00:26:26.078] Browser LOG     Fetching posts with profiles...
+[00:26:26.418] Browser LOG     Query results: {"error":{"code":"42703","details":null,"message":"column profiles_1.verified does not exist"}}
+[00:26:26.418] Browser ERROR   Error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:26:26.418] Browser LOG     Trying alternative query...
+[00:26:26.418] Browser LOG     Successfully fetched 2 posts
+[00:26:26.418] Browser LOG     Processing post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:26.418] Browser LOG     Processing post: bad3f1c5-1983-4ecd-a667-cb6771ca2307 - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:26.418] Browser LOG     Fetched posts: 2
+[00:26:26.636] Browser LOG     Successfully fetched 2 posts
+[00:26:26.636] Browser LOG     Processing post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:26.636] Browser LOG     Processing post: bad3f1c5-1983-4ecd-a667-cb6771ca2307 - Profile: {"avatar_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/avatars/avatars/55b0ac2c-4092-4dc6-9df5-14120f54d9a0-1765365856673.png","created_at":"2025-12-10T11:09:01.125477+00:00","display_name":"Alen Vochanec","username":"alen.vochanec_55b0ac2c"}
+[00:26:26.636] Browser LOG     Fetched posts: 2
+[00:26:26.636] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:26:26.636] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:26:26.801] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:26:26.801] Browser ERROR   Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:27:49.360] Server  LOG      ✓ Compiled in 935ms
+[00:27:51.401] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:27:51.401] Browser LOG     Using algorithm: Chronological
+[00:27:51.401] Browser ERROR   Supabase error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:27:51.401] Browser LOG     Creating sample posts for demo...
+[00:27:51.401] Browser LOG     Fetched posts: 2
+[00:27:51.401] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-2\""}
+[00:27:51.401] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-1\""}
+[00:27:53.713] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:27:55.146] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:56.098] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:27:56.098] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:27:56.098] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765448754712}
+[00:27:57.837] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:27:57.837] Browser LOG     Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:27:58.354] Browser LOG     Using algorithm: Chronological
+[00:27:58.634] Browser LOG     Using algorithm: Chronological
+[00:27:58.634] Browser ERROR   Supabase error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:27:58.634] Browser LOG     Creating sample posts for demo...
+[00:27:58.634] Browser LOG     Fetched posts: 2
+[00:27:59.180] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-1\""}
+[00:27:59.180] Browser ERROR   Supabase error fetching posts: {"code":"42703","details":null,"hint":null,"message":"column profiles_1.verified does not exist"}
+[00:27:59.180] Browser LOG     Creating sample posts for demo...
+[00:27:59.180] Browser LOG     Fetched posts: 2
+[00:27:59.180] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-2\""}
+[00:27:59.380] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-2\""}
+[00:27:59.380] Browser ERROR   Error logging signals: {"code":"22P02","details":null,"hint":null,"message":"invalid input syntax for type uuid: \"sample-1\""}
+[00:29:29.498] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:29:29.498] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:31:33.901] Server  LOG      ✓ Compiled in 1073ms
+[00:31:34.400] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:31:35.402] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:31:35.402] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:31:35.402] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:31:35.402] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:31:35.402] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:31:36.319] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:31:36.319] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:31:36.319] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:31:36.319] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:31:36.320] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:36.320] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:36.320] Browser LOG     [FeedGenerator] Feed generation complete
+[00:31:39.517] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:31:41.086] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:42.725] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:31:42.725] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:31:42.725] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765448981420}
+[00:31:43.807] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:31:43.807] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:31:44.349] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:31:44.349] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:31:44.642] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:31:44.642] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:31:44.642] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:31:44.642] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:31:44.710] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:31:44.710] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:31:44.710] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:31:45.100] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:31:45.315] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:31:45.315] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:31:45.315] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:31:45.315] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:31:45.508] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:45.508] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:45.508] Browser LOG     [FeedGenerator] Feed generation complete
+[00:31:46.481] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:31:46.481] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:31:46.481] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:31:46.481] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:31:46.532] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:46.532] Browser ERROR   [FeedGenerator] Error logging signals: {"code":"42501","details":null,"hint":null,"message":"new row violates row-level security policy for table \"feed_signal_logs\""}
+[00:31:46.532] Browser LOG     [FeedGenerator] Feed generation complete
+[00:33:50.649] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:50.973] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:33:50.973] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:33:50.973] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765449109632}
+[00:33:52.518] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:33:52.518] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:33:53.131] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:33:53.131] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:33:53.365] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:33:53.365] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:33:53.365] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:33:53.366] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:33:53.531] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:33:53.531] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:33:53.531] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:33:53.729] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:33:53.897] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:33:53.897] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:33:53.897] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:33:53.898] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:33:54.117] Browser LOG     [FeedGenerator] Feed generation complete
+[00:33:54.117] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:33:54.117] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:33:54.117] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:33:54.117] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:33:55.033] Browser LOG     [FeedGenerator] Feed generation complete
+[00:44:39.437] Server  LOG      ✓ Compiled in 72.5s
+[00:44:44.420] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:44:44.420] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:44:44.420] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:44:44.420] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:44:44.420] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:44:44.420] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:44:44.420] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:44:44.420] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:44:44.420] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:44:44.420] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:44:44.420] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:44:44.420] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:44:44.420] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] Feed generation complete
+[00:44:44.420] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:44:44.420] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:44:44.420] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:44:44.420] Browser LOG     [FeedGenerator] Feed generation complete
+[00:51:17.820] Server  LOG      ✓ Compiled in 1909ms
+[00:51:18.405] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:51:18.405] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:51:20.041] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:51:20.041] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:51:20.041] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:51:20.041] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:51:20.041] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:51:20.041] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:51:20.041] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:51:20.163] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:51:20.163] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:51:20.412] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:51:20.412] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:51:20.412] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:51:20.412] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:51:20.412] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:51:20.668] Browser LOG     [FeedGenerator] Feed generation complete
+[00:51:20.818] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:51:20.818] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:51:20.818] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:51:20.818] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:51:21.224] Browser LOG     [FeedGenerator] Feed generation complete
+[00:51:32.872] Server  LOG      ✓ Compiled in 1069ms
+[00:51:33.690] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:51:33.705] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:51:33.705] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:51:33.705] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:51:33.705] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:51:33.718] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:51:33.718] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:51:33.718] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:51:33.808] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:51:33.808] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[00:51:33.808] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:51:34.026] Browser LOG     [FeedGenerator] Profiles map size: 1
+[00:51:34.167] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:51:34.167] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:51:34.167] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:51:34.167] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:51:34.439] Browser LOG     [FeedGenerator] Feed generation complete
+[00:51:34.439] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[00:51:34.439] Browser LOG     [FeedGenerator] Fetched posts: 2
+[00:51:34.439] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[00:51:34.439] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:51:35.867] Browser LOG     [FeedGenerator] Feed generation complete
+[01:06:38.460] Server  LOG      ✓ Compiled in 23s
+[01:08:19.429] Server  LOG      ✓ Compiled in 8.8s
+[01:08:59.034] Server  LOG      ✓ Compiled in 785ms
+[01:16:04.289] Server  LOG      ✓ Compiled in 59.1s
+[01:16:51.102] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:16:51.102] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:17:02.871] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:17:02.871] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:21:07.873] Server  LOG      ✓ Compiled in 897ms
+[01:21:38.742] Server  LOG      ✓ Compiled in 1916ms
+[01:24:34.295] Server  LOG      ✓ Compiled in 4.5s
+[01:26:54.523] Server  LOG      ✓ Compiled in 3.5s
+[01:26:55.476] Browser ERROR   ./app/home/page.tsx:348:7
+Ecmascript file had an error
+  346 |
+  347 | // Helper funkcije (možete ih staviti u poseban fajl)
+> 348 | const detectAIContent = (content: string): boolean => {
+      |       ^^^^^^^^^^^^^^^
+  349 |   // Jednostavna AI detekcija heuristikom
+  350 |   const aiIndicators = [
+  351 |     /as an ai language model/gi,
+
+the name `detectAIContent` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[01:26:55.476] Browser ERROR   ./app/home/page.tsx:393:7
+Ecmascript file had an error
+  391 | };
+  392 |
+> 393 | const generateContentHash = (content: string): string => {
+      |       ^^^^^^^^^^^^^^^^^^^
+  394 |   // Jednostavni hash za klijentsku stranu
+  395 |   // Za produkciju koristite proper kriptografski hash
+  396 |   let hash = 0;
+
+the name `generateContentHash` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+[01:28:23.456] Server  LOG      ✓ Compiled in 1107ms
+[01:28:33.616] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:29:57.315] Server  LOG      ✓ Compiled in 545ms
+[01:32:28.045] Server  LOG      ○ Compiling /profile/[username] ...
+[01:32:34.606] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:33:00.687] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:33:10.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:33:13.417] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:33:13.417] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:33:13.417] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452674122}
+[01:33:18.083] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452678867}
+[01:33:35.567] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452696361}
+[01:33:37.782] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:33:37.782] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:33:38.239] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:33:38.240] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:33:38.522] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:33:38.522] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:33:38.522] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[01:33:38.522] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:33:38.793] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[01:33:38.793] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:33:38.929] Browser LOG     [FeedGenerator] Profiles map size: 1
+[01:33:39.191] Browser LOG     [FeedGenerator] Profiles map size: 1
+[01:33:40.304] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[01:33:40.304] Browser LOG     [FeedGenerator] Fetched posts: 2
+[01:33:40.304] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[01:33:40.304] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:33:40.304] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[01:33:40.304] Browser LOG     [FeedGenerator] Fetched posts: 2
+[01:33:40.304] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[01:33:40.304] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:33:40.846] Browser LOG     [FeedGenerator] Feed generation complete
+[01:33:40.948] Browser LOG     [FeedGenerator] Feed generation complete
+[01:33:45.391] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:33:45.391] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:33:58.284] Browser ERROR   Error creating post: {}
+[01:35:21.609] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:21.890] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:35:21.890] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[01:35:21.890] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452802686}
+[01:35:24.120] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:35:24.120] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:35:24.672] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:35:24.672] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:35:25.689] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:35:25.689] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:35:25.689] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[01:35:25.689] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:35:26.968] Browser LOG     [FeedGenerator] Profiles map size: 1
+[01:35:26.968] Browser LOG     [FeedGenerator] Basic posts query result: {"count":2,"error":"none"}
+[01:35:26.968] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:35:27.420] Browser LOG     [FeedGenerator] Profiles map size: 1
+[01:35:27.885] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[01:35:27.885] Browser LOG     [FeedGenerator] Fetched posts: 2
+[01:35:27.885] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[01:35:27.885] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:35:28.941] Browser LOG     [FeedGenerator] Feed generation complete
+[01:35:28.942] Browser LOG     [FeedGenerator] Successfully processed 2 posts
+[01:35:28.942] Browser LOG     [FeedGenerator] Fetched posts: 2
+[01:35:28.942] Browser LOG     [FeedGenerator] Scoring 2 posts with algorithm: Chronological
+[01:35:28.942] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:35:29.878] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:35:29.878] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:35:30.528] Browser LOG     [FeedGenerator] Feed generation complete
+[01:35:40.273] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:35:40.273] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:35:40.739] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:35:40.739] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:35:40.972] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:35:40.972] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:35:40.972] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:35:40.972] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:35:41.229] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:35:41.229] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:35:41.229] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:35:41.439] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:35:42.123] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:35:42.123] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:35:42.123] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:35:42.123] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:35:42.556] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:35:42.556] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:35:42.556] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:35:42.556] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:35:42.703] Browser LOG     [FeedGenerator] Feed generation complete
+[01:35:42.859] Browser LOG     [FeedGenerator] Feed generation complete
+[01:35:57.533] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452838321}
+[01:36:05.178] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452845973}
+[01:36:07.056] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[01:36:07.057] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[01:36:07.540] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:36:07.540] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:36:07.715] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:36:07.715] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:36:07.715] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:36:07.715] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:36:07.919] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:36:07.919] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:36:07.919] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:36:08.105] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:36:08.540] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:36:08.540] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:36:08.540] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:36:08.540] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:36:08.820] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:36:08.820] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:36:08.820] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:36:08.820] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:36:09.084] Browser LOG     [FeedGenerator] Feed generation complete
+[01:36:09.084] Browser LOG     [FeedGenerator] Feed generation complete
+[01:36:25.898] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:36:26.330] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:36:26.330] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:36:26.330] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452867070}
+[01:36:39.547] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452880343}
+[01:36:52.928] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452893720}
+[01:36:54.324] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:36:54.324] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:36:54.770] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:36:54.770] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:36:54.957] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:36:54.958] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:36:54.958] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:36:54.958] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:36:55.176] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:36:55.176] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:36:55.176] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:36:55.339] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:36:55.703] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:36:55.703] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:36:55.703] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:36:55.703] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:36:55.956] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:36:55.956] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:36:55.956] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:36:55.956] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:36:55.956] Browser LOG     [FeedGenerator] Feed generation complete
+[01:36:56.143] Browser LOG     [FeedGenerator] Feed generation complete
+[01:37:08.403] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/center.applications_8c9494c9 color: rgb(120, 120, 120) color: inherit {"dp":"/profile/[username]","o":"http://localhost:3000/profile/center.applications_8c9494c9","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452909200}
+[01:37:17.255] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452918046}
+[01:37:18.687] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:37:18.687] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:37:19.256] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:37:19.256] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:37:19.482] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:37:19.482] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:37:19.482] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:37:19.482] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:37:19.717] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:37:19.717] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:37:19.717] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:37:19.918] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:37:20.369] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:37:20.369] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:37:20.369] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:37:20.369] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:37:20.648] Browser LOG     [FeedGenerator] Feed generation complete
+[01:37:20.648] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:37:20.648] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:37:20.648] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:37:20.648] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:37:21.040] Browser LOG     [FeedGenerator] Feed generation complete
+[01:37:29.624] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/alen.vochanec_55b0ac2c color: rgb(120, 120, 120) color: inherit {"dp":"/profile/[username]","o":"http://localhost:3000/profile/alen.vochanec_55b0ac2c","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452930419}
+[01:37:36.592] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765452937388}
+[01:37:38.040] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:37:38.040] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:37:38.555] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:37:38.555] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:37:38.759] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:37:38.759] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:37:38.759] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:37:38.759] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:37:39.024] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:37:39.024] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:37:39.024] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:37:39.222] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:37:39.682] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:37:39.682] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:37:39.682] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:37:39.682] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:37:40.005] Browser LOG     [FeedGenerator] Feed generation complete
+[01:37:40.005] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:37:40.005] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:37:40.005] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:37:40.005] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:37:41.728] Browser LOG     [FeedGenerator] Feed generation complete
+[01:43:06.050] Server  LOG      ✓ Compiled in 42.2s
+[01:43:11.830] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:43:14.568] Server  ERROR   Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+[01:43:16.292] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:16.298] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:16.299] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:17.534] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:43:20.887] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:43:21.725] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:21.726] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:21.726] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:21.727] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:43:23.404] Browser ERROR   uncaughtError: Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+[01:43:49.825] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:43:49.826] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/home/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:43:49.826] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:43:49.827] Server  LOG      ✓ Compiled in 1627ms
+[01:43:50.335] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:43:50.544] Server  ERROR   Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+[01:43:51.804] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:51.811] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:51.813] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:51.814] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:43:52.974] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:43:53.394] Browser ERROR   uncaughtError: Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+[01:43:53.563] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:53.564] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:53.564] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:43:53.565] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:45:38.996] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:38.998] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:38.998] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:38.999] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:45:39.760] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:40.397] Browser ERROR   uncaughtError: Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.
+[01:45:40.686] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:40.686] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[root-of-the-server]__b2491fdd._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:40.687] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:45:40.687] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'useState')
+[01:45:49.756] Server  LOG      ✓ Compiled in 2.3s
+[01:45:50.160] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:45:50.160] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/home/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:45:50.165] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:46:13.621] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:46:24.774] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:46:24.774] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/home/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:46:24.774] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:46:32.161] Server  LOG      ✓ Compiled in 0ms
+[01:46:37.656] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:46:40.996] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:46:41.764] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:46:43.406] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:46:43.406] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[01:46:43.406] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765453483449}
+[01:46:46.399] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:46:46.399] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:46:47.406] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:46:47.406] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:46:47.406] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:46:47.406] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:46:47.406] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:46:47.406] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:46:47.406] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:46:47.406] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:46:47.406] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:46:48.403] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:46:48.403] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:46:48.403] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:46:48.403] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:46:48.403] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:46:49.392] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:46:49.392] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:46:49.392] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:46:49.392] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:46:49.392] Browser LOG     [FeedGenerator] Feed generation complete
+[01:46:49.392] Browser LOG     [FeedGenerator] Feed generation complete
+[01:57:12.778] Server  LOG      ✓ Compiled in 52.4s
+[01:57:16.425] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:57:16.425] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[01:57:16.474] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:57:16.474] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:57:16.474] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:57:16.474] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:57:16.475] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[01:57:16.475] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[01:57:16.475] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:57:16.601] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[01:57:16.601] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[01:57:18.397] Browser LOG     [FeedGenerator] Profiles map size: 2
+[01:57:18.397] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:57:18.397] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:57:18.397] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:57:18.397] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:57:18.397] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[01:57:18.397] Browser LOG     [FeedGenerator] Fetched posts: 3
+[01:57:18.397] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[01:57:18.397] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[01:57:18.397] Browser LOG     [FeedGenerator] Feed generation complete
+[01:57:18.397] Browser LOG     [FeedGenerator] Feed generation complete
+[01:57:31.244] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:57:31.244] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:57:32.593] Browser ERROR   Error fetching followers: {}
+[02:08:22.421] Server  LOG      ✓ Compiled in 32.6s
+[02:08:26.475] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:08:26.475] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:08:26.486] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:08:26.486] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:08:26.486] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:08:26.486] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:08:27.406] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:08:27.406] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:08:27.406] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:08:27.411] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:08:27.411] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:08:27.411] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:08:27.411] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:08:27.411] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:08:28.441] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:08:28.441] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:08:28.441] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:08:28.441] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:08:28.441] Browser LOG     [FeedGenerator] Feed generation complete
+[02:08:28.441] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:08:28.441] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:08:28.441] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:08:28.441] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:08:29.403] Browser LOG     [FeedGenerator] Feed generation complete
+[02:09:21.608] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[02:09:43.051] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:09:50.449] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:09:50.449] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[02:09:50.449] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765454870764}
+[02:09:52.426] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:09:52.426] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:09:54.277] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:09:54.277] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:09:54.277] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:09:54.277] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:09:54.277] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:09:54.277] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:09:54.277] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:09:54.277] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:09:54.277] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:09:54.458] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:09:54.458] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:09:54.458] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:09:54.458] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:09:54.458] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:09:55.580] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:09:55.580] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:09:55.580] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:09:55.580] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:09:55.580] Browser LOG     [FeedGenerator] Feed generation complete
+[02:09:55.580] Browser LOG     [FeedGenerator] Feed generation complete
+[02:22:26.351] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[02:22:29.483] Server  LOG      ✓ Compiled in 42.5s
+[02:22:32.626] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:22:32.626] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:22:32.626] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:22:32.626] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:22:32.626] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:22:32.626] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:22:32.626] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:22:32.626] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:22:32.626] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:22:32.626] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:22:32.626] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:22:32.626] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:22:59.402] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:23:00.414] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:23:00.414] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[02:23:00.414] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765455660862}
+[02:23:01.685] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:23:01.685] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[02:23:03.403] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:23:03.403] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:23:03.403] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[02:23:03.403] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[02:23:03.403] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:23:03.403] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:23:03.403] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
+[02:23:03.403] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[02:23:03.403] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:23:03.403] Browser LOG     [FeedGenerator] Profiles map size: 2
+[02:23:03.403] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:23:03.403] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:23:03.403] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:23:03.403] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:23:04.472] Browser LOG     [FeedGenerator] Successfully processed 3 posts
+[02:23:04.472] Browser LOG     [FeedGenerator] Fetched posts: 3
+[02:23:04.472] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
+[02:23:04.472] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[02:23:04.472] Browser LOG     [FeedGenerator] Feed generation complete
+[02:23:04.472] Browser LOG     [FeedGenerator] Feed generation complete
