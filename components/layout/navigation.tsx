@@ -6,21 +6,47 @@ import { Home, User, LogOut, LogIn, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { createClient } from "@/lib/supabase/client";
+import { useState } from "react"; // Dodajte useState za loading state
 
 interface NavigationProps {
   username?: string;
-  isAuthenticated?: boolean; // DODAJTE OVAJ PROP
+  isAuthenticated?: boolean;
 }
 
 export function Navigation({ username, isAuthenticated = false }: NavigationProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const [isSigningOut, setIsSigningOut] = useState(false); // Loading state
 
   const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/home"); // Ne na /login!
-    router.refresh();
+    try {
+      setIsSigningOut(true); // Pokreni loading
+      const supabase = createClient();
+      
+      // Sign out iz Supabase
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Clear client-side cache i session
+      localStorage.clear();
+      sessionStorage.clear();
+      
+      // FORCE refresh i redirect na / - koristi replace umjesto push
+      window.location.href = "/"; // Ovo će kompletno osvježiti stranicu
+      
+      // Alternativno, možete koristiti router.replace("/") ali sa refresh
+      // router.replace("/");
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 100);
+      
+    } catch (error) {
+      console.error("Sign out error:", error);
+      setIsSigningOut(false); // Zaustavi loading ako dođe do greške
+    }
   };
 
   // Kreiraj navigation items u zavisnosti od auth statusa
@@ -78,15 +104,21 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
       {/* Auth Section - različito za logovane i ne-logovane */}
       <div className="space-y-2">
         {isAuthenticated ? (
-          // Logovan korisnik - Sign Out
+          // Logovan korisnik - Sign Out sa loading state
           <Button
             variant="ghost"
-            className="w-full justify-start gap-3 text-base"
+            className="w-full justify-start gap-3 text-base text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950/50"
             size="lg"
             onClick={handleSignOut}
+            disabled={isSigningOut} // Onemogući klik dok se sign out izvršava
           >
-            <LogOut className="h-5 w-5" />
-            Sign out
+            {isSigningOut ? (
+              // Loading spinner
+              <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+            ) : (
+              <LogOut className="h-5 w-5" />
+            )}
+            {isSigningOut ? "Signing out..." : "Sign out"}
           </Button>
         ) : (
           // Ne-logovan korisnik - Login i Signup

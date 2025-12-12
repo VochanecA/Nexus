@@ -36,12 +36,32 @@ export function MobileNavigation({
   isAuthenticated = false 
 }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const pathname = usePathname();
-  const supabase = createClient();
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    window.location.href = "/login";
+  const handleSignOut = async () => {
+    try {
+      setIsSigningOut(true);
+      setOpen(false);
+      
+      const supabase = createClient();
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Clear client-side storage
+      localStorage.clear();
+      sessionStorage.clear();
+      
+      // Force redirect to home page with full refresh
+      window.location.href = "/";
+      
+    } catch (error) {
+      console.error("Sign out error:", error);
+      setIsSigningOut(false);
+    }
   };
 
   const navItems = [
@@ -61,6 +81,29 @@ export function MobileNavigation({
   // Bottom navigation bar (samo ikone)
   return (
     <>
+      {/* Top App Bar za mobile */}
+      <div className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 lg:hidden">
+        <div className="flex items-center justify-between w-full">
+          <Link href="/home" className="font-bold text-xl">
+            Nexus
+          </Link>
+          
+          {isAuthenticated && username ? (
+            <Link href={`/profile/${username}`}>
+              <Avatar className="h-8 w-8">
+                <AvatarFallback>
+                  {username?.charAt(0).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <Button size="sm">Login</Button>
+            </Link>
+          )}
+        </div>
+      </div>
+
       {/* Bottom Navigation Bar */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:hidden">
         <div className="flex h-16 items-center justify-around">
@@ -88,7 +131,7 @@ export function MobileNavigation({
                 <span className="text-xs mt-1">More</span>
               </button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="rounded-t-2xl">
+            <SheetContent side="bottom" className="rounded-t-2xl max-h-[80vh]">
               <SheetHeader className="pb-4">
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
@@ -106,11 +149,21 @@ export function MobileNavigation({
                     </Link>
                     
                     <button
-                      onClick={handleLogout}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors w-full text-left"
+                      onClick={handleSignOut}
+                      disabled={isSigningOut}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors w-full text-left text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950/50"
                     >
-                      <LogOut className="h-5 w-5" />
-                      <span>Logout</span>
+                      {isSigningOut ? (
+                        <>
+                          <div className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                          <span>Signing out...</span>
+                        </>
+                      ) : (
+                        <>
+                          <LogOut className="h-5 w-5" />
+                          <span>Sign Out</span>
+                        </>
+                      )}
                     </button>
                   </>
                 ) : (
@@ -120,43 +173,20 @@ export function MobileNavigation({
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors"
                       onClick={() => setOpen(false)}
                     >
-                      <span>Login</span>
+                      <span>Sign In</span>
                     </Link>
                     <Link
-                      href="/register"
+                      href="/signup"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted transition-colors"
                       onClick={() => setOpen(false)}
                     >
-                      <span>Register</span>
+                      <span>Create Account</span>
                     </Link>
                   </>
                 )}
               </div>
             </SheetContent>
           </Sheet>
-        </div>
-      </div>
-
-      {/* Top App Bar za mobile */}
-      <div className="sticky top-0 z-40 flex h-14 items-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 lg:hidden">
-        <div className="flex items-center justify-between w-full">
-          <Link href="/home" className="font-bold text-xl">
-            Nexus
-          </Link>
-          
-          {isAuthenticated && username ? (
-            <Link href={`/profile/${username}`}>
-              <Avatar className="h-8 w-8">
-                <AvatarFallback>
-                  {username?.charAt(0).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-            </Link>
-          ) : (
-            <Link href="/login">
-              <Button size="sm">Login</Button>
-            </Link>
-          )}
         </div>
       </div>
     </>
