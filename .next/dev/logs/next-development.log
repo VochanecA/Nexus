@@ -1,361 +1,2669 @@
-[00:00:17.553] Server  LOG      ○ Compiling proxy ...
-[00:00:20.513] Server  LOG      ✓ Ready in 15.4s
-[00:00:25.672] Server  LOG      ○ Compiling /home ...
-[00:00:36.974] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[00:00:37.240] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[00:00:37.242] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[00:00:40.458] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:40.458] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[00:00:40.458] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[00:00:41.297] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:41.297] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
-[00:00:41.297] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765468758239}
-[00:00:45.032] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[00:00:45.032] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[00:00:45.707] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[00:00:45.707] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[00:00:45.940] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[00:00:45.940] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[00:00:46.082] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[00:00:46.082] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[00:00:46.443] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[00:00:46.443] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[00:00:46.729] Browser LOG     [FeedGenerator] Profiles map size: 2
-[00:00:47.337] Browser LOG     [FeedGenerator] Profiles map size: 2
-[00:00:48.972] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[00:00:48.972] Browser LOG     [FeedGenerator] Fetched posts: 3
-[00:00:48.972] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[00:00:48.972] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[00:00:48.972] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[00:00:48.972] Browser LOG     [FeedGenerator] Fetched posts: 3
-[00:00:48.972] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[00:00:48.972] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[00:00:49.594] Browser LOG     [FeedGenerator] Feed generation complete
-[00:00:49.594] Browser LOG     [FeedGenerator] Feed generation complete
-[13:57:13.266] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[14:01:00.635] Server  LOG      ✓ Compiled in 14.3s
-[14:01:08.575] Server  LOG      ○ Compiling /trending ...
-[14:01:38.098] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trending color: rgb(120, 120, 120) color: inherit {"dp":"/trending","o":"http://localhost:3000/trending","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765519214646}
-[14:01:39.096] Browser ERROR   Error fetching trending data: {"code":"42703","details":null,"hint":null,"message":"column posts.likes_count does not exist"}
-[14:01:39.096] Browser ERROR   Error fetching trending data: {"code":"42703","details":null,"hint":null,"message":"column posts.likes_count does not exist"}
-[14:02:45.394] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765519282485}
-[14:02:47.154] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[14:02:47.154] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[14:02:48.105] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[14:02:48.105] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[14:02:48.105] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[14:02:48.105] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[14:02:48.105] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[14:02:48.105] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[14:02:49.106] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[14:02:49.106] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[14:02:49.106] Browser LOG     [FeedGenerator] Profiles map size: 2
-[14:02:49.106] Browser LOG     [FeedGenerator] Profiles map size: 2
-[14:02:50.111] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[14:02:50.111] Browser LOG     [FeedGenerator] Fetched posts: 3
-[14:02:50.111] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[14:02:50.111] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[14:02:50.111] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[14:02:50.111] Browser LOG     [FeedGenerator] Fetched posts: 3
-[14:02:50.111] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[14:02:50.111] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[14:02:50.111] Browser LOG     [FeedGenerator] Feed generation complete
-[14:02:50.111] Browser LOG     [FeedGenerator] Feed generation complete
-[14:03:02.224] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[14:03:45.307] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[14:03:45.363] Server  LOG      ✓ Compiled in 12.4s
-[14:03:46.200] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trending color: rgb(120, 120, 120) color: inherit {"dp":"/trending","o":"http://localhost:3000/trending","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765519343286}
-[15:07:11.370] Server  LOG      ✓ Compiled in 22.7s
-[15:07:14.858] Server  LOG      ○ Compiling /explore ...
-[15:07:56.104] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765523192828}
-[15:07:57.107] Browser ERROR   Error fetching explore data: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.growth does not exist"}
-[15:07:58.106] Browser ERROR   Error fetching explore data: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.growth does not exist"}
-[15:09:52.928] Server  LOG      ✓ Compiled in 661ms
-[15:09:54.224] Browser ERROR   Supabase error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.growth does not exist"}
-[15:09:54.224] Browser ERROR   Error fetching explore data: {}
-[15:14:36.024] Server  LOG      ✓ Compiled in 26.2s
-[15:15:19.175] Server  LOG      ✓ Compiled in 6s
-[15:15:21.062] Browser ERROR   Supabase error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.created_at does not exist"}
-[15:15:21.062] Browser ERROR   Error fetching explore data: {}
-[15:15:41.829] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:15:43.174] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:15:43.177] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:15:50.807] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:15:51.104] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:15:51.104] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:15:51.415] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:15:51.416] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/explore","route":"/explore"}
-[15:15:51.416] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765523668508}
-[15:15:52.196] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:15:52.726] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:15:52.731] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:15:53.208] Browser ERROR   Supabase error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.created_at does not exist"}
-[15:15:53.209] Browser ERROR   Error fetching explore data: {}
-[15:16:22.065] Server  LOG      ✓ Compiled in 750ms
-[15:16:28.863] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:16:29.042] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:16:29.043] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:16:30.162] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:16:31.111] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:16:31.111] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:16:31.111] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:16:31.111] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/explore","route":"/explore"}
-[15:16:31.111] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765523707796}
-[15:16:32.259] Browser ERROR   Supabase error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.created_at does not exist"}
-[15:16:32.260] Browser ERROR   Error fetching explore data: {}
-[15:19:48.429] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:19:48.444] Server  LOG      ✓ Compiled in 18.7s
-[15:19:52.058] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:19:52.060] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:19:52.862] Browser LOG     Checking if feed_algorithm_categories table exists...
-[15:19:52.862] Browser LOG     Fetching topics...
-[15:19:52.862] Browser LOG     Executing query...
-[15:19:52.862] Browser ERROR   Supabase query error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.created_at does not exist"}
-[15:20:00.737] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:20:00.737] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:20:00.737] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:20:00.737] Browser LOG     Checking if feed_algorithm_categories table exists...
-[15:20:01.024] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:20:01.024] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/explore","route":"/explore"}
-[15:20:01.024] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765523917946}
-[15:20:01.299] Browser LOG     Fetching topics...
-[15:20:01.299] Browser LOG     Executing query...
-[15:20:01.480] Browser ERROR   Supabase query error: {"code":"42703","details":null,"hint":null,"message":"column feed_algorithm_categories.created_at does not exist"}
-[15:28:05.568] Server  LOG      ✓ Compiled in 22.9s
-[15:28:08.179] Browser LOG     Fetching topics...
-[15:28:09.123] Browser LOG     Executing topics query...
-[15:28:18.555] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:28:20.198] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:28:20.219] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:28:20.562] Browser LOG     Topics fetched successfully: 0
-[15:28:20.562] Browser LOG     Fetching topics...
-[15:28:20.563] Browser LOG     Fetching hashtags...
-[15:28:20.563] Browser LOG     Executing topics query...
-[15:28:20.563] Browser LOG     Executing hashtags query...
-[15:28:20.563] Browser LOG     Topics fetched successfully: 0
-[15:28:20.563] Browser LOG     Hashtags fetched successfully: 0
-[15:28:20.563] Browser LOG     Fetching hashtags...
-[15:28:20.563] Browser LOG     Fetching posts...
-[15:28:20.563] Browser LOG     Executing hashtags query...
-[15:28:20.563] Browser LOG     Executing posts query...
-[15:28:20.563] Browser LOG     Hashtags fetched successfully: 0
-[15:28:20.563] Browser ERROR   Supabase error: {"code":"42703","details":null,"hint":null,"message":"column posts.likes_count does not exist"}
-[15:28:37.596] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:28:39.157] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:28:39.157] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:28:39.157] Browser LOG     Fetching topics...
-[15:28:39.157] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:28:39.157] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/explore","route":"/explore"}
-[15:28:39.157] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524435253}
-[15:28:39.157] Browser LOG     Executing topics query...
-[15:28:39.157] Browser LOG     Topics fetched successfully: 0
-[15:28:49.285] Browser LOG     Fetching topics...
-[15:28:49.285] Browser LOG     Fetching hashtags...
-[15:28:49.664] Browser LOG     Executing topics query...
-[15:28:49.665] Browser LOG     Executing hashtags query...
-[15:28:49.852] Browser LOG     Topics fetched successfully: 0
-[15:28:49.852] Browser LOG     Hashtags fetched successfully: 0
-[15:28:52.202] Browser LOG     Fetching hashtags...
-[15:28:52.202] Browser LOG     Fetching topics...
-[15:28:52.597] Browser LOG     Executing hashtags query...
-[15:28:52.597] Browser LOG     Executing topics query...
-[15:28:52.801] Browser LOG     Hashtags fetched successfully: 0
-[15:28:52.801] Browser LOG     Topics fetched successfully: 0
-[15:30:33.496] Server  LOG      ✓ Compiled in 22.2s
-[15:31:08.290] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trending color: rgb(120, 120, 120) color: inherit {"dp":"/trending","o":"http://localhost:3000/trending","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524585382}
-[15:31:15.258] Server  LOG      ○ Compiling / ...
-[15:31:36.348] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524613442}
-[15:31:37.496] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524614594}
-[15:31:39.068] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:31:39.068] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:31:39.599] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:31:39.599] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:31:39.814] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:31:39.814] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:31:39.814] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:31:39.814] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:31:40.046] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:31:40.046] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:31:40.047] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:31:40.218] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:31:40.576] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:31:40.577] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:31:40.577] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:31:40.577] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:31:40.731] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:31:40.732] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:31:40.732] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:31:40.732] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:31:40.932] Browser LOG     [FeedGenerator] Feed generation complete
-[15:31:40.932] Browser LOG     [FeedGenerator] Feed generation complete
-[15:32:32.541] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:32:33.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524670454}
-[15:33:38.785] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524735875}
-[15:33:39.753] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765524736847}
-[15:33:41.106] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:33:41.106] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:33:41.534] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:33:41.534] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:33:41.707] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:33:41.707] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:33:41.707] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:33:41.707] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:33:41.885] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:33:41.885] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:33:41.885] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:33:42.068] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:33:42.418] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:33:42.418] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:33:42.418] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:33:42.419] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:33:42.674] Browser LOG     [FeedGenerator] Feed generation complete
-[15:33:42.674] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:33:42.674] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:33:42.674] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:33:42.674] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:33:43.967] Browser LOG     [FeedGenerator] Feed generation complete
-[15:44:40.940] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525398033}
-[15:44:41.995] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525399091}
-[15:44:43.700] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:44:43.700] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:44:44.090] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:44:44.090] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:44:44.282] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:44:44.282] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:44:44.282] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:44:44.282] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:44:44.482] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:44:44.482] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:44:44.482] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:44:44.678] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:44:45.111] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:44:45.111] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:44:45.111] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:44:45.111] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:44:45.330] Browser LOG     [FeedGenerator] Feed generation complete
-[15:44:45.330] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:44:45.330] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:44:45.330] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:44:45.330] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:44:45.596] Browser LOG     [FeedGenerator] Feed generation complete
-[15:47:07.858] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:47:09.222] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:47:09.222] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/combined","route":"/combined"}
-[15:47:09.222] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/combined color: rgb(120, 120, 120) color: inherit {"dp":"/combined","o":"http://localhost:3000/combined","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525545686}
-[15:49:41.400] Server  LOG      ✓ Compiled in 32.4s
-[15:49:55.090] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:49:55.092] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:49:58.071] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:49:58.658] Server  ERROR   D:\GitHubNovi\Nexus\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[15:49:58.865] Server  ERROR   D:\GitHubNovi\Nexus\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[15:49:58.916] Server  ERROR    ⨯ Error: Module [project]/node_modules/next/dist/esm/client/components/client-page.js [app-ssr] (ecmascript) was instantiated because it was required from module [project]/node_modules/next/dist/esm/build/templates/app-page.js?page=/explore/page { GLOBAL_ERROR_MODULE => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_0 => "[project]/app/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_1 => "[project]/node_modules/next/dist/client/components/builtin/not-found.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_2 => "[project]/node_modules/next/dist/client/components/builtin/forbidden.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_3 => "[project]/node_modules/next/dist/client/components/builtin/unauthorized.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_4 => "[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-rsc] (ecmascript, Next.js Server Component)", MODULE_5 => "[project]/app/explore/layout.tsx [app-rsc] (ecmascript, Next.js Server Component)", MODULE_6 => "[project]/app/explore/page.tsx [app-rsc] (ecmascript, Next.js Server Component)" } [app-rsc] (ecmascript) <locals>, but the module factory is not available.
-[15:50:01.493] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:50:02.029] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:50:02.029] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:50:03.424] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:50:03.424] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
-[15:50:03.424] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525719777}
-[15:50:04.620] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:50:04.620] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:50:05.149] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:50:05.149] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:50:05.432] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:50:05.432] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:50:05.432] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:50:05.432] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:50:05.594] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:50:05.595] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:50:05.595] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:50:06.213] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:50:06.664] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:50:06.664] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:50:06.664] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:50:06.664] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:50:06.899] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:50:06.899] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:50:06.899] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:50:06.899] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:50:06.899] Browser LOG     [FeedGenerator] Feed generation complete
-[15:50:07.203] Browser LOG     [FeedGenerator] Feed generation complete
-[15:50:10.173] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525727263}
-[15:50:11.010] Browser LOG     Extracting hashtags from existing posts...
-[15:50:11.212] Browser LOG     Extracting hashtags from existing posts...
-[15:50:12.133] Browser ERROR   Error extracting hashtags from posts: {"code":"23505","details":"Key (name)=(ai) already exists.","hint":null,"message":"duplicate key value violates unique constraint \"hashtags_name_key\""}
-[15:50:13.414] Browser LOG     Extracted 2 hashtags from 3 posts
-[15:50:15.603] Browser LOG     Extracting hashtags from existing posts...
-[15:50:17.331] Browser LOG     Extracted 2 hashtags from 3 posts
-[15:53:10.190] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:53:10.588] Server  WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:53:10.590] Server  WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:53:12.026] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:53:13.095] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:53:13.095] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:53:13.274] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:53:13.274] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/explore","route":"/explore"}
-[15:53:13.274] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525910348}
-[15:53:13.573] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:53:14.167] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:53:14.167] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/combined","route":"/combined"}
-[15:53:14.167] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/combined color: rgb(120, 120, 120) color: inherit {"dp":"/combined","o":"http://localhost:3000/combined","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525911101}
-[15:53:50.764] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525947857}
-[15:53:51.959] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525949058}
-[15:53:53.683] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:53:53.683] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:53:54.199] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:53:54.199] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:53:54.438] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:53:54.438] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:53:54.438] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:53:54.438] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:53:54.678] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:53:54.678] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:53:54.678] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:53:54.866] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:53:55.451] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:53:55.451] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:53:55.451] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:53:55.451] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:53:55.451] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:53:55.451] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:53:55.451] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:53:55.451] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:53:55.563] Browser LOG     [FeedGenerator] Feed generation complete
-[15:53:56.091] Browser LOG     [FeedGenerator] Feed generation complete
-[15:54:38.402] Server  LOG      ✓ Compiled in 1781ms
-[15:54:40.903] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:54:40.986] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[15:54:42.205] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:54:42.205] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/combined","route":"/combined"}
-[15:54:42.205] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/combined color: rgb(120, 120, 120) color: inherit {"dp":"/combined","o":"http://localhost:3000/combined","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525998771}
-[15:54:43.098] Browser WARN    [Upstash Redis] The 'url' property is missing or undefined in your Redis config.
-[15:54:43.098] Browser WARN    [Upstash Redis] The 'token' property is missing or undefined in your Redis config.
-[15:54:43.098] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[15:54:43.098] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
-[15:54:43.098] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765525999660}
-[15:54:44.223] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:54:44.223] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
-[15:54:45.097] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:54:45.097] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:54:45.097] Browser LOG     [FeedGenerator] Using algorithm: Chronological
-[15:54:45.097] Browser LOG     [FeedGenerator] getBasePosts: Starting...
-[15:54:45.097] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:54:45.097] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:54:46.098] Browser LOG     [FeedGenerator] Basic posts query result: {"count":3,"error":"none"}
-[15:54:46.098] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
-[15:54:46.098] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:54:46.098] Browser LOG     [FeedGenerator] Profiles map size: 2
-[15:54:46.098] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:54:46.098] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:54:46.098] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:54:46.098] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:54:46.098] Browser LOG     [FeedGenerator] Successfully processed 3 posts
-[15:54:46.098] Browser LOG     [FeedGenerator] Fetched posts: 3
-[15:54:46.098] Browser LOG     [FeedGenerator] Scoring 3 posts with algorithm: Chronological
-[15:54:46.098] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
-[15:54:46.305] Browser LOG     [FeedGenerator] Feed generation complete
-[15:54:46.305] Browser LOG     [FeedGenerator] Feed generation complete
-[15:54:49.931] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-[15:54:50.451] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765526007545}
-[15:55:36.710] Server  LOG      ✓ Compiled in 556ms
-[15:56:13.452] Server  LOG      ✓ Compiled in 341ms
-[15:56:41.786] Server  LOG      ✓ Compiled in 287ms
+[00:00:28.038] Server  LOG      ○ Compiling proxy ...
+[00:00:53.929] Server  LOG      ✓ Ready in 49.5s
+[00:00:57.537] Server  LOG      ○ Compiling /home ...
+[00:01:22.974] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:01:25.203] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:25.740] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:25.740] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:01:25.740] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765541156115}
+[00:01:27.896] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:01:27.899] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:01:28.318] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:01:28.318] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:01:28.547] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:01:28.547] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:01:28.547] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:01:28.547] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:01:28.748] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:01:28.748] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:01:28.748] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:01:28.997] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:01:31.147] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:01:31.147] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:01:31.147] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:01:31.147] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:01:32.871] Browser LOG     [FeedGenerator] Feed generation complete
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:01:32.871] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:01:32.871] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:01:32.871] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:01:32.871] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:01:32.871] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:01:40.217] Browser LOG     [FeedGenerator] Feed generation complete
+[00:05:54.124] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:06:05.297] Server  LOG      ✓ Compiled in 9.4s
+[00:06:08.256] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:09.985] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:06:09.985] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:06:09.985] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765541440202}
+[00:06:12.205] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:06:12.205] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:06:12.861] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:06:12.861] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:06:13.176] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:06:13.176] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:06:13.430] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:06:13.430] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:06:13.551] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:06:13.551] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:06:13.710] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:06:13.865] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:06:15.491] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:06:15.491] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:06:15.491] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:06:15.491] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:06:15.975] Browser LOG     [FeedGenerator] Feed generation complete
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:06:15.975] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:06:15.976] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:06:15.976] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:06:15.976] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:06:15.976] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:06:15.976] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:06:19.330] Browser LOG     [FeedGenerator] Feed generation complete
+[00:06:48.224] Server  LOG      ✓ Compiled in 4.2s
+[00:07:30.902] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:07:32.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:32.477] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:32.477] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:07:32.477] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765541522818}
+[00:07:34.269] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:07:34.270] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:07:34.678] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:07:34.678] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:07:34.881] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:07:34.881] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:07:34.881] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:07:34.881] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:07:35.046] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:07:35.046] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:07:35.046] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:07:35.263] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:07:36.426] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:07:36.426] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:07:36.426] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:07:36.426] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:07:36.579] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:07:36.579] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:07:36.579] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:07:36.579] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:07:36.814] Browser LOG     [FeedGenerator] Feed generation complete
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:07:36.814] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:07:36.814] Browser LOG     [FeedGenerator] Feed generation complete
+[00:11:53.386] Server  LOG      ✓ Compiled in 3.6s
+[00:12:13.476] Server  LOG      ✓ Compiled in 3.2s
+[00:12:14.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:12:14.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:12:14.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:12:14.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:12:14.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:12:14.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:12:14.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:12:14.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:12:14.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:12:14.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:12:14.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:12:14.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:12:14.828] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:12:14.828] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:12:14.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:12:14.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:12:14.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:12:14.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:12:14.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:12:14.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:12:14.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:12:14.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:12:14.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:12:14.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:12:14.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:12:14.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:02.557] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:13:04.895] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:06.888] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:13:06.888] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:13:06.888] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765541856779}
+[00:13:07.977] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:13:07.977] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:13:08.562] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:13:08.562] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:13:08.828] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:13:08.828] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:13:08.828] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:13:08.828] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:13:09.042] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:13:09.164] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:13:09.164] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:13:09.346] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:13:10.490] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:13:10.490] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:13:10.490] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:13:10.490] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:13:10.850] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:13:10.850] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:13:10.850] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:13:10.850] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:13:10.850] Browser LOG     [FeedGenerator] Feed generation complete
+[00:13:10.850] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:10.850] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:10.850] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:10.850] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:10.850] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:10.850] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:10.850] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:10.850] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:10.850] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:10.850] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:10.850] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:10.850] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:10.850] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:10.850] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:13:10.850] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:13:11.095] Browser LOG     [FeedGenerator] Feed generation complete
+[00:13:11.095] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:11.095] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:11.095] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:11.095] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:11.095] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:11.095] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:11.095] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:11.104] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:11.104] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:11.104] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:11.104] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:11.104] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:11.104] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:11.104] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:11.104] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:11.104] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:11.272] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:11.272] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:11.443] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:11.443] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:11.645] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:11.645] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:11.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:11.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:12.080] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:12.080] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:12.299] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:12.299] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:12.501] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:12.501] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:13:12.692] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:12.692] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:13:12.878] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:12.878] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:13:13.047] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:13.047] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:13:13.237] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:13.237] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:13:13.409] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:13.409] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:13:13.606] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:13.606] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:13.819] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:13.819] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:14.003] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:13:14.003] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:30.746] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:33.931] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:21:33.931] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/home","route":"/home"}
+[00:21:33.931] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765542363619}
+[00:21:36.825] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:21:36.825] Browser LOG     [FeedGenerator] Generating feed for user: 8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148
+[00:21:38.827] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:21:38.827] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:21:38.827] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:21:38.827] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:21:38.827] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:21:38.827] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:21:38.827] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:21:38.827] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:21:38.827] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:21:38.827] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:21:40.548] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:21:40.549] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:21:40.549] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:21:40.549] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:21:41.278] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:21:41.278] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:21:41.278] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:21:41.278] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:21:41.707] Browser LOG     [FeedGenerator] Feed generation complete
+[00:21:41.707] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:41.707] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:41.707] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:41.707] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:41.707] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:41.707] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:41.707] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:41.707] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:41.707] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:41.707] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:41.707] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:41.707] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:41.707] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:41.707] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:21:41.707] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:21:41.707] Browser LOG     [FeedGenerator] Feed generation complete
+[00:21:41.707] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:41.707] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:41.707] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:41.707] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:41.707] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:41.707] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:41.707] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:41.707] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:41.707] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:41.707] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:41.707] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:41.707] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:41.707] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:41.707] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:41.889] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:41.889] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:42.077] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:42.077] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:42.298] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:42.298] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:42.504] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:42.504] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:42.737] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:42.737] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:43.073] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:43.073] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:43.417] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:43.417] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:43.651] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:43.651] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:43.852] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:43.853] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:44.067] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:44.067] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:44.285] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:44.286] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:44.544] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:44.544] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:44.899] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:44.899] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:45.138] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:45.138] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:45.760] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:45.760] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:46.002] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:46.002] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:48.565] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:48.565] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:48.565] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:48.565] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:48.565] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:48.565] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:48.565] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:48.565] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:48.565] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:48.565] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:48.565] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:48.565] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:48.565] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:48.565] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:48.565] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:48.565] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:48.565] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:48.565] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:48.565] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:48.565] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:48.565] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:48.565] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:48.565] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:48.565] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:48.565] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:48.565] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:50.719] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:50.719] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:21:50.719] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:50.719] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:21:50.719] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:50.719] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:21:50.719] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:50.719] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:21:50.719] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:50.719] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:21:50.719] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:50.719] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:21:50.720] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:50.720] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:21:58.134] Server  LOG      ○ Compiling / ...
+[00:23:40.356] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:40.899] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:23:40.899] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:23:40.899] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765542491258}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:42.226] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:42.226] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:42.226] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:42.226] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:42.226] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:42.226] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":18,"hasImage":true,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":20,"hasImage":true,"id":"9e87da54-f549-48ad-9946-48adbd893fd0","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":20,"hasImage":true,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":45,"hasImage":true,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6","image_url":null}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d","image_url":null}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307","image_url":null}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":18,"hasImage":true,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":20,"hasImage":true,"id":"9e87da54-f549-48ad-9946-48adbd893fd0","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":20,"hasImage":true,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":45,"hasImage":true,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","image_url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg"}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6","image_url":null}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d","image_url":null}
+[00:23:42.226] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307","image_url":null}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:42.226] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:42.226] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:42.226] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:42.226] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:42.226] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:42.226] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:42.226] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:43.178] Browser LOG     ✅ Image loaded: https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:43.555] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:23:43.555] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:43.555] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:23:43.555] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:43.555] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:23:43.555] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:43.555] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:23:43.555] Browser LOG     ✅ Image loaded: https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg
+[00:23:43.555] Browser LOG     ✅ Image loaded: https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg
+[00:23:43.801] Browser LOG     ✅ Image loaded: https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg
+[00:26:39.601] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.633] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.647] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.657] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.698] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.706] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.715] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:39.723] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.038] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.046] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.054] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.062] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.070] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.077] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.084] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.093] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.104] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.113] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.126] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.136] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.147] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.155] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.163] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.171] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.186] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.193] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.203] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.210] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.219] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.226] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.234] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.240] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.250] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.257] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.265] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.271] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.278] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.285] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.292] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.299] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:41.813] Browser ERROR   ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:26:41.813] Browser ERROR   ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:27:11.770] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.782] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.789] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.799] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.806] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.816] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.823] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:11.834] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.148] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.157] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.167] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.175] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.184] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.193] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.203] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.212] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.224] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.235] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.241] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.251] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.260] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.268] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.274] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.282] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.291] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.300] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.307] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.316] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.323] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.332] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.339] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.348] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.357] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.366] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.375] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.383] Server  ERROR    ⨯ ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.391] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.399] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.407] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.415] Server  ERROR    ⨯ ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:27:12.827] Browser ERROR   ./app/home/page.tsx:81:1
+Module not found: Can't resolve '@/components/feed/algorithm-feed'
+  79 | // Import feed engine components
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+> 81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+  83 |
+  84 | // Import feed engine
+
+Import map: aliased to relative './components/feed/algorithm-feed' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:27:12.827] Browser ERROR   ./app/home/page.tsx:82:1
+Module not found: Can't resolve '@/components/feed/algorithm-selector'
+  80 | import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+  81 | import { AlgorithmFeed } from "@/components/feed/algorithm-feed"; // Eksplicitno importujte AlgorithmFeed
+> 82 | import { AlgorithmSelector } from "@/components/feed/algorithm-selector"; // Eksplicitno importujte AlgorithmSelector
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  83 |
+  84 | // Import feed engine
+  85 | import { FeedEngine } from "@/lib/feed-engine/engine";
+
+Import map: aliased to relative './components/feed/algorithm-selector' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/home/page.tsx [Client Component Browser]
+    ./app/home/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/home/page.tsx [Client Component SSR]
+    ./app/home/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:28:11.449] Server  LOG      ✓ Compiled in 600ms
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"9e87da54-f549-48ad-9946-48adbd893fd0","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:28:12.824] Browser LOG     Rendering image for post: {"id":"c646ad75-ad7e-44e9-b0db-766477475ecd","url":"https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg","valid":true}
+[00:28:12.824] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:28:12.824] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:28:12.824] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:28:12.824] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:28:12.824] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:28:12.824] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:28:29.251] Server  LOG      ○ Compiling /login ...
+[00:28:34.632] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765542785006}
+[00:28:51.550] Server  WARN     ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[00:28:52.815] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/home color: rgb(120, 120, 120) color: inherit {"dp":"/home","o":"http://localhost:3000/home","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765542803187}
+[00:28:55.818] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:28:55.818] Browser LOG     [FeedGenerator] Generating feed for user: 55b0ac2c-4092-4dc6-9df5-14120f54d9a0
+[00:28:55.818] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:28:55.818] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:28:55.818] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:28:55.818] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:28:55.818] Browser LOG     [FeedGenerator] Using algorithm: Chronological
+[00:28:55.818] Browser LOG     [FeedGenerator] getBasePosts: Starting...
+[00:28:55.818] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:28:55.818] Browser LOG     [FeedGenerator] Basic posts query result: {"count":7,"error":"none"}
+[00:28:55.818] Browser LOG     [FeedGenerator] Fetching profiles for user IDs: ["8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148","55b0ac2c-4092-4dc6-9df5-14120f54d9a0"]
+[00:28:56.827] Browser LOG     [FeedGenerator] Profiles map size: 2
+[00:29:00.828] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:29:00.828] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:29:00.828] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:29:00.828] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:29:00.828] Browser LOG     [FeedGenerator] Successfully processed 7 posts
+[00:29:00.828] Browser LOG     [FeedGenerator] Fetched posts: 7
+[00:29:00.828] Browser LOG     [FeedGenerator] Scoring 7 posts with algorithm: Chronological
+[00:29:00.828] Browser LOG     [FeedGenerator] Creating algorithm instance for: chronological
+[00:29:00.828] Browser LOG     [FeedGenerator] Feed generation complete
+[00:29:00.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.828] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.828] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.828] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.828] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.828] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.828] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":18,"hasImage":false,"id":"da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"9e87da54-f549-48ad-9946-48adbd893fd0"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":20,"hasImage":false,"id":"474fd5c7-6b4b-4d1c-93d2-183974fb77e4"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":45,"hasImage":false,"id":"c646ad75-ad7e-44e9-b0db-766477475ecd"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"8dfd36eb-c526-4008-b023-80670a494ac6"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":16,"hasImage":false,"id":"aa2c39b0-5218-4b3a-b337-b4ddcce09e5d"}
+[00:29:00.828] Browser LOG     PostCard render: {"content_length":11,"hasImage":false,"id":"bad3f1c5-1983-4ecd-a667-cb6771ca2307"}
+[00:29:00.828] Browser LOG     [FeedGenerator] Feed generation complete
+[00:29:00.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.828] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.828] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.829] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.829] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.829] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.829] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.829] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.829] Browser LOG     No image for post: da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a
+[00:29:00.829] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.829] Browser LOG     No image for post: 9e87da54-f549-48ad-9946-48adbd893fd0
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: 474fd5c7-6b4b-4d1c-93d2-183974fb77e4
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: c646ad75-ad7e-44e9-b0db-766477475ecd
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: aa2c39b0-5218-4b3a-b337-b4ddcce09e5d
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:00.829] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:01.822] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:01.822] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:01.822] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:01.822] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:01.822] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:01.822] Browser LOG     No image for post: 8dfd36eb-c526-4008-b023-80670a494ac6
+[00:29:01.822] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307
+[00:29:01.822] Browser LOG     No image for post: bad3f1c5-1983-4ecd-a667-cb6771ca2307

@@ -1397,6 +1397,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/avatar.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/heart.js [app-client] (ecmascript) <export default as Heart>");
@@ -1412,6 +1413,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$bot$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Bot$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/bot.js [app-client] (ecmascript) <export default as Bot>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/square-pen.js [app-client] (ecmascript) <export default as Edit>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/supabase/client.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$date$2d$fns$2f$formatDistanceToNow$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/date-fns/formatDistanceToNow.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$follow$2f$follow$2d$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/follow/follow-button.tsx [app-client] (ecmascript)");
@@ -1421,8 +1423,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-client] (ecmascript) <export default as Loader2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/badge.tsx [app-client] (ecmascript)");
 ;
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1468,14 +1471,14 @@ function ProvenanceBadge({ provenance, postId }) {
                         className: "h-3 w-3 text-green-500"
                     }, void 0, false, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 133,
+                        lineNumber: 138,
                         columnNumber: 11
                     }, this),
                     "Verified Source"
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 132,
+                lineNumber: 137,
                 columnNumber: 9
             }, this),
             status === 'unverified' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1486,14 +1489,14 @@ function ProvenanceBadge({ provenance, postId }) {
                         className: "h-3 w-3 text-amber-500"
                     }, void 0, false, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 140,
+                        lineNumber: 145,
                         columnNumber: 11
                     }, this),
                     "Unverified"
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 139,
+                lineNumber: 144,
                 columnNumber: 9
             }, this),
             isAI && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1504,14 +1507,14 @@ function ProvenanceBadge({ provenance, postId }) {
                         className: "h-3 w-3 text-amber-600 dark:text-amber-400"
                     }, void 0, false, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 148,
+                        lineNumber: 153,
                         columnNumber: 11
                     }, this),
                     "AI Generated"
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 147,
+                lineNumber: 152,
                 columnNumber: 9
             }, this),
             isRepost && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1522,7 +1525,7 @@ function ProvenanceBadge({ provenance, postId }) {
                         className: "h-3 w-3 text-blue-500"
                     }, void 0, false, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 156,
+                        lineNumber: 161,
                         columnNumber: 11
                     }, this),
                     "Repost",
@@ -1534,13 +1537,13 @@ function ProvenanceBadge({ provenance, postId }) {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 159,
+                        lineNumber: 164,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 155,
+                lineNumber: 160,
                 columnNumber: 9
             }, this),
             isEdit && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1551,20 +1554,20 @@ function ProvenanceBadge({ provenance, postId }) {
                         className: "h-3 w-3 text-purple-500"
                     }, void 0, false, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 167,
+                        lineNumber: 172,
                         columnNumber: 11
                     }, this),
                     "Edited"
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 166,
+                lineNumber: 171,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/post/post-card.tsx",
-        lineNumber: 129,
+        lineNumber: 134,
         columnNumber: 5
     }, this);
 }
@@ -1641,8 +1644,151 @@ const formatDateMobile = (dateString)=>{
         });
     }
 };
-function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUserFollowing = false, onFollowChange, compact = false, onRepost }) {
+function ImagePreview({ imageUrl, alt, onClose }) {
     _s1();
+    const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [imageError, setImageError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const handleClose = ()=>{
+        setIsOpen(false);
+        setTimeout(onClose, 300);
+    };
+    const handleBackdropClick = (e)=>{
+        if (e.target === e.currentTarget) {
+            handleClose();
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ImagePreview.useEffect": ()=>{
+            console.log('ImagePreview URL:', imageUrl);
+            const handleEscape = {
+                "ImagePreview.useEffect.handleEscape": (e)=>{
+                    if (e.key === 'Escape') {
+                        handleClose();
+                    }
+                }
+            }["ImagePreview.useEffect.handleEscape"];
+            document.addEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'hidden';
+            return ({
+                "ImagePreview.useEffect": ()=>{
+                    document.removeEventListener('keydown', handleEscape);
+                    document.body.style.overflow = 'unset';
+                }
+            })["ImagePreview.useEffect"];
+        }
+    }["ImagePreview.useEffect"], [
+        imageUrl
+    ]);
+    if (!isOpen) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {}, void 0, false);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200",
+        onClick: handleBackdropClick,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "relative max-w-4xl max-h-[90vh] w-full",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                    variant: "ghost",
+                    size: "icon",
+                    className: "absolute right-4 top-4 z-10 h-10 w-10 bg-black/50 text-white hover:bg-black/70",
+                    onClick: handleClose,
+                    "aria-label": "Close image preview",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                        className: "h-5 w-5"
+                    }, void 0, false, {
+                        fileName: "[project]/components/post/post-card.tsx",
+                        lineNumber: 321,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/components/post/post-card.tsx",
+                    lineNumber: 314,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "relative w-full h-[80vh] rounded-lg overflow-hidden",
+                    children: imageError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center justify-center h-full w-full bg-gray-800",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-center",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                    className: "h-12 w-12 text-red-500 mx-auto mb-4"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/post/post-card.tsx",
+                                    lineNumber: 328,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-white",
+                                    children: "Unable to load image"
+                                }, void 0, false, {
+                                    fileName: "[project]/components/post/post-card.tsx",
+                                    lineNumber: 329,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-white/70 text-sm mt-2",
+                                    children: imageUrl
+                                }, void 0, false, {
+                                    fileName: "[project]/components/post/post-card.tsx",
+                                    lineNumber: 330,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/components/post/post-card.tsx",
+                            lineNumber: 327,
+                            columnNumber: 15
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/components/post/post-card.tsx",
+                        lineNumber: 326,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        src: imageUrl,
+                        alt: alt,
+                        fill: true,
+                        className: "object-contain",
+                        sizes: "100vw",
+                        priority: true,
+                        onError: ()=>{
+                            console.error('Failed to load image in preview:', imageUrl);
+                            setImageError(true);
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/components/post/post-card.tsx",
+                        lineNumber: 334,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/components/post/post-card.tsx",
+                    lineNumber: 324,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "mt-4 text-center text-white/80 text-sm",
+                    children: "Click outside the image or press ESC to close"
+                }, void 0, false, {
+                    fileName: "[project]/components/post/post-card.tsx",
+                    lineNumber: 349,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/components/post/post-card.tsx",
+            lineNumber: 313,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/components/post/post-card.tsx",
+        lineNumber: 309,
+        columnNumber: 5
+    }, this);
+}
+_s1(ImagePreview, "+e2VRK3nwbwNXVQz7J47yjmF2/I=");
+_c1 = ImagePreview;
+function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUserFollowing = false, onFollowChange, compact = false, onRepost }) {
+    _s2();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [liked, setLiked] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(post.user_has_liked);
     const [likesCount, setLikesCount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(post.likes_count);
@@ -1656,6 +1802,24 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
     const [explanation, setExplanation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [explaining, setExplaining] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [explanationError, setExplanationError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    // Image preview state
+    const [showImagePreview, setShowImagePreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [imageLoadError, setImageLoadError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Debug logging
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "PostCard.useEffect": ()=>{
+            console.log('PostCard render:', {
+                id: post.id,
+                hasImage: !!post.image_url,
+                image_url: post.image_url,
+                content_length: post.content.length
+            });
+        }
+    }["PostCard.useEffect"], [
+        post.id,
+        post.image_url,
+        post.content
+    ]);
     // Check authentication and user's like status
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PostCard.useEffect": ()=>{
@@ -1768,7 +1932,8 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                 signature: provenance.signature,
                 provenance: provenance,
                 is_repost: true,
-                original_post_id: post.id
+                original_post_id: post.id,
+                image_url: post.image_url // Preserve the image URL
             });
             if (error) {
                 throw new Error(error.message);
@@ -1902,9 +2067,54 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
             void handleExplain();
         }
     };
+    const handleImageClick = (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        setShowImagePreview(true);
+    };
+    const handleImageError = ()=>{
+        console.error('Failed to load post image:', post.image_url);
+        setImageLoadError(true);
+    };
     const stopPropagation = (e)=>{
         e.preventDefault();
         e.stopPropagation();
+    };
+    // Render post image
+    // components/post/post-card.tsx - ISPRAVLJENA RENDER IMAGE FUNKCIJA
+    const renderPostImage = ()=>{
+        // ISPRAVKA: Eksplicitno provjeri za undefined
+        if (!post.image_url || post.image_url === undefined) {
+            console.log('No image for post:', post.id);
+            return null;
+        }
+        console.log('Rendering image for post:', {
+            id: post.id,
+            url: post.image_url,
+            valid: post.image_url.startsWith('http')
+        });
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "mt-3 relative aspect-video overflow-hidden rounded-lg border",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                src: post.image_url,
+                alt: `Post image by ${post.display_name}`,
+                className: "w-full h-full object-cover",
+                onLoad: ()=>console.log('✅ Image loaded:', post.image_url),
+                onError: (e)=>{
+                    console.error('❌ Image failed to load:', post.image_url);
+                    // Možete dodati fallback UI ako želite
+                    e.currentTarget.style.display = 'none';
+                }
+            }, void 0, false, {
+                fileName: "[project]/components/post/post-card.tsx",
+                lineNumber: 732,
+                columnNumber: 7
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/components/post/post-card.tsx",
+            lineNumber: 731,
+            columnNumber: 5
+        }, this);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
@@ -1937,10 +2147,14 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarImage"], {
                                                 src: post.avatar_url || undefined,
                                                 alt: post.display_name,
-                                                className: "object-cover"
+                                                className: "object-cover",
+                                                onError: (e)=>{
+                                                    console.error('Failed to load avatar:', post.avatar_url);
+                                                    e.currentTarget.style.display = 'none';
+                                                }
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 618,
+                                                lineNumber: 772,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$avatar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AvatarFallback"], {
@@ -1948,23 +2162,23 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                 children: getInitials(post.display_name)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 623,
+                                                lineNumber: 781,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 617,
+                                        lineNumber: 771,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 611,
+                                    lineNumber: 765,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/post/post-card.tsx",
-                                lineNumber: 610,
+                                lineNumber: 764,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1985,7 +2199,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                             children: post.display_name
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 635,
+                                                            lineNumber: 793,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1998,7 +2212,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 643,
+                                                            lineNumber: 801,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2006,7 +2220,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                             children: "·"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 651,
+                                                            lineNumber: 809,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2020,7 +2234,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                     children: formatDateMobile(post.created_at)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                                    lineNumber: 657,
+                                                                    lineNumber: 815,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2030,31 +2244,31 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                     })
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                                    lineNumber: 658,
+                                                                    lineNumber: 816,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 653,
+                                                            lineNumber: 811,
                                                             columnNumber: 21
                                                         }, this),
                                                         post.is_public !== false && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$globe$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Globe$3e$__["Globe"], {
                                                             className: "h-3 w-3 text-gray-400 ml-1"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 665,
+                                                            lineNumber: 823,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 634,
+                                                    lineNumber: 792,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 633,
+                                                lineNumber: 791,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2065,7 +2279,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                         postId: post.id
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 673,
+                                                        lineNumber: 831,
                                                         columnNumber: 19
                                                     }, this),
                                                     showFollowButton && isAuthenticated && currentUser && currentUser !== post.user_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2086,12 +2300,12 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                             variant: "outline"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/post/post-card.tsx",
-                                                            lineNumber: 689,
+                                                            lineNumber: 847,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 679,
+                                                        lineNumber: 837,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenu"], {
@@ -2107,18 +2321,18 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                         className: "h-4 w-4"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                                        lineNumber: 708,
-                                                                        columnNumber: 7
+                                                                        lineNumber: 866,
+                                                                        columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                                    lineNumber: 702,
-                                                                    columnNumber: 5
+                                                                    lineNumber: 860,
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                lineNumber: 701,
-                                                                columnNumber: 3
+                                                                lineNumber: 859,
+                                                                columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuContent"], {
                                                                 align: "end",
@@ -2131,15 +2345,15 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                                 className: "h-4 w-4 mr-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                                lineNumber: 713,
-                                                                                columnNumber: 7
+                                                                                lineNumber: 871,
+                                                                                columnNumber: 25
                                                                             }, this),
                                                                             "Share post"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                                        lineNumber: 712,
-                                                                        columnNumber: 5
+                                                                        lineNumber: 870,
+                                                                        columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
                                                                         onClick: handleExplainDropdown,
@@ -2148,15 +2362,15 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                                 className: "h-4 w-4 mr-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                                lineNumber: 717,
-                                                                                columnNumber: 7
+                                                                                lineNumber: 875,
+                                                                                columnNumber: 25
                                                                             }, this),
                                                                             "Explain with AI"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                                        lineNumber: 716,
-                                                                        columnNumber: 5
+                                                                        lineNumber: 874,
+                                                                        columnNumber: 23
                                                                     }, this),
                                                                     isAuthenticated && currentUser !== post.user_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
                                                                         onClick: (e)=>{
@@ -2170,15 +2384,15 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                                 className: "h-4 w-4 mr-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                                lineNumber: 729,
-                                                                                columnNumber: 9
+                                                                                lineNumber: 887,
+                                                                                columnNumber: 27
                                                                             }, this),
                                                                             reposting ? 'Reposting...' : 'Repost'
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                                        lineNumber: 721,
-                                                                        columnNumber: 7
+                                                                        lineNumber: 879,
+                                                                        columnNumber: 25
                                                                     }, this),
                                                                     isAuthenticated && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$dropdown$2d$menu$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DropdownMenuItem"], {
                                                                         children: [
@@ -2186,53 +2400,56 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                                                 className: "h-4 w-4 mr-2"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                                lineNumber: 735,
-                                                                                columnNumber: 9
+                                                                                lineNumber: 893,
+                                                                                columnNumber: 27
                                                                             }, this),
                                                                             "Bookmark"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                                        lineNumber: 734,
-                                                                        columnNumber: 7
+                                                                        lineNumber: 892,
+                                                                        columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                                lineNumber: 711,
-                                                                columnNumber: 3
+                                                                lineNumber: 869,
+                                                                columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 700,
-                                                        columnNumber: 8
+                                                        lineNumber: 858,
+                                                        columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 671,
+                                                lineNumber: 829,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 632,
+                                        lineNumber: 790,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "mb-3",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "whitespace-pre-wrap text-pretty break-words text-gray-900 dark:text-gray-100 text-sm md:text-[15px] leading-relaxed",
-                                            children: post.content
-                                        }, void 0, false, {
-                                            fileName: "[project]/components/post/post-card.tsx",
-                                            lineNumber: 746,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "whitespace-pre-wrap text-pretty break-words text-gray-900 dark:text-gray-100 text-sm md:text-[15px] leading-relaxed",
+                                                children: post.content
+                                            }, void 0, false, {
+                                                fileName: "[project]/components/post/post-card.tsx",
+                                                lineNumber: 904,
+                                                columnNumber: 17
+                                            }, this),
+                                            renderPostImage()
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 745,
+                                        lineNumber: 903,
                                         columnNumber: 15
                                     }, this),
                                     post.impressions && post.impressions > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2244,7 +2461,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 755,
+                                                    lineNumber: 916,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2254,18 +2471,18 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 756,
+                                                    lineNumber: 917,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/post/post-card.tsx",
-                                            lineNumber: 754,
+                                            lineNumber: 915,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 753,
+                                        lineNumber: 914,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2282,7 +2499,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                         className: `h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 771,
+                                                        lineNumber: 932,
                                                         columnNumber: 19
                                                     }, this),
                                                     post.comments_count > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2290,13 +2507,13 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                         children: post.comments_count
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 773,
+                                                        lineNumber: 934,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 764,
+                                                lineNumber: 925,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2310,13 +2527,13 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                     className: `h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 788,
-                                                    columnNumber: 3
+                                                    lineNumber: 949,
+                                                    columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 780,
-                                                columnNumber: 5
+                                                lineNumber: 941,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                 variant: "ghost",
@@ -2330,21 +2547,31 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                         className: `h-4 w-4 group-hover:scale-110 transition-transform ${liked ? 'fill-current' : ''} ${compact ? 'h-3.5 w-3.5' : ''}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 804,
+                                                        lineNumber: 965,
                                                         columnNumber: 19
                                                     }, this),
                                                     likesCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: `ml-1 text-xs ${liked ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-red-500`,
+                                                        className: `ml-1 text-xs ${liked ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-red-500 cursor-pointer`,
+                                                        onClick: handleShowLikes,
+                                                        onKeyDown: (e)=>{
+                                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                                e.preventDefault();
+                                                                e.stopPropagation();
+                                                                handleShowLikes(e);
+                                                            }
+                                                        },
+                                                        role: "button",
+                                                        tabIndex: 0,
                                                         children: likesCount
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/post/post-card.tsx",
-                                                        lineNumber: 806,
+                                                        lineNumber: 967,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 792,
+                                                lineNumber: 953,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2357,12 +2584,12 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                     className: `h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 820,
+                                                    lineNumber: 993,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 813,
+                                                lineNumber: 986,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2375,18 +2602,18 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                     className: `h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/post/post-card.tsx",
-                                                    lineNumber: 831,
+                                                    lineNumber: 1004,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 824,
+                                                lineNumber: 997,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 762,
+                                        lineNumber: 923,
                                         columnNumber: 15
                                     }, this),
                                     showFollowButton && isAuthenticated && currentUser && currentUser !== post.user_id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2407,34 +2634,34 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                             variant: "outline"
                                         }, void 0, false, {
                                             fileName: "[project]/components/post/post-card.tsx",
-                                            lineNumber: 847,
+                                            lineNumber: 1020,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 837,
+                                        lineNumber: 1010,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/post/post-card.tsx",
-                                lineNumber: 630,
+                                lineNumber: 788,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/post/post-card.tsx",
-                        lineNumber: 608,
+                        lineNumber: 762,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/post/post-card.tsx",
-                    lineNumber: 607,
+                    lineNumber: 761,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 595,
+                lineNumber: 749,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$post$2f$likes$2d$list$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LikesList"], {
@@ -2443,7 +2670,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                 onOpenChange: setShowLikesDialog
             }, void 0, false, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 863,
+                lineNumber: 1036,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialog"], {
@@ -2461,14 +2688,14 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                             className: "h-5 w-5 text-purple-500"
                                         }, void 0, false, {
                                             fileName: "[project]/components/post/post-card.tsx",
-                                            lineNumber: 874,
+                                            lineNumber: 1047,
                                             columnNumber: 15
                                         }, this),
                                         "AI Explanation"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 873,
+                                    lineNumber: 1046,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogDescription"], {
@@ -2478,13 +2705,13 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 877,
+                                    lineNumber: 1050,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/post/post-card.tsx",
-                            lineNumber: 872,
+                            lineNumber: 1045,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2496,7 +2723,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                         className: "h-8 w-8 animate-spin text-purple-500 mb-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 885,
+                                        lineNumber: 1058,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2504,13 +2731,13 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                         children: "AI is analyzing the post..."
                                     }, void 0, false, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 886,
+                                        lineNumber: 1059,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/post/post-card.tsx",
-                                lineNumber: 884,
+                                lineNumber: 1057,
                                 columnNumber: 15
                             }, this) : explanationError ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4",
@@ -2519,12 +2746,12 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                     children: explanationError
                                 }, void 0, false, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 892,
+                                    lineNumber: 1065,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/post/post-card.tsx",
-                                lineNumber: 891,
+                                lineNumber: 1064,
                                 columnNumber: 15
                             }, this) : explanation ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "bg-gray-50 dark:bg-gray-900/50 rounded-lg p-4",
@@ -2534,7 +2761,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                         children: explanation
                                     }, void 0, false, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 896,
+                                        lineNumber: 1069,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2544,7 +2771,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                 children: "Powered by DeepSeek AI"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 900,
+                                                lineNumber: 1073,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2552,24 +2779,24 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                                 children: "AI-generated content may not always be accurate"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/post/post-card.tsx",
-                                                lineNumber: 901,
+                                                lineNumber: 1074,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/post/post-card.tsx",
-                                        lineNumber: 899,
+                                        lineNumber: 1072,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/post/post-card.tsx",
-                                lineNumber: 895,
+                                lineNumber: 1068,
                                 columnNumber: 15
                             }, this) : null
                         }, void 0, false, {
                             fileName: "[project]/components/post/post-card.tsx",
-                            lineNumber: 882,
+                            lineNumber: 1055,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
@@ -2578,7 +2805,7 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 908,
+                                    lineNumber: 1081,
                                     columnNumber: 13
                                 }, this),
                                 explanation && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2589,38 +2816,39 @@ function PostCard({ post, showFollowButton = false, currentUserId, isCurrentUser
                                     children: "Copy Explanation"
                                 }, void 0, false, {
                                     fileName: "[project]/components/post/post-card.tsx",
-                                    lineNumber: 910,
+                                    lineNumber: 1083,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/post/post-card.tsx",
-                            lineNumber: 907,
+                            lineNumber: 1080,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/post/post-card.tsx",
-                    lineNumber: 871,
+                    lineNumber: 1044,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/post/post-card.tsx",
-                lineNumber: 870,
+                lineNumber: 1043,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s1(PostCard, "+Yu5Q2hT68LChj6lL05A9lSqnGQ=", false, function() {
+_s2(PostCard, "NTaWtknfpqqEdmORy5weTnPmhXc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
 });
-_c1 = PostCard;
-var _c, _c1;
+_c2 = PostCard;
+var _c, _c1, _c2;
 __turbopack_context__.k.register(_c, "ProvenanceBadge");
-__turbopack_context__.k.register(_c1, "PostCard");
+__turbopack_context__.k.register(_c1, "ImagePreview");
+__turbopack_context__.k.register(_c2, "PostCard");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -3918,7 +4146,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/components/feed/public-feed.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// components/feed/public-feed.tsx
+// components/feed/public-feed.tsx - COMPLETE TYPE-SAFE VERSION
 __turbopack_context__.s([
     "default",
     ()=>PublicFeed
@@ -3968,7 +4196,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// Mock data za fallback
+// ============ CONSTANTS ============
 const MOCK_TRENDING_TOPICS = [
     {
         id: "1",
@@ -4041,19 +4269,21 @@ const MOCK_TRENDING_TOPICS = [
         post_count: 12
     }
 ];
-// Helper funkcija za ekstrakciju tagova iz contenta
-const extractTags = (content)=>{
-    const hashtagRegex = /#(\w+)/g;
-    const matches = content.match(hashtagRegex);
-    return matches ? matches.map((tag)=>tag.slice(1)) : [];
+// ============ HELPER FUNCTIONS ============
+// Convert undefined to null for image_url
+const normalizeImageUrl = (url)=>{
+    if (url === undefined || url === null) return null;
+    if (typeof url !== 'string') return null;
+    if (url.trim() === '') return null;
+    return url;
 };
-// Funkcija za ekstrakciju hashtagova iz contenta
+// Extract hashtags from content
 const extractHashtagsFromContent = (content)=>{
     const hashtagRegex = /#(\w+)/g;
     const matches = content.match(hashtagRegex);
     return matches ? matches.map((tag)=>tag.slice(1).toLowerCase()) : [];
 };
-// Algoritam za izračunavanje engagement score-a
+// Calculate engagement score
 const calculateEngagementScore = (post)=>{
     const now = new Date();
     const postTime = new Date(post.created_at);
@@ -4062,20 +4292,21 @@ const calculateEngagementScore = (post)=>{
     const timeDecay = Math.exp(-hoursSincePost / 48);
     // Engagement weighting
     const likeWeight = 2;
-    const commentWeight = 3; // Comments are more valuable than likes
+    const commentWeight = 3;
     const engagement = post.likes_count * likeWeight + post.comments_count * commentWeight;
     // Boost for very recent posts (first 2 hours)
     const recencyBoost = hoursSincePost < 2 ? 1.5 : 1;
     return engagement * timeDecay * recencyBoost;
 };
-// Algoritam za sortiranje postova
+// Sort posts with algorithm
 const sortPosts = (posts, algorithm = 'mixed')=>{
     const enhancedPosts = posts.map((post)=>({
             ...post,
+            image_url: post.image_url,
             engagement_score: calculateEngagementScore(post),
             time_score: new Date(post.created_at).getTime(),
             is_trending: post.likes_count > 10 || post.comments_count > 5,
-            tags: extractTags(post.content)
+            tags: extractHashtagsFromContent(post.content)
         }));
     switch(algorithm){
         case 'latest':
@@ -4084,7 +4315,7 @@ const sortPosts = (posts, algorithm = 'mixed')=>{
             return enhancedPosts.sort((a, b)=>b.engagement_score - a.engagement_score);
         case 'mixed':
         default:
-            // Kombinacija: 70% engagement, 30% recency
+            // Combination: 70% engagement, 30% recency
             return enhancedPosts.sort((a, b)=>{
                 const scoreA = a.engagement_score * 0.7 + a.time_score * 0.0000003;
                 const scoreB = b.engagement_score * 0.7 + b.time_score * 0.0000003;
@@ -4092,10 +4323,10 @@ const sortPosts = (posts, algorithm = 'mixed')=>{
             });
     }
 };
-// Funkcija za analizu trending hashtagova iz postova
+// Analyze trending hashtags from posts
 const analyzeTrendingHashtags = (posts)=>{
     const hashtagCounts = {};
-    // Kategorije za hashtagove
+    // Categories for hashtags
     const categoryMap = {
         // Tech related
         'technology': 'tech',
@@ -4160,12 +4391,12 @@ const analyzeTrendingHashtags = (posts)=>{
         'friends': 'social',
         'connection': 'social'
     };
-    // Brojanje hashtagova iz svih postova
+    // Count hashtags from all posts
     posts.forEach((post)=>{
         const hashtags = extractHashtagsFromContent(post.content);
         const uniqueHashtags = [
             ...new Set(hashtags)
-        ]; // Ukloni duplikate unutar istog posta
+        ];
         uniqueHashtags.forEach((tag)=>{
             if (!hashtagCounts[tag]) {
                 hashtagCounts[tag] = {
@@ -4173,20 +4404,20 @@ const analyzeTrendingHashtags = (posts)=>{
                     posts: new Set()
                 };
             }
-            // Dodaj post ID u set
+            // Add post ID to set
             hashtagCounts[tag].posts.add(post.id);
-            // Bazni poeni za hashtag (1 poen po postu)
+            // Base points for hashtag (1 point per post)
             hashtagCounts[tag].count += 1;
-            // Dodaj engagement poene iz lajkova i komentara
+            // Add engagement points from likes and comments
             const engagement = post.likes_count + post.comments_count * 2;
-            hashtagCounts[tag].count += engagement * 0.1; // 10% engagementa se dodaje
-            // Bonus za trending postove
+            hashtagCounts[tag].count += engagement * 0.1;
+            // Bonus for trending posts
             if (post.likes_count > 10 || post.comments_count > 5) {
                 hashtagCounts[tag].count += 5;
             }
         });
     });
-    // Konvertuj u array i sortiraj
+    // Convert to array and sort
     const trendingArray = Object.entries(hashtagCounts).map(([name, data], index)=>{
         const baseCategory = categoryMap[name] || 'general';
         const displayName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -4199,6 +4430,24 @@ const analyzeTrendingHashtags = (posts)=>{
         };
     }).sort((a, b)=>b.count - a.count);
     return trendingArray;
+};
+// Get posts by hashtag
+const getPostsByHashtag = (posts, hashtag)=>{
+    const normalizedHashtag = hashtag.toLowerCase();
+    return posts.filter((post)=>{
+        const postHashtags = extractHashtagsFromContent(post.content);
+        return postHashtags.includes(normalizedHashtag);
+    });
+};
+// Format numbers
+const formatNumber = (num)=>{
+    if (num >= 1000000) {
+        return `${(num / 1000000).toFixed(1)}M`;
+    }
+    if (num >= 1000) {
+        return `${(num / 1000).toFixed(1)}K`;
+    }
+    return num.toLocaleString();
 };
 function PublicFeed() {
     _s();
@@ -4215,7 +4464,7 @@ function PublicFeed() {
     const [trendingLoading, setTrendingLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showMockTrending, setShowMockTrending] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [lastTrendingUpdate, setLastTrendingUpdate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(new Date());
-    // State za statistike
+    // Stats state
     const [stats, setStats] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         totalUsers: 0,
         onlineUsers: 0,
@@ -4223,19 +4472,20 @@ function PublicFeed() {
         activeUsers: 0
     });
     const [statsLoading, setStatsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Ažurirana fetchStats funkcija sa last_seen
+    // ============ DATA FETCHING ============
+    // Fetch stats
     const fetchStats = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[fetchStats]": async ()=>{
             setStatsLoading(true);
             const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
             try {
-                // 1. Ukupan broj korisnika
+                // 1. Total users
                 const { count: totalUsersCount, error: totalUsersError } = await supabase.from("profiles").select("*", {
                     count: "exact",
                     head: true
                 });
                 if (totalUsersError) throw totalUsersError;
-                // 2. Online korisnici (aktivni u poslednjih 15 minuta)
+                // 2. Online users (active in last 15 minutes)
                 const fifteenMinutesAgo = new Date();
                 fifteenMinutesAgo.setMinutes(fifteenMinutesAgo.getMinutes() - 15);
                 const { count: onlineUsersCount, error: onlineUsersError } = await supabase.from("profiles").select("*", {
@@ -4243,7 +4493,7 @@ function PublicFeed() {
                     head: true
                 }).gte("last_seen", fifteenMinutesAgo.toISOString());
                 if (onlineUsersError) throw onlineUsersError;
-                // 3. Postovi danas
+                // 3. Posts today
                 const today = new Date();
                 const yesterday = new Date(today);
                 yesterday.setDate(yesterday.getDate() - 1);
@@ -4252,7 +4502,7 @@ function PublicFeed() {
                     head: true
                 }).gte("created_at", yesterday.toISOString()).lte("created_at", today.toISOString());
                 if (postsTodayError) throw postsTodayError;
-                // 4. Aktivni korisnici (objavili u poslednjih 7 dana)
+                // 4. Active users (posted in last 7 days)
                 const lastWeek = new Date(today);
                 lastWeek.setDate(lastWeek.getDate() - 7);
                 const { data: activeUsersData, error: activeUsersError } = await supabase.from("posts").select("user_id").gte("created_at", lastWeek.toISOString());
@@ -4268,7 +4518,7 @@ function PublicFeed() {
                 });
             } catch (error) {
                 console.error("Error fetching stats:", error);
-                // Fallback za razvojno okruženje
+                // Fallback for development
                 if ("TURBOPACK compile-time truthy", 1) {
                     setStats({
                         totalUsers: 2500000,
@@ -4282,7 +4532,7 @@ function PublicFeed() {
             }
         }
     }["PublicFeed.useCallback[fetchStats]"], []);
-    // Formatiranje postova sa brojevima lajkova i komentara
+    // Format posts with counts - TYPE SAFE VERSION
     const formatPostsWithCounts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[formatPostsWithCounts]": async (postsData)=>{
             const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
@@ -4290,27 +4540,31 @@ function PublicFeed() {
                 "PublicFeed.useCallback[formatPostsWithCounts].postIds": (p)=>p.id
             }["PublicFeed.useCallback[formatPostsWithCounts].postIds"]);
             try {
-                // Batch queries za effikasnost
+                // Batch queries for efficiency
                 const [likesResult, commentsResult] = await Promise.all([
                     supabase.from("likes").select("post_id").in("post_id", postIds),
                     supabase.from("comments").select("post_id").in("post_id", postIds)
                 ]);
-                const likesMap = likesResult.data?.reduce({
-                    "PublicFeed.useCallback[formatPostsWithCounts]": (acc, like)=>{
+                const likesMap = (likesResult.data || []).reduce({
+                    "PublicFeed.useCallback[formatPostsWithCounts].likesMap": (acc, like)=>{
                         acc[like.post_id] = (acc[like.post_id] || 0) + 1;
                         return acc;
                     }
-                }["PublicFeed.useCallback[formatPostsWithCounts]"], {}) || {};
-                const commentsMap = commentsResult.data?.reduce({
-                    "PublicFeed.useCallback[formatPostsWithCounts]": (acc, comment)=>{
+                }["PublicFeed.useCallback[formatPostsWithCounts].likesMap"], {});
+                const commentsMap = (commentsResult.data || []).reduce({
+                    "PublicFeed.useCallback[formatPostsWithCounts].commentsMap": (acc, comment)=>{
                         acc[comment.post_id] = (acc[comment.post_id] || 0) + 1;
                         return acc;
                     }
-                }["PublicFeed.useCallback[formatPostsWithCounts]"], {}) || {};
+                }["PublicFeed.useCallback[formatPostsWithCounts].commentsMap"], {});
                 return postsData.map({
-                    "PublicFeed.useCallback[formatPostsWithCounts]": (post)=>({
+                    "PublicFeed.useCallback[formatPostsWithCounts]": (post)=>{
+                        // NORMALIZE IMAGE_URL - CONVERT UNDEFINED TO NULL
+                        const normalizedImageUrl = normalizeImageUrl(post.image_url);
+                        return {
                             id: post.id,
                             content: post.content,
+                            image_url: normalizedImageUrl,
                             created_at: post.created_at,
                             user_id: post.user_id,
                             username: post.profiles?.username || "anonymous",
@@ -4319,7 +4573,8 @@ function PublicFeed() {
                             likes_count: likesMap[post.id] || 0,
                             comments_count: commentsMap[post.id] || 0,
                             user_has_liked: false
-                        })
+                        };
+                    }
                 }["PublicFeed.useCallback[formatPostsWithCounts]"]);
             } catch (err) {
                 console.error("Error formatting posts:", err);
@@ -4327,20 +4582,20 @@ function PublicFeed() {
             }
         }
     }["PublicFeed.useCallback[formatPostsWithCounts]"], []);
-    // Funkcija za fetch trending podataka
+    // Fetch trending data
     const fetchTrendingData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[fetchTrendingData]": async ()=>{
             if (posts.length === 0) return;
             setTrendingLoading(true);
             try {
-                // Analiziraj hashtagove iz postojećih postova
+                // Analyze hashtags from existing posts
                 const realTrending = analyzeTrendingHashtags(posts);
                 if (realTrending.length > 0) {
-                    // Ako imamo realne trending podatke, koristimo ih
+                    // If we have real trending data, use it
                     setTrendingTopics(realTrending.slice(0, 10)); // Top 10
                     setShowMockTrending(false);
                 } else {
-                    // Ako nemamo realnih podataka, koristimo mock
+                    // If no real data, use mock
                     setTrendingTopics(MOCK_TRENDING_TOPICS);
                     setShowMockTrending(true);
                 }
@@ -4356,43 +4611,14 @@ function PublicFeed() {
     }["PublicFeed.useCallback[fetchTrendingData]"], [
         posts
     ]);
-    // Funkcija za handle klik na trending topic
-    const handleTrendingTopicClick = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "PublicFeed.useCallback[handleTrendingTopicClick]": (topic)=>{
-            if (showMockTrending) {
-                // Ako je mock data, ne radi ništa ili pokaži alert
-                console.log("Sample trending topic clicked:", topic.name);
-                return;
-            }
-            // Navigacija ka explore stranici sa hashtag filterom
-            router.push(`/explore?hashtag=${topic.name.toLowerCase()}`);
-        }
-    }["PublicFeed.useCallback[handleTrendingTopicClick]"], [
-        router,
-        showMockTrending
-    ]);
-    // Funkcija za dobijanje postova po hashtagu
-    const getPostsByHashtag = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "PublicFeed.useCallback[getPostsByHashtag]": (hashtag)=>{
-            const normalizedHashtag = hashtag.toLowerCase();
-            return posts.filter({
-                "PublicFeed.useCallback[getPostsByHashtag]": (post)=>{
-                    const postHashtags = extractHashtagsFromContent(post.content);
-                    return postHashtags.includes(normalizedHashtag);
-                }
-            }["PublicFeed.useCallback[getPostsByHashtag]"]);
-        }
-    }["PublicFeed.useCallback[getPostsByHashtag]"], [
-        posts
-    ]);
-    // Optimizovani fetch postova
+    // Fetch posts
     const fetchPosts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[fetchPosts]": async ()=>{
             const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
             setRefreshing(true);
             setError(null);
             try {
-                // Dohvati postove sa profilima
+                // Fetch posts with profiles
                 const { data: postsWithProfiles, error: fetchError } = await supabase.from("posts").select(`
           *,
           profiles!posts_user_id_fkey (
@@ -4417,10 +4643,10 @@ function PublicFeed() {
                     setActivePosts([]);
                     return;
                 }
-                // Formatiraj postove sa brojevima
+                // Format posts with counts - Type assertion for safety
                 const formattedPosts = await formatPostsWithCounts(postsWithProfiles);
                 setPosts(formattedPosts);
-                // Sortiraj postove po odabranom algoritmu
+                // Sort posts by selected algorithm
                 const sortedPosts = sortPosts(formattedPosts, sortAlgorithm);
                 setActivePosts(sortedPosts);
             } catch (err) {
@@ -4435,7 +4661,7 @@ function PublicFeed() {
         formatPostsWithCounts,
         sortAlgorithm
     ]);
-    // Handle refresh
+    // ============ EVENT HANDLERS ============
     const handleRefresh = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[handleRefresh]": async ()=>{
             setRefreshing(true);
@@ -4448,7 +4674,30 @@ function PublicFeed() {
         fetchPosts,
         fetchStats
     ]);
-    // Effect za fetch postova i statistika
+    const handleTrendingTopicClick = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "PublicFeed.useCallback[handleTrendingTopicClick]": (topic)=>{
+            if (showMockTrending) {
+                console.log("Sample trending topic clicked:", topic.name);
+                return;
+            }
+            router.push(`/explore?hashtag=${topic.name.toLowerCase()}`);
+        }
+    }["PublicFeed.useCallback[handleTrendingTopicClick]"], [
+        router,
+        showMockTrending
+    ]);
+    const toggleInsights = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "PublicFeed.useCallback[toggleInsights]": (postId)=>{
+            setShowInsights({
+                "PublicFeed.useCallback[toggleInsights]": (prev)=>({
+                        ...prev,
+                        [postId]: !prev[postId]
+                    })
+            }["PublicFeed.useCallback[toggleInsights]"]);
+        }
+    }["PublicFeed.useCallback[toggleInsights]"], []);
+    // ============ EFFECTS ============
+    // Initial data load
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PublicFeed.useEffect": ()=>{
             const loadData = {
@@ -4465,7 +4714,7 @@ function PublicFeed() {
         fetchPosts,
         fetchStats
     ]);
-    // Effect za resortiranje kada se promijeni algoritam
+    // Resort when algorithm changes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PublicFeed.useEffect": ()=>{
             if (posts.length > 0) {
@@ -4477,7 +4726,7 @@ function PublicFeed() {
         sortAlgorithm,
         posts
     ]);
-    // Effect za fetch trending podataka kada se promijene postovi
+    // Fetch trending when posts change
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PublicFeed.useEffect": ()=>{
             if (posts.length > 0 && !loading) {
@@ -4489,7 +4738,7 @@ function PublicFeed() {
         loading,
         fetchTrendingData
     ]);
-    // Effect za auto-refresh trending svakih 5 minuta
+    // Auto-refresh trending every 5 minutes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PublicFeed.useEffect": ()=>{
             const interval = setInterval({
@@ -4498,7 +4747,7 @@ function PublicFeed() {
                         fetchTrendingData();
                     }
                 }
-            }["PublicFeed.useEffect.interval"], 5 * 60 * 1000); // 5 minuta
+            }["PublicFeed.useEffect.interval"], 5 * 60 * 1000);
             return ({
                 "PublicFeed.useEffect": ()=>clearInterval(interval)
             })["PublicFeed.useEffect"];
@@ -4507,18 +4756,7 @@ function PublicFeed() {
         posts.length,
         fetchTrendingData
     ]);
-    // Toggle insights za post
-    const toggleInsights = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "PublicFeed.useCallback[toggleInsights]": (postId)=>{
-            setShowInsights({
-                "PublicFeed.useCallback[toggleInsights]": (prev)=>({
-                        ...prev,
-                        [postId]: !prev[postId]
-                    })
-            }["PublicFeed.useCallback[toggleInsights]"]);
-        }
-    }["PublicFeed.useCallback[toggleInsights]"], []);
-    // Formatiranje vremena za trending update
+    // ============ MEMOIZED VALUES ============
     const formatTimeSinceUpdate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "PublicFeed.useMemo[formatTimeSinceUpdate]": ()=>{
             const now = new Date();
@@ -4531,19 +4769,7 @@ function PublicFeed() {
     }["PublicFeed.useMemo[formatTimeSinceUpdate]"], [
         lastTrendingUpdate
     ]);
-    // Formatiranje brojeva
-    const formatNumber = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "PublicFeed.useCallback[formatNumber]": (num)=>{
-            if (num >= 1000000) {
-                return `${(num / 1000000).toFixed(1)}M`;
-            }
-            if (num >= 1000) {
-                return `${(num / 1000).toFixed(1)}K`;
-            }
-            return num.toLocaleString();
-        }
-    }["PublicFeed.useCallback[formatNumber]"], []);
-    // Render trending sekcije
+    // ============ RENDER FUNCTIONS ============
     const renderTrendingSection = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "PublicFeed.useCallback[renderTrendingSection]": ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "overflow-hidden rounded-xl border bg-card",
@@ -4562,14 +4788,14 @@ function PublicFeed() {
                                                 children: "Trending Now"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 566,
+                                                lineNumber: 605,
                                                 columnNumber: 13
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$flame$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Flame$3e$__["Flame"], {
                                                 className: "h-4 w-4 text-orange-500"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 567,
+                                                lineNumber: 606,
                                                 columnNumber: 13
                                             }, this),
                                             showMockTrending && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -4578,13 +4804,13 @@ function PublicFeed() {
                                                 children: "Sample"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 569,
+                                                lineNumber: 608,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 565,
+                                        lineNumber: 604,
                                         columnNumber: 11
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -4598,18 +4824,18 @@ function PublicFeed() {
                                             className: `h-3 w-3 ${trendingLoading ? 'animate-spin' : ''}`
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 582,
+                                            lineNumber: 621,
                                             columnNumber: 13
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 574,
+                                        lineNumber: 613,
                                         columnNumber: 11
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 564,
+                                lineNumber: 603,
                                 columnNumber: 9
                             }, this),
                             trendingLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4617,13 +4843,13 @@ function PublicFeed() {
                                 children: "Analyzing trends..."
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 586,
+                                lineNumber: 625,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 563,
+                        lineNumber: 602,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4644,39 +4870,39 @@ function PublicFeed() {
                                                         className: "h-4 w-32 animate-pulse rounded bg-muted"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 597,
+                                                        lineNumber: 636,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "h-4 w-8 animate-pulse rounded bg-muted"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 598,
+                                                        lineNumber: 637,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 596,
+                                                lineNumber: 635,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-3 w-24 animate-pulse rounded bg-muted"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 600,
+                                                lineNumber: 639,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 595,
+                                        lineNumber: 634,
                                         columnNumber: 15
                                     }, this)
                             }["PublicFeed.useCallback[renderTrendingSection]"])
                         }, void 0, false, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 593,
+                            lineNumber: 632,
                             columnNumber: 11
                         }, this) : trendingTopics.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "py-8 text-center",
@@ -4685,7 +4911,7 @@ function PublicFeed() {
                                     className: "h-12 w-12 mx-auto mb-3 text-muted-foreground/50"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 606,
+                                    lineNumber: 645,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4693,7 +4919,7 @@ function PublicFeed() {
                                     children: "No trending topics yet"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 607,
+                                    lineNumber: 646,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -4701,13 +4927,13 @@ function PublicFeed() {
                                     children: "Be the first to use hashtags!"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 608,
+                                    lineNumber: 647,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 605,
+                            lineNumber: 644,
                             columnNumber: 11
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
@@ -4715,8 +4941,7 @@ function PublicFeed() {
                                     className: "space-y-4",
                                     children: trendingTopics.map({
                                         "PublicFeed.useCallback[renderTrendingSection]": (topic)=>{
-                                            // Dobij postove za ovaj hashtag da bismo sortirali
-                                            const hashtagPosts = showMockTrending ? [] : getPostsByHashtag(topic.name);
+                                            const hashtagPosts = showMockTrending ? [] : getPostsByHashtag(posts, topic.name);
                                             const sortedPosts = sortPosts(hashtagPosts, 'mixed');
                                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 className: "group cursor-pointer space-y-1 rounded-lg p-3 transition-colors hover:bg-muted/50 w-full text-left",
@@ -4736,7 +4961,7 @@ function PublicFeed() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 626,
+                                                                lineNumber: 664,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4748,7 +4973,7 @@ function PublicFeed() {
                                                                         children: topic.post_count
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 630,
+                                                                        lineNumber: 668,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4759,19 +4984,19 @@ function PublicFeed() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 633,
+                                                                        lineNumber: 671,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 629,
+                                                                lineNumber: 667,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 625,
+                                                        lineNumber: 663,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4785,7 +5010,7 @@ function PublicFeed() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 639,
+                                                                lineNumber: 677,
                                                                 columnNumber: 23
                                                             }, this),
                                                             !showMockTrending && sortedPosts.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4799,13 +5024,13 @@ function PublicFeed() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 643,
+                                                                lineNumber: 681,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 638,
+                                                        lineNumber: 676,
                                                         columnNumber: 21
                                                     }, this),
                                                     !showMockTrending && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4817,12 +5042,12 @@ function PublicFeed() {
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 652,
+                                                            lineNumber: 690,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 651,
+                                                        lineNumber: 689,
                                                         columnNumber: 23
                                                     }, this),
                                                     !showMockTrending && sortedPosts.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4833,7 +5058,7 @@ function PublicFeed() {
                                                                 children: "Top posts:"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 664,
+                                                                lineNumber: 702,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4850,7 +5075,7 @@ function PublicFeed() {
                                                                                             children: post.username
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                            lineNumber: 669,
+                                                                                            lineNumber: 707,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         ":",
@@ -4862,13 +5087,13 @@ function PublicFeed() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                            lineNumber: 670,
+                                                                                            lineNumber: 708,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                    lineNumber: 668,
+                                                                                    lineNumber: 706,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4881,7 +5106,7 @@ function PublicFeed() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                            lineNumber: 675,
+                                                                                            lineNumber: 713,
                                                                                             columnNumber: 33
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4891,44 +5116,44 @@ function PublicFeed() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                            lineNumber: 676,
+                                                                                            lineNumber: 714,
                                                                                             columnNumber: 33
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                                    lineNumber: 674,
+                                                                                    lineNumber: 712,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             ]
                                                                         }, post.id, true, {
                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                            lineNumber: 667,
+                                                                            lineNumber: 705,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                 }["PublicFeed.useCallback[renderTrendingSection]"])
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 665,
+                                                                lineNumber: 703,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 663,
+                                                        lineNumber: 701,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, topic.id, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 619,
+                                                lineNumber: 657,
                                                 columnNumber: 19
                                             }, this);
                                         }
                                     }["PublicFeed.useCallback[renderTrendingSection]"])
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 612,
+                                    lineNumber: 651,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4944,33 +5169,33 @@ function PublicFeed() {
                                                         children: "•"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 693,
+                                                        lineNumber: 731,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: "Sample trending topics"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 694,
+                                                        lineNumber: 732,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 692,
+                                                lineNumber: 730,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "Create posts with hashtags to see real trends"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 696,
+                                                lineNumber: 734,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 691,
+                                        lineNumber: 729,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center justify-between text-xs text-muted-foreground",
@@ -4982,7 +5207,7 @@ function PublicFeed() {
                                                         className: "h-3 w-3 text-green-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 701,
+                                                        lineNumber: 739,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4993,13 +5218,13 @@ function PublicFeed() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 702,
+                                                        lineNumber: 740,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 700,
+                                                lineNumber: 738,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5009,18 +5234,18 @@ function PublicFeed() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 704,
+                                                lineNumber: 742,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 699,
+                                        lineNumber: 737,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 689,
+                                    lineNumber: 727,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -5037,26 +5262,26 @@ function PublicFeed() {
                                             className: "ml-2 h-3 w-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 717,
+                                            lineNumber: 755,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 709,
+                                    lineNumber: 747,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 590,
+                        lineNumber: 629,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 562,
+                lineNumber: 601,
                 columnNumber: 5
             }, this)
     }["PublicFeed.useCallback[renderTrendingSection]"], [
@@ -5065,12 +5290,13 @@ function PublicFeed() {
         refreshing,
         showMockTrending,
         trendingTopics,
+        posts,
         getPostsByHashtag,
         handleTrendingTopicClick,
         formatTimeSinceUpdate,
-        posts.length,
         router
     ]);
+    // ============ RENDER LOGIC ============
     if (loading && !refreshing) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "min-h-screen bg-background",
@@ -5087,20 +5313,20 @@ function PublicFeed() {
                                         className: "h-8 w-8 animate-pulse rounded-full bg-muted"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 743,
+                                        lineNumber: 783,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-6 w-24 animate-pulse rounded bg-muted"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 744,
+                                        lineNumber: 784,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 742,
+                                lineNumber: 782,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5110,31 +5336,31 @@ function PublicFeed() {
                                         className: "h-9 w-20 animate-pulse rounded-md bg-muted"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 747,
+                                        lineNumber: 787,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "h-9 w-24 animate-pulse rounded-md bg-muted"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 748,
+                                        lineNumber: 788,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 746,
+                                lineNumber: 786,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 741,
+                        lineNumber: 781,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 740,
+                    lineNumber: 780,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5151,7 +5377,7 @@ function PublicFeed() {
                                             className: "h-4 w-32 animate-pulse rounded bg-muted"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 758,
+                                            lineNumber: 798,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5162,23 +5388,23 @@ function PublicFeed() {
                                                     className: "h-10 animate-pulse rounded-md bg-muted"
                                                 }, i, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 761,
+                                                    lineNumber: 801,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 759,
+                                            lineNumber: 799,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 757,
+                                    lineNumber: 797,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 756,
+                                lineNumber: 796,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5195,7 +5421,7 @@ function PublicFeed() {
                                                         className: "h-10 w-10 animate-pulse rounded-full bg-muted"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 772,
+                                                        lineNumber: 812,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5205,26 +5431,26 @@ function PublicFeed() {
                                                                 className: "h-4 w-32 animate-pulse rounded bg-muted"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 774,
+                                                                lineNumber: 814,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "h-3 w-24 animate-pulse rounded bg-muted"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 775,
+                                                                lineNumber: 815,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 773,
+                                                        lineNumber: 813,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 771,
+                                                lineNumber: 811,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5234,31 +5460,31 @@ function PublicFeed() {
                                                         className: "h-4 w-full animate-pulse rounded bg-muted"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 779,
+                                                        lineNumber: 819,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "h-4 w-3/4 animate-pulse rounded bg-muted"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 780,
+                                                        lineNumber: 820,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 778,
+                                                lineNumber: 818,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, i, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 770,
+                                        lineNumber: 810,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 768,
+                                lineNumber: 808,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5270,7 +5496,7 @@ function PublicFeed() {
                                             className: "h-4 w-32 animate-pulse rounded bg-muted"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 789,
+                                            lineNumber: 829,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5284,53 +5510,53 @@ function PublicFeed() {
                                                             className: "h-3 w-full animate-pulse rounded bg-muted"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 793,
+                                                            lineNumber: 833,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "h-3 w-16 animate-pulse rounded bg-muted"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 794,
+                                                            lineNumber: 834,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, i, true, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 792,
+                                                    lineNumber: 832,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 790,
+                                            lineNumber: 830,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 788,
+                                    lineNumber: 828,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 787,
+                                lineNumber: 827,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 754,
+                        lineNumber: 794,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 753,
+                    lineNumber: 793,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/feed/public-feed.tsx",
-            lineNumber: 738,
+            lineNumber: 778,
             columnNumber: 7
         }, this);
     }
@@ -5350,7 +5576,7 @@ function PublicFeed() {
                                         className: "h-6 w-6 text-primary"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 812,
+                                        lineNumber: 852,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5358,13 +5584,13 @@ function PublicFeed() {
                                         children: "Nexus"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 813,
+                                        lineNumber: 853,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 811,
+                                lineNumber: 851,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5378,12 +5604,12 @@ function PublicFeed() {
                                             children: "Sign In"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 817,
+                                            lineNumber: 857,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 816,
+                                        lineNumber: 856,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5393,29 +5619,29 @@ function PublicFeed() {
                                             children: "Get Started"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 820,
+                                            lineNumber: 860,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 819,
+                                        lineNumber: 859,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 815,
+                                lineNumber: 855,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 810,
+                        lineNumber: 850,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 809,
+                    lineNumber: 849,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5429,12 +5655,12 @@ function PublicFeed() {
                                     className: "h-8 w-8 text-destructive"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 829,
+                                    lineNumber: 869,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 828,
+                                lineNumber: 868,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -5442,7 +5668,7 @@ function PublicFeed() {
                                 children: "Setup Required"
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 831,
+                                lineNumber: 871,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5450,7 +5676,7 @@ function PublicFeed() {
                                 children: "Database tables need to be created. Run the SQL scripts in your Supabase project."
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 832,
+                                lineNumber: 872,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5464,12 +5690,12 @@ function PublicFeed() {
                                             children: "View Docs"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 837,
+                                            lineNumber: 877,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 836,
+                                        lineNumber: 876,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -5480,37 +5706,37 @@ function PublicFeed() {
                                                 className: "mr-2 h-4 w-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 840,
+                                                lineNumber: 880,
                                                 columnNumber: 17
                                             }, this),
                                             "Check Again"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 839,
+                                        lineNumber: 879,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 835,
+                                lineNumber: 875,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 827,
+                        lineNumber: 867,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 826,
+                    lineNumber: 866,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/feed/public-feed.tsx",
-            lineNumber: 808,
+            lineNumber: 848,
             columnNumber: 7
         }, this);
     }
@@ -5530,7 +5756,7 @@ function PublicFeed() {
                                         className: "h-6 w-6 text-primary"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 856,
+                                        lineNumber: 896,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5538,13 +5764,13 @@ function PublicFeed() {
                                         children: "Nexus"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 857,
+                                        lineNumber: 897,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 855,
+                                lineNumber: 895,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5558,12 +5784,12 @@ function PublicFeed() {
                                             children: "Sign In"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 861,
+                                            lineNumber: 901,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 860,
+                                        lineNumber: 900,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5573,29 +5799,29 @@ function PublicFeed() {
                                             children: "Get Started"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 864,
+                                            lineNumber: 904,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 863,
+                                        lineNumber: 903,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 859,
+                                lineNumber: 899,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 854,
+                        lineNumber: 894,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 853,
+                    lineNumber: 893,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5608,7 +5834,7 @@ function PublicFeed() {
                                 children: "Connection Error"
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 872,
+                                lineNumber: 912,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5616,7 +5842,7 @@ function PublicFeed() {
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 873,
+                                lineNumber: 913,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -5627,31 +5853,31 @@ function PublicFeed() {
                                         className: "h-4 w-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 875,
+                                        lineNumber: 915,
                                         columnNumber: 15
                                     }, this),
                                     "Try Again"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 874,
+                                lineNumber: 914,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 871,
+                        lineNumber: 911,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 870,
+                    lineNumber: 910,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/feed/public-feed.tsx",
-            lineNumber: 852,
+            lineNumber: 892,
             columnNumber: 7
         }, this);
     }
@@ -5681,17 +5907,17 @@ function PublicFeed() {
                                                     className: "h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 894,
+                                                    lineNumber: 934,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 893,
+                                                lineNumber: 933,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 892,
+                                            lineNumber: 932,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetContent"], {
@@ -5706,25 +5932,25 @@ function PublicFeed() {
                                                                 className: "h-5 w-5 text-primary"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 900,
+                                                                lineNumber: 940,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 children: "Nexus"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 901,
+                                                                lineNumber: 941,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 899,
+                                                        lineNumber: 939,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 898,
+                                                    lineNumber: 938,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -5740,19 +5966,19 @@ function PublicFeed() {
                                                                         className: "h-5 w-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 907,
+                                                                        lineNumber: 947,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     "Home"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 906,
+                                                                lineNumber: 946,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 905,
+                                                            lineNumber: 945,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5765,19 +5991,19 @@ function PublicFeed() {
                                                                         className: "h-5 w-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 913,
+                                                                        lineNumber: 953,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     "Explore"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 912,
+                                                                lineNumber: 952,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 911,
+                                                            lineNumber: 951,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5790,19 +6016,19 @@ function PublicFeed() {
                                                                         className: "h-5 w-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 919,
+                                                                        lineNumber: 959,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     "Notifications"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 918,
+                                                                lineNumber: 958,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 917,
+                                                            lineNumber: 957,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5815,19 +6041,19 @@ function PublicFeed() {
                                                                         className: "h-5 w-5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 925,
+                                                                        lineNumber: 965,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     "Messages"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 924,
+                                                                lineNumber: 964,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 923,
+                                                            lineNumber: 963,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5840,35 +6066,35 @@ function PublicFeed() {
                                                                     children: "Get Started"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 931,
+                                                                    lineNumber: 971,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 930,
+                                                                lineNumber: 970,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 929,
+                                                            lineNumber: 969,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 904,
+                                                    lineNumber: 944,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 897,
+                                            lineNumber: 937,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 891,
+                                    lineNumber: 931,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5881,12 +6107,12 @@ function PublicFeed() {
                                                 className: "h-5 w-5 text-white"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 941,
+                                                lineNumber: 981,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 940,
+                                            lineNumber: 980,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5894,19 +6120,19 @@ function PublicFeed() {
                                             children: "nexus"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 943,
+                                            lineNumber: 983,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 939,
+                                    lineNumber: 979,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 890,
+                            lineNumber: 930,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -5920,14 +6146,14 @@ function PublicFeed() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 952,
+                                            lineNumber: 992,
                                             columnNumber: 15
                                         }, this),
                                         "Home"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 951,
+                                    lineNumber: 991,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5938,14 +6164,14 @@ function PublicFeed() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 956,
+                                            lineNumber: 996,
                                             columnNumber: 15
                                         }, this),
                                         "Explore"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 955,
+                                    lineNumber: 995,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5956,14 +6182,14 @@ function PublicFeed() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 960,
+                                            lineNumber: 1000,
                                             columnNumber: 15
                                         }, this),
                                         "Notifications"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 959,
+                                    lineNumber: 999,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5974,20 +6200,20 @@ function PublicFeed() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 964,
+                                            lineNumber: 1004,
                                             columnNumber: 15
                                         }, this),
                                         "Messages"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 963,
+                                    lineNumber: 1003,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 950,
+                            lineNumber: 990,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6002,7 +6228,7 @@ function PublicFeed() {
                                                 className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 974,
+                                                lineNumber: 1014,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -6010,18 +6236,18 @@ function PublicFeed() {
                                                 className: "w-48 pl-9"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 975,
+                                                lineNumber: 1015,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 973,
+                                        lineNumber: 1013,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 972,
+                                    lineNumber: 1012,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6036,12 +6262,12 @@ function PublicFeed() {
                                                 children: "Sign In"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 984,
+                                                lineNumber: 1024,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 983,
+                                            lineNumber: 1023,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6052,35 +6278,35 @@ function PublicFeed() {
                                                 children: "Get Started"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 989,
+                                                lineNumber: 1029,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 988,
+                                            lineNumber: 1028,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 982,
+                                    lineNumber: 1022,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 970,
+                            lineNumber: 1010,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 888,
+                    lineNumber: 928,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 887,
+                lineNumber: 927,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -6105,12 +6331,12 @@ function PublicFeed() {
                                                             className: "h-6 w-6 text-blue-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1007,
+                                                            lineNumber: 1047,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1006,
+                                                        lineNumber: 1046,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6121,12 +6347,12 @@ function PublicFeed() {
                                                                     className: "h-8 w-20 animate-pulse rounded bg-muted"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1012,
+                                                                    lineNumber: 1052,
                                                                     columnNumber: 25
                                                                 }, this) : `${formatNumber(stats.totalUsers)}+`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1010,
+                                                                lineNumber: 1050,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6134,19 +6360,19 @@ function PublicFeed() {
                                                                 children: "Active Users"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1017,
+                                                                lineNumber: 1057,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1009,
+                                                        lineNumber: 1049,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1005,
+                                                lineNumber: 1045,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6160,7 +6386,7 @@ function PublicFeed() {
                                                                 children: "Posts Today"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1022,
+                                                                lineNumber: 1062,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6169,18 +6395,18 @@ function PublicFeed() {
                                                                     className: "h-4 w-12 animate-pulse rounded bg-muted"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1025,
+                                                                    lineNumber: 1065,
                                                                     columnNumber: 25
                                                                 }, this) : formatNumber(stats.postsToday)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1023,
+                                                                lineNumber: 1063,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1021,
+                                                        lineNumber: 1061,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6191,7 +6417,7 @@ function PublicFeed() {
                                                                 children: "Online Now"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1032,
+                                                                lineNumber: 1072,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6200,18 +6426,18 @@ function PublicFeed() {
                                                                     className: "h-4 w-12 animate-pulse rounded bg-muted"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1035,
+                                                                    lineNumber: 1075,
                                                                     columnNumber: 25
                                                                 }, this) : formatNumber(stats.onlineUsers)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1033,
+                                                                lineNumber: 1073,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1031,
+                                                        lineNumber: 1071,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6222,7 +6448,7 @@ function PublicFeed() {
                                                                 children: "Active This Week"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1042,
+                                                                lineNumber: 1082,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -6231,30 +6457,30 @@ function PublicFeed() {
                                                                     className: "h-4 w-12 animate-pulse rounded bg-muted"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1045,
+                                                                    lineNumber: 1085,
                                                                     columnNumber: 25
                                                                 }, this) : formatNumber(stats.activeUsers)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1043,
+                                                                lineNumber: 1083,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1041,
+                                                        lineNumber: 1081,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1020,
+                                                lineNumber: 1060,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1004,
+                                        lineNumber: 1044,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6265,7 +6491,7 @@ function PublicFeed() {
                                                 children: "QUICK ACTIONS"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1056,
+                                                lineNumber: 1096,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6281,19 +6507,19 @@ function PublicFeed() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1060,
+                                                                    lineNumber: 1100,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 "Create Account"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1059,
+                                                            lineNumber: 1099,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1058,
+                                                        lineNumber: 1098,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6306,19 +6532,19 @@ function PublicFeed() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1066,
+                                                                    lineNumber: 1106,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 "Explore Topics"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1065,
+                                                            lineNumber: 1105,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1064,
+                                                        lineNumber: 1104,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6331,42 +6557,42 @@ function PublicFeed() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1072,
+                                                                    lineNumber: 1112,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 "Trending Posts"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1071,
+                                                            lineNumber: 1111,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1070,
+                                                        lineNumber: 1110,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1057,
+                                                lineNumber: 1097,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1055,
+                                        lineNumber: 1095,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 1002,
+                                lineNumber: 1042,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1001,
+                            lineNumber: 1041,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6388,14 +6614,14 @@ function PublicFeed() {
                                                             className: "h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1088,
+                                                            lineNumber: 1128,
                                                             columnNumber: 21
                                                         }, this),
                                                         "For You"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1087,
+                                                    lineNumber: 1127,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsTrigger"], {
@@ -6406,30 +6632,30 @@ function PublicFeed() {
                                                             className: "h-4 w-4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1092,
+                                                            lineNumber: 1132,
                                                             columnNumber: 21
                                                         }, this),
                                                         "Trending"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1091,
+                                                    lineNumber: 1131,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1086,
+                                            lineNumber: 1126,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1085,
+                                        lineNumber: 1125,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1084,
+                                    lineNumber: 1124,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6444,7 +6670,7 @@ function PublicFeed() {
                                                         children: "Welcome to Nexus"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1103,
+                                                        lineNumber: 1143,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6453,7 +6679,7 @@ function PublicFeed() {
                                                             children: "Loading community stats..."
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1106,
+                                                            lineNumber: 1146,
                                                             columnNumber: 23
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                             children: [
@@ -6463,7 +6689,7 @@ function PublicFeed() {
                                                                     children: formatNumber(stats.onlineUsers)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1109,
+                                                                    lineNumber: 1149,
                                                                     columnNumber: 30
                                                                 }, this),
                                                                 " users online now and ",
@@ -6472,7 +6698,7 @@ function PublicFeed() {
                                                                     children: formatNumber(stats.totalUsers)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1110,
+                                                                    lineNumber: 1150,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 " active members."
@@ -6480,7 +6706,7 @@ function PublicFeed() {
                                                         }, void 0, true)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1104,
+                                                        lineNumber: 1144,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6495,19 +6721,19 @@ function PublicFeed() {
                                                                             className: "mr-2 h-4 w-4"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                                            lineNumber: 1117,
+                                                                            lineNumber: 1157,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         "Join Free"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1116,
+                                                                    lineNumber: 1156,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1115,
+                                                                lineNumber: 1155,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6517,24 +6743,24 @@ function PublicFeed() {
                                                                     children: "Explore"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1122,
+                                                                    lineNumber: 1162,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1121,
+                                                                lineNumber: 1161,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1114,
+                                                        lineNumber: 1154,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1102,
+                                                lineNumber: 1142,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6545,28 +6771,28 @@ function PublicFeed() {
                                                         className: "h-12 w-12 text-blue-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1128,
+                                                        lineNumber: 1168,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1127,
+                                                    lineNumber: 1167,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1126,
+                                                lineNumber: 1166,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1101,
+                                        lineNumber: 1141,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1100,
+                                    lineNumber: 1140,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6579,7 +6805,7 @@ function PublicFeed() {
                                                     children: "Latest Conversations"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1137,
+                                                    lineNumber: 1177,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -6587,13 +6813,13 @@ function PublicFeed() {
                                                     children: sortAlgorithm === 'mixed' ? 'Top posts mixed with latest' : sortAlgorithm === 'popular' ? 'Most engaging posts first' : 'Newest posts first'
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1138,
+                                                    lineNumber: 1178,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1136,
+                                            lineNumber: 1176,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6617,12 +6843,12 @@ function PublicFeed() {
                                                             ]
                                                         }, algo, true, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1151,
+                                                            lineNumber: 1191,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1149,
+                                                    lineNumber: 1189,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -6636,26 +6862,26 @@ function PublicFeed() {
                                                             className: `h-4 w-4 ${refreshing ? 'animate-spin' : ''}`
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                                            lineNumber: 1172,
+                                                            lineNumber: 1212,
                                                             columnNumber: 19
                                                         }, this),
                                                         refreshing ? 'Refreshing...' : 'Refresh'
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1165,
+                                                    lineNumber: 1205,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1147,
+                                            lineNumber: 1187,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1135,
+                                    lineNumber: 1175,
                                     columnNumber: 13
                                 }, this),
                                 activePosts.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6667,12 +6893,12 @@ function PublicFeed() {
                                                 className: "h-8 w-8 text-muted-foreground"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1182,
+                                                lineNumber: 1222,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1181,
+                                            lineNumber: 1221,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -6680,7 +6906,7 @@ function PublicFeed() {
                                             children: "No posts yet"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1184,
+                                            lineNumber: 1224,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6688,7 +6914,7 @@ function PublicFeed() {
                                             children: stats.postsToday > 0 ? `Be the first today! ${formatNumber(stats.postsToday)} posts already shared.` : 'Be the first to start a conversation'
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1185,
+                                            lineNumber: 1225,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6701,25 +6927,25 @@ function PublicFeed() {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1192,
+                                                        lineNumber: 1232,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Create First Post"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1191,
+                                                lineNumber: 1231,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1190,
+                                            lineNumber: 1230,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1180,
+                                    lineNumber: 1220,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "space-y-6",
@@ -6730,7 +6956,7 @@ function PublicFeed() {
                                                     post: post
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1202,
+                                                    lineNumber: 1242,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6745,19 +6971,19 @@ function PublicFeed() {
                                                                 className: "h-3 w-3"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1212,
+                                                                lineNumber: 1252,
                                                                 columnNumber: 25
                                                             }, this),
                                                             showInsights[post.id] ? 'Hide Insights' : 'Show Insights'
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1206,
+                                                        lineNumber: 1246,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1205,
+                                                    lineNumber: 1245,
                                                     columnNumber: 21
                                                 }, this),
                                                 showInsights[post.id] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6766,12 +6992,12 @@ function PublicFeed() {
                                                         post: post
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1220,
+                                                        lineNumber: 1260,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1219,
+                                                    lineNumber: 1259,
                                                     columnNumber: 23
                                                 }, this),
                                                 (post.comments_count > 0 || post.likes_count > 5) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6781,23 +7007,23 @@ function PublicFeed() {
                                                         postContent: post.content.substring(0, 200)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1227,
+                                                        lineNumber: 1267,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1226,
+                                                    lineNumber: 1266,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, post.id, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1200,
+                                            lineNumber: 1240,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1198,
+                                    lineNumber: 1238,
                                     columnNumber: 15
                                 }, this),
                                 activePosts.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6814,7 +7040,7 @@ function PublicFeed() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1241,
+                                            lineNumber: 1281,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -6826,7 +7052,7 @@ function PublicFeed() {
                                                         className: "mr-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1246,
+                                                        lineNumber: 1286,
                                                         columnNumber: 21
                                                     }, this),
                                                     "Join Nexus for Free",
@@ -6834,30 +7060,30 @@ function PublicFeed() {
                                                         className: "ml-2 h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1248,
+                                                        lineNumber: 1288,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1245,
+                                                lineNumber: 1285,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1244,
+                                            lineNumber: 1284,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1240,
+                                    lineNumber: 1280,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1082,
+                            lineNumber: 1122,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -6872,7 +7098,7 @@ function PublicFeed() {
                                                 className: "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1260,
+                                                lineNumber: 1300,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -6880,13 +7106,13 @@ function PublicFeed() {
                                                 className: "pl-9"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1261,
+                                                lineNumber: 1301,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1259,
+                                        lineNumber: 1299,
                                         columnNumber: 15
                                     }, this),
                                     renderTrendingSection(),
@@ -6898,7 +7124,7 @@ function PublicFeed() {
                                                 children: "Why Join Nexus?"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1272,
+                                                lineNumber: 1312,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6913,12 +7139,12 @@ function PublicFeed() {
                                                                     className: "h-4 w-4 text-blue-500"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1276,
+                                                                    lineNumber: 1316,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1275,
+                                                                lineNumber: 1315,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6928,7 +7154,7 @@ function PublicFeed() {
                                                                         children: "Real-time Updates"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1279,
+                                                                        lineNumber: 1319,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6936,19 +7162,19 @@ function PublicFeed() {
                                                                         children: statsLoading ? 'Loading...' : `${formatNumber(stats.onlineUsers)} users online now`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1280,
+                                                                        lineNumber: 1320,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1278,
+                                                                lineNumber: 1318,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1274,
+                                                        lineNumber: 1314,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6960,12 +7186,12 @@ function PublicFeed() {
                                                                     className: "h-4 w-4 text-purple-500"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1287,
+                                                                    lineNumber: 1327,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1286,
+                                                                lineNumber: 1326,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6975,7 +7201,7 @@ function PublicFeed() {
                                                                         children: "Privacy Focused"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1290,
+                                                                        lineNumber: 1330,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -6983,19 +7209,19 @@ function PublicFeed() {
                                                                         children: "Your data stays yours. No tracking, no ads."
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1291,
+                                                                        lineNumber: 1331,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1289,
+                                                                lineNumber: 1329,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1285,
+                                                        lineNumber: 1325,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7007,12 +7233,12 @@ function PublicFeed() {
                                                                     className: "h-4 w-4 text-green-500"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                                    lineNumber: 1298,
+                                                                    lineNumber: 1338,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1297,
+                                                                lineNumber: 1337,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7022,7 +7248,7 @@ function PublicFeed() {
                                                                         children: "Growing Community"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1301,
+                                                                        lineNumber: 1341,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7030,31 +7256,31 @@ function PublicFeed() {
                                                                         children: statsLoading ? 'Loading...' : `Join ${formatNumber(stats.totalUsers)}+ users sharing ideas daily`
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                                        lineNumber: 1302,
+                                                                        lineNumber: 1342,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                                lineNumber: 1300,
+                                                                lineNumber: 1340,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                                        lineNumber: 1296,
+                                                        lineNumber: 1336,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1273,
+                                                lineNumber: 1313,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1271,
+                                        lineNumber: 1311,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7066,12 +7292,12 @@ function PublicFeed() {
                                                     className: "h-8 w-8"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1313,
+                                                    lineNumber: 1353,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1312,
+                                                lineNumber: 1352,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -7079,7 +7305,7 @@ function PublicFeed() {
                                                 children: "Ready to dive in?"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1315,
+                                                lineNumber: 1355,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7087,7 +7313,7 @@ function PublicFeed() {
                                                 children: statsLoading ? 'Loading...' : `Join ${formatNumber(stats.onlineUsers)} users online right now.`
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1316,
+                                                lineNumber: 1356,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7098,40 +7324,40 @@ function PublicFeed() {
                                                     children: "Create Free Account"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                                    lineNumber: 1320,
+                                                    lineNumber: 1360,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                                lineNumber: 1319,
+                                                lineNumber: 1359,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1311,
+                                        lineNumber: 1351,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 1257,
+                                lineNumber: 1297,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1256,
+                            lineNumber: 1296,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 999,
+                    lineNumber: 1039,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 998,
+                lineNumber: 1038,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -7147,7 +7373,7 @@ function PublicFeed() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1337,
+                                    lineNumber: 1377,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7155,13 +7381,13 @@ function PublicFeed() {
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1338,
+                                    lineNumber: 1378,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1336,
+                            lineNumber: 1376,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7172,7 +7398,7 @@ function PublicFeed() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1341,
+                                    lineNumber: 1381,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7180,13 +7406,13 @@ function PublicFeed() {
                                     children: "Explore"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1342,
+                                    lineNumber: 1382,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1340,
+                            lineNumber: 1380,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7197,7 +7423,7 @@ function PublicFeed() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1345,
+                                    lineNumber: 1385,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7205,13 +7431,13 @@ function PublicFeed() {
                                     children: "Alerts"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1346,
+                                    lineNumber: 1386,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1344,
+                            lineNumber: 1384,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7222,7 +7448,7 @@ function PublicFeed() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1349,
+                                    lineNumber: 1389,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7230,31 +7456,31 @@ function PublicFeed() {
                                     children: "Messages"
                                 }, void 0, false, {
                                     fileName: "[project]/components/feed/public-feed.tsx",
-                                    lineNumber: 1350,
+                                    lineNumber: 1390,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/feed/public-feed.tsx",
-                            lineNumber: 1348,
+                            lineNumber: 1388,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 1335,
+                    lineNumber: 1375,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 1334,
+                lineNumber: 1374,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "pb-16 lg:pb-0"
             }, void 0, false, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 1354,
+                lineNumber: 1394,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -7273,12 +7499,12 @@ function PublicFeed() {
                                             className: "h-4 w-4 text-white"
                                         }, void 0, false, {
                                             fileName: "[project]/components/feed/public-feed.tsx",
-                                            lineNumber: 1362,
+                                            lineNumber: 1402,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1361,
+                                        lineNumber: 1401,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -7286,7 +7512,7 @@ function PublicFeed() {
                                         children: "nexus"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1364,
+                                        lineNumber: 1404,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7298,13 +7524,13 @@ function PublicFeed() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1365,
+                                        lineNumber: 1405,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 1360,
+                                lineNumber: 1400,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -7316,7 +7542,7 @@ function PublicFeed() {
                                         children: "About"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1370,
+                                        lineNumber: 1410,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7325,7 +7551,7 @@ function PublicFeed() {
                                         children: "Privacy"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1373,
+                                        lineNumber: 1413,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7334,7 +7560,7 @@ function PublicFeed() {
                                         children: "Terms"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1376,
+                                        lineNumber: 1416,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7343,7 +7569,7 @@ function PublicFeed() {
                                         children: "Blog"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1379,
+                                        lineNumber: 1419,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7352,7 +7578,7 @@ function PublicFeed() {
                                         children: "Careers"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1382,
+                                        lineNumber: 1422,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -7361,39 +7587,39 @@ function PublicFeed() {
                                         children: "Contact"
                                     }, void 0, false, {
                                         fileName: "[project]/components/feed/public-feed.tsx",
-                                        lineNumber: 1385,
+                                        lineNumber: 1425,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/feed/public-feed.tsx",
-                                lineNumber: 1369,
+                                lineNumber: 1409,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/feed/public-feed.tsx",
-                        lineNumber: 1359,
+                        lineNumber: 1399,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/feed/public-feed.tsx",
-                    lineNumber: 1358,
+                    lineNumber: 1398,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/feed/public-feed.tsx",
-                lineNumber: 1357,
+                lineNumber: 1397,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/feed/public-feed.tsx",
-        lineNumber: 885,
+        lineNumber: 925,
         columnNumber: 5
     }, this);
 }
-_s(PublicFeed, "O6d+RfivfdG9vy7j8zWV8Xva55c=", false, function() {
+_s(PublicFeed, "NaW9n85tKl4uIbOmyUZE+K8sk+g=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

@@ -5,6 +5,7 @@ import type React from "react";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { 
@@ -20,7 +21,10 @@ import {
   CheckCircle,
   AlertCircle,
   Bot,
-  Edit
+  Edit,
+  ImageIcon,
+  ExternalLink,
+  X
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
@@ -75,6 +79,7 @@ interface PostProvenance {
 interface Post {
   id: string;
   content: string;
+  image_url: string | null; // OVO MORA BITI string | null
   created_at: string;
   user_id: string;
   username: string;
@@ -259,6 +264,96 @@ const formatDateMobile = (dateString: string): string => {
   }
 };
 
+// Image Preview Component
+interface ImagePreviewProps {
+  imageUrl: string;
+  alt: string;
+  onClose: () => void;
+}
+
+function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.Element {
+  const [isOpen, setIsOpen] = useState(true);
+  const [imageError, setImageError] = useState(false);
+
+  const handleClose = (): void => {
+    setIsOpen(false);
+    setTimeout(onClose, 300);
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    console.log('ImagePreview URL:', imageUrl);
+    const handleEscape = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [imageUrl]);
+
+  if (!isOpen) return <></>;
+
+  return (
+    <div 
+      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+      onClick={handleBackdropClick}
+    >
+      <div className="relative max-w-4xl max-h-[90vh] w-full">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-4 top-4 z-10 h-10 w-10 bg-black/50 text-white hover:bg-black/70"
+          onClick={handleClose}
+          aria-label="Close image preview"
+        >
+          <X className="h-5 w-5" />
+        </Button>
+        
+        <div className="relative w-full h-[80vh] rounded-lg overflow-hidden">
+          {imageError ? (
+            <div className="flex items-center justify-center h-full w-full bg-gray-800">
+              <div className="text-center">
+                <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+                <p className="text-white">Unable to load image</p>
+                <p className="text-white/70 text-sm mt-2">{imageUrl}</p>
+              </div>
+            </div>
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={alt}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+              onError={() => {
+                console.error('Failed to load image in preview:', imageUrl);
+                setImageError(true);
+              }}
+            />
+          )}
+        </div>
+        
+        <div className="mt-4 text-center text-white/80 text-sm">
+          Click outside the image or press ESC to close
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Main PostCard Component
 export function PostCard({ 
   post, 
@@ -283,6 +378,20 @@ export function PostCard({
   const [explanation, setExplanation] = useState<string>("");
   const [explaining, setExplaining] = useState<boolean>(false);
   const [explanationError, setExplanationError] = useState<string>("");
+
+  // Image preview state
+  const [showImagePreview, setShowImagePreview] = useState<boolean>(false);
+  const [imageLoadError, setImageLoadError] = useState<boolean>(false);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('PostCard render:', {
+      id: post.id,
+      hasImage: !!post.image_url,
+      image_url: post.image_url,
+      content_length: post.content.length
+    });
+  }, [post.id, post.image_url, post.content]);
 
   // Check authentication and user's like status
   useEffect(() => {
@@ -358,85 +467,87 @@ export function PostCard({
   };
 
   // Repost handler
-const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
-  e.preventDefault();
-  e.stopPropagation();
+  const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (!isAuthenticated) {
-    router.push("/login");
-    return;
-  }
+    if (!isAuthenticated) {
+      router.push("/login");
+      return;
+    }
 
-  if (!currentUser) {
-    console.error('No current user found');
-    return;
-  }
+    if (!currentUser) {
+      console.error('No current user found');
+      return;
+    }
 
-  setReposting(true);
+    setReposting(true);
 
-  try {
-    // Get repost chain
-    const repostChain = await getRepostChain(post.id);
-    
-    // Detect if content is AI generated
-    const isAIGenerated = detectAIContent(post.content);
-    
-    // Create provenance for repost
-    const provenance = {
-      version: '1.0',
-      authorId: currentUser,
-      timestamp: new Date().toISOString(),
-      contentHash: generateContentHash(`REPOST: ${post.content}`),
-      metadata: {
-        isAIGenerated,
-        originalPostId: post.id,
-        repostChain: [post.id, ...repostChain].slice(0, 10),
-        platform: 'nexus',
-        algorithm: 'SHA-256',
-        characterCount: post.content.length,
-        wordCount: post.content.split(/\s+/).length,
-        hasLinks: /(https?:\/\/[^\s]+)/g.test(post.content),
-        hasHashtags: /#(\w+)/g.test(post.content),
-        client: 'web'
-      },
-      signature: `nexus-repost-${currentUser.substring(0, 8)}-${Date.now().toString(36)}`,
-      verification: {
-        selfSigned: true,
-        timestamped: true,
-        hashChain: true
+    try {
+      // Get repost chain
+      const repostChain = await getRepostChain(post.id);
+      
+      // Detect if content is AI generated
+      const isAIGenerated = detectAIContent(post.content);
+      
+      // Create provenance for repost
+      const provenance = {
+        version: '1.0',
+        authorId: currentUser,
+        timestamp: new Date().toISOString(),
+        contentHash: generateContentHash(`REPOST: ${post.content}`),
+        metadata: {
+          isAIGenerated,
+          originalPostId: post.id,
+          repostChain: [post.id, ...repostChain].slice(0, 10),
+          platform: 'nexus',
+          algorithm: 'SHA-256',
+          characterCount: post.content.length,
+          wordCount: post.content.split(/\s+/).length,
+          hasLinks: /(https?:\/\/[^\s]+)/g.test(post.content),
+          hasHashtags: /#(\w+)/g.test(post.content),
+          client: 'web'
+        },
+        signature: `nexus-repost-${currentUser.substring(0, 8)}-${Date.now().toString(36)}`,
+        verification: {
+          selfSigned: true,
+          timestamped: true,
+          hashChain: true
+        }
+      };
+
+      const supabase = createClient();
+      const { error } = await supabase
+        .from("posts")
+        .insert({
+          user_id: currentUser,
+          content: post.content,
+          content_hash: provenance.contentHash,
+          signature: provenance.signature,
+          provenance: provenance,
+          is_repost: true,
+          original_post_id: post.id,
+          image_url: post.image_url // Preserve the image URL
+        });
+
+      if (error) {
+        throw new Error(error.message);
       }
-    };
 
-    const supabase = createClient();
-    const { error } = await supabase
-      .from("posts")
-      .insert({
-        user_id: currentUser,
-        content: post.content,
-        content_hash: provenance.contentHash,
-        signature: provenance.signature,
-        provenance: provenance,
-        is_repost: true,
-        original_post_id: post.id
-      });
+      if (onRepost) {
+        await onRepost(post.id);
+      }
 
-    if (error) {
-      throw new Error(error.message);
+      console.log('Reposted successfully');
+      router.refresh();
+      
+    } catch (error) {
+      console.error("Error reposting:", error);
+    } finally {
+      setReposting(false);
     }
+  };
 
-    if (onRepost) {
-      await onRepost(post.id);
-    }
-
-    console.log('Reposted successfully');
-    router.refresh();
-    
-  } catch (error) {
-    console.error("Error reposting:", error);
-  } finally {
-    setReposting(false);
-  }
-};
   // Get repost chain function
   const getRepostChain = async (postId: string): Promise<string[]> => {
     const supabase = createClient();
@@ -585,10 +696,53 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
     }
   };
 
+  const handleImageClick = (e: React.MouseEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowImagePreview(true);
+  };
+
+  const handleImageError = (): void => {
+    console.error('Failed to load post image:', post.image_url);
+    setImageLoadError(true);
+  };
+
   const stopPropagation = (e: React.MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
   };
+
+  // Render post image
+// components/post/post-card.tsx - ISPRAVLJENA RENDER IMAGE FUNKCIJA
+const renderPostImage = (): React.ReactNode => {
+  // ISPRAVKA: Eksplicitno provjeri za undefined
+  if (!post.image_url || post.image_url === undefined) {
+    console.log('No image for post:', post.id);
+    return null;
+  }
+
+  console.log('Rendering image for post:', {
+    id: post.id,
+    url: post.image_url,
+    valid: post.image_url.startsWith('http')
+  });
+
+  return (
+    <div className="mt-3 relative aspect-video overflow-hidden rounded-lg border">
+      <img
+        src={post.image_url}
+        alt={`Post image by ${post.display_name}`}
+        className="w-full h-full object-cover"
+        onLoad={() => console.log('✅ Image loaded:', post.image_url)}
+        onError={(e) => {
+          console.error('❌ Image failed to load:', post.image_url);
+          // Možete dodati fallback UI ako želite
+          e.currentTarget.style.display = 'none';
+        }}
+      />
+    </div>
+  );
+};
 
   return (
     <>
@@ -619,6 +773,10 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
                     src={post.avatar_url || undefined} 
                     alt={post.display_name}
                     className="object-cover"
+                    onError={(e) => {
+                      console.error('Failed to load avatar:', post.avatar_url);
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                   <AvatarFallback className="bg-gradient-to-br from-blue-400 to-purple-500 text-white">
                     {getInitials(post.display_name)}
@@ -697,47 +855,47 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
                     </div>
                   )}
                   
-       <DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <Button
-      variant="ghost"
-      size="icon"
-      className="h-8 w-8 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-      onClick={stopPropagation}
-    >
-      <MoreVertical className="h-4 w-4" />
-    </Button>
-  </DropdownMenuTrigger>
-  <DropdownMenuContent align="end" onClick={stopPropagation}>
-    <DropdownMenuItem onClick={handleShareDropdown}>
-      <Share className="h-4 w-4 mr-2" />
-      Share post
-    </DropdownMenuItem>
-    <DropdownMenuItem onClick={handleExplainDropdown}>
-      <Sparkles className="h-4 w-4 mr-2" />
-      Explain with AI
-    </DropdownMenuItem>
-    {isAuthenticated && currentUser !== post.user_id && (
-      <DropdownMenuItem 
-        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-          e.preventDefault();
-          e.stopPropagation();
-          void handleRepost(e as unknown as React.MouseEvent<Element>);
-        }} 
-        disabled={reposting}
-      >
-        <Repeat className="h-4 w-4 mr-2" />
-        {reposting ? 'Reposting...' : 'Repost'}
-      </DropdownMenuItem>
-    )}
-    {isAuthenticated && (
-      <DropdownMenuItem>
-        <Bookmark className="h-4 w-4 mr-2" />
-        Bookmark
-      </DropdownMenuItem>
-    )}
-  </DropdownMenuContent>
-</DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                        onClick={stopPropagation}
+                      >
+                        <MoreVertical className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" onClick={stopPropagation}>
+                      <DropdownMenuItem onClick={handleShareDropdown}>
+                        <Share className="h-4 w-4 mr-2" />
+                        Share post
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleExplainDropdown}>
+                        <Sparkles className="h-4 w-4 mr-2" />
+                        Explain with AI
+                      </DropdownMenuItem>
+                      {isAuthenticated && currentUser !== post.user_id && (
+                        <DropdownMenuItem 
+                          onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            void handleRepost(e as unknown as React.MouseEvent<Element>);
+                          }} 
+                          disabled={reposting}
+                        >
+                          <Repeat className="h-4 w-4 mr-2" />
+                          {reposting ? 'Reposting...' : 'Repost'}
+                        </DropdownMenuItem>
+                      )}
+                      {isAuthenticated && (
+                        <DropdownMenuItem>
+                          <Bookmark className="h-4 w-4 mr-2" />
+                          Bookmark
+                        </DropdownMenuItem>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               </div>
 
@@ -746,6 +904,9 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
                 <p className="whitespace-pre-wrap text-pretty break-words text-gray-900 dark:text-gray-100 text-sm md:text-[15px] leading-relaxed">
                   {post.content}
                 </p>
+                
+                {/* Post image */}
+                {renderPostImage()}
               </div>
 
               {/* Stats row */}
@@ -777,16 +938,16 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
                 </Button>
 
                 {/* Repost button */}
-    <Button
-  variant="ghost"
-  size="sm"
-  className={`group h-9 w-9 p-0 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 ${compact ? 'h-8 w-8' : ''}`}
-  onClick={handleRepost} // Ovo će sada raditi
-  disabled={reposting || !isAuthenticated}
-  title="Repost"
->
-  <Repeat className={`h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`} />
-</Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`group h-9 w-9 p-0 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 ${compact ? 'h-8 w-8' : ''}`}
+                  onClick={handleRepost}
+                  disabled={reposting || !isAuthenticated}
+                  title="Repost"
+                >
+                  <Repeat className={`h-4 w-4 group-hover:scale-110 transition-transform ${compact ? 'h-3.5 w-3.5' : ''}`} />
+                </Button>
 
                 {/* Like button */}
                 <Button
@@ -803,7 +964,19 @@ const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
                 >
                   <Heart className={`h-4 w-4 group-hover:scale-110 transition-transform ${liked ? 'fill-current' : ''} ${compact ? 'h-3.5 w-3.5' : ''}`} />
                   {likesCount > 0 && (
-                    <span className={`ml-1 text-xs ${liked ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-red-500`}>
+                    <span 
+                      className={`ml-1 text-xs ${liked ? 'text-red-500' : 'text-gray-500 dark:text-gray-400'} group-hover:text-red-500 cursor-pointer`}
+                      onClick={handleShowLikes}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleShowLikes(e as unknown as React.MouseEvent<HTMLButtonElement>);
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
                       {likesCount}
                     </span>
                   )}

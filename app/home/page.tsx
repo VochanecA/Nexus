@@ -1,7 +1,7 @@
 // app/home/page.tsx
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { 
   Alert, 
@@ -28,7 +28,13 @@ import {
   TrendingUp,
   Flame,
   UserCheck,
-  UserPlus
+  UserPlus,
+  ImageIcon,
+  X,
+  Upload,
+  Crop,
+  Check,
+  Loader2
 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
@@ -64,22 +70,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
+import { Slider } from "@/components/ui/slider";
+import Image from "next/image";
 import Link from "next/link";
 import type { User } from "@supabase/supabase-js";
 import { ProvenanceService } from '@/lib/provenance/provenance';
 
 // Import feed engine components
-import { 
-  Feed as BaseFeed, 
-  AlgorithmFeed, 
-  AlgorithmSelector,
-} from "@/components/feed";
+import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
+import { AlgorithmFeed } from "@/components/feed/AlgorithmFeed"; // Eksplicitno importujte AlgorithmFeed
+import { AlgorithmSelector } from "@/components/feed/AlgorithmSelector"; // Eksplicitno importujte AlgorithmSelector
 
 // Import feed engine
 import { FeedEngine } from "@/lib/feed-engine/engine";
 
 // Import cache functions
-import { setCachedPosts } from '@/lib/redis/cache';
+import { invalidateCache } from '@/lib/cache';
 
 interface Profile {
   id: string;
@@ -112,9 +118,21 @@ interface UserStats {
   followerCount: number;
 }
 
+interface CropArea {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+interface ValidationError {
+  field: 'image' | 'content' | 'general';
+  message: string;
+}
+
 const feedEngine = new FeedEngine();
 
-// Helper funkcije
+// Helper functions
 const detectAIContent = (content: string): boolean => {
   const aiIndicators = [
     /as an ai language model/gi,
@@ -157,6 +175,66 @@ const detectAIContent = (content: string): boolean => {
   return score >= 1.5;
 };
 
+// Improved image validation function without server-side Image constructor
+const validateImageFile = async (file: File): Promise<ValidationError | null> => {
+  // Check file type
+  const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+  if (!validTypes.includes(file.type)) {
+    return {
+      field: 'image',
+      message: 'Invalid file type. Please upload JPEG, PNG, GIF, or WebP image.'
+    };
+  }
+
+  // Check file size (max 10MB)
+  const maxSize = 10 * 1024 * 1024; // 10MB
+  if (file.size > maxSize) {
+    return {
+      field: 'image',
+      message: 'Image is too large. Maximum size is 10MB.'
+    };
+  }
+
+  // Check dimensions without using Image constructor on server
+  return new Promise((resolve) => {
+    // Only run dimension check in browser environment
+    if (typeof window === 'undefined') {
+      resolve(null);
+      return;
+    }
+
+    const img = document.createElement('img');
+    const objectUrl = URL.createObjectURL(file);
+    
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      
+      // Max dimensions
+      const maxWidth = 4000;
+      const maxHeight = 4000;
+      
+      if (img.width > maxWidth || img.height > maxHeight) {
+        resolve({
+          field: 'image',
+          message: `Image dimensions are too large. Maximum allowed is ${maxWidth}x${maxHeight}px.`
+        });
+      } else {
+        resolve(null);
+      }
+    };
+    
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve({
+        field: 'image',
+        message: 'Unable to load image. Please try a different file.'
+      });
+    };
+    
+    img.src = objectUrl;
+  });
+};
+
 export default function HomePage(): React.JSX.Element {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -171,6 +249,20 @@ export default function HomePage(): React.JSX.Element {
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState<string | null>(null);
   const [characterCount, setCharacterCount] = useState(0);
+  
+  // Image upload states
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<ValidationError[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // Image cropping states
+  const [cropMode, setCropMode] = useState(false);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<CropArea | null>(null);
   
   // Algorithm states
   const [activeAlgorithm, setActiveAlgorithm] = useState<FeedAlgorithm | null>(null);
@@ -190,7 +282,7 @@ export default function HomePage(): React.JSX.Element {
       setUser(currentUser);
 
       if (currentUser) {
-        // Svi podaci u jednoj transakciji
+        // Get all user data in one transaction
         const { data: userProfile } = await supabase
           .from("profiles")
           .select("*")
@@ -208,7 +300,7 @@ export default function HomePage(): React.JSX.Element {
           });
         }
 
-        // Dobij podatke o following i followers u jednoj transakciji
+        // Get following and followers data
         const [followingsResponse, followersResponse] = await Promise.all([
           supabase
             .from("follows")
@@ -275,33 +367,187 @@ export default function HomePage(): React.JSX.Element {
     void fetchUserData();
   }, [fetchUserData]);
 
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const content = e.target.value;
+    setPostContent(content);
+    setCharacterCount(content.length);
+    
+    // Clear content validation errors
+    setValidationErrors(prev => prev.filter(error => error.field !== 'content'));
+  };
+
+  const handleImageSelect = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Clear previous validation errors
+    setValidationErrors(prev => prev.filter(error => error.field !== 'image'));
+
+    // Validate image
+    const validationError = await validateImageFile(file);
+    if (validationError) {
+      setValidationErrors(prev => [...prev, validationError]);
+      return;
+    }
+
+    setSelectedImage(file);
+    setIsUploading(false);
+    setUploadProgress(0);
+    
+    // Create preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result as string);
+      setCropMode(true);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const removeImage = (): void => {
+    setSelectedImage(null);
+    setImagePreview(null);
+    setUploadProgress(0);
+    setIsUploading(false);
+    setCropMode(false);
+    setValidationErrors(prev => prev.filter(error => error.field !== 'image'));
+    
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const validateForm = (): ValidationError[] => {
+    const errors: ValidationError[] = [];
+
+    // Check if we have at least content or image
+    if (!postContent.trim() && !selectedImage) {
+      errors.push({
+        field: 'content',
+        message: 'Please add some text or an image to your post.'
+      });
+    }
+
+    // Check content length
+    if (postContent.length > 280) {
+      errors.push({
+        field: 'content',
+        message: 'Post content is too long. Maximum 280 characters.'
+      });
+    }
+
+    return errors;
+  };
+
+  const uploadImage = async (): Promise<string | null> => {
+    if (!selectedImage || !profile?.id) return null;
+
+    setIsUploading(true);
+    setUploadProgress(0);
+
+    try {
+      // Create cropped image if in crop mode
+      let imageToUpload = selectedImage;
+      
+      if (cropMode && croppedAreaPixels && imagePreview) {
+        // In a real implementation, you would use a canvas to crop the image
+        // For now, we'll use the original image
+        console.log('Cropping would happen here with area:', croppedAreaPixels);
+      }
+
+      const fileExt = imageToUpload.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+      const filePath = `${profile.id}/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("post-images")
+        .upload(filePath, imageToUpload, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) {
+        throw new Error(`Upload failed: ${uploadError.message}`);
+      }
+
+      // Get public URL
+      const { data: urlData } = supabase.storage
+        .from("post-images")
+        .getPublicUrl(filePath);
+
+      return urlData.publicUrl;
+    } catch (error) {
+      console.error('Image upload error:', error);
+      setValidationErrors(prev => [...prev, {
+        field: 'image',
+        message: error instanceof Error ? error.message : 'Failed to upload image'
+      }]);
+      return null;
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const handleCreatePost = async (): Promise<void> => {
-    if (!user || !postContent.trim()) return;
+    // Validate form
+    const formErrors = validateForm();
+    if (formErrors.length > 0) {
+      setValidationErrors(formErrors);
+      return;
+    }
+
+    if (!user || (!postContent.trim() && !selectedImage)) return;
 
     setPosting(true);
     setPostError(null);
+    setValidationErrors([]);
 
     try {
+      // Upload image if exists
+      let imageUrl: string | null = null;
+      if (selectedImage) {
+        try {
+          imageUrl = await uploadImage();
+          if (!imageUrl) {
+            throw new Error("Failed to upload image. Please try again.");
+          }
+        } catch (uploadError) {
+          console.error("Image upload error:", uploadError);
+          throw new Error(uploadError instanceof Error ? uploadError.message : "Failed to upload image");
+        }
+      }
+
       const isAIGenerated = detectAIContent(postContent.trim());
       
-      const provenance = await ProvenanceService.signPost(
-        '',
-        user.id,
-        postContent.trim(),
-        {
-          isAIgenerated: isAIGenerated,
-        }
-      );
+      // Kreiraj post podatke
+      const postData: any = {
+        user_id: user.id,
+        content: postContent.trim(),
+        image_url: imageUrl
+      };
 
+      // Dodaj provenance ako je dostupan
+      try {
+        const provenance = await ProvenanceService.signPost(
+          '',
+          user.id,
+          postContent.trim(),
+          {
+            isAIgenerated: isAIGenerated,
+          }
+        );
+        
+        postData.content_hash = provenance.contentHash;
+        postData.signature = provenance.signature;
+        postData.provenance = provenance;
+      } catch (provenanceError) {
+        console.warn("Provenance error, continuing without it:", provenanceError);
+        // Nastavi bez provenance ako ne radi
+      }
+
+      // Kreiraj post u Supabase
       const { error, data } = await supabase
         .from("posts")
-        .insert({
-          user_id: user.id,
-          content: postContent.trim(),
-          content_hash: provenance.contentHash,
-          signature: provenance.signature,
-          provenance: provenance
-        })
+        .insert(postData)
         .select()
         .single();
 
@@ -309,38 +555,31 @@ export default function HomePage(): React.JSX.Element {
         throw new Error(error.message);
       }
 
-      if (data) {
-        const updatedProvenance = await ProvenanceService.signPost(
-          data.id,
-          user.id,
-          postContent.trim(),
-          {
-            isAIgenerated: detectAIContent(postContent.trim()),
-          }
-        );
-        
-        await supabase
-          .from("posts")
-          .update({
-            provenance: updatedProvenance,
-            signature: updatedProvenance.signature
-          })
-          .eq('id', data.id);
-      }
-
+      // Reset form
       setPostContent("");
       setCharacterCount(0);
+      removeImage();
       setCreatePostDialogOpen(false);
       
+      // Refresh user data
       await fetchUserData();
       
-      // Invalide cache for all feed types after creating a post
-      await setCachedPosts('algorithm', []);
-      await setCachedPosts('following', []);
-      await setCachedPosts('chronological', []);
+      try {
+        await Promise.all([
+          invalidateCache('algorithm'),
+          invalidateCache('following'),
+          invalidateCache('chronological')
+        ]);
+      } catch (cacheError) {
+        console.warn("Cache invalidation warning:", cacheError);
+      }
       
       // Trigger feed refresh event
-      window.dispatchEvent(new Event('feedRefresh'));
+      try {
+        window.dispatchEvent(new CustomEvent('feedRefresh'));
+      } catch (eventError) {
+        console.error("Error dispatching refresh event:", eventError);
+      }
       
     } catch (error) {
       console.error("Error creating post:", error);
@@ -348,12 +587,6 @@ export default function HomePage(): React.JSX.Element {
     } finally {
       setPosting(false);
     }
-  };
-
-  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    const content = e.target.value;
-    setPostContent(content);
-    setCharacterCount(content.length);
   };
 
   const getInitials = (name: string | null | undefined): string => {
@@ -382,6 +615,105 @@ export default function HomePage(): React.JSX.Element {
   };
 
   const algorithmDisplayName = useMemo(() => activeAlgorithm?.name || 'Default', [activeAlgorithm]);
+
+  const renderImagePreview = (): React.JSX.Element => {
+    if (!imagePreview) return <></>;
+
+    if (cropMode) {
+      return (
+        <div className="space-y-4">
+          <div className="relative h-64 w-full overflow-hidden rounded-lg border">
+            <div className="relative h-full w-full">
+              <Image
+                src={imagePreview}
+                alt="Crop preview"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 400px"
+                priority
+                onError={(e) => {
+                  console.error('Failed to load crop preview image');
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="space-y-2">
+              <Label htmlFor="zoom" className="text-sm">
+                Zoom: {zoom.toFixed(1)}x
+              </Label>
+              <Slider
+                id="zoom"
+                min={1}
+                max={3}
+                step={0.1}
+                value={[zoom]}
+                onValueChange={([value]) => setZoom(value)}
+                disabled={isUploading}
+              />
+            </div>
+            
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => setCropMode(false)}
+                disabled={isUploading}
+                className="flex-1"
+              >
+                Cancel Crop
+              </Button>
+              <Button
+                type="button"
+                variant="default"
+                size="sm"
+                onClick={() => setCropMode(false)}
+                disabled={isUploading}
+                className="flex-1 gap-2"
+              >
+                <Check className="h-4 w-4" />
+                Apply Crop
+              </Button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="relative mt-2">
+        <div className="relative h-64 w-full overflow-hidden rounded-lg border">
+          <div className="relative h-full w-full">
+            <Image
+              src={imagePreview}
+              alt="Preview"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 400px"
+              priority
+              onError={(e) => {
+                console.error('Failed to load preview image');
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        </div>
+        <Button
+          type="button"
+          variant="destructive"
+          size="icon"
+          className="absolute right-2 top-2 h-8 w-8"
+          onClick={removeImage}
+          disabled={isUploading || posting}
+        >
+          <X className="h-4 w-4" />
+        </Button>
+      </div>
+    );
+  };
 
   const renderLoadingState = (): React.JSX.Element => (
     <div className="min-h-screen bg-background">
@@ -631,7 +963,7 @@ export default function HomePage(): React.JSX.Element {
                 <DialogTrigger asChild>
                   <Button 
                     size="sm" 
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    className="bg-linear-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                   >
                     <Pencil className="h-4 w-4 mr-2" />
                     Create Post
@@ -850,28 +1182,28 @@ export default function HomePage(): React.JSX.Element {
             </div>
 
             {/* Feed Content */}
-            {feedTab === 'algorithm' ? (
-              <AlgorithmFeed
-                userId={user?.id || ''}
-                showExplanations={showExplanations}
-              />
-            ) : feedTab === 'following' ? (
-              <BaseFeed
-                userId={user?.id}
-                followingUserIds={followingUserIds}
-                isAuthenticated={isAuthenticated}
-                showFollowButton={showFollowButtons}
-                onFollowChange={handleFollowChange}
-              />
-            ) : (
-              <BaseFeed
-                userId={user?.id}
-                followingUserIds={[]}
-                isAuthenticated={isAuthenticated}
-                showFollowButton={showFollowButtons}
-                onFollowChange={handleFollowChange}
-              />
-            )}
+{feedTab === 'algorithm' ? (
+  <AlgorithmFeed
+    userId={user?.id || ''}
+    showExplanations={showExplanations}
+  />
+) : feedTab === 'following' ? (
+  <Feed
+    userId={user?.id}
+    followingUserIds={followingUserIds}
+    isAuthenticated={isAuthenticated}
+    showFollowButton={showFollowButtons}
+    onFollowChange={handleFollowChange}
+  />
+) : (
+  <Feed
+    userId={user?.id}
+    followingUserIds={[]}
+    isAuthenticated={isAuthenticated}
+    showFollowButton={showFollowButtons}
+    onFollowChange={handleFollowChange}
+  />
+)}
 
             {/* Load More / CTA */}
             <div className="mt-8 text-center">
@@ -1026,6 +1358,10 @@ export default function HomePage(): React.JSX.Element {
                 <AvatarImage 
                   src={profile?.avatar_url ?? undefined} 
                   alt={profile?.display_name ?? "User"} 
+                  onError={(e) => {
+                    console.error('Failed to load avatar image');
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
                 <AvatarFallback>
                   {getInitials(profile?.display_name)}
@@ -1038,52 +1374,131 @@ export default function HomePage(): React.JSX.Element {
                   onChange={handleContentChange}
                   className="min-h-[120px] resize-none border-0 p-0 focus-visible:ring-0 text-lg"
                   maxLength={280}
-                  disabled={posting}
+                  disabled={posting || isUploading}
                 />
               </div>
             </div>
             
+            {/* Hidden file input */}
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleImageSelect}
+              accept="image/*"
+              className="hidden"
+              disabled={posting || isUploading}
+            />
+            
+            {/* Image upload button */}
             <div className="flex items-center justify-between">
-              <div className="text-sm text-muted-foreground">
-                {characterCount}/280 characters
-                {characterCount > 250 && (
-                  <span className="ml-2 text-orange-500">
-                    {280 - characterCount} left
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={posting || isUploading}
+                  className="gap-2"
+                >
+                  {selectedImage ? (
+                    <>
+                      <Upload className="h-4 w-4" />
+                      Change Image
+                    </>
+                  ) : (
+                    <>
+                      <ImageIcon className="h-4 w-4" />
+                      Add Image
+                    </>
+                  )}
+                </Button>
+                
+                {selectedImage && !cropMode && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCropMode(true)}
+                    disabled={posting || isUploading}
+                    className="gap-2"
+                  >
+                    <Crop className="h-4 w-4" />
+                    Crop
+                  </Button>
+                )}
+                
+                {selectedImage && (
+                  <span className="text-xs text-muted-foreground">
+                    {(selectedImage.size / 1024 / 1024).toFixed(2)} MB
                   </span>
                 )}
               </div>
-              <Badge 
-                variant={characterCount > 280 ? "destructive" : "secondary"}
-                className={characterCount > 250 ? "bg-orange-500" : ""}
-              >
-                {characterCount > 280 ? "Too long!" : "Good"}
-              </Badge>
             </div>
             
-            {postError && (
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{postError}</AlertDescription>
-              </Alert>
-            )}
+            {/* Image preview */}
+            {imagePreview && renderImagePreview()}
             
+            {/* Character count and validation */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-muted-foreground">
+                  {characterCount}/280 characters
+                  {characterCount > 250 && (
+                    <span className="ml-2 text-orange-500">
+                      {280 - characterCount} left
+                    </span>
+                  )}
+                </div>
+                <Badge 
+                  variant={characterCount > 280 ? "destructive" : "secondary"}
+                  className={characterCount > 250 ? "bg-orange-500" : ""}
+                >
+                  {characterCount > 280 ? "Too long!" : "Good"}
+                </Badge>
+              </div>
+              
+              {/* Validation errors */}
+              {(validationErrors.length > 0 || postError) && (
+                <div className="space-y-2">
+                  {validationErrors.map((error, index) => (
+                    <Alert key={index} variant={error.field === 'general' ? "destructive" : "default"}>
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>{error.message}</AlertDescription>
+                    </Alert>
+                  ))}
+                  {postError && (
+                    <Alert variant="destructive">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>{postError}</AlertDescription>
+                    </Alert>
+                  )}
+                </div>
+              )}
+            </div>
+            
+            {/* Action buttons */}
             <div className="flex justify-end gap-2">
               <Button
                 variant="outline"
-                onClick={() => setCreatePostDialogOpen(false)}
-                disabled={posting}
+                onClick={() => {
+                  setCreatePostDialogOpen(false);
+                  setPostError(null);
+                  setValidationErrors([]);
+                  removeImage();
+                }}
+                disabled={posting || isUploading}
               >
                 Cancel
               </Button>
               <Button
                 onClick={() => void handleCreatePost()}
-                disabled={posting || !postContent.trim() || characterCount > 280}
+                disabled={posting || isUploading || (!postContent.trim() && !selectedImage) || characterCount > 280}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
               >
-                {posting ? (
+                {posting || isUploading ? (
                   <>
-                    <span className="animate-spin mr-2">⟳</span>
-                    Posting...
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {isUploading ? 'Uploading...' : 'Posting...'}
                   </>
                 ) : (
                   "Post"
@@ -1216,7 +1631,7 @@ export default function HomePage(): React.JSX.Element {
   );
 }
 
-// Komponenta za prikaz followera
+// Followers Modal Component
 interface FollowerProfile {
   id: string;
   username: string;
@@ -1251,7 +1666,6 @@ function FollowersModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Alternativni, jednostavniji pristup
   const fetchFollowers = useCallback(async (): Promise<void> => {
     if (!userId) return;
 
@@ -1259,7 +1673,7 @@ function FollowersModal({
     setError(null);
 
     try {
-      // 1. Dohvati sve follower ID-jeve
+      // Get follower IDs
       const { data: followerIdsData, error: followersError } = await supabase
         .from("follows")
         .select("follower_id")
@@ -1267,7 +1681,7 @@ function FollowersModal({
 
       if (followersError) throw new Error(followersError.message);
 
-      // 2. Dohvati sve following ID-jeve
+      // Get following IDs
       const { data: followingIdsData, error: followingError } = await supabase
         .from("follows")
         .select("following_id")
@@ -1275,7 +1689,6 @@ function FollowersModal({
 
       if (followingError) throw new Error(followingError.message);
 
-      // 3. Dohvati profile za follower-e
       const followerIds = followerIdsData?.map(f => f.follower_id) || [];
       const followingIds = followingIdsData?.map(f => f.following_id) || [];
 
@@ -1290,7 +1703,6 @@ function FollowersModal({
 
         if (followersProfilesError) throw new Error(followersProfilesError.message);
 
-        // Proveri mutual follows
         const { data: myFollowingData } = await supabase
           .from("follows")
           .select("following_id")
@@ -1362,7 +1774,6 @@ function FollowersModal({
           });
       }
 
-      // Refresh data
       await fetchFollowers();
     } catch (err) {
       console.error("Error toggling follow:", err);
@@ -1452,7 +1863,14 @@ function FollowersModal({
                       onClick={onClose}
                     >
                       <Avatar className="h-10 w-10">
-                        <AvatarImage src={profile.avatar_url ?? undefined} alt={profile.display_name ?? 'User'} />
+                        <AvatarImage 
+                          src={profile.avatar_url ?? undefined} 
+                          alt={profile.display_name ?? 'User'} 
+                          onError={(e) => {
+                            console.error('Failed to load follower avatar');
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
                         <AvatarFallback>
                           {profile.display_name?.slice(0, 2).toUpperCase() ?? '??'}
                         </AvatarFallback>
@@ -1478,7 +1896,7 @@ function FollowersModal({
                       <Button
                         size="sm"
                         variant={profile.isFollowing ? "outline" : "default"}
-                        onClick={() => handleFollowToggle(profile.id, profile.isFollowing)}
+                        onClick={() => void handleFollowToggle(profile.id, profile.isFollowing)}
                         className="whitespace-nowrap"
                       >
                         {profile.isFollowing ? 'Following' : 'Follow'}

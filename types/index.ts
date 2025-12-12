@@ -4,6 +4,7 @@ export interface Post {
   id: string;
   user_id: string;
   content: string;
+  image_url: string | null
   content_hash: string;
   signature: string;
   provenance: Record<string, any>;

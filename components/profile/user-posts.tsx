@@ -7,6 +7,7 @@ import { PostCard } from "@/components/post/post-card"
 interface Post {
   id: string
   content: string
+  image_url: string | null;
   created_at: string
   user_id: string
   username: string
@@ -70,6 +71,7 @@ export function UserPosts({ userId }: UserPostsProps) {
             return {
               id: post.id,
               content: post.content,
+              image_url: post.image_url,
               created_at: post.created_at,
               user_id: post.user_id,
               username: post.profiles.username,

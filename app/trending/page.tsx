@@ -81,7 +81,8 @@ import {
 } from "@/components/feed";
 
 // Import cache functions
-import { setCachedPosts } from '@/lib/redis/cache';
+// import { setCachedPosts } from '@/lib/redis/cache';
+import { getCachedPosts, setCachedPosts, invalidateCache } from '@/lib/cache';
 
 interface Profile {
   id: string;

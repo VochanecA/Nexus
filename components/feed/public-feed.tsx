@@ -1,4 +1,4 @@
-// components/feed/public-feed.tsx
+// components/feed/public-feed.tsx - COMPLETE TYPE-SAFE VERSION
 "use client";
 
 import { useEffect, useState, useCallback, useMemo } from "react";
@@ -38,9 +38,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+// ============ TYPE DEFINITIONS ============
+
+// Core Post Interface (matches PostCard)
 interface Post {
   id: string;
   content: string;
+  image_url: string | null; // STRING OR NULL, NOT UNDEFINED
   created_at: string;
   user_id: string;
   username: string;
@@ -49,8 +53,11 @@ interface Post {
   likes_count: number;
   comments_count: number;
   user_has_liked: boolean;
+  is_public?: boolean;
+  impressions?: number;
 }
 
+// Enhanced Post with algorithm scores
 interface EnhancedPost extends Post {
   engagement_score: number;
   time_score: number;
@@ -58,6 +65,7 @@ interface EnhancedPost extends Post {
   tags?: string[];
 }
 
+// Trending Topic
 interface TrendingTopic {
   id: string;
   name: string;
@@ -66,6 +74,7 @@ interface TrendingTopic {
   post_count: number;
 }
 
+// Stats
 interface Stats {
   totalUsers: number;
   onlineUsers: number;
@@ -73,7 +82,22 @@ interface Stats {
   activeUsers: number;
 }
 
-// Mock data za fallback
+// Supabase Response Types
+interface SupabasePost {
+  id: string;
+  content: string;
+  image_url: string | null | undefined; // Supabase can return undefined
+  created_at: string;
+  user_id: string;
+  profiles: {
+    username: string;
+    display_name: string;
+    avatar_url: string | null;
+  } | null;
+}
+
+// ============ CONSTANTS ============
+
 const MOCK_TRENDING_TOPICS: TrendingTopic[] = [
   { id: "1", name: "Technology", count: 1245, category: "tech", post_count: 45 },
   { id: "2", name: "Web Development", count: 892, category: "tech", post_count: 32 },
@@ -87,21 +111,24 @@ const MOCK_TRENDING_TOPICS: TrendingTopic[] = [
   { id: "10", name: "Travel", count: 287, category: "lifestyle", post_count: 12 },
 ];
 
-// Helper funkcija za ekstrakciju tagova iz contenta
-const extractTags = (content: string): string[] => {
-  const hashtagRegex = /#(\w+)/g;
-  const matches = content.match(hashtagRegex);
-  return matches ? matches.map(tag => tag.slice(1)) : [];
+// ============ HELPER FUNCTIONS ============
+
+// Convert undefined to null for image_url
+const normalizeImageUrl = (url: string | null | undefined): string | null => {
+  if (url === undefined || url === null) return null;
+  if (typeof url !== 'string') return null;
+  if (url.trim() === '') return null;
+  return url;
 };
 
-// Funkcija za ekstrakciju hashtagova iz contenta
+// Extract hashtags from content
 const extractHashtagsFromContent = (content: string): string[] => {
   const hashtagRegex = /#(\w+)/g;
   const matches = content.match(hashtagRegex);
   return matches ? matches.map(tag => tag.slice(1).toLowerCase()) : [];
 };
 
-// Algoritam za izračunavanje engagement score-a
+// Calculate engagement score
 const calculateEngagementScore = (post: Post): number => {
   const now = new Date();
   const postTime = new Date(post.created_at);
@@ -112,7 +139,7 @@ const calculateEngagementScore = (post: Post): number => {
   
   // Engagement weighting
   const likeWeight = 2;
-  const commentWeight = 3; // Comments are more valuable than likes
+  const commentWeight = 3;
   
   const engagement = (post.likes_count * likeWeight) + (post.comments_count * commentWeight);
   
@@ -122,17 +149,18 @@ const calculateEngagementScore = (post: Post): number => {
   return engagement * timeDecay * recencyBoost;
 };
 
-// Algoritam za sortiranje postova
+// Sort posts with algorithm
 const sortPosts = (
   posts: Post[], 
   algorithm: 'latest' | 'popular' | 'mixed' = 'mixed'
 ): EnhancedPost[] => {
   const enhancedPosts: EnhancedPost[] = posts.map(post => ({
     ...post,
+    image_url: post.image_url,
     engagement_score: calculateEngagementScore(post),
     time_score: new Date(post.created_at).getTime(),
     is_trending: post.likes_count > 10 || post.comments_count > 5,
-    tags: extractTags(post.content)
+    tags: extractHashtagsFromContent(post.content)
   }));
 
   switch (algorithm) {
@@ -144,7 +172,7 @@ const sortPosts = (
     
     case 'mixed':
     default:
-      // Kombinacija: 70% engagement, 30% recency
+      // Combination: 70% engagement, 30% recency
       return enhancedPosts.sort((a, b) => {
         const scoreA = (a.engagement_score * 0.7) + (a.time_score * 0.0000003);
         const scoreB = (b.engagement_score * 0.7) + (b.time_score * 0.0000003);
@@ -153,11 +181,11 @@ const sortPosts = (
   }
 };
 
-// Funkcija za analizu trending hashtagova iz postova
+// Analyze trending hashtags from posts
 const analyzeTrendingHashtags = (posts: Post[]): TrendingTopic[] => {
   const hashtagCounts: Record<string, { count: number, posts: Set<string> }> = {};
   
-  // Kategorije za hashtagove
+  // Categories for hashtags
   const categoryMap: Record<string, string> = {
     // Tech related
     'technology': 'tech', 'tech': 'tech', 'programming': 'tech', 
@@ -194,34 +222,34 @@ const analyzeTrendingHashtags = (posts: Post[]): TrendingTopic[] => {
     'friends': 'social', 'connection': 'social',
   };
 
-  // Brojanje hashtagova iz svih postova
+  // Count hashtags from all posts
   posts.forEach(post => {
     const hashtags = extractHashtagsFromContent(post.content);
-    const uniqueHashtags = [...new Set(hashtags)]; // Ukloni duplikate unutar istog posta
+    const uniqueHashtags = [...new Set(hashtags)];
     
     uniqueHashtags.forEach(tag => {
       if (!hashtagCounts[tag]) {
         hashtagCounts[tag] = { count: 0, posts: new Set() };
       }
       
-      // Dodaj post ID u set
+      // Add post ID to set
       hashtagCounts[tag].posts.add(post.id);
       
-      // Bazni poeni za hashtag (1 poen po postu)
+      // Base points for hashtag (1 point per post)
       hashtagCounts[tag].count += 1;
       
-      // Dodaj engagement poene iz lajkova i komentara
+      // Add engagement points from likes and comments
       const engagement = post.likes_count + (post.comments_count * 2);
-      hashtagCounts[tag].count += engagement * 0.1; // 10% engagementa se dodaje
+      hashtagCounts[tag].count += engagement * 0.1;
       
-      // Bonus za trending postove
+      // Bonus for trending posts
       if (post.likes_count > 10 || post.comments_count > 5) {
         hashtagCounts[tag].count += 5;
       }
     });
   });
 
-  // Konvertuj u array i sortiraj
+  // Convert to array and sort
   const trendingArray: TrendingTopic[] = Object.entries(hashtagCounts)
     .map(([name, data], index) => {
       const baseCategory = categoryMap[name] || 'general';
@@ -240,6 +268,28 @@ const analyzeTrendingHashtags = (posts: Post[]): TrendingTopic[] => {
   return trendingArray;
 };
 
+// Get posts by hashtag
+const getPostsByHashtag = (posts: Post[], hashtag: string): Post[] => {
+  const normalizedHashtag = hashtag.toLowerCase();
+  return posts.filter(post => {
+    const postHashtags = extractHashtagsFromContent(post.content);
+    return postHashtags.includes(normalizedHashtag);
+  });
+};
+
+// Format numbers
+const formatNumber = (num: number): string => {
+  if (num >= 1000000) {
+    return `${(num / 1000000).toFixed(1)}M`;
+  }
+  if (num >= 1000) {
+    return `${(num / 1000).toFixed(1)}K`;
+  }
+  return num.toLocaleString();
+};
+
+// ============ MAIN COMPONENT ============
+
 export default function PublicFeed() {
   const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
@@ -255,7 +305,7 @@ export default function PublicFeed() {
   const [showMockTrending, setShowMockTrending] = useState(false);
   const [lastTrendingUpdate, setLastTrendingUpdate] = useState<Date>(new Date());
   
-  // State za statistike
+  // Stats state
   const [stats, setStats] = useState<Stats>({
     totalUsers: 0,
     onlineUsers: 0,
@@ -264,20 +314,22 @@ export default function PublicFeed() {
   });
   const [statsLoading, setStatsLoading] = useState(false);
 
-  // Ažurirana fetchStats funkcija sa last_seen
+  // ============ DATA FETCHING ============
+
+  // Fetch stats
   const fetchStats = useCallback(async () => {
     setStatsLoading(true);
     const supabase = createClient();
     
     try {
-      // 1. Ukupan broj korisnika
+      // 1. Total users
       const { count: totalUsersCount, error: totalUsersError } = await supabase
         .from("profiles")
         .select("*", { count: "exact", head: true });
       
       if (totalUsersError) throw totalUsersError;
       
-      // 2. Online korisnici (aktivni u poslednjih 15 minuta)
+      // 2. Online users (active in last 15 minutes)
       const fifteenMinutesAgo = new Date();
       fifteenMinutesAgo.setMinutes(fifteenMinutesAgo.getMinutes() - 15);
       
@@ -288,7 +340,7 @@ export default function PublicFeed() {
       
       if (onlineUsersError) throw onlineUsersError;
       
-      // 3. Postovi danas
+      // 3. Posts today
       const today = new Date();
       const yesterday = new Date(today);
       yesterday.setDate(yesterday.getDate() - 1);
@@ -301,7 +353,7 @@ export default function PublicFeed() {
       
       if (postsTodayError) throw postsTodayError;
       
-      // 4. Aktivni korisnici (objavili u poslednjih 7 dana)
+      // 4. Active users (posted in last 7 days)
       const lastWeek = new Date(today);
       lastWeek.setDate(lastWeek.getDate() - 7);
       
@@ -323,7 +375,7 @@ export default function PublicFeed() {
       
     } catch (error) {
       console.error("Error fetching stats:", error);
-      // Fallback za razvojno okruženje
+      // Fallback for development
       if (process.env.NODE_ENV === 'development') {
         setStats({
           totalUsers: 2500000,
@@ -337,13 +389,13 @@ export default function PublicFeed() {
     }
   }, []);
 
-  // Formatiranje postova sa brojevima lajkova i komentara
-  const formatPostsWithCounts = useCallback(async (postsData: any[]): Promise<Post[]> => {
+  // Format posts with counts - TYPE SAFE VERSION
+  const formatPostsWithCounts = useCallback(async (postsData: SupabasePost[]): Promise<Post[]> => {
     const supabase = createClient();
     const postIds = postsData.map(p => p.id);
     
     try {
-      // Batch queries za effikasnost
+      // Batch queries for efficiency
       const [likesResult, commentsResult] = await Promise.all([
         supabase
           .from("likes")
@@ -355,49 +407,55 @@ export default function PublicFeed() {
           .in("post_id", postIds)
       ]);
 
-      const likesMap = likesResult.data?.reduce((acc: Record<string, number>, like) => {
+      const likesMap = (likesResult.data || []).reduce((acc: Record<string, number>, like) => {
         acc[like.post_id] = (acc[like.post_id] || 0) + 1;
         return acc;
-      }, {}) || {};
+      }, {});
 
-      const commentsMap = commentsResult.data?.reduce((acc: Record<string, number>, comment) => {
+      const commentsMap = (commentsResult.data || []).reduce((acc: Record<string, number>, comment) => {
         acc[comment.post_id] = (acc[comment.post_id] || 0) + 1;
         return acc;
-      }, {}) || {};
+      }, {});
 
-      return postsData.map(post => ({
-        id: post.id,
-        content: post.content,
-        created_at: post.created_at,
-        user_id: post.user_id,
-        username: post.profiles?.username || "anonymous",
-        display_name: post.profiles?.display_name || "Anonymous User",
-        avatar_url: post.profiles?.avatar_url || null,
-        likes_count: likesMap[post.id] || 0,
-        comments_count: commentsMap[post.id] || 0,
-        user_has_liked: false,
-      }));
+      return postsData.map(post => {
+        // NORMALIZE IMAGE_URL - CONVERT UNDEFINED TO NULL
+        const normalizedImageUrl = normalizeImageUrl(post.image_url);
+        
+        return {
+          id: post.id,
+          content: post.content,
+          image_url: normalizedImageUrl, // NORMALIZED
+          created_at: post.created_at,
+          user_id: post.user_id,
+          username: post.profiles?.username || "anonymous",
+          display_name: post.profiles?.display_name || "Anonymous User",
+          avatar_url: post.profiles?.avatar_url || null,
+          likes_count: likesMap[post.id] || 0,
+          comments_count: commentsMap[post.id] || 0,
+          user_has_liked: false,
+        };
+      });
     } catch (err) {
       console.error("Error formatting posts:", err);
       return [];
     }
   }, []);
 
-  // Funkcija za fetch trending podataka
+  // Fetch trending data
   const fetchTrendingData = useCallback(async () => {
     if (posts.length === 0) return;
     
     setTrendingLoading(true);
     try {
-      // Analiziraj hashtagove iz postojećih postova
+      // Analyze hashtags from existing posts
       const realTrending = analyzeTrendingHashtags(posts);
       
       if (realTrending.length > 0) {
-        // Ako imamo realne trending podatke, koristimo ih
+        // If we have real trending data, use it
         setTrendingTopics(realTrending.slice(0, 10)); // Top 10
         setShowMockTrending(false);
       } else {
-        // Ako nemamo realnih podataka, koristimo mock
+        // If no real data, use mock
         setTrendingTopics(MOCK_TRENDING_TOPICS);
         setShowMockTrending(true);
       }
@@ -412,35 +470,14 @@ export default function PublicFeed() {
     }
   }, [posts]);
 
-  // Funkcija za handle klik na trending topic
-  const handleTrendingTopicClick = useCallback((topic: TrendingTopic) => {
-    if (showMockTrending) {
-      // Ako je mock data, ne radi ništa ili pokaži alert
-      console.log("Sample trending topic clicked:", topic.name);
-      return;
-    }
-    
-    // Navigacija ka explore stranici sa hashtag filterom
-    router.push(`/explore?hashtag=${topic.name.toLowerCase()}`);
-  }, [router, showMockTrending]);
-
-  // Funkcija za dobijanje postova po hashtagu
-  const getPostsByHashtag = useCallback((hashtag: string) => {
-    const normalizedHashtag = hashtag.toLowerCase();
-    return posts.filter(post => {
-      const postHashtags = extractHashtagsFromContent(post.content);
-      return postHashtags.includes(normalizedHashtag);
-    });
-  }, [posts]);
-
-  // Optimizovani fetch postova
+  // Fetch posts
   const fetchPosts = useCallback(async () => {
     const supabase = createClient();
     setRefreshing(true);
     setError(null);
 
     try {
-      // Dohvati postove sa profilima
+      // Fetch posts with profiles
       const { data: postsWithProfiles, error: fetchError } = await supabase
         .from("posts")
         .select(`
@@ -470,11 +507,11 @@ export default function PublicFeed() {
         return;
       }
 
-      // Formatiraj postove sa brojevima
-      const formattedPosts = await formatPostsWithCounts(postsWithProfiles);
+      // Format posts with counts - Type assertion for safety
+      const formattedPosts = await formatPostsWithCounts(postsWithProfiles as SupabasePost[]);
       setPosts(formattedPosts);
 
-      // Sortiraj postove po odabranom algoritmu
+      // Sort posts by selected algorithm
       const sortedPosts = sortPosts(formattedPosts, sortAlgorithm);
       setActivePosts(sortedPosts);
 
@@ -487,47 +524,22 @@ export default function PublicFeed() {
     }
   }, [formatPostsWithCounts, sortAlgorithm]);
 
-  // Handle refresh
+  // ============ EVENT HANDLERS ============
+
   const handleRefresh = useCallback(async () => {
     setRefreshing(true);
     await Promise.all([fetchPosts(), fetchStats()]);
   }, [fetchPosts, fetchStats]);
 
-  // Effect za fetch postova i statistika
-  useEffect(() => {
-    const loadData = async () => {
-      await Promise.all([fetchPosts(), fetchStats()]);
-    };
-    loadData();
-  }, [fetchPosts, fetchStats]);
-
-  // Effect za resortiranje kada se promijeni algoritam
-  useEffect(() => {
-    if (posts.length > 0) {
-      const sortedPosts = sortPosts(posts, sortAlgorithm);
-      setActivePosts(sortedPosts);
+  const handleTrendingTopicClick = useCallback((topic: TrendingTopic) => {
+    if (showMockTrending) {
+      console.log("Sample trending topic clicked:", topic.name);
+      return;
     }
-  }, [sortAlgorithm, posts]);
-
-  // Effect za fetch trending podataka kada se promijene postovi
-  useEffect(() => {
-    if (posts.length > 0 && !loading) {
-      fetchTrendingData();
-    }
-  }, [posts, loading, fetchTrendingData]);
-
-  // Effect za auto-refresh trending svakih 5 minuta
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (posts.length > 0) {
-        fetchTrendingData();
-      }
-    }, 5 * 60 * 1000); // 5 minuta
     
-    return () => clearInterval(interval);
-  }, [posts.length, fetchTrendingData]);
+    router.push(`/explore?hashtag=${topic.name.toLowerCase()}`);
+  }, [router, showMockTrending]);
 
-  // Toggle insights za post
   const toggleInsights = useCallback((postId: string) => {
     setShowInsights(prev => ({
       ...prev,
@@ -535,7 +547,44 @@ export default function PublicFeed() {
     }));
   }, []);
 
-  // Formatiranje vremena za trending update
+  // ============ EFFECTS ============
+
+  // Initial data load
+  useEffect(() => {
+    const loadData = async () => {
+      await Promise.all([fetchPosts(), fetchStats()]);
+    };
+    loadData();
+  }, [fetchPosts, fetchStats]);
+
+  // Resort when algorithm changes
+  useEffect(() => {
+    if (posts.length > 0) {
+      const sortedPosts = sortPosts(posts, sortAlgorithm);
+      setActivePosts(sortedPosts);
+    }
+  }, [sortAlgorithm, posts]);
+
+  // Fetch trending when posts change
+  useEffect(() => {
+    if (posts.length > 0 && !loading) {
+      fetchTrendingData();
+    }
+  }, [posts, loading, fetchTrendingData]);
+
+  // Auto-refresh trending every 5 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (posts.length > 0) {
+        fetchTrendingData();
+      }
+    }, 5 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+  }, [posts.length, fetchTrendingData]);
+
+  // ============ MEMOIZED VALUES ============
+
   const formatTimeSinceUpdate = useMemo(() => {
     const now = new Date();
     const diffInMinutes = Math.floor((now.getTime() - lastTrendingUpdate.getTime()) / (1000 * 60));
@@ -546,18 +595,8 @@ export default function PublicFeed() {
     return `${Math.floor(diffInMinutes / 1440)}d ago`;
   }, [lastTrendingUpdate]);
 
-  // Formatiranje brojeva
-  const formatNumber = useCallback((num: number): string => {
-    if (num >= 1000000) {
-      return `${(num / 1000000).toFixed(1)}M`;
-    }
-    if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}K`;
-    }
-    return num.toLocaleString();
-  }, []);
+  // ============ RENDER FUNCTIONS ============
 
-  // Render trending sekcije
   const renderTrendingSection = useCallback(() => (
     <div className="overflow-hidden rounded-xl border bg-card">
       <div className="border-b p-4">
@@ -611,8 +650,7 @@ export default function PublicFeed() {
           <>
             <div className="space-y-4">
               {trendingTopics.map((topic) => {
-                // Dobij postove za ovaj hashtag da bismo sortirali
-                const hashtagPosts = showMockTrending ? [] : getPostsByHashtag(topic.name);
+                const hashtagPosts = showMockTrending ? [] : getPostsByHashtag(posts, topic.name);
                 const sortedPosts = sortPosts(hashtagPosts, 'mixed');
                 
                 return (
@@ -646,7 +684,7 @@ export default function PublicFeed() {
                       )}
                     </div>
                     
-                    {/* Progress bar koji pokazuje popularnost */}
+                    {/* Progress bar showing popularity */}
                     {!showMockTrending && (
                       <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-muted">
                         <div 
@@ -658,7 +696,7 @@ export default function PublicFeed() {
                       </div>
                     )}
                     
-                    {/* Prikaz top postova za ovaj hashtag */}
+                    {/* Show top posts for this hashtag */}
                     {!showMockTrending && sortedPosts.length > 0 && (
                       <div className="mt-3 pt-3 border-t border-dashed">
                         <p className="text-xs font-medium mb-2">Top posts:</p>
@@ -726,17 +764,19 @@ export default function PublicFeed() {
     refreshing, 
     showMockTrending, 
     trendingTopics, 
+    posts, 
     getPostsByHashtag, 
     handleTrendingTopicClick, 
     formatTimeSinceUpdate, 
-    posts.length, 
     router
   ]);
+
+  // ============ RENDER LOGIC ============
 
   if (loading && !refreshing) {
     return (
       <div className="min-h-screen bg-background">
-        {/* Minimalni header za loading */}
+        {/* Minimal header for loading */}
         <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
             <div className="flex items-center gap-2">
@@ -883,7 +923,7 @@ export default function PublicFeed() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Sticky Header - X/BlueSky stil */}
+      {/* Sticky Header */}
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           {/* Logo & Mobile Menu */}
@@ -968,7 +1008,7 @@ export default function PublicFeed() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            {/* Search - samo desktop */}
+            {/* Search - desktop only */}
             <div className="hidden sm:block">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -1131,7 +1171,7 @@ export default function PublicFeed() {
               </div>
             </div>
 
-            {/* Feed Header sa sort opcijama */}
+            {/* Feed Header with sort options */}
             <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="text-xl font-bold">Latest Conversations</h2>
@@ -1175,7 +1215,7 @@ export default function PublicFeed() {
               </div>
             </div>
 
-            {/* Posts Feed sa dodatnim feature-ima */}
+            {/* Posts Feed with additional features */}
             {activePosts.length === 0 ? (
               <div className="rounded-xl border bg-card p-12 text-center">
                 <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
@@ -1198,7 +1238,7 @@ export default function PublicFeed() {
               <div className="space-y-6">
                 {activePosts.map((post) => (
                   <div key={post.id} className="space-y-4">
-                    {/* Post Card */}
+                    {/* Post Card - TYPE SAFE */}
                     <PostCard post={post} />
                     
                     {/* Insights toggle button */}
@@ -1221,7 +1261,7 @@ export default function PublicFeed() {
                       </div>
                     )}
                     
-                    {/* Conversation Starter (samo ako post ima dovoljno engagementa) */}
+                    {/* Conversation Starter (only if post has enough engagement) */}
                     {(post.comments_count > 0 || post.likes_count > 5) && (
                       <div className="mt-2">
                         <ConversationStarter 
@@ -1264,7 +1304,7 @@ export default function PublicFeed() {
                 />
               </div>
 
-              {/* Trending Topics - Ažurirana sekcija sa realnim podacima */}
+              {/* Trending Topics - Updated section with real data */}
               {renderTrendingSection()}
 
               {/* Features */}

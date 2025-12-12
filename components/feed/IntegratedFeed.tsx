@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Feed, AlgorithmFeed, ExplanationPanel } from '@/components/feed';
+import { Feed, AlgorithmFeed } from '@/components/feed'; // Uklonite ExplanationPanel ako ne postoji
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Brain, Users, Clock } from 'lucide-react';
 
@@ -11,8 +11,7 @@ interface IntegratedFeedProps {
   followingUserIds?: string[];
   showFollowButton?: boolean;
   onFollowChange?: (userId: string, isFollowing: boolean) => void;
-  // Možeš dodati i ove props ako Feed komponenta ih podržava
-  sortBy?: 'latest' | 'popular' | 'mixed';
+  isAuthenticated?: boolean; // DODAJTE OVO
 }
 
 export function IntegratedFeed({
@@ -20,7 +19,7 @@ export function IntegratedFeed({
   followingUserIds = [],
   showFollowButton = true,
   onFollowChange,
-  sortBy = 'mixed',
+  isAuthenticated = true, // DODAJTE OVO
 }: IntegratedFeedProps) {
 
   const [feedType, setFeedType] = useState<'algorithm' | 'following' | 'chronological'>('algorithm');
@@ -51,11 +50,12 @@ export function IntegratedFeed({
           userId={userId}
         />
       </TabsContent>
+      
       <TabsContent value="following" className="mt-0">
         <Feed
           userId={userId}
           followingUserIds={followingUserIds}
-          isAuthenticated={true}
+          isAuthenticated={isAuthenticated} // DODAJTE OVO
           showFollowButton={showFollowButton}
           onFollowChange={onFollowChange}
         />
@@ -64,8 +64,8 @@ export function IntegratedFeed({
       <TabsContent value="chronological" className="mt-0">
         <Feed
           userId={userId}
-          followingUserIds={[]} // Prazno za sve postove
-          isAuthenticated={true}
+          followingUserIds={[]}
+          isAuthenticated={isAuthenticated} // DODAJTE OVO
           showFollowButton={showFollowButton}
           onFollowChange={onFollowChange}
         />
