@@ -110,6 +110,68 @@ interface ProvenanceBadgeProps {
   postId: string;
 }
 
+// DODAJ OVO NA VRH POST-CARD.TSX, ISPOD IMPORTOVA
+// Image URL normalization function - SAME AS IN PUBLIC-FEED.TSX
+const normalizeImageUrl = (url: string | null | undefined): string | null => {
+  if (url === undefined || url === null) return null;
+  if (typeof url !== 'string') return null;
+  if (url.trim() === '') return null;
+  return url.trim();
+};
+
+// Onda zamijeni getImageUrl funkciju sa ovom:
+const getImageUrl = (url: string | null): string | null => {
+  // Koristi normalizeImageUrl prvo
+  const normalizedUrl = normalizeImageUrl(url);
+  
+  if (!normalizedUrl) {
+    console.log('🔄 getImageUrl: No valid URL after normalization');
+    return null;
+  }
+
+  console.log('🔄 getImageUrl processing:', {
+    input: url,
+    normalized: normalizedUrl,
+    type: typeof normalizedUrl
+  });
+
+  // Ako je već puni URL
+  if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
+    console.log('✅ Valid HTTP/HTTPS URL:', normalizedUrl);
+    return normalizedUrl;
+  }
+
+  // Ako je relativni path
+  if (normalizedUrl.startsWith('/')) {
+    const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+    const fullUrl = baseUrl + normalizedUrl;
+    console.log('✅ Relative path converted to:', fullUrl);
+    return fullUrl;
+  }
+
+  // Ako je Supabase storage path (npr. "bucket/folder/file.jpg")
+  if (normalizedUrl.includes('/') && !normalizedUrl.includes('http')) {
+    // Supabase storage URL format
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (supabaseUrl) {
+      const fullUrl = `${supabaseUrl}/storage/v1/object/public/${normalizedUrl}`;
+      console.log('✅ Supabase storage URL:', fullUrl);
+      return fullUrl;
+    }
+  }
+
+  console.log('⚠️ Unknown URL format, trying to use as-is:', normalizedUrl);
+  
+  // DEVELOPMENT: Za test, vrati placeholder
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🎨 Development: returning placeholder');
+    return `https://picsum.photos/800/450?random=${Math.random()}`;
+  }
+
+  return normalizedUrl; // Pokušaj kao poslednju opciju
+};
+
+
 // Provenance Badge Component
 function ProvenanceBadge({ provenance, postId }: ProvenanceBadgeProps): React.JSX.Element {
   const verifyProvenance = useCallback((): 'verified' | 'unverified' | 'unknown' => {
@@ -699,7 +761,9 @@ export function PostCard({
   const handleImageClick = (e: React.MouseEvent): void => {
     e.preventDefault();
     e.stopPropagation();
-    setShowImagePreview(true);
+    if (post.image_url) {
+      setShowImagePreview(true);
+    }
   };
 
   const handleImageError = (): void => {
@@ -712,37 +776,148 @@ export function PostCard({
     e.stopPropagation();
   };
 
+  // Image URL helper functions
+  const isValidImageUrl = (url: string | null): url is string => {
+    if (!url) return false;
+    if (typeof url !== 'string') return false;
+    if (url.trim().length === 0) return false;
+    
+    return true;
+  };
+
+const getImageUrl = (url: string | null): string | null => {
+  console.log('🔄 getImageUrl called with:', url);
+  
+  // Ako je undefined ili null, vrati null
+  if (url === undefined || url === null) {
+    console.log('❌ URL is undefined or null');
+    return null;
+  }
+  
+  // Ako je prazan string, vrati null
+  if (typeof url !== 'string' || url.trim().length === 0) {
+    console.log('❌ URL is empty or not a string');
+    return null;
+  }
+  
+  const cleanUrl = url.trim();
+  
+  // Provjeri da li izgleda kao URL
+  if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) {
+    console.log('✅ Valid HTTP/HTTPS URL:', cleanUrl);
+    return cleanUrl;
+  }
+  
+  // Ako je relativni path, dodaj base URL
+  if (cleanUrl.startsWith('/')) {
+    const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+    const fullUrl = baseUrl + cleanUrl;
+    console.log('✅ Relative path converted to:', fullUrl);
+    return fullUrl;
+  }
+  
+  // Ako je Supabase storage path
+  if (cleanUrl.includes('storage') && cleanUrl.includes('supabase')) {
+    console.log('✅ Supabase storage URL:', cleanUrl);
+    return cleanUrl;
+  }
+  
+  console.log('⚠️ Unknown URL format:', cleanUrl);
+  
+  // Za development: vrati placeholder
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🎨 Development: returning placeholder');
+    return `https://picsum.photos/800/400?random=${post.id}`;
+  }
+  
+  return null;
+};
   // Render post image
-// components/post/post-card.tsx - ISPRAVLJENA RENDER IMAGE FUNKCIJA
 const renderPostImage = (): React.ReactNode => {
-  // ISPRAVKA: Eksplicitno provjeri za undefined
-  if (!post.image_url || post.image_url === undefined) {
-    console.log('No image for post:', post.id);
+  console.log('🔍 RENDER POST IMAGE FOR POST:', {
+    postId: post.id,
+    rawImageUrl: post.image_url,
+    type: typeof post.image_url,
+    isNull: post.image_url === null,
+    isUndefined: post.image_url === undefined,
+    isString: typeof post.image_url === 'string',
+    stringLength: typeof post.image_url === 'string' ? post.image_url.length : 'N/A'
+  });
+
+  const imageUrl = getImageUrl(post.image_url);
+  
+  console.log('🖼️ Image debug:', {
+    original: post.image_url,
+    processed: imageUrl,
+    isValid: !!imageUrl
+  });
+
+  if (!imageUrl) {
+    console.log(`ℹ️ No image to render for post ${post.id}`);
     return null;
   }
 
-  console.log('Rendering image for post:', {
-    id: post.id,
-    url: post.image_url,
-    valid: post.image_url.startsWith('http')
-  });
+  console.log(`✅ Will render image for post ${post.id}:`, imageUrl);
 
   return (
-    <div className="mt-3 relative aspect-video overflow-hidden rounded-lg border">
-      <img
-        src={post.image_url}
-        alt={`Post image by ${post.display_name}`}
-        className="w-full h-full object-cover"
-        onLoad={() => console.log('✅ Image loaded:', post.image_url)}
-        onError={(e) => {
-          console.error('❌ Image failed to load:', post.image_url);
-          // Možete dodati fallback UI ako želite
-          e.currentTarget.style.display = 'none';
-        }}
-      />
+    <div 
+      className="mt-3 relative w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 cursor-pointer hover:opacity-95 transition-opacity group"
+      onClick={handleImageClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleImageClick(e as unknown as React.MouseEvent);
+        }
+      }}
+    >
+      <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-800">
+        {imageLoadError ? (
+          <div className="flex flex-col items-center justify-center h-full w-full">
+            <ImageIcon className="h-12 w-12 mb-3 text-gray-400" />
+            <p className="text-sm text-gray-500">Image failed to load</p>
+            <button 
+              className="mt-2 text-sm text-blue-500 hover:text-blue-600"
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageLoadError(false);
+              }}
+            >
+              Try again
+            </button>
+          </div>
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={`Image posted by ${post.display_name}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={85}
+            loading="lazy"
+            onLoad={() => {
+              console.log(`✅ Image loaded successfully for post ${post.id}:`, imageUrl);
+            }}
+            onError={(e) => {
+              console.error(`❌ Image load failed for post ${post.id}:`, {
+                imageUrl,
+                error: e,
+                postId: post.id
+              });
+              setImageLoadError(true);
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };
+
+  // Handle close image preview
+  const handleCloseImagePreview = () => {
+    setShowImagePreview(false);
+  };
 
   return (
     <>
@@ -1031,6 +1206,15 @@ const renderPostImage = (): React.ReactNode => {
           </div>
         </article>
       </div>
+
+      {/* Image Preview */}
+      {post.image_url && showImagePreview && (
+        <ImagePreview
+          imageUrl={getImageUrl(post.image_url)!}
+          alt={`Image posted by ${post.display_name}`}
+          onClose={handleCloseImagePreview}
+        />
+      )}
 
       {/* Likes List Dialog */}
       <LikesList

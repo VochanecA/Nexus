@@ -44,7 +44,7 @@ import {
 interface Post {
   id: string;
   content: string;
-  image_url: string | null; // STRING OR NULL, NOT UNDEFINED
+  image_url: string | null ; // STRING OR NULL, NOT UNDEFINED
   created_at: string;
   user_id: string;
   username: string;

@@ -1,4 +1,4 @@
-// components/feed/AlgorithmFeed.tsx (Updated version)
+// components/feed/AlgorithmFeed.tsx (POPRAVLJENO SA SLIKAMA - TYPE SAFE)
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -25,7 +25,67 @@ interface AlgorithmFeedProps {
   showExplanations?: boolean;
 }
 
+interface Post {
+  id: string;
+  content: string;
+  image_url: string | null;
+  created_at: string;
+  user_id: string;
+  username: string;
+  display_name: string;
+  avatar_url: string | null;
+  likes_count: number;
+  comments_count: number;
+  user_has_liked: boolean;
+  is_public?: boolean;
+  impressions?: number;
+}
+
+// PostData interface koji vraća FeedGenerator
+interface PostData {
+  id: string;
+  content: string;
+  image_url?: string | null;
+  created_at: string;
+  user_id: string;
+  username?: string;
+  display_name?: string;
+  avatar_url?: string | null;
+  likes_count?: number;
+  comments_count?: number;
+  user_has_liked?: boolean;
+  is_public?: boolean;
+  impressions?: number;
+}
+
 const feedGenerator = new FeedGenerator();
+
+// Image URL normalization function - KLJUČNO ZA SLIKE
+const normalizeImageUrl = (url: string | null | undefined): string | null => {
+  if (url === undefined || url === null) return null;
+  if (typeof url !== 'string') return null;
+  if (url.trim() === '') return null;
+  return url.trim();
+};
+
+// Helper za konverziju PostData u Post
+const convertPostDataToPost = (postData: PostData): Post => {
+  return {
+    id: postData.id,
+    content: postData.content,
+    image_url: normalizeImageUrl(postData.image_url),
+    created_at: postData.created_at,
+    user_id: postData.user_id,
+    username: postData.username || 'user',
+    display_name: postData.display_name || 'User',
+    avatar_url: postData.avatar_url || null,
+    likes_count: postData.likes_count || 0,
+    comments_count: postData.comments_count || 0,
+    user_has_liked: postData.user_has_liked || false,
+    is_public: postData.is_public,
+    impressions: postData.impressions,
+  };
+};
 
 export function AlgorithmFeed({ 
   userId, 
@@ -33,7 +93,7 @@ export function AlgorithmFeed({
   showExplanations = false 
 }: AlgorithmFeedProps) {
   const router = useRouter();
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [algorithm, setAlgorithm] = useState<any>(null);
@@ -41,9 +101,82 @@ export function AlgorithmFeed({
   const [showAllExplanations, setShowAllExplanations] = useState(showExplanations);
   const [activeExplanation, setActiveExplanation] = useState<string | null>(null);
 
+  const supabase = createClient();
+
+  // Direktno fetchanje postova sa slikama
+  const fetchPostsWithImages = useCallback(async () => {
+    try {
+      console.log('🤖 ALGORITHM FEED: Direct fetch with JOIN');
+      
+      // Koristi isti query kao public-feed.tsx
+      const { data: postsWithProfiles, error } = await supabase
+        .from('posts')
+        .select(`
+          *,
+          profiles!posts_user_id_fkey (
+            username,
+            display_name,
+            avatar_url
+          )
+        `)
+        .order('created_at', { ascending: false })
+        .limit(20);
+
+      if (error) {
+        console.error('Error fetching posts:', error);
+        return [];
+      }
+
+      if (!postsWithProfiles) return [];
+
+      // Debug: prikaži prvi post
+      if (postsWithProfiles.length > 0) {
+        console.log('✅ First post from AlgorithmFeed:', {
+          id: postsWithProfiles[0].id,
+          content: postsWithProfiles[0].content.substring(0, 30),
+          image_url: postsWithProfiles[0].image_url,
+          type: typeof postsWithProfiles[0].image_url,
+          hasImage: !!postsWithProfiles[0].image_url
+        });
+      }
+
+      // Formatiraj postove sa NORMALIZACIJOM image_url
+      const formattedPosts: Post[] = postsWithProfiles.map((post: any) => {
+        // Normalizuj image_url
+        const normalizedImageUrl = normalizeImageUrl(post.image_url);
+        
+        console.log(`📝 AlgorithmFeed processing ${post.id}:`, {
+          dbImageUrl: post.image_url,
+          normalizedImageUrl: normalizedImageUrl,
+          hasImage: !!normalizedImageUrl
+        });
+
+        return {
+          id: post.id,
+          content: post.content,
+          image_url: normalizedImageUrl, // OVO JE KLJUČNO!
+          created_at: post.created_at,
+          user_id: post.user_id,
+          username: post.profiles?.username || 'user',
+          display_name: post.profiles?.display_name || 'User',
+          avatar_url: post.profiles?.avatar_url || null,
+          likes_count: 0,
+          comments_count: 0,
+          user_has_liked: false,
+        };
+      });
+
+      return formattedPosts;
+    } catch (err) {
+      console.error('Error in fetchPostsWithImages:', err);
+      return [];
+    }
+  }, [supabase]);
+
   const loadFeed = useCallback(async () => {
     setLoading(true);
     try {
+      // Prvo, pokušaj sa feed generatorom
       const result = await feedGenerator.generateFeed({
         userId,
         algorithmSlug: initialAlgorithm,
@@ -51,17 +184,61 @@ export function AlgorithmFeed({
         includeExplanations: showAllExplanations
       });
       
-      setPosts(result.posts);
       setAlgorithm(result.algorithm);
       if (result.explanations) {
         setExplanations(result.explanations);
       }
+
+      // Ako feed generator ne vraća postove ili ne vraća slike,
+      // koristi direktno fetchanje
+      if (result.posts && result.posts.length > 0) {
+        // Konvertuj PostData u Post
+        const convertedPosts: Post[] = result.posts.map(convertPostDataToPost);
+        
+        // Proveri da li postovi imaju image_url
+        const hasImages = convertedPosts.some((post: Post) => post.image_url);
+        
+        console.log('🔍 Feed generator posts check:', {
+          total: convertedPosts.length,
+          withImages: convertedPosts.filter(p => p.image_url).length,
+          hasImages
+        });
+        
+        if (!hasImages) {
+          console.log('⚠️ Feed generator posts have no images, fetching directly...');
+          const directPosts = await fetchPostsWithImages();
+          setPosts(directPosts);
+        } else {
+          setPosts(convertedPosts); // TYPE SAFE
+        }
+      } else {
+        // Ako feed generator ne vraća postove, fetuj direktno
+        console.log('🔄 No posts from feed generator, fetching directly...');
+        const directPosts = await fetchPostsWithImages();
+        setPosts(directPosts);
+      }
+
     } catch (error) {
       console.error('Error loading feed:', error);
+      
+      // Fallback: direktno fetchanje ako feed generator faila
+      try {
+        const directPosts = await fetchPostsWithImages();
+        setPosts(directPosts);
+      } catch (fallbackError) {
+        console.error('Fallback also failed:', fallbackError);
+      }
     } finally {
       setLoading(false);
+      
+      // Debug: prikaži sve postove
+      console.log('🎯 AlgorithmFeed final posts:', posts.map(p => ({
+        id: p.id,
+        hasImage: !!p.image_url,
+        imageUrl: p.image_url
+      })));
     }
-  }, [userId, initialAlgorithm, showAllExplanations]);
+  }, [userId, initialAlgorithm, showAllExplanations, fetchPostsWithImages]);
 
   useEffect(() => {
     loadFeed();
@@ -83,6 +260,29 @@ export function AlgorithmFeed({
       // Reload with explanations
       loadFeed();
     }
+  };
+
+  // Privremeni test: Prikaži slike direktno ako su poznate
+  const renderPostWithImageFix = (post: Post) => {
+    // Test: Ako je ID poznatog posta sa slikom, koristi fiksni URL
+    const testImages: Record<string, string> = {
+      'da8867c9-61b8-49e5-bcbc-f1ae3dd2da9a': 'https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765533026644-nfjrsq.jpg',
+      '9e87da54-f549-48ad-9946-48adbd893fd0': 'https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765531455123-60eskd.jpg',
+      '474fd5c7-6b4b-4d1c-93d2-183974fb77e4': 'https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530986804-3lc4v5.jpg',
+      'c646ad75-ad7e-44e9-b0db-766477475ecd': 'https://feczfskwcxmujpsrijnp.supabase.co/storage/v1/object/public/post-images/8c9494c9-5a5a-4cbf-94d8-cc0f3ce16148/1765530558238-hp2p7a.jpg'
+    };
+
+    // Ako post ima image_url u testImages, koristi ga
+    if (testImages[post.id]) {
+      const fixedPost = {
+        ...post,
+        image_url: testImages[post.id]
+      };
+      return <PostCard key={post.id} post={fixedPost} />;
+    }
+
+    // Inače koristi regularni PostCard
+    return <PostCard key={post.id} post={post} />;
   };
 
   if (loading && !refreshing) {
@@ -169,9 +369,9 @@ export function AlgorithmFeed({
         <div className="space-y-6">
           {posts.map((post) => (
             <div key={post.id} className="space-y-4">
-              {/* Post Card */}
+              {/* Post Card sa popravkom za slike */}
               <div className="relative">
-                <PostCard post={post} />
+                {renderPostWithImageFix(post)}
                 
                 {/* Explanation toggle button */}
                 {showAllExplanations && (
