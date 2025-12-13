@@ -77,15 +77,18 @@ import type { User } from "@supabase/supabase-js";
 import { ProvenanceService } from '@/lib/provenance/provenance';
 
 // Import feed engine components
-import { Feed } from "@/components/feed/feed"; // Eksplicitno importujte Feed
-import { AlgorithmFeed } from "@/components/feed/AlgorithmFeed"; // Eksplicitno importujte AlgorithmFeed
-import { AlgorithmSelector } from "@/components/feed/AlgorithmSelector"; // Eksplicitno importujte AlgorithmSelector
+import { Feed } from "@/components/feed/feed";
+import { AlgorithmFeed } from "@/components/feed/AlgorithmFeed";
+import { AlgorithmSelector } from "@/components/feed/AlgorithmSelector";
 
 // Import feed engine
 import { FeedEngine } from "@/lib/feed-engine/engine";
 
 // Import cache functions
 import { invalidateCache } from '@/lib/cache';
+
+// Import ThemeSwitcher - DODAJTE OVAJ IMPORT
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 interface Profile {
   id: string;
@@ -132,7 +135,7 @@ interface ValidationError {
 
 const feedEngine = new FeedEngine();
 
-// Helper functions
+// Helper functions (ostaju iste)
 const detectAIContent = (content: string): boolean => {
   const aiIndicators = [
     /as an ai language model/gi,
@@ -175,9 +178,7 @@ const detectAIContent = (content: string): boolean => {
   return score >= 1.5;
 };
 
-// Improved image validation function without server-side Image constructor
 const validateImageFile = async (file: File): Promise<ValidationError | null> => {
-  // Check file type
   const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
   if (!validTypes.includes(file.type)) {
     return {
@@ -186,8 +187,7 @@ const validateImageFile = async (file: File): Promise<ValidationError | null> =>
     };
   }
 
-  // Check file size (max 10MB)
-  const maxSize = 10 * 1024 * 1024; // 10MB
+  const maxSize = 10 * 1024 * 1024;
   if (file.size > maxSize) {
     return {
       field: 'image',
@@ -195,9 +195,7 @@ const validateImageFile = async (file: File): Promise<ValidationError | null> =>
     };
   }
 
-  // Check dimensions without using Image constructor on server
   return new Promise((resolve) => {
-    // Only run dimension check in browser environment
     if (typeof window === 'undefined') {
       resolve(null);
       return;
@@ -209,7 +207,6 @@ const validateImageFile = async (file: File): Promise<ValidationError | null> =>
     img.onload = () => {
       URL.revokeObjectURL(objectUrl);
       
-      // Max dimensions
       const maxWidth = 4000;
       const maxHeight = 4000;
       
@@ -274,6 +271,7 @@ export default function HomePage(): React.JSX.Element {
 
   const supabase = createClient();
 
+  // Helper functions ostaju iste
   const fetchUserData = useCallback(async (): Promise<void> => {
     try {
       setIsLoading(true);
@@ -282,7 +280,6 @@ export default function HomePage(): React.JSX.Element {
       setUser(currentUser);
 
       if (currentUser) {
-        // Get all user data in one transaction
         const { data: userProfile } = await supabase
           .from("profiles")
           .select("*")
@@ -300,7 +297,6 @@ export default function HomePage(): React.JSX.Element {
           });
         }
 
-        // Get following and followers data
         const [followingsResponse, followersResponse] = await Promise.all([
           supabase
             .from("follows")
@@ -321,7 +317,6 @@ export default function HomePage(): React.JSX.Element {
           followerCount
         });
 
-        // Load active algorithm
         await loadActiveAlgorithm(currentUser.id);
 
         const { error: profileError } = await supabase
@@ -363,7 +358,6 @@ export default function HomePage(): React.JSX.Element {
       setFollowingUserIds(prev => prev.filter(id => id !== userId));
     }
     
-    // Refresh stats
     void fetchUserData();
   }, [fetchUserData]);
 
@@ -372,7 +366,6 @@ export default function HomePage(): React.JSX.Element {
     setPostContent(content);
     setCharacterCount(content.length);
     
-    // Clear content validation errors
     setValidationErrors(prev => prev.filter(error => error.field !== 'content'));
   };
 
@@ -380,10 +373,8 @@ export default function HomePage(): React.JSX.Element {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Clear previous validation errors
     setValidationErrors(prev => prev.filter(error => error.field !== 'image'));
 
-    // Validate image
     const validationError = await validateImageFile(file);
     if (validationError) {
       setValidationErrors(prev => [...prev, validationError]);
@@ -394,7 +385,6 @@ export default function HomePage(): React.JSX.Element {
     setIsUploading(false);
     setUploadProgress(0);
     
-    // Create preview
     const reader = new FileReader();
     reader.onloadend = () => {
       setImagePreview(reader.result as string);
@@ -419,7 +409,6 @@ export default function HomePage(): React.JSX.Element {
   const validateForm = (): ValidationError[] => {
     const errors: ValidationError[] = [];
 
-    // Check if we have at least content or image
     if (!postContent.trim() && !selectedImage) {
       errors.push({
         field: 'content',
@@ -427,7 +416,6 @@ export default function HomePage(): React.JSX.Element {
       });
     }
 
-    // Check content length
     if (postContent.length > 280) {
       errors.push({
         field: 'content',
@@ -445,12 +433,9 @@ export default function HomePage(): React.JSX.Element {
     setUploadProgress(0);
 
     try {
-      // Create cropped image if in crop mode
       let imageToUpload = selectedImage;
       
       if (cropMode && croppedAreaPixels && imagePreview) {
-        // In a real implementation, you would use a canvas to crop the image
-        // For now, we'll use the original image
         console.log('Cropping would happen here with area:', croppedAreaPixels);
       }
 
@@ -469,7 +454,6 @@ export default function HomePage(): React.JSX.Element {
         throw new Error(`Upload failed: ${uploadError.message}`);
       }
 
-      // Get public URL
       const { data: urlData } = supabase.storage
         .from("post-images")
         .getPublicUrl(filePath);
@@ -488,7 +472,6 @@ export default function HomePage(): React.JSX.Element {
   };
 
   const handleCreatePost = async (): Promise<void> => {
-    // Validate form
     const formErrors = validateForm();
     if (formErrors.length > 0) {
       setValidationErrors(formErrors);
@@ -502,7 +485,6 @@ export default function HomePage(): React.JSX.Element {
     setValidationErrors([]);
 
     try {
-      // Upload image if exists
       let imageUrl: string | null = null;
       if (selectedImage) {
         try {
@@ -518,14 +500,12 @@ export default function HomePage(): React.JSX.Element {
 
       const isAIGenerated = detectAIContent(postContent.trim());
       
-      // Kreiraj post podatke
       const postData: any = {
         user_id: user.id,
         content: postContent.trim(),
         image_url: imageUrl
       };
 
-      // Dodaj provenance ako je dostupan
       try {
         const provenance = await ProvenanceService.signPost(
           '',
@@ -541,11 +521,9 @@ export default function HomePage(): React.JSX.Element {
         postData.provenance = provenance;
       } catch (provenanceError) {
         console.warn("Provenance error, continuing without it:", provenanceError);
-        // Nastavi bez provenance ako ne radi
       }
 
-      // Kreiraj post u Supabase
-      const { error, data } = await supabase
+      const { error } = await supabase
         .from("posts")
         .insert(postData)
         .select()
@@ -555,13 +533,11 @@ export default function HomePage(): React.JSX.Element {
         throw new Error(error.message);
       }
 
-      // Reset form
       setPostContent("");
       setCharacterCount(0);
       removeImage();
       setCreatePostDialogOpen(false);
       
-      // Refresh user data
       await fetchUserData();
       
       try {
@@ -574,7 +550,6 @@ export default function HomePage(): React.JSX.Element {
         console.warn("Cache invalidation warning:", cacheError);
       }
       
-      // Trigger feed refresh event
       try {
         window.dispatchEvent(new CustomEvent('feedRefresh'));
       } catch (eventError) {
@@ -732,7 +707,7 @@ export default function HomePage(): React.JSX.Element {
       
       <div className="mx-auto max-w-7xl px-4 py-8">
         <div className="flex gap-6">
-          <div className="hidden w-64 flex-shrink-0 space-y-6 lg:block">
+          <div className="hidden w-64 shrink-0 space-y-6 lg:block">
             <div className="space-y-4">
               <div className="h-4 w-32 animate-pulse rounded bg-muted" />
               <div className="space-y-2">
@@ -761,7 +736,7 @@ export default function HomePage(): React.JSX.Element {
             ))}
           </div>
           
-          <div className="hidden w-80 flex-shrink-0 space-y-6 xl:block">
+          <div className="hidden w-80 shrink-0 space-y-6 xl:block">
             <div className="space-y-4">
               <div className="h-4 w-32 animate-pulse rounded bg-muted" />
               <div className="space-y-2">
@@ -877,10 +852,15 @@ export default function HomePage(): React.JSX.Element {
                       Trending
                     </Button>
                   </Link>
-                  <div className="pt-4">
-                    <Link href="/algorithms/create" className="w-full">
-                      <Button className="w-full">Create Algorithm</Button>
-                    </Link>
+                  {/* Theme Switcher in Mobile Menu - DODANO */}
+                  <div className="pt-4 border-t">
+                    <div className="mb-4">
+                      <div className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-2">
+                        <Settings className="h-3 w-3" />
+                        Theme
+                      </div>
+                      <ThemeSwitcher variant="button" size="sm" className="w-full" />
+                    </div>
                   </div>
                 </nav>
               </SheetContent>
@@ -898,7 +878,7 @@ export default function HomePage(): React.JSX.Element {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-6 lg:flex">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="Desktop navigation">
             <Link href="/" className="flex items-center gap-2 text-sm font-medium hover:text-primary">
               <Home className="h-4 w-4" />
               Home
@@ -920,7 +900,7 @@ export default function HomePage(): React.JSX.Element {
           {/* Right Actions */}
           <div className="flex items-center gap-3">
             {/* Search - desktop only */}
-            <div className="hidden sm:block">
+            {/* <div className="hidden sm:block">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -928,7 +908,10 @@ export default function HomePage(): React.JSX.Element {
                   className="w-48 pl-9"
                 />
               </div>
-            </div>
+            </div> */}
+
+            {/* Theme Switcher - Desktop - DODANO */}
+            <ThemeSwitcher variant="icon" size="sm" />
 
             <div className="flex items-center gap-2">
               {/* Algorithm Status Badge */}
@@ -963,7 +946,7 @@ export default function HomePage(): React.JSX.Element {
                 <DialogTrigger asChild>
                   <Button 
                     size="sm" 
-                    className="bg-linear-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                   >
                     <Pencil className="h-4 w-4 mr-2" />
                     Create Post
@@ -978,7 +961,7 @@ export default function HomePage(): React.JSX.Element {
       <main className="mx-auto max-w-7xl px-4 py-6">
         <div className="flex gap-6">
           {/* Left Sidebar - Desktop */}
-          <aside className="hidden w-64 flex-shrink-0 lg:block">
+          <aside className="hidden w-64 shrink-0 lg:block">
             <div className="sticky top-24 space-y-8">
               {/* User Stats & Algorithm Control */}
               <div className="rounded-xl border bg-card p-6">
@@ -1042,6 +1025,17 @@ export default function HomePage(): React.JSX.Element {
                     <Info className="h-4 w-4" />
                     {showExplanations ? "Hide Explanations" : "Show Explanations"}
                   </Button>
+                </div>
+              </div>
+
+              {/* Theme Section - DODANO */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-muted-foreground">APPEARANCE</h3>
+                  <Settings className="h-3 w-3 text-muted-foreground" />
+                </div>
+                <div className="space-y-2">
+                  <ThemeSwitcher variant="button" size="sm" className="w-full" />
                 </div>
               </div>
 
@@ -1182,28 +1176,28 @@ export default function HomePage(): React.JSX.Element {
             </div>
 
             {/* Feed Content */}
-{feedTab === 'algorithm' ? (
-  <AlgorithmFeed
-    userId={user?.id || ''}
-    showExplanations={showExplanations}
-  />
-) : feedTab === 'following' ? (
-  <Feed
-    userId={user?.id}
-    followingUserIds={followingUserIds}
-    isAuthenticated={isAuthenticated}
-    showFollowButton={showFollowButtons}
-    onFollowChange={handleFollowChange}
-  />
-) : (
-  <Feed
-    userId={user?.id}
-    followingUserIds={[]}
-    isAuthenticated={isAuthenticated}
-    showFollowButton={showFollowButtons}
-    onFollowChange={handleFollowChange}
-  />
-)}
+            {feedTab === 'algorithm' ? (
+              <AlgorithmFeed
+                userId={user?.id || ''}
+                showExplanations={showExplanations}
+              />
+            ) : feedTab === 'following' ? (
+              <Feed
+                userId={user?.id}
+                followingUserIds={followingUserIds}
+                isAuthenticated={isAuthenticated}
+                showFollowButton={showFollowButtons}
+                onFollowChange={handleFollowChange}
+              />
+            ) : (
+              <Feed
+                userId={user?.id}
+                followingUserIds={[]}
+                isAuthenticated={isAuthenticated}
+                showFollowButton={showFollowButtons}
+                onFollowChange={handleFollowChange}
+              />
+            )}
 
             {/* Load More / CTA */}
             <div className="mt-8 text-center">
@@ -1223,7 +1217,7 @@ export default function HomePage(): React.JSX.Element {
           </div>
 
           {/* Right Sidebar - Trending & Info */}
-          <aside className="hidden w-80 flex-shrink-0 xl:block">
+          <aside className="hidden w-80 shrink-0 xl:block">
             <div className="sticky top-24 space-y-6">
               {/* Search - Desktop */}
               <div className="relative">
@@ -1285,7 +1279,7 @@ export default function HomePage(): React.JSX.Element {
                 <h3 className="mb-4 font-semibold">Why Custom Algorithms?</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/10">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-500/10">
                       <Zap className="h-4 w-4 text-blue-500" />
                     </div>
                     <div>
@@ -1296,7 +1290,7 @@ export default function HomePage(): React.JSX.Element {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-purple-500/10">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-purple-500/10">
                       <Shield className="h-4 w-4 text-purple-500" />
                     </div>
                     <div>
@@ -1307,7 +1301,7 @@ export default function HomePage(): React.JSX.Element {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-green-500/10">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-500/10">
                       <TrendingUp className="h-4 w-4 text-green-500" />
                     </div>
                     <div>
@@ -1379,7 +1373,6 @@ export default function HomePage(): React.JSX.Element {
               </div>
             </div>
             
-            {/* Hidden file input */}
             <input
               type="file"
               ref={fileInputRef}
@@ -1389,7 +1382,6 @@ export default function HomePage(): React.JSX.Element {
               disabled={posting || isUploading}
             />
             
-            {/* Image upload button */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Button
@@ -1435,10 +1427,8 @@ export default function HomePage(): React.JSX.Element {
               </div>
             </div>
             
-            {/* Image preview */}
             {imagePreview && renderImagePreview()}
             
-            {/* Character count and validation */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="text-sm text-muted-foreground">
@@ -1457,7 +1447,6 @@ export default function HomePage(): React.JSX.Element {
                 </Badge>
               </div>
               
-              {/* Validation errors */}
               {(validationErrors.length > 0 || postError) && (
                 <div className="space-y-2">
                   {validationErrors.map((error, index) => (
@@ -1476,7 +1465,6 @@ export default function HomePage(): React.JSX.Element {
               )}
             </div>
             
-            {/* Action buttons */}
             <div className="flex justify-end gap-2">
               <Button
                 variant="outline"
@@ -1631,7 +1619,7 @@ export default function HomePage(): React.JSX.Element {
   );
 }
 
-// Followers Modal Component
+// Followers Modal Component ostaje isti
 interface FollowerProfile {
   id: string;
   username: string;
@@ -1673,7 +1661,6 @@ function FollowersModal({
     setError(null);
 
     try {
-      // Get follower IDs
       const { data: followerIdsData, error: followersError } = await supabase
         .from("follows")
         .select("follower_id")
@@ -1681,7 +1668,6 @@ function FollowersModal({
 
       if (followersError) throw new Error(followersError.message);
 
-      // Get following IDs
       const { data: followingIdsData, error: followingError } = await supabase
         .from("follows")
         .select("following_id")
@@ -1795,7 +1781,6 @@ function FollowersModal({
         </DialogHeader>
 
         <div className="space-y-4">
-          {/* Tabs */}
           <div className="grid grid-cols-2 gap-2">
             <Button
               variant={activeTab === 'followers' ? 'default' : 'outline'}
@@ -1815,7 +1800,6 @@ function FollowersModal({
             </Button>
           </div>
 
-          {/* Error */}
           {error && (
             <Alert variant="destructive">
               <AlertCircle className="h-4 w-4" />
@@ -1823,7 +1807,6 @@ function FollowersModal({
             </Alert>
           )}
 
-          {/* Loading */}
           {loading ? (
             <div className="space-y-3">
               {[...Array(3)].map((_, i) => (

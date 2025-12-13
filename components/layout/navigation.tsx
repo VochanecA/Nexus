@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Home, User, LogOut, LogIn, UserPlus, Search, X } from "lucide-react";
+import { Home, User, LogOut, LogIn, UserPlus, Search, X, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { createClient } from "@/lib/supabase/client";
@@ -11,10 +11,29 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+import { ThemeSwitcher } from "@/components/theme-switcher"; // Dodajte ovaj import
 
 interface NavigationProps {
   username?: string;
   isAuthenticated?: boolean;
+}
+
+interface SearchUser {
+  id: string;
+  username: string;
+  display_name: string | null;
+  avatar_url: string | null;
+}
+
+interface SearchPost {
+  id: string;
+  content: string;
+  created_at: string;
+  user_id: string;
+  profiles: {
+    username: string;
+    avatar_url: string | null;
+  } | null;
 }
 
 export function Navigation({ username, isAuthenticated = false }: NavigationProps) {
@@ -23,8 +42,8 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<{
-    users: any[];
-    posts: any[];
+    users: SearchUser[];
+    posts: SearchPost[];
   }>({ users: [], posts: [] });
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
@@ -64,14 +83,14 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
       try {
         const supabase = createClient();
         
-        // Pretraži korisnike
+        // Search users
         const { data: users } = await supabase
           .from("profiles")
           .select("id, username, display_name, avatar_url")
           .or(`username.ilike.%${searchQuery}%,display_name.ilike.%${searchQuery}%`)
           .limit(5);
 
-        // Pretraži postove
+        // Search posts
         const { data: posts } = await supabase
           .from("posts")
           .select("id, content, created_at, user_id, profiles(username, avatar_url)")
@@ -80,7 +99,7 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
 
         setSearchResults({
           users: users || [],
-          posts: posts || []
+          posts: (posts as unknown as SearchPost[]) || []
         });
         setShowResults(true);
       } catch (error) {
@@ -90,7 +109,7 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
       }
     };
 
-    const timeoutId = setTimeout(search, 300); // Debounce 300ms
+    const timeoutId = setTimeout(search, 300);
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
 
@@ -176,6 +195,8 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
             <button
               onClick={clearSearch}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              aria-label="Clear search"
+              type="button"
             >
               <X className="h-4 w-4" />
             </button>
@@ -201,11 +222,12 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
                         key={user.id}
                         className="flex w-full items-center gap-3 rounded-md p-2 hover:bg-accent transition-colors"
                         onClick={() => handleResultClick("user", user.id, user.username)}
+                        type="button"
                       >
                         <Avatar className="h-8 w-8">
-                          <AvatarImage src={user.avatar_url} />
+                          <AvatarImage src={user.avatar_url || undefined} />
                           <AvatarFallback className="text-xs">
-                            {user.username?.charAt(0).toUpperCase()}
+                            {user.username?.charAt(0).toUpperCase() || "U"}
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex-1 text-left overflow-hidden">
@@ -234,19 +256,20 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
                         key={post.id}
                         className="flex w-full flex-col gap-1 rounded-md p-2 hover:bg-accent transition-colors text-left"
                         onClick={() => handleResultClick("post", post.id)}
+                        type="button"
                       >
                         <p className="line-clamp-2 text-sm">
                           {post.content}
                         </p>
                         <div className="flex items-center gap-2 mt-1">
                           <Avatar className="h-5 w-5">
-                            <AvatarImage src={post.profiles?.avatar_url} />
+                            <AvatarImage src={post.profiles?.avatar_url || undefined} />
                             <AvatarFallback className="text-[10px]">
-                              {post.profiles?.username?.charAt(0).toUpperCase()}
+                              {post.profiles?.username?.charAt(0).toUpperCase() || "U"}
                             </AvatarFallback>
                           </Avatar>
                           <span className="text-xs text-muted-foreground">
-                            @{post.profiles?.username}
+                            @{post.profiles?.username || "user"}
                           </span>
                           <span className="text-xs text-muted-foreground">•</span>
                           <span className="text-xs text-muted-foreground">
@@ -266,7 +289,7 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
         {showResults && searchResults.users.length === 0 && searchResults.posts.length === 0 && !isSearching && (
           <div className="absolute top-full left-0 right-0 z-50 mt-1 rounded-md border bg-popover p-4 shadow-lg">
             <p className="text-center text-sm text-muted-foreground">
-              No results found for "{searchQuery}"
+              No results found for &quot;{searchQuery}&quot;
             </p>
           </div>
         )}
@@ -294,6 +317,15 @@ export function Navigation({ username, isAuthenticated = false }: NavigationProp
             </Link>
           );
         })}
+      </div>
+
+      {/* Theme Switcher Section - DODANO */}
+      <div className="mb-4 pt-4 border-t">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-medium text-muted-foreground">Theme</span>
+          <Settings className="h-3 w-3 text-muted-foreground" />
+        </div>
+        <ThemeSwitcher variant="button" size="sm" className="w-full" />
       </div>
 
       {/* Auth Section */}
