@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { detectAdvertisement } from '@/components/utils/ad-detector';
 import { 
   Heart, 
   MessageCircle, 
@@ -32,7 +33,8 @@ import {
   Copy,
   Eye,
   Clock,
-  TrendingUp
+  TrendingUp,
+  DollarSign
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
@@ -79,6 +81,7 @@ interface PostProvenance {
     hasLinks?: boolean;
     hasHashtags?: boolean;
     client?: string;
+    isAd?: boolean;
   };
   verification?: {
     selfSigned: boolean;
@@ -107,6 +110,7 @@ interface Post {
   image_width?: number;
   image_height?: number;
   image_aspect_ratio?: number;
+  is_ad?: boolean;
 }
 
 interface PostCardProps {
@@ -493,6 +497,200 @@ function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.
   );
 }
 
+
+// DODAJTE OVU FUNKCIJU IZNAD PostCard komponente:
+const detectAdContent = (post: Post): boolean => {
+  const content = post.content?.toLowerCase() || '';
+  
+  // 1. Proverite da li post ima explicitnu AD oznaku
+  if (post.is_ad) return true;
+  
+  // 2. Proverite provenance metadata
+  if (post.provenance?.metadata?.isAd) return true;
+  
+  // 3. Univerzalne ključne reči za reklame (multi-language)
+  // Grupisano po kategorijama za bolju organizaciju
+  
+  // A) Osnovne AD oznake
+  const adMarkers = [
+    // English
+    'ad', 'ads', 'advert', 'advertisement', 'sponsored', 'promoted', 'paid', 
+    'promotion', 'commercial', 'sponsor',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'reklama', 'oglas', 'sponzorisano', 'sponzor', 'plaćen', 'plaćeno', 'plaćeni',
+    'oglašavanje', 'promocija',
+    // Other languages
+    'publicidad', 'anuncio', // Spanish
+    'annonce', 'publicité', // French
+    'werbung', 'anzeige', // German
+    'реклама', 'объявление', // Russian
+    '广告', '推广', // Chinese
+    '広告', '宣伝' // Japanese
+  ];
+  
+  // B) Poslovne/kompanijske reči
+  const businessKeywords = [
+    // English
+    'store', 'shop', 'market', 'mall', 'company', 'corporation', 'brand',
+    'business', 'enterprise', 'firm',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'prodavnica', 'dućan', 'market', 'centar', 'kompanija', 'firma', 'preduzeće',
+    'brend', 'biznis',
+    // Other languages
+    'tienda', 'empresa', // Spanish
+    'magasin', 'entreprise', // French
+    'geschäft', 'unternehmen', // German
+    'магазин', 'компания' // Russian
+  ];
+  
+  // C) Prodaja i promocije
+  const salesKeywords = [
+    // English
+    'sale', 'discount', 'offer', 'deal', 'bargain', 'promo', 'special offer',
+    'limited time', 'buy now', 'shop now', 'order now', 'get it now',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'prodaja', 'prodajem', 'popust', 'akcija', 'ponuda', 'specijalna ponuda',
+    'rasprodaja', 'sniženje', 'povoljno', 'kupite', 'naručite', 'zakažite',
+    // Other languages
+    'venta', 'descuento', // Spanish
+    'vente', 'réduction', // French
+    'verkauf', 'rabatt', // German
+    'распродажа', 'скидка' // Russian
+  ];
+  
+  // D) Kontakt i informacije
+  const contactKeywords = [
+    // English
+    'call', 'contact', 'phone', 'tel', 'email', 'website', 'visit', 'web',
+    'www', 'http', 'https', 'order', 'reserve', 'book',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'pozovite', 'zovite', 'kontakt', 'telefon', 'mob', 'sajt', 'websajt',
+    'internet', 'posetite', 'rezervišite', 'zakazivanje',
+    // Other languages
+    'llamar', 'contacto', // Spanish
+    'appeler', 'contact', // French
+    'anrufen', 'kontakt', // German
+    'звоните', 'контакт' // Russian
+  ];
+  
+  // E) Cene i finansije
+  const priceKeywords = [
+    // English
+    'price', 'cost', 'fee', 'charge', 'payment', 'buy', 'purchase',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'cena', 'cijena', 'cene', 'cijene', 'kupovina', 'nabavka',
+    // Other languages
+    'precio', 'costo', // Spanish
+    'prix', 'coût', // French
+    'preis', 'kosten', // German
+    'цена', 'стоимость' // Russian
+  ];
+  
+  // F) Usluge i dodatne pogodnosti
+  const serviceKeywords = [
+    // English
+    'free', 'free delivery', 'free shipping', 'warranty', 'guarantee', 
+    'service', 'support', 'installation', 'setup', 'delivery', 'shipping',
+    // Serbian/Croatian/Bosnian/Montenegrin
+    'besplatno', 'besplatna dostava', 'garancija', 'garant', 'usluga', 
+    'podrška', 'montaža', 'instalacija', 'dostava', 'isporuka',
+    // Other languages
+    'gratis', 'envío gratuito', // Spanish
+    'gratuit', 'livraison gratuite', // French
+    'kostenlos', 'kostenlose lieferung', // German
+    'бесплатно', 'доставка' // Russian
+  ];
+  
+  // 4. Proveri osnovne AD markere (najviše prioriteta)
+  if (adMarkers.some(keyword => content.includes(keyword))) {
+    return true;
+  }
+  
+  // 5. Proveri kombinaciju keyword-a za veću tačnost
+  // Ako post sadrži kombinaciju poslovnih + prodajnih + kontakt reči, verovatno je reklama
+  const hasBusinessWord = businessKeywords.some(keyword => content.includes(keyword));
+  const hasSalesWord = salesKeywords.some(keyword => content.includes(keyword));
+  const hasContactWord = contactKeywords.some(keyword => content.includes(keyword));
+  const hasPriceWord = priceKeywords.some(keyword => content.includes(keyword));
+  const hasServiceWord = serviceKeywords.some(keyword => content.includes(keyword));
+  
+  // Broj poklapanja
+  let matchCount = 0;
+  if (hasBusinessWord) matchCount++;
+  if (hasSalesWord) matchCount++;
+  if (hasContactWord) matchCount++;
+  if (hasPriceWord) matchCount++;
+  if (hasServiceWord) matchCount++;
+  
+  // Ako ima 3 ili više poklapanja, verovatno je reklama
+  if (matchCount >= 3) {
+    return true;
+  }
+  
+  // 6. Proveri finansijske simbole (univerzalno)
+  const currencySymbols = ['$', '€', '£', '¥', '₹', '₽', '₴', '₩', '₸', '₺'];
+  if (currencySymbols.some(symbol => content.includes(symbol))) {
+    return true;
+  }
+  
+  // 7. Proveri skraćenice valuta
+  const currencyCodes = ['usd', 'eur', 'gbp', 'jpy', 'cny', 'rub', 'rsd', 'bam', 'hrk', 'ron'];
+  if (currencyCodes.some(code => content.includes(code))) {
+    return true;
+  }
+  
+  // 8. Pattern matching za telefone i URL-ove
+  const phonePattern = /\+?[\d\s\-\(\)]{7,}\d/;
+  const urlPattern = /(www\.|https?:\/\/|\.com|\.rs|\.me|\.ba|\.hr|\.si)[^\s]*/gi;
+  
+  if (phonePattern.test(content) || urlPattern.test(content)) {
+    // Ako ima telefon/URL + bilo koju drugu ključnu reč
+    if (hasBusinessWord || hasSalesWord || hasContactWord) {
+      return true;
+    }
+  }
+  
+  // 9. Proveri hashtagove (univerzalno)
+  const adHashtags = [
+    '#ad', '#ads', '#sponsored', '#promoted', '#paid', 
+    '#reklama', '#oglas', '#sponzorisano', '#plaćeno',
+    '#publicidad', '#annonce', '#werbung',
+    '#sale', '#discount', '#offer', '#popust', '#akcija',
+    '#shop', '#buy', '#kupovina'
+  ];
+  
+  if (adHashtags.some(hashtag => content.includes(hashtag.toLowerCase()))) {
+    return true;
+  }
+  
+  // 10. Proveri numeričke oznake cena
+  const pricePattern = /(\d+[\.,]?\d*\s*(usd|eur|gbp|rsd|din|kn|€|\$|kč|zl|ft|lei|лв|₽))/gi;
+  if (pricePattern.test(content)) {
+    return true;
+  }
+  
+  // 11. Machine learning inspired pattern: Ako ima >3 linije sa karakteristikama proizvoda/usluge
+  const lines = content.split('\n').filter(line => line.trim().length > 0);
+  let featureLines = 0;
+  
+  const featureIndicators = ['- ', '• ', '* ', '✓ ', '→ ', '⇒ ', '› '];
+  lines.forEach(line => {
+    if (featureIndicators.some(indicator => line.trim().startsWith(indicator))) {
+      featureLines++;
+    }
+    // Proveri da li linija sadrži karakteristike proizvoda
+    if (line.includes(':') || line.includes('=') || line.includes('→')) {
+      featureLines++;
+    }
+  });
+  
+  if (featureLines >= 3 && (hasBusinessWord || hasSalesWord)) {
+    return true;
+  }
+  
+  return false;
+};
+
 // ============ MAIN POSTCARD COMPONENT ============
 
 export function PostCard({ 
@@ -524,6 +722,9 @@ export function PostCard({
   const [showImagePreview, setShowImagePreview] = useState<boolean>(false);
   const [imageLoadError, setImageLoadError] = useState<boolean>(false);
   const [imageHovered, setImageHovered] = useState<boolean>(false);
+
+  // ============ DODATAK: Provera da li je post reklama ============
+const isAd = detectAdContent(post);
 
   // Check authentication and user's like status
   useEffect(() => {
@@ -1021,6 +1222,8 @@ export function PostCard({
         onClick={handleCardClick}
         className={cn(
           "block transition-all duration-300 cursor-pointer relative",
+          // DODAJTE STIL ZA REKLAME:
+          isAd && "border-2 border-blue-300 dark:border-blue-700 bg-gradient-to-br from-blue-50/30 to-purple-50/30 dark:from-blue-950/20 dark:to-purple-950/20",
           variant === 'elevated' && "bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 hover:shadow-lg",
           variant === 'minimal' && "border-b border-gray-100 dark:border-gray-800",
           !variant && "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900/30"
@@ -1034,6 +1237,33 @@ export function PostCard({
           }
         }}
       >
+        {/* AD BADGE - VIDLJIV NA VRHU POSTA */}
+
+{isAd && (
+  <div className="absolute -top-2 left-4 z-20">
+    <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse">
+      {/* Univerzalne ikone za reklame */}
+      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+      </svg>
+      <span>AD • PAID</span>
+      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414l-3-3A1 1 0 0112 2zm-4.707 9.293a1 1 0 011.414 0L9 12.586V15a1 1 0 11-2 0v-2.414l-.293.293a1 1 0 01-1.414-1.414l2-2a1 1 0 011.414 0l2 2a1 1 0 010 1.414z" clipRule="evenodd" />
+      </svg>
+    </div>
+    
+    {/* Dodatne oznake na osnovu sadržaja */}
+    {post.content?.toLowerCase().includes('popust') || 
+     post.content?.toLowerCase().includes('discount') ||
+     post.content?.toLowerCase().includes('sale') ? (
+      <div className="mt-1 flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[10px] font-bold rounded-full shadow">
+        <span>🔥</span>
+        <span>OFFER</span>
+      </div>
+    ) : null}
+  </div>
+)}
+        
         <article className={cn(
           compact ? 'p-3' : 'p-4',
           variant === 'elevated' && 'p-6'
@@ -1118,6 +1348,19 @@ export function PostCard({
                     postId={post.id} 
                   />
                   
+                  {/* AD BADGE - u desnom uglu */}
+                  {isAd && (
+                    <Badge 
+                      variant="default" 
+                      className="bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold animate-pulse"
+                    >
+                      <span className="flex items-center gap-1">
+                        <DollarSign className="h-3 w-3" />
+                        <span className="text-xs">AD</span>
+                      </span>
+                    </Badge>
+                  )}
+                  
                   {showFollowButton && isAuthenticated && currentUser && currentUser !== post.user_id && (
                     <div 
                       className="hidden sm:block" 
@@ -1148,6 +1391,16 @@ export function PostCard({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" onClick={stopPropagation} className="w-56">
+                      {/* DODAJTE AD NOTIFIKACIJU U DROPDOWN MENU */}
+                      {isAd && (
+                        <div className="px-2 py-1.5 mb-1 border-b border-red-200 dark:border-red-800">
+                          <div className="flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
+                            <DollarSign className="h-3 w-3" />
+                            <span>Ovo je plaćena reklama</span>
+                          </div>
+                        </div>
+                      )}
+                      
                       <DropdownMenuItem onClick={handleShareDropdown} className="cursor-pointer">
                         <Share className="h-4 w-4 mr-2" />
                         Share post
@@ -1344,6 +1597,22 @@ export function PostCard({
                   />
                 </div>
               )}
+              
+              {/* AD FOOTER NOTICE - na dnu posta */}
+{isAd && (
+  <div className="mt-3 pt-3 border-t border-red-200 dark:border-red-800">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+      <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
+        <AlertCircle className="h-3 w-3" />
+        <span className="font-medium">Paid Content • Sponsored • Реклама • Publicité • Werbung</span>
+      </div>
+      <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+        <span className="text-[10px]">💰</span>
+        <span>Advertisement • Anuncio • 広告 • 广告</span>
+      </div>
+    </div>
+  </div>
+)}
             </div>
           </div>
         </article>
