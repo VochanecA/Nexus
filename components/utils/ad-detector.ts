@@ -74,6 +74,3 @@ export const detectAdvertisement = (content: string): {
     reasons
   };
 };
-
-
-
