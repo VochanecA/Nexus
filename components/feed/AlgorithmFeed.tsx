@@ -1,4 +1,4 @@
-// components/feed/AlgorithmFeed.tsx - SA KONTROLOM REKLAMA
+// components/feed/AlgorithmFeed.tsx - SA KONTROLOM REKLAMA I FILTRIRANJEM
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { FeedGenerator } from '@/lib/feed-engine/generator';
 import { PostCard } from '@/components/post/post-card';
+import type { Post as PostCardPost } from '@/components/post/post-card'; // Importuj tip iz PostCard
 import { AdPost } from '@/components/ads/AdPost';
 import { ExplanationPanel } from './ExplanationPanel';
 import { Button } from '@/components/ui/button';
@@ -22,6 +23,7 @@ import {
 import { adService } from '@/lib/ads/ad-service';
 import type { ScoredAd } from '@/lib/ads/ad-service';
 import { Switch } from '@/components/ui/switch';
+import { detectAdvertisement } from '@/components/utils/ad-detector';
 
 interface AlgorithmFeedProps {
   userId?: string;
@@ -29,22 +31,10 @@ interface AlgorithmFeedProps {
   showExplanations?: boolean;
 }
 
-interface Post {
-  id: string;
-  content: string;
-  image_url: string | null;
-  created_at: string;
-  user_id: string;
-  username: string;
-  display_name: string;
-  avatar_url: string | null;
-  likes_count: number;
-  comments_count: number;
-  user_has_liked: boolean;
-  is_public?: boolean;
-  impressions?: number;
-}
+// Koristite isti tip kao u PostCard
+type Post = PostCardPost;
 
+// Definišite interfejs za podatke iz baze
 interface PostData {
   id: string;
   content: string;
@@ -59,6 +49,13 @@ interface PostData {
   user_has_liked?: boolean;
   is_public?: boolean;
   impressions?: number;
+  is_ad?: boolean;
+  content_hash?: string;
+  signature?: string;
+  provenance?: any; // Možete specificirati ovaj tip ako želite
+  image_width?: number;
+  image_height?: number;
+  image_aspect_ratio?: number;
 }
 
 interface FeedItem {
@@ -91,7 +88,45 @@ const convertPostDataToPost = (postData: PostData): Post => {
     user_has_liked: postData.user_has_liked || false,
     is_public: postData.is_public,
     impressions: postData.impressions,
+    is_ad: postData.is_ad || false,
+    content_hash: postData.content_hash,
+    signature: postData.signature,
+    provenance: postData.provenance,
+    image_width: postData.image_width,
+    image_height: postData.image_height,
+    image_aspect_ratio: postData.image_aspect_ratio,
   };
+};
+
+/**
+ * Proveri da li je post reklama koristeći detektor reklama
+ */
+const isPostAnAd = (post: Post): boolean => {
+  // Prvo proveri eksplicitne oznake
+  if (post.is_ad) return true;
+  if (post.provenance?.metadata?.isAd) return true;
+  
+  // Zatim proveri sadržaj koristeći detektor
+  const adDetection = detectAdvertisement(post.content || '');
+  return adDetection.isAd;
+};
+
+/**
+ * Filtriraj reklame iz postova ako korisnik ne želi da ih vidi
+ */
+const filterAdsFromPosts = (posts: Post[], hideAds: boolean): Post[] => {
+  if (!hideAds) {
+    return posts;
+  }
+  
+  // Filter out posts that are detected as ads
+  const filteredPosts = posts.filter(post => !isPostAnAd(post));
+  
+  if (filteredPosts.length < posts.length) {
+    console.log(`🔕 Filtered out ${posts.length - filteredPosts.length} ads from regular posts`);
+  }
+  
+  return filteredPosts;
 };
 
 export function AlgorithmFeed({ 
@@ -109,16 +144,17 @@ export function AlgorithmFeed({
   const [activeExplanation, setActiveExplanation] = useState<string | null>(null);
   
   // State-ovi za kontrolu reklama
-  const [adsInterval, setAdsInterval] = useState<number>(5); // Default: na svakih 5 posta
-  const [showAds, setShowAds] = useState<boolean>(true); // Da li prikazivati reklame
-  const [maxAdsToShow, setMaxAdsToShow] = useState<number>(3); // Maksimalan broj reklama
+  const [adsInterval, setAdsInterval] = useState<number>(5);
+  const [showAds, setShowAds] = useState<boolean>(true);
+  const [maxAdsToShow, setMaxAdsToShow] = useState<number>(3);
+  const [hideAdsCompletely, setHideAdsCompletely] = useState<boolean>(false);
 
   const supabase = createClient();
 
   /**
    * Kombinuj postove sa reklamama
    */
-  const interleavePosPostsWithAds = useCallback((
+  const interleavePostsWithAds = useCallback((
     posts: Post[],
     ads: ScoredAd[],
     options?: {
@@ -131,7 +167,6 @@ export function AlgorithmFeed({
   ): FeedItem[] => {
     const feed: FeedItem[] = [];
     
-    // Opcije sa podrazumevanim vrednostima
     const {
       adsInterval = 5,
       maxAds = Math.ceil(posts.length / adsInterval),
@@ -140,8 +175,8 @@ export function AlgorithmFeed({
       showAds = true,
     } = options || {};
     
-    // Ako su reklame isključene, vrati samo postove
-    if (!showAds || ads.length === 0) {
+    // Ako su reklame potpuno isključene, vrati samo postove
+    if (!showAds || maxAds === 0) {
       return posts.map(post => ({
         type: 'post',
         id: post.id,
@@ -165,7 +200,7 @@ export function AlgorithmFeed({
       
       postsSinceLastAd++;
       
-      // Proveri da li je vreme za reklamu
+      // Proveri da li je vreme za posebnu reklamu
       const shouldShowAd = (
         adIndex < ads.length &&
         adsShown < maxAds &&
@@ -188,7 +223,7 @@ export function AlgorithmFeed({
       }
     }
 
-    console.log(`📊 Feed stats: ${posts.length} posts, ${adsShown} ads shown (every ${adsInterval} posts, showAds: ${showAds})`);
+    console.log(`📊 Feed stats: ${posts.length} posts, ${adsShown} ads shown, maxAds: ${maxAds}, showAds: ${showAds}`);
     return feed;
   }, []);
 
@@ -231,6 +266,15 @@ export function AlgorithmFeed({
           likes_count: 0,
           comments_count: 0,
           user_has_liked: false,
+          is_public: post.is_public,
+          impressions: post.impressions,
+          is_ad: post.is_ad || false,
+          content_hash: post.content_hash,
+          signature: post.signature,
+          provenance: post.provenance,
+          image_width: post.image_width,
+          image_height: post.image_height,
+          image_aspect_ratio: post.image_aspect_ratio,
         };
       });
 
@@ -273,32 +317,37 @@ export function AlgorithmFeed({
         posts = directPosts;
       }
 
-      // 2. Učitaj reklame samo ako su uključene
-let ads: ScoredAd[] = [];
-if (showAds && maxAdsToShow > 0) {
-  try {
-    const allAds = await adService.getRelevantAdsForUser(
-      userId || null,
-      20
-    );
-    
-    // SHUFFLE reklama za varijaciju + limit
-    const shuffledAds = [...allAds].sort(() => Math.random() - 0.5);
-    ads = shuffledAds.slice(0, maxAdsToShow);
-    
-    console.log(`📢 Loaded ${ads.length}/${allAds.length} ads (shuffled)`);
-  } catch (adError) {
-    console.error('Error loading ads:', adError);
-  }
-}
+      // 2. FILTRIRANJE: Ako korisnik ne želi reklame, ukloni ih iz postova
+      if (hideAdsCompletely || maxAdsToShow === 0) {
+        posts = filterAdsFromPosts(posts, true);
+      }
 
-      // 3. Kombinuj postove i reklame
-      const combinedFeed = interleavePosPostsWithAds(posts, ads, {
+      // 3. Učitaj posebne reklame samo ako nisu potpuno isključene
+      let ads: ScoredAd[] = [];
+      if (showAds && maxAdsToShow > 0 && !hideAdsCompletely) {
+        try {
+          const allAds = await adService.getRelevantAdsForUser(
+            userId || null,
+            20
+          );
+          
+          // SHUFFLE reklama za varijaciju + limit
+          const shuffledAds = [...allAds].sort(() => Math.random() - 0.5);
+          ads = shuffledAds.slice(0, maxAdsToShow);
+          
+          console.log(`📢 Loaded ${ads.length}/${allAds.length} ads (shuffled)`);
+        } catch (adError) {
+          console.error('Error loading ads:', adError);
+        }
+      }
+
+      // 4. Kombinuj postove i posebne reklame
+      const combinedFeed = interleavePostsWithAds(posts, ads, {
         adsInterval,
         maxAds: ads.length,
         skipFirst: true,
         skipLast: true,
-        showAds
+        showAds: showAds && !hideAdsCompletely && maxAdsToShow > 0 // Ne prikazuj posebne reklame ako su potpuno isključene
       });
       
       setFeedItems(combinedFeed);
@@ -308,7 +357,13 @@ if (showAds && maxAdsToShow > 0) {
       
       try {
         const directPosts = await fetchPostsWithImages();
-        setFeedItems(directPosts.map(post => ({
+        
+        // Filtriraj reklame i u fallback slučaju
+        const filteredPosts = (hideAdsCompletely || maxAdsToShow === 0) 
+          ? filterAdsFromPosts(directPosts, true)
+          : directPosts;
+          
+        setFeedItems(filteredPosts.map(post => ({
           type: 'post',
           id: post.id,
           data: post
@@ -319,7 +374,17 @@ if (showAds && maxAdsToShow > 0) {
     } finally {
       setLoading(false);
     }
-  }, [userId, initialAlgorithm, showAllExplanations, fetchPostsWithImages, interleavePosPostsWithAds, adsInterval, showAds, maxAdsToShow]);
+  }, [
+    userId, 
+    initialAlgorithm, 
+    showAllExplanations, 
+    fetchPostsWithImages, 
+    interleavePostsWithAds, 
+    adsInterval, 
+    showAds, 
+    maxAdsToShow,
+    hideAdsCompletely // Dodaj dependency
+  ]);
 
   useEffect(() => {
     loadFeed();
@@ -406,12 +471,45 @@ if (showAds && maxAdsToShow > 0) {
 
   const handleMaxAdsChange = (count: number) => {
     setMaxAdsToShow(count);
+    
+    // Ako je count = 0, automatski postavi hideAdsCompletely na true
+    if (count === 0) {
+      setHideAdsCompletely(true);
+      setShowAds(false);
+    } else {
+      setHideAdsCompletely(false);
+      setShowAds(true);
+    }
+    
     loadFeed();
   };
 
   const toggleShowAds = () => {
-    setShowAds(!showAds);
-    // Feed će se automatski refreshovati zbog dependency-ja u loadFeed
+    const newShowAds = !showAds;
+    setShowAds(newShowAds);
+    
+    // Ako isključujemo reklame, takođe postavi hideAdsCompletely na true
+    if (!newShowAds) {
+      setHideAdsCompletely(true);
+      setMaxAdsToShow(0); // Force 0 ads
+    } else {
+      setHideAdsCompletely(false);
+      setMaxAdsToShow(3); // Reset na default
+    }
+  };
+
+  // Dodaj posebnu funkciju za potpuno isključivanje reklama
+  const toggleHideAdsCompletely = () => {
+    const newHideState = !hideAdsCompletely;
+    setHideAdsCompletely(newHideState);
+    
+    if (newHideState) {
+      setShowAds(false); // Isključi i posebne reklame
+      setMaxAdsToShow(0); // Nema reklama
+    } else {
+      setShowAds(true); // Uključi reklame
+      setMaxAdsToShow(3); // Reset na default
+    }
   };
 
   // Izračunaj statistiku za prikaz
@@ -451,26 +549,38 @@ if (showAds && maxAdsToShow > 0) {
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
-          {/* Kontrola za reklame - Dodajte ovo u header */}
+          {/* Kontrola za reklame - POBOLJŠANA VERZIJA */}
           <div className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-1.5">
             <Bell className="h-4 w-4 text-muted-foreground" />
             
-            {/* Switch za uključivanje/isključivanje reklama */}
+            {/* Switch za potpuno isključivanje reklama */}
             <div className="flex items-center gap-2">
-              {showAds ? (
-                <Eye className="h-4 w-4 text-green-500" />
-              ) : (
+              {hideAdsCompletely || maxAdsToShow === 0 ? (
                 <EyeOff className="h-4 w-4 text-gray-400" />
+              ) : (
+                <Eye className="h-4 w-4 text-green-500" />
               )}
-              <Switch
-                checked={showAds}
-                onCheckedChange={toggleShowAds}
-                className="scale-90"
-              />
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-medium">
+                    {(hideAdsCompletely || maxAdsToShow === 0) ? 'No ads' : 'Ads'}
+                  </span>
+                  <Switch
+                    checked={!(hideAdsCompletely || maxAdsToShow === 0)}
+                    onCheckedChange={toggleHideAdsCompletely}
+                    className="scale-90"
+                  />
+                </div>
+                {!(hideAdsCompletely || maxAdsToShow === 0) && (
+                  <span className="text-[10px] text-muted-foreground">
+                    {maxAdsToShow === 0 ? '0 ads' : `${maxAdsToShow} max`}
+                  </span>
+                )}
+              </div>
             </div>
             
-            {/* Kontrole samo ako su reklame uključene */}
-            {showAds && (
+            {/* Kontrole samo ako reklame nisu potpuno isključene */}
+            {!(hideAdsCompletely || maxAdsToShow === 0) && (
               <>
                 <span className="text-sm text-muted-foreground">Every:</span>
                 <select 
@@ -546,16 +656,15 @@ if (showAds && maxAdsToShow > 0) {
         </div>
         <div className="flex flex-wrap gap-4">
           <span>{adsStats.totalPosts} posts</span>
-          {showAds && (
+          {!(hideAdsCompletely || maxAdsToShow === 0) ? (
             <>
               <span>{adsStats.totalAds} ads</span>
               <span>{adsStats.adsPercentage}% ad density</span>
               <span>Interval: every {adsInterval} posts</span>
               <span>Max: {maxAdsToShow} ads</span>
             </>
-          )}
-          {!showAds && (
-            <span className="text-green-600 font-medium">✓ Ads disabled</span>
+          ) : (
+            <span className="text-green-600 font-medium">✓ All ads disabled</span>
           )}
         </div>
       </div>
@@ -583,8 +692,8 @@ if (showAds && maxAdsToShow > 0) {
         <div className="space-y-8">
           {feedItems.map((item, index) => (
             <div key={item.id} className="space-y-4">
-              {/* Indikator za reklame */}
-              {item.type === 'ad' && (
+              {/* Indikator za posebne reklame (samo ako nisu potpuno isključene) */}
+              {!(hideAdsCompletely || maxAdsToShow === 0) && item.type === 'ad' && (
                 <div className="flex items-center gap-2 text-sm text-muted-foreground ml-2">
                   <div className="h-2 w-2 rounded-full bg-blue-500"></div>
                   <span>Sponsored • Ad #{index + 1} in feed</span>
@@ -592,7 +701,7 @@ if (showAds && maxAdsToShow > 0) {
               )}
               
               {/* Render Post or Ad */}
-              {item.type === 'ad' ? (
+              {item.type === 'ad' && !(hideAdsCompletely || maxAdsToShow === 0) ? (
                 <AdPost
                   promotedPostId={(item.data as ScoredAd).promoted_post.id}
                   postData={(item.data as ScoredAd).post_data}
@@ -603,7 +712,11 @@ if (showAds && maxAdsToShow > 0) {
                 />
               ) : (
                 <div className="relative">
-                  <PostCard post={item.data as Post} />
+<PostCard 
+  post={item.data as PostCardPost}
+  currentUserId={userId}
+  hideAdBadges={hideAdsCompletely || maxAdsToShow === 0} // DODAJTE OVAJ PROP
+/>
                   
                   {/* Explanation toggle button */}
                   {showAllExplanations && (
@@ -661,9 +774,9 @@ if (showAds && maxAdsToShow > 0) {
             
             <div className="flex items-center gap-4">
               <div className="text-sm">
-                {showAds 
-                  ? `Showing ${adsStats.totalPosts} posts with ${adsStats.totalAds} ads`
-                  : `Showing ${adsStats.totalPosts} posts (ads disabled)`
+                {(hideAdsCompletely || maxAdsToShow === 0) 
+                  ? `Showing ${adsStats.totalPosts} posts • All ads disabled`
+                  : `Showing ${adsStats.totalPosts} posts with ${adsStats.totalAds} ads`
                 }
               </div>
               <Button 

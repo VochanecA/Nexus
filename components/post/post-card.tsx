@@ -90,7 +90,7 @@ interface PostProvenance {
   };
 }
 
-interface Post {
+export interface Post {
   id: string;
   content: string;
   image_url: string | null;
@@ -122,6 +122,7 @@ interface PostCardProps {
   compact?: boolean;
   onRepost?: (postId: string) => Promise<void>;
   variant?: 'default' | 'elevated' | 'minimal';
+  hideAdBadges?: boolean; // NOVI PROP: da li sakriti AD badge-ove
 }
 
 interface ProvenanceBadgeProps {
@@ -507,7 +508,8 @@ export function PostCard({
   onFollowChange,
   compact = false,
   onRepost,
-  variant = 'default'
+  variant = 'default',
+  hideAdBadges = false // NOVI PROP: default false
 }: PostCardProps): React.JSX.Element {
   const router = useRouter();
   const [liked, setLiked] = useState<boolean>(post.user_has_liked);
@@ -531,9 +533,10 @@ export function PostCard({
 
   // ============ KORIŠĆENJE AD-DETECTOR UTIL-A ============
   const adDetection = detectAdvertisement(post.content || '');
-  const isAd = post.is_ad || 
+  // Ako su AD badge-ovi sakriveni, ne prikazuj ništa
+  const isAd = !hideAdBadges && (post.is_ad || 
                post.provenance?.metadata?.isAd || 
-               adDetection.isAd;
+               adDetection.isAd);
 
   // Check authentication and user's like status
   useEffect(() => {
@@ -1045,7 +1048,7 @@ export function PostCard({
           }
         }}
       >
-        {/* AD BADGE - VIDLJIV NA VRHU POSTA */}
+        {/* AD BADGE - VIDLJIV NA VRHU POSTA - SAMO AKO NIJE SAKRIVEN */}
         {isAd && (
           <div className="absolute -top-2 left-4 z-20">
             <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse">
@@ -1154,7 +1157,7 @@ export function PostCard({
                     postId={post.id} 
                   />
                   
-                  {/* AD BADGE - u desnom uglu */}
+                  {/* AD BADGE - u desnom uglu - SAMO AKO NIJE SAKRIVEN */}
                   {isAd && (
                     <Badge 
                       variant="default" 
@@ -1197,7 +1200,7 @@ export function PostCard({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" onClick={stopPropagation} className="w-56">
-                      {/* AD NOTIFIKACIJA U DROPDOWN MENU */}
+                      {/* AD NOTIFIKACIJA U DROPDOWN MENU - SAMO AKO NIJE SAKRIVENA */}
                       {isAd && (
                         <div className="px-2 py-1.5 mb-1 border-b border-red-200 dark:border-red-800">
                           <div className="flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
@@ -1404,7 +1407,7 @@ export function PostCard({
                 </div>
               )}
               
-              {/* AD FOOTER NOTICE - na dnu posta */}
+              {/* AD FOOTER NOTICE - na dnu posta - SAMO AKO NIJE SAKRIVEN */}
               {isAd && (
                 <div className="mt-3 pt-3 border-t border-red-200 dark:border-red-800">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
