@@ -45,6 +45,8 @@ interface PostData {
   avatar_url?: string | null;
   likes_count?: number;
   comments_count?: number;
+  // DODAJTE OVO:
+  views_count?: number;
   user_has_liked?: boolean;
   is_public?: boolean;
   impressions?: number;
@@ -56,7 +58,6 @@ interface PostData {
   image_height?: number;
   image_aspect_ratio?: number;
 }
-
 interface FeedItem {
   type: 'post' | 'ad';
   id: string;
@@ -123,6 +124,8 @@ const convertPostDataToPost = (postData: PostData): Post => {
     avatar_url: postData.avatar_url || null,
     likes_count: postData.likes_count || 0,
     comments_count: postData.comments_count || 0,
+    // DODAJTE OVO:
+    views_count: postData.views_count || 0,
     user_has_liked: postData.user_has_liked || false,
     is_public: postData.is_public,
     impressions: postData.impressions,
@@ -189,33 +192,65 @@ export function AlgorithmFeed({
   }, [feedItems]);
 
   // ============ OPTIMIZED FETCH FUNCTIONS ============
-  const fetchPostsWithImages = useCallback(async (): Promise<Post[]> => {
-    try {
-      const cacheKey = `posts_${userId}_${initialAlgorithm}`;
-      const cached = cache.get<Post[]>(cacheKey);
+
+const fetchPostsWithImages = useCallback(async (): Promise<Post[]> => {
+  try {
+    const cacheKey = `posts_${userId}_${initialAlgorithm}`;
+    const cached = cache.get<Post[]>(cacheKey);
+    
+    if (cached) {
+      console.log('📦 Using cached posts');
+      return cached;
+    }
+
+    // Koristite subquery za dohvatanje broja lajkova, komentara i pregleda
+    const { data: postsWithCounts, error } = await supabase
+      .from('posts')
+      .select(`
+        *,
+        profiles!posts_user_id_fkey (
+          username,
+          display_name,
+          avatar_url
+        ),
+        likes_count:likes(count),
+        comments_count:comments(count)
+      `)
+      .order('created_at', { ascending: false })
+      .limit(20);
+
+    if (error) throw error;
+    if (!postsWithCounts) return [];
+
+    // Proverite da li korisnik lajkovao postove
+    const postIds = postsWithCounts.map(p => p.id);
+    const likedMap = new Map<string, boolean>();
+    
+    if (userId) {
+      const { data: userLikes } = await supabase
+        .from('likes')
+        .select('post_id')
+        .eq('user_id', userId)
+        .in('post_id', postIds);
       
-      if (cached) {
-        console.log('📦 Using cached posts');
-        return cached;
+      if (userLikes) {
+        userLikes.forEach(like => {
+          likedMap.set(like.post_id, true);
+        });
       }
+    }
 
-      const { data: postsWithProfiles, error } = await supabase
-        .from('posts')
-        .select(`
-          *,
-          profiles!posts_user_id_fkey (
-            username,
-            display_name,
-            avatar_url
-          )
-        `)
-        .order('created_at', { ascending: false })
-        .limit(20);
+    // Format posts with counts
+    const formattedPosts: Post[] = postsWithCounts.map((post: any) => {
+      const likesCount = Array.isArray(post.likes_count) 
+        ? post.likes_count[0]?.count || 0
+        : 0;
+      
+      const commentsCount = Array.isArray(post.comments_count)
+        ? post.comments_count[0]?.count || 0
+        : 0;
 
-      if (error) throw error;
-      if (!postsWithProfiles) return [];
-
-      const formattedPosts: Post[] = postsWithProfiles.map((post: any) => ({
+      return {
         id: post.id,
         content: post.content,
         image_url: normalizeImageUrl(post.image_url),
@@ -224,9 +259,11 @@ export function AlgorithmFeed({
         username: post.profiles?.username || 'user',
         display_name: post.profiles?.display_name || 'User',
         avatar_url: post.profiles?.avatar_url || null,
-        likes_count: 0,
-        comments_count: 0,
-        user_has_liked: false,
+        likes_count: likesCount,
+        comments_count: commentsCount,
+        // DODAJTE views_count
+        views_count: post.views_count || 0,
+        user_has_liked: userId ? likedMap.get(post.id) || false : false,
         is_public: post.is_public,
         impressions: post.impressions,
         is_ad: post.is_ad || false,
@@ -236,15 +273,16 @@ export function AlgorithmFeed({
         image_width: post.image_width,
         image_height: post.image_height,
         image_aspect_ratio: post.image_aspect_ratio,
-      }));
+      };
+    });
 
-      cache.set(cacheKey, formattedPosts);
-      return formattedPosts;
-    } catch (err) {
-      console.error('Error fetching posts:', err);
-      return [];
-    }
-  }, [supabase, userId, initialAlgorithm]);
+    cache.set(cacheKey, formattedPosts);
+    return formattedPosts;
+  } catch (err) {
+    console.error('Error fetching posts:', err);
+    return [];
+  }
+}, [supabase, userId, initialAlgorithm]);
 
 const fetchAds = useCallback(async (): Promise<ScoredAd[]> => {
   if (!showAds || maxAdsToShow === 0 || hideAdsCompletely) {
@@ -856,68 +894,71 @@ const resetPreferences = async () => {
         </div>
       ) : (
         <div className="space-y-8">
-          {feedItems.map((item, index) => (
-            <div key={`${item.id}-${index}`} className="space-y-4">
-              {!(hideAdsCompletely || maxAdsToShow === 0) && item.type === 'ad' && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground ml-2">
-                  <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                  <span>Sponsored • Ad #{index + 1} in feed</span>
-                </div>
-              )}
-              
-              {item.type === 'ad' && !(hideAdsCompletely || maxAdsToShow === 0) ? (
-                <AdPost
-                  promotedPostId={(item.data as ScoredAd).promoted_post.id}
-                  postData={(item.data as ScoredAd).post_data}
-                  explanation={(item.data as ScoredAd).explanation}
-                  onView={() => handleAdView((item.data as ScoredAd).promoted_post.id)}
-                  onLike={() => handleAdLike((item.data as ScoredAd).promoted_post.id)}
-                  onFollow={() => handleAdFollow((item.data as ScoredAd).promoted_post.id)}
-                />
-              ) : (
-                <div className="relative">
-                  <PostCard 
-                    post={item.data as PostCardPost}
-                    currentUserId={userId}
-                    hideAdBadges={hideAdsCompletely || maxAdsToShow === 0}
-                  />
-                  
-                  {showAllExplanations && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute top-2 right-2 h-7 w-7 p-0"
-                      onClick={() => toggleExplanation(item.id)}
-                    >
-                      <Info className="h-3 w-3" />
-                    </Button>
-                  )}
-                </div>
-              )}
-              
-              {item.type === 'post' && showAllExplanations && activeExplanation === item.id && (
-                <div className="ml-8">
-                  <ExplanationPanel
-                    postId={item.id}
-                    explanation={explanations[item.id]}
-                    onClose={() => setActiveExplanation(null)}
-                  />
-                </div>
-              )}
-              
-              {item.type === 'post' && showAllExplanations && explanations[item.id] && !activeExplanation && (
-                <div className="ml-8">
-                  <button
-                    onClick={() => toggleExplanation(item.id)}
-                    className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-                  >
-                    <Info className="h-3 w-3" />
-                    <span>{explanations[item.id]?.summary?.split('.')[0]}...</span>
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+{feedItems.map((item, index) => (
+  <div key={`${item.id}-${index}`} className="space-y-4">
+    {!(hideAdsCompletely || maxAdsToShow === 0) && item.type === 'ad' && (
+      <div className="flex items-center gap-2 text-sm text-muted-foreground ml-2">
+        <div className="h-2 w-2 rounded-full bg-blue-500"></div>
+        <span>Sponsored • Ad #{index + 1} in feed</span>
+      </div>
+    )}
+    
+    {item.type === 'ad' && !(hideAdsCompletely || maxAdsToShow === 0) ? (
+      <AdPost
+        promotedPostId={(item.data as ScoredAd).promoted_post.id}
+        postData={(item.data as ScoredAd).post_data}
+        explanation={(item.data as ScoredAd).explanation}
+        onView={() => handleAdView((item.data as ScoredAd).promoted_post.id)}
+        onLike={() => handleAdLike((item.data as ScoredAd).promoted_post.id)}
+        onFollow={() => handleAdFollow((item.data as ScoredAd).promoted_post.id)}
+      />
+    ) : (
+      <div className="relative">
+        <PostCard 
+          post={item.data as PostCardPost}
+          currentUserId={userId}
+          hideAdBadges={hideAdsCompletely || maxAdsToShow === 0}
+          onPostClick={(postId: string) => router.push(`/post/${postId}`)}
+        />
+        
+        {showAllExplanations && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="absolute top-2 right-2 h-7 w-7 p-0"
+            onClick={() => toggleExplanation(item.id)}
+            data-no-post-click="true"
+          >
+            <Info className="h-3 w-3" />
+          </Button>
+        )}
+      </div>
+    )}
+    
+    {item.type === 'post' && showAllExplanations && activeExplanation === item.id && (
+      <div className="ml-8">
+        <ExplanationPanel
+          postId={item.id}
+          explanation={explanations[item.id]}
+          onClose={() => setActiveExplanation(null)}
+        />
+      </div>
+    )}
+    
+    {item.type === 'post' && showAllExplanations && explanations[item.id] && !activeExplanation && (
+      <div className="ml-8">
+        <button
+          onClick={() => toggleExplanation(item.id)}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+          data-no-post-click="true"
+        >
+          <Info className="h-3 w-3" />
+          <span>{explanations[item.id]?.summary?.split('.')[0]}...</span>
+        </button>
+      </div>
+    )}
+  </div>
+))}
         </div>
       )}
 

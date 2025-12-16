@@ -1,4 +1,4 @@
-// components/post/post-card.tsx - ULTRA OPTIMIZOVANA VERZIJA
+// components/post/post-card.tsx - ULTRA OPTIMIZOVANA VERZIJA SA VIEW TRACKING
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo, useRef, memo } from "react";
@@ -35,7 +35,9 @@ import {
   TrendingUp,
   DollarSign,
   Ban,
-  ShieldCheck
+  ShieldCheck,
+  EyeOff,
+  BarChart
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
@@ -61,6 +63,7 @@ import {
 import { Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { viewTracker } from "@/lib/utils/view-tracker";
 
 // ============ TYPE DEFINITIONS ============
 
@@ -103,6 +106,7 @@ export interface Post {
   avatar_url: string | null;
   likes_count: number;
   comments_count: number;
+  views_count: number;
   user_has_liked: boolean;
   is_public?: boolean;
   impressions?: number;
@@ -126,6 +130,8 @@ interface PostCardProps {
   variant?: 'default' | 'elevated' | 'minimal';
   hideAdBadges?: boolean;
   onUserBlocked?: (blockedUserId: string) => void;
+  autoTrackView?: boolean;
+  onPostClick?: (postId: string) => void;
 }
 
 // ============ HELPER FUNCTIONS (MEMOIZED) ============
@@ -237,6 +243,16 @@ const getInitials = (name: string): string => {
     .join("")
     .toUpperCase()
     .slice(0, 2);
+};
+
+const formatViews = (views: number): string => {
+  if (views >= 1000000) {
+    return `${(views / 1000000).toFixed(1)}M`;
+  }
+  if (views >= 1000) {
+    return `${(views / 1000).toFixed(1)}K`;
+  }
+  return views.toString();
 };
 
 // ============ PROVENANCE BADGE (MEMOIZED) ============
@@ -466,7 +482,9 @@ export const PostCard = memo(function PostCard({
   onRepost,
   variant = 'default',
   hideAdBadges = false,
-  onUserBlocked
+  onUserBlocked,
+  autoTrackView = true,
+  onPostClick
 }: PostCardProps) {
   const router = useRouter();
   
@@ -474,14 +492,18 @@ export const PostCard = memo(function PostCard({
   const stateRefs = useRef({
     liked: post.user_has_liked,
     likesCount: post.likes_count,
+    viewsCount: post.views_count || 0,
     isAuthenticated: false,
     authUserId: null as string | null,
-    isBlocked: false
+    isBlocked: false,
+    hasTrackedView: false,
+    isTrackingView: false
   });
 
   // Regular state samo za UI updates
   const [likedUI, setLikedUI] = useState(post.user_has_liked);
   const [likesCountUI, setLikesCountUI] = useState(post.likes_count);
+  const [viewsCountUI, setViewsCountUI] = useState(post.views_count || 0);
   const [loading, setLoading] = useState(false);
   const [showLikesDialog, setShowLikesDialog] = useState(false);
   const [reposting, setReposting] = useState(false);
@@ -492,11 +514,13 @@ export const PostCard = memo(function PostCard({
   const [imageLoadError, setImageLoadError] = useState(false);
   const [imageHovered, setImageHovered] = useState(false);
   const [blocking, setBlocking] = useState(false);
+  const [trackingView, setTrackingView] = useState(false);
 
   // Refs za optimizaciju
   const postRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const viewTrackingRef = useRef<NodeJS.Timeout | null>(null);
 
   // Memoizovane vrednosti
   const adDetection = useMemo(() => detectAdvertisement(post.content || ''), [post.content]);
@@ -521,6 +545,57 @@ export const PostCard = memo(function PostCard({
   // Memoizovane funkcije za datum
   const formattedDate = useMemo(() => safeFormatDistanceToNow(post.created_at), [post.created_at]);
   const formattedDateMobile = useMemo(() => safeFormatDateMobile(post.created_at), [post.created_at]);
+
+  // ============ VIEW TRACKING ============
+
+  useEffect(() => {
+    if (!autoTrackView) return;
+
+    const trackView = async () => {
+      if (stateRefs.current.hasTrackedView || stateRefs.current.isTrackingView) {
+        return;
+      }
+
+      stateRefs.current.isTrackingView = true;
+      setTrackingView(true);
+
+      try {
+        const tracked = await viewTracker.trackView({
+          postId: post.id,
+          userId: currentUser || undefined,
+          metadata: {
+            userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : undefined,
+            referrer: typeof document !== 'undefined' ? document.referrer : undefined
+          }
+        });
+
+        if (tracked) {
+          stateRefs.current.hasTrackedView = true;
+          // Povećaj views count u UI-u odmah za bolji UX
+          stateRefs.current.viewsCount += 1;
+          setViewsCountUI(prev => prev + 1);
+        }
+      } catch (error) {
+        console.error('Failed to track view:', error);
+      } finally {
+        stateRefs.current.isTrackingView = false;
+        setTrackingView(false);
+      }
+    };
+
+    // Pokreni tracking sa malim delay-om da izbegneš blokiranje
+    if (viewTrackingRef.current) {
+      clearTimeout(viewTrackingRef.current);
+    }
+
+    viewTrackingRef.current = setTimeout(trackView, 1500); // 1.5s delay
+
+    return () => {
+      if (viewTrackingRef.current) {
+        clearTimeout(viewTrackingRef.current);
+      }
+    };
+  }, [post.id, currentUser, autoTrackView]);
 
   // Intersection Observer za lazy loading slike
   useEffect(() => {
@@ -588,13 +663,73 @@ export const PostCard = memo(function PostCard({
     void checkAuthAndBlockStatus();
   }, [post.id, post.user_id]);
 
-  // ============ MEMOIZOVANI EVENT HANDLERI ============
+  // ============ EVENT HANDLERS ============
+
+  // Dodajemo funkciju za View Post dugme
+  const handleViewPostClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (onPostClick) {
+      onPostClick(post.id);
+    } else {
+      router.push(`/post/${post.id}`);
+    }
+  }, [router, post.id, onPostClick]);
+
+  const handleExplain = useCallback(async () => {
+    setShowExplanation(true);
+    
+    if (explanation) return;
+    
+    setExplaining(true);
+    
+    try {
+      const response = await fetch('/api/explain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: post.content.substring(0, 1000) })
+      });
+      
+      if (!response.ok) throw new Error('Failed to get explanation');
+      
+      const data = await response.json();
+      setExplanation(data.explanation);
+    } catch (error) {
+      console.error('Explanation error:', error);
+    } finally {
+      setExplaining(false);
+    }
+  }, [explanation, post.content]);
+
+  const handleExplainClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    void handleExplain();
+  }, [handleExplain]);
+
+  const handleExplainDropdown = useCallback(() => {
+    setShowExplanation(true);
+    if (!explanation) {
+      void handleExplain();
+    }
+  }, [explanation, handleExplain]);
 
   const handleCardClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
-    if (target.closest("a, button, [role='button']")) return;
-    router.push(`/post/${post.id}`);
-  }, [router, post.id]);
+    
+    // Izuzeci - elementi na koje NE želimo da se otvori post detalj
+    const shouldOpenPost = !target.closest(
+      "a, button, [role='button'], [data-no-post-click], " +
+      "img, figure, [data-image-container], " +
+      "[data-dialog], [data-popover], [data-dropdown]"
+    );
+    
+    if (shouldOpenPost) {
+      if (onPostClick) {
+        onPostClick(post.id);
+      } else {
+        router.push(`/post/${post.id}`);
+      }
+    }
+  }, [router, post.id, onPostClick]);
 
   const handleCommentButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -605,7 +740,7 @@ export const PostCard = memo(function PostCard({
     }
     
     router.push(`/post/${post.id}`);
-  }, [router, post.id]);
+  }, [router, post.id, stateRefs]);
 
   const handleProfileLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.stopPropagation();
@@ -629,7 +764,7 @@ export const PostCard = memo(function PostCard({
     } else {
       await navigator.clipboard.writeText(shareUrl);
     }
-  }, [post.display_name, post.content]);
+  }, [post.display_name, post.content, post.id]);
 
   const handleShareDropdown = useCallback(() => {
     const shareUrl = `${window.location.origin}/post/${post.id}`;
@@ -643,14 +778,7 @@ export const PostCard = memo(function PostCard({
     } else {
       void navigator.clipboard.writeText(shareUrl);
     }
-  }, [post.display_name, post.content]);
-
-  const handleExplainDropdown = useCallback(() => {
-    setShowExplanation(true);
-    if (!explanation) {
-      void handleExplain();
-    }
-  }, [explanation]);
+  }, [post.display_name, post.content, post.id]);
 
   const handleImageClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -679,7 +807,13 @@ export const PostCard = memo(function PostCard({
     if (stateRefs.current.likesCount === 0) return;
     
     setShowLikesDialog(true);
-  }, []);
+  }, [stateRefs]);
+
+  const handleShowViews = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    // Možete dodati modal za prikaz detaljnih statistika pregleda ovde
+    console.log(`Post ${post.id} has ${viewsCountUI} views`);
+  }, [post.id, viewsCountUI]);
 
   const handleCloseImagePreview = useCallback(() => {
     setShowImagePreview(false);
@@ -737,7 +871,7 @@ export const PostCard = memo(function PostCard({
       setLoading(false);
       router.refresh();
     }
-  }, [post.id, router]);
+  }, [post.id, router, stateRefs]);
 
   // Funkcija za repostovanje
   const handleRepost = useCallback(async (e: React.MouseEvent<Element>) => {
@@ -781,37 +915,6 @@ export const PostCard = memo(function PostCard({
       setReposting(false);
     }
   }, [stateRefs.current.isAuthenticated, currentUser, onRepost, post.content, post.id, post.image_url, router]);
-
-  // Funkcija za objašnjavanje sadržaja
-  const handleExplain = useCallback(async () => {
-    setShowExplanation(true);
-    
-    if (explanation) return;
-    
-    setExplaining(true);
-    
-    try {
-      const response = await fetch('/api/explain', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: post.content.substring(0, 1000) })
-      });
-      
-      if (!response.ok) throw new Error('Failed to get explanation');
-      
-      const data = await response.json();
-      setExplanation(data.explanation);
-    } catch (error) {
-      console.error('Explanation error:', error);
-    } finally {
-      setExplaining(false);
-    }
-  }, [explanation, post.content]);
-
-  const handleExplainClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    void handleExplain();
-  }, [handleExplain]);
 
   // Funkcija za blokiranje korisnika
   const handleBlockUser = useCallback(async (e: React.MouseEvent) => {
@@ -1007,6 +1110,17 @@ export const PostCard = memo(function PostCard({
         )}
         role="button"
         tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (onPostClick) {
+              onPostClick(post.id);
+            } else {
+              router.push(`/post/${post.id}`);
+            }
+          }
+        }}
+        aria-label={`View post by ${post.display_name}`}
       >
         {isAd && (
           <div className="absolute -top-2 left-4 z-20">
@@ -1105,6 +1219,19 @@ export const PostCard = memo(function PostCard({
                     </Badge>
                   )}
                   
+                  {/* VIEW POST BUTTON - desktop */}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleViewPostClick}
+                    className="hidden sm:flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 border-blue-200 dark:border-blue-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 group/view hover:shadow-md hover:shadow-blue-500/20 dark:hover:shadow-blue-500/10"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 group-hover/view:translate-x-0.5 transition-transform" />
+                    <span className="text-xs font-medium text-blue-700 dark:text-blue-300 group-hover/view:text-blue-800 dark:group-hover/view:text-blue-200">
+                      View post
+                    </span>
+                  </Button>
+                  
                   {showFollowButton && stateRefs.current.isAuthenticated && currentUser && currentUser !== post.user_id && (
                     <div className="hidden sm:block" onClick={stopPropagation}>
                       <FollowButton
@@ -1202,22 +1329,68 @@ export const PostCard = memo(function PostCard({
                 {renderPostImage}
               </div>
 
-              {post.impressions && post.impressions > 0 && (
-                <div className="flex items-center gap-6 text-gray-500 dark:text-gray-400 text-sm mb-3">
-                  <div className="flex items-center gap-1.5 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+              {/* Stats bar - views, impressions, engagement */}
+              <div className="flex items-center gap-6 text-gray-500 dark:text-gray-400 text-sm mb-3">
+                {/* Views counter */}
+                <div className="flex items-center gap-1.5 hover:text-gray-700 dark:hover:text-gray-300 transition-colors group/views">
+                  {trackingView ? (
+                    <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+                  ) : (
                     <Eye className="h-4 w-4" />
-                    <span>{post.impressions.toLocaleString()}</span>
-                  </div>
-                  {post.likes_count > 0 && (
-                    <div className="flex items-center gap-1.5 hover:text-red-500 transition-colors">
-                      <TrendingUp className="h-4 w-4" />
-                      <span>{(post.likes_count / post.impressions * 100).toFixed(1)}% engagement</span>
-                    </div>
                   )}
+                  <span className="font-medium">
+                    {formatViews(viewsCountUI)}
+                  </span>
+                  <span className="text-xs opacity-75 group-hover/views:opacity-100 transition-opacity">
+                    views
+                  </span>
                 </div>
-              )}
+                
+                {/* Impressions (ako već postoji) */}
+                {post.impressions && post.impressions > 0 && (
+                  <div className="flex items-center gap-1.5 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+                    <BarChart3 className="h-4 w-4" />
+                    <span>{formatViews(post.impressions)}</span>
+                    <span className="text-xs opacity-75">impressions</span>
+                  </div>
+                )}
+                
+                {/* Engagement rate */}
+                {viewsCountUI > 0 && post.likes_count > 0 && (
+                  <div className="flex items-center gap-1.5 hover:text-green-500 transition-colors">
+                    <TrendingUp className="h-4 w-4" />
+                    <span>{((post.likes_count / viewsCountUI) * 100).toFixed(1)}%</span>
+                    <span className="text-xs opacity-75">engagement</span>
+                  </div>
+                )}
+              </div>
 
+              {/* Action buttons - VIEWS PRVI ODAVDE */}
               <div className="flex items-center justify-between max-w-md -ml-2">
+                {/* Views Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={cn(
+                    "group h-10 px-3 hover:bg-gray-50 dark:hover:bg-gray-900/20 text-gray-600 dark:text-gray-400",
+                    "hover:text-gray-700 dark:hover:text-gray-300 rounded-full"
+                  )}
+                  onClick={handleShowViews}
+                  title={`${viewsCountUI.toLocaleString()} views`}
+                >
+                  <div className="flex items-center gap-2">
+                    {trackingView ? (
+                      <Loader2 className="h-5 w-5 animate-spin text-blue-500" />
+                    ) : (
+                      <Eye className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                    )}
+                    <span className="text-sm group-hover:text-gray-700 dark:group-hover:text-gray-300">
+                      {formatViews(viewsCountUI)}
+                    </span>
+                  </div>
+                </Button>
+
+                {/* Comment Button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1229,13 +1402,14 @@ export const PostCard = memo(function PostCard({
                   title="Reply"
                 >
                   <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform mr-2" />
-                  {post.comments_count > 0 && (
+                  {(post.comments_count ?? 0) > 0 && (
                     <span className="text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                      {post.comments_count}
+                      {post.comments_count ?? 0}
                     </span>
                   )}
                 </Button>
 
+                {/* Repost Button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1254,6 +1428,7 @@ export const PostCard = memo(function PostCard({
                   {reposting ? 'Reposting' : 'Repost'}
                 </Button>
 
+                {/* Like Button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1287,6 +1462,7 @@ export const PostCard = memo(function PostCard({
                   )}
                 </Button>
 
+                {/* Share Button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1300,19 +1476,20 @@ export const PostCard = memo(function PostCard({
                   <Share className="h-5 w-5 group-hover:scale-110 transition-transform mr-2" />
                   Share
                 </Button>
+              </div>
 
+              {/* VIEW POST BUTTON - mobile */}
+              <div className="sm:hidden mt-4 flex justify-end">
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="sm"
-                  className={cn(
-                    "group h-10 px-3 hover:bg-purple-50 dark:hover:bg-purple-900/20 text-gray-600 dark:text-gray-400",
-                    "hover:text-purple-600 dark:hover:text-purple-400 rounded-full"
-                  )}
-                  onClick={handleExplainClick}
-                  title="Explain with AI"
+                  onClick={handleViewPostClick}
+                  className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-800/30 dark:hover:to-purple-800/30 border-blue-200 dark:border-blue-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 group/view-mobile"
                 >
-                  <Sparkles className="h-5 w-5 group-hover:scale-110 transition-transform mr-2" />
-                  AI
+                  <ExternalLink className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 group-hover/view-mobile:scale-110 transition-transform" />
+                  <span className="text-xs font-medium text-blue-700 dark:text-blue-300">
+                    View post
+                  </span>
                 </Button>
               </div>
 
@@ -1336,6 +1513,9 @@ export const PostCard = memo(function PostCard({
                     <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
                       <AlertCircle className="h-3 w-3" />
                       <span className="font-medium">Paid Content • Sponsored</span>
+                    </div>
+                    <div className="text-red-500/70 dark:text-red-400/70">
+                      {viewsCountUI > 0 && `${viewsCountUI.toLocaleString()} views`}
                     </div>
                   </div>
                 </div>
@@ -1423,11 +1603,13 @@ export const PostCard = memo(function PostCard({
     prevProps.post.id === nextProps.post.id &&
     prevProps.post.likes_count === nextProps.post.likes_count &&
     prevProps.post.comments_count === nextProps.post.comments_count &&
+    prevProps.post.views_count === nextProps.post.views_count &&
     prevProps.post.user_has_liked === nextProps.post.user_has_liked &&
     prevProps.isCurrentUserFollowing === nextProps.isCurrentUserFollowing &&
     prevProps.showFollowButton === nextProps.showFollowButton &&
     prevProps.compact === nextProps.compact &&
     prevProps.variant === nextProps.variant &&
-    prevProps.hideAdBadges === nextProps.hideAdBadges
+    prevProps.hideAdBadges === nextProps.hideAdBadges &&
+    prevProps.onPostClick === nextProps.onPostClick
   );
 });

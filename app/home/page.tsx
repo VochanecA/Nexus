@@ -87,7 +87,7 @@ import { FeedEngine } from "@/lib/feed-engine/engine";
 // Import cache functions
 import { invalidateCache } from '@/lib/cache';
 
-// Import ThemeSwitcher - DODAJTE OVAJ IMPORT
+// Import ThemeSwitcher
 import { ThemeSwitcher } from "@/components/theme-switcher";
 
 interface Profile {
@@ -133,9 +133,10 @@ interface ValidationError {
   message: string;
 }
 
+
 const feedEngine = new FeedEngine();
 
-// Helper functions (ostaju iste)
+// Helper functions
 const detectAIContent = (content: string): boolean => {
   const aiIndicators = [
     /as an ai language model/gi,
@@ -271,7 +272,6 @@ export default function HomePage(): React.JSX.Element {
 
   const supabase = createClient();
 
-  // Helper functions ostaju iste
   const fetchUserData = useCallback(async (): Promise<void> => {
     try {
       setIsLoading(true);
@@ -852,7 +852,7 @@ export default function HomePage(): React.JSX.Element {
                       Trending
                     </Button>
                   </Link>
-                  {/* Theme Switcher in Mobile Menu - DODANO */}
+                  {/* Theme Switcher in Mobile Menu */}
                   <div className="pt-4 border-t">
                     <div className="mb-4">
                       <div className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-2">
@@ -899,18 +899,7 @@ export default function HomePage(): React.JSX.Element {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            {/* Search - desktop only */}
-            {/* <div className="hidden sm:block">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  placeholder="Search Nexus"
-                  className="w-48 pl-9"
-                />
-              </div>
-            </div> */}
-
-            {/* Theme Switcher - Desktop - DODANO */}
+            {/* Theme Switcher - Desktop */}
             <ThemeSwitcher variant="icon" size="sm" />
 
             <div className="flex items-center gap-2">
@@ -1028,7 +1017,7 @@ export default function HomePage(): React.JSX.Element {
                 </div>
               </div>
 
-              {/* Theme Section - DODANO */}
+              {/* Theme Section */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-muted-foreground">APPEARANCE</h3>
@@ -1183,19 +1172,19 @@ export default function HomePage(): React.JSX.Element {
               />
             ) : feedTab === 'following' ? (
               <Feed
-                userId={user?.id}
-                followingUserIds={followingUserIds}
-                isAuthenticated={isAuthenticated}
+                currentUserId={user?.id}
                 showFollowButton={showFollowButtons}
                 onFollowChange={handleFollowChange}
+                filter="following"
+                showTabs={false}
               />
             ) : (
               <Feed
-                userId={user?.id}
-                followingUserIds={[]}
-                isAuthenticated={isAuthenticated}
+                currentUserId={user?.id}
                 showFollowButton={showFollowButtons}
                 onFollowChange={handleFollowChange}
+                filter="all"
+                showTabs={false}
               />
             )}
 
@@ -1619,7 +1608,7 @@ export default function HomePage(): React.JSX.Element {
   );
 }
 
-// Followers Modal Component ostaje isti
+// Followers Modal Component
 interface FollowerProfile {
   id: string;
   username: string;

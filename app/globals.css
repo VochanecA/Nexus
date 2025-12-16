@@ -124,6 +124,22 @@
     @apply bg-background text-foreground;
   }
 }
+.clickable-area * {
+  pointer-events: none;
+}
+
+.clickable-area {
+  pointer-events: auto;
+  cursor: pointer;
+}
+/* U vašem globalnom CSS-u ili Tailwind konfiguraciji */
+.post-card-hover:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark .post-card-hover:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
 
 /* Dodajte ove stilove u vaš CSS ako želite hover efekat */
 .like-count-hover {

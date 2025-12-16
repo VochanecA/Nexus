@@ -41,16 +41,21 @@ export default async function PostPage({ params }: PostPageProps) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (!user) {
-    redirect("/login")
-  }
+  // Omogućite gostima da vide postove - UKLONI ili ZAKOMENTARIŠI redirect
+  // if (!user) {
+  //   redirect("/login")
+  // }
 
-  // Get current user's profile
-  const { data: currentUserProfile } = await supabase
-    .from("profiles")
-    .select("username, display_name, avatar_url")
-    .eq("id", user.id)
-    .maybeSingle()
+  // Get current user's profile (samo ako je user autentifikovan)
+  let currentUserProfile = null
+  if (user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("username, display_name, avatar_url")
+      .eq("id", user.id)
+      .maybeSingle()
+    currentUserProfile = profile
+  }
 
   // Get the post with profile info
   const { data: post } = await supabase
@@ -86,21 +91,27 @@ export default async function PostPage({ params }: PostPageProps) {
     .select("*", { count: "exact", head: true })
     .eq("post_id", id)
 
-  // Check if user liked the post
-  const { data: like } = await supabase
-    .from("likes")
-    .select("id")
-    .eq("post_id", id)
-    .eq("user_id", user.id)
-    .maybeSingle()
-
-  // Check if user saved the post
-  const { data: saved } = await supabase
-    .from("saves")
-    .select("id")
-    .eq("post_id", id)
-    .eq("user_id", user.id)
-    .maybeSingle()
+  // Check if user liked the post (samo ako je user autentifikovan)
+  let like = null
+  let saved = null
+  if (user) {
+    const [{ data: likeData }, { data: savedData }] = await Promise.all([
+      supabase
+        .from("likes")
+        .select("id")
+        .eq("post_id", id)
+        .eq("user_id", user.id)
+        .maybeSingle(),
+      supabase
+        .from("saves")
+        .select("id")
+        .eq("post_id", id)
+        .eq("user_id", user.id)
+        .maybeSingle()
+    ])
+    like = likeData
+    saved = savedData
+  }
 
   // Format post data
   const postData = {
@@ -146,6 +157,65 @@ export default async function PostPage({ params }: PostPageProps) {
     locale: srLatn,
   })
 
+  // Render CreateComment samo ako je korisnik ulogovan
+  const renderCreateComment = () => {
+    if (!user) {
+      return (
+        <div className="p-4 lg:p-6 border-b border-gray-200 dark:border-gray-800">
+          <div className="text-center py-4">
+            <p className="text-muted-foreground mb-3">
+              Prijavite se da biste ostavili komentar
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center">
+              <Button asChild variant="outline" className="rounded-full">
+                <Link href="/login">Prijavi se</Link>
+              </Button>
+              <Button asChild className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
+                <Link href="/signup">Registruj se</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div className="p-4 lg:p-6 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-start gap-3">
+          {/* Current User Avatar */}
+          <Avatar className="h-10 w-10 flex-shrink-0">
+            <AvatarImage 
+              src={currentUserProfile?.avatar_url || undefined} 
+              alt={currentUserProfile?.display_name || currentUserProfile?.username}
+            />
+            <AvatarFallback>
+              {(currentUserProfile?.display_name?.[0] || currentUserProfile?.username?.[0])?.toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          
+          {/* Reply Form */}
+          <div className="flex-1">
+            <div className="mb-2">
+              <span className="text-sm font-medium">
+                Odgovara se na <span className="text-blue-500">@{postData.username}</span>
+              </span>
+            </div>
+            <CreateComment postId={id} />
+            <div className="mt-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Globe className="h-4 w-4" />
+                </Button>
+                <span className="text-xs text-muted-foreground">Svi mogu da odgovore</span>
+              </div>
+              <Button size="sm" className="rounded-full px-4">Objavi</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Mobile Header - BlueSky Style */}
@@ -159,15 +229,15 @@ export default async function PostPage({ params }: PostPageProps) {
               showText={false}
             />
             <div className="flex flex-col">
-              <h1 className="text-lg font-semibold leading-none">Post</h1>
-              <span className="text-xs text-muted-foreground">{postData.comments_count} comments</span>
+              <h1 className="text-lg font-semibold leading-none">Objava</h1>
+              <span className="text-xs text-muted-foreground">{postData.comments_count} komentara</span>
             </div>
           </div>
 
           <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
             <Link href="/">
               <HomeIcon className="h-5 w-5" />
-              <span className="sr-only">Home</span>
+              <span className="sr-only">Početna</span>
             </Link>
           </Button>
         </div>
@@ -184,8 +254,8 @@ export default async function PostPage({ params }: PostPageProps) {
               showText={false}
             />
             <div className="flex-1">
-              <h1 className="text-xl font-bold">Post</h1>
-              <p className="text-sm text-muted-foreground">{postData.comments_count} comments</p>
+              <h1 className="text-xl font-bold">Objava</h1>
+              <p className="text-sm text-muted-foreground">{postData.comments_count} komentara</p>
             </div>
             <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
               <Link href="/">
@@ -231,15 +301,14 @@ export default async function PostPage({ params }: PostPageProps) {
                       {postData.is_public ? (
                         <>
                           <Globe className="h-3 w-3" />
-                          <span>Everybody can reply</span>
+                          <span>Svi mogu da odgovore</span>
                         </>
                       ) : (
                         <>
-                          {/* Fallback ako Lock ne radi */}
                           <div className="h-3 w-3 flex items-center justify-center">
                             <Lock className="h-3 w-3" />
                           </div>
-                          <span>Limited replies</span>
+                          <span>Ograničeni odgovori</span>
                         </>
                       )}
                     </div>
@@ -263,7 +332,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="mt-4 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800">
                   <img
                     src={postData.image_url}
-                    alt="Post image"
+                    alt="Slika objave"
                     className="w-full h-auto object-cover"
                     loading="lazy"
                   />
@@ -280,23 +349,23 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="flex items-center gap-6 mb-4 text-sm border-t border-b border-gray-200 dark:border-gray-800 py-3">
               <div className="flex items-center gap-1">
                 <span className="font-semibold">{postData.reposts_count}</span>
-                <span className="text-muted-foreground">Reposts</span>
+                <span className="text-muted-foreground">Reposta</span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="font-semibold">{postData.comments_count}</span>
-                <span className="text-muted-foreground">Comments</span>
+                <span className="text-muted-foreground">Komentara</span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="font-semibold">{postData.likes_count}</span>
-                <span className="text-muted-foreground">Likes</span>
+                <span className="text-muted-foreground">Lajkova</span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="font-semibold">0</span>
-                <span className="text-muted-foreground">Quotes</span>
+                <span className="text-muted-foreground">Citata</span>
               </div>
               <div className="flex items-center gap-1">
-                <span className="font-semibold">59</span>
-                <span className="text-muted-foreground">Saves</span>
+                <span className="font-semibold">0</span>
+                <span className="text-muted-foreground">Sačuvanja</span>
               </div>
             </div>
 
@@ -328,46 +397,14 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           </div>
 
-          {/* Reply Section - BlueSky Style */}
-          <div className="p-4 lg:p-6 border-b border-gray-200 dark:border-gray-800">
-            <div className="flex items-start gap-3">
-              {/* Current User Avatar */}
-              <Avatar className="h-10 w-10 flex-shrink-0">
-                <AvatarImage 
-                  src={currentUserProfile?.avatar_url || undefined} 
-                  alt={currentUserProfile?.display_name || currentUserProfile?.username}
-                />
-                <AvatarFallback>
-                  {(currentUserProfile?.display_name?.[0] || currentUserProfile?.username?.[0])?.toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-              
-              {/* Reply Form */}
-              <div className="flex-1">
-                <div className="mb-2">
-                  <span className="text-sm font-medium">
-                    Replying to <span className="text-blue-500">@{postData.username}</span>
-                  </span>
-                </div>
-                <CreateComment postId={id} />
-                <div className="mt-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8">
-                      <Globe className="h-4 w-4" />
-                    </Button>
-                    <span className="text-xs text-muted-foreground">Everybody can reply</span>
-                  </div>
-                  <Button size="sm" className="rounded-full px-4">Post</Button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Reply Section - Render conditionally based on auth */}
+          {renderCreateComment()}
 
           {/* Comments List - BlueSky Style */}
           <div>
             <div className="p-4 lg:p-6 border-b border-gray-200 dark:border-gray-800">
               <h3 className="text-lg font-semibold">
-                Comments ({postData.comments_count})
+                Komentari ({postData.comments_count})
               </h3>
             </div>
             <CommentsList postId={id} />

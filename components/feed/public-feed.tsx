@@ -84,7 +84,8 @@ interface PostProvenance {
   };
 }
 
-interface Post {
+// components/post/post-card.tsx
+export interface Post {
   id: string;
   content: string;
   image_url: string | null;
@@ -95,17 +96,18 @@ interface Post {
   avatar_url: string | null;
   likes_count: number;
   comments_count: number;
+  views_count: number; // ← DODAJTE OVO
   user_has_liked: boolean;
   is_public?: boolean;
   impressions?: number;
   content_hash?: string;
   signature?: string;
-  provenance?: PostProvenance; // <-- KORISTITE KOMPLETAN TIP
+  provenance?: PostProvenance;
   image_width?: number;
   image_height?: number;
   image_aspect_ratio?: number;
+  is_ad?: boolean;
 }
-
 // Ostali tipovi ostaju isti...
 interface EnhancedPost extends Post {
   engagement_score: number;
@@ -372,91 +374,112 @@ export default function PublicFeed() {
     }
   }, [lastUpdate]);
 
-  const fetchPosts = useCallback(async () => {
-    const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
-    if (postsCacheRef.current.length > 0 && lastUpdate > twoMinutesAgo) {
-      const sorted = sortPosts(postsCacheRef.current, sortAlgorithm);
-      setActivePosts(sorted);
+const fetchPosts = useCallback(async () => {
+  const twoMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
+  if (postsCacheRef.current.length > 0 && lastUpdate > twoMinutesAgo) {
+    const sorted = sortPosts(postsCacheRef.current, sortAlgorithm);
+    setActivePosts(sorted);
+    setLoading(false);
+    return;
+  }
+
+  setRefreshing(true);
+  setError(null);
+  const supabase = createClient();
+
+  try {
+    console.log('🚀 Public feed: Optimizovani dohvat sa subquery-ima...');
+
+    // DODAJ views_count u SELECT query
+    const { data: postsData, error: fetchError } = await supabase
+      .from("posts")
+      .select(`
+        *,
+        profiles!posts_user_id_fkey (
+          username,
+          display_name,
+          avatar_url
+        ),
+        likes:likes(count),
+        comments:comments(count)
+      `)
+      .order("created_at", { ascending: false })
+      .limit(30);
+
+    if (fetchError) throw fetchError;
+
+    if (!postsData || postsData.length === 0) {
+      setPosts([]);
+      setActivePosts([]);
       setLoading(false);
       return;
     }
 
-    setRefreshing(true);
-    setError(null);
-    const supabase = createClient();
+    // Formatiranje postova
+    const formattedPosts: Post[] = postsData.map(post => {
+      const likesCount = Array.isArray(post.likes) && post.likes[0] 
+        ? post.likes[0].count 
+        : 0;
+      
+      const commentsCount = Array.isArray(post.comments) && post.comments[0]
+        ? post.comments[0].count
+        : 0;
 
-    try {
-      const { data: postsWithProfiles, error: fetchError } = await supabase
-        .from("posts")
-        .select(`
-          *,
-          profiles!posts_user_id_fkey (
-            username,
-            display_name,
-            avatar_url
-          )
-        `)
-        .order("created_at", { ascending: false })
-        .limit(30);
-
-      if (fetchError) throw fetchError;
-
-      if (!postsWithProfiles || postsWithProfiles.length === 0) {
-        setPosts([]);
-        setActivePosts([]);
-        setLoading(false);
-        return;
-      }
-
-      // Format posts with counts
-      const postIds = postsWithProfiles.map(p => p.id);
-      const [{ data: likesData }, { data: commentsData }] = await Promise.all([
-        supabase.from("likes").select("post_id").in("post_id", postIds),
-        supabase.from("comments").select("post_id").in("post_id", postIds)
-      ]);
-
-      const likesMap = (likesData || []).reduce((acc: Record<string, number>, like) => {
-        acc[like.post_id] = (acc[like.post_id] || 0) + 1;
-        return acc;
-      }, {});
-
-      const commentsMap = (commentsData || []).reduce((acc: Record<string, number>, comment) => {
-        acc[comment.post_id] = (acc[comment.post_id] || 0) + 1;
-        return acc;
-      }, {});
-
-      const formattedPosts = postsWithProfiles.map(post => ({
+      return {
         id: post.id,
-        content: post.content,
+        content: post.content || '',
         image_url: normalizeImageUrl(post.image_url),
         created_at: post.created_at,
         user_id: post.user_id,
         username: post.profiles?.username || "anonymous",
         display_name: post.profiles?.display_name || "Anonymous User",
         avatar_url: normalizeImageUrl(post.profiles?.avatar_url),
-        likes_count: likesMap[post.id] || 0,
-        comments_count: commentsMap[post.id] || 0,
+        likes_count: likesCount,
+        comments_count: commentsCount,
+        // DODAJTE views_count OVDE
+        views_count: post.views_count || 0,
         user_has_liked: false,
-        impressions: Math.floor(Math.random() * 1000) + 100, // Mock data za sada
-        provenance: post.provenance || undefined
-      }));
+        impressions: post.views_count || Math.floor(Math.random() * 1000) + 100,
+        provenance: post.provenance || undefined,
+        content_hash: post.content_hash,
+        signature: post.signature,
+        image_width: post.image_width,
+        image_height: post.image_height,
+        image_aspect_ratio: post.image_aspect_ratio,
+        is_public: post.is_public !== false
+      };
+    });
 
-      setPosts(formattedPosts);
-      postsCacheRef.current = formattedPosts;
-      
-      const sorted = sortPosts(formattedPosts, sortAlgorithm);
+    console.log('📈 Public feed - Podaci sa views_count:', {
+      ukupnoPostova: formattedPosts.length,
+      ukupnoLajkova: formattedPosts.reduce((sum, post) => sum + post.likes_count, 0),
+      ukupnoKomentara: formattedPosts.reduce((sum, post) => sum + post.comments_count, 0),
+      ukupnoPregleda: formattedPosts.reduce((sum, post) => sum + (post.views_count || 0), 0)
+    });
+
+    setPosts(formattedPosts);
+    postsCacheRef.current = formattedPosts;
+    
+    const sorted = sortPosts(formattedPosts, sortAlgorithm);
+    setActivePosts(sorted);
+    setLastUpdate(new Date());
+
+    console.log('✅ Public feed: Dohvat sa views_count uspešan');
+
+  } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
+    console.error('❌ Public feed - Greška:', err);
+    setError(errorMessage);
+    
+    if (postsCacheRef.current.length > 0) {
+      const sorted = sortPosts(postsCacheRef.current, sortAlgorithm);
       setActivePosts(sorted);
-      setLastUpdate(new Date());
-
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Unknown error";
-      setError(errorMessage);
-      console.error("Error fetching posts:", err);
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
     }
-  }, [sortAlgorithm, lastUpdate]);
+  } finally {
+    setLoading(false);
+    setRefreshing(false);
+  }
+}, [sortAlgorithm, lastUpdate]);
 
   // ============ EVENT HANDLERS ============
 
