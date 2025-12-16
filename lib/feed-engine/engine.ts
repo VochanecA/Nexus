@@ -153,7 +153,150 @@ export class FeedEngine {
     
     return { error };
   }
-  
+  // Create new algorithm
+  async createAlgorithm(userId: string, algorithmData: any) {
+    const { data, error } = await this.supabase
+      .from('feed_algorithms')
+      .insert({
+        ...algorithmData,
+        author_id: userId,
+        is_official: false,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    
+    // Auto-install for creator
+    await this.installAlgorithm(userId, data.id);
+    
+    return data;
+  }
+
+  // Update existing algorithm
+  async updateAlgorithm(userId: string, algorithmId: string, updates: any) {
+    // Check ownership
+    const { data: existing } = await this.supabase
+      .from('feed_algorithms')
+      .select('author_id')
+      .eq('id', algorithmId)
+      .single();
+
+    if (!existing || existing.author_id !== userId) {
+      throw new Error('Not authorized to update this algorithm');
+    }
+
+    const { data, error } = await this.supabase
+      .from('feed_algorithms')
+      .update({
+        ...updates,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', algorithmId)
+      .select()
+      .single();
+
+    if (error) throw error;
+    
+    // Create revision
+    await this.createRevision(algorithmId, data, userId);
+    
+    return data;
+  }
+
+  // Create revision history
+  async createRevision(algorithmId: string, config: any, userId: string) {
+    // Get current version
+    const { data: algorithm } = await this.supabase
+      .from('feed_algorithms')
+      .select('version')
+      .eq('id', algorithmId)
+      .single();
+
+    const { error } = await this.supabase
+      .from('algorithm_revisions')
+      .insert({
+        algorithm_id: algorithmId,
+        version: algorithm?.version || '1.0.0',
+        config_snapshot: config,
+        changelog: 'Algorithm updated',
+        created_by: userId,
+        created_at: new Date().toISOString()
+      });
+
+    if (error) console.error('Error creating revision:', error);
+  }
+
+  // Delete algorithm
+  async deleteAlgorithm(userId: string, algorithmId: string) {
+    // Check ownership
+    const { data: existing } = await this.supabase
+      .from('feed_algorithms')
+      .select('author_id, is_official')
+      .eq('id', algorithmId)
+      .single();
+
+    if (!existing || existing.author_id !== userId) {
+      throw new Error('Not authorized to delete this algorithm');
+    }
+
+    if (existing.is_official) {
+      throw new Error('Cannot delete official algorithms');
+    }
+
+    // First, uninstall from all users
+    await this.supabase
+      .from('user_feed_algorithms')
+      .delete()
+      .eq('algorithm_id', algorithmId);
+
+    // Delete algorithm
+    const { error } = await this.supabase
+      .from('feed_algorithms')
+      .delete()
+      .eq('id', algorithmId);
+
+    if (error) throw error;
+    
+    return { success: true };
+  }
+
+  // Get algorithm by slug
+  async getAlgorithmBySlug(slug: string, userId?: string) {
+    const { data: algorithm, error } = await this.supabase
+      .from('feed_algorithms')
+      .select(`
+        *,
+        author:profiles!feed_algorithms_author_id_fkey (
+          id,
+          username,
+          display_name,
+          avatar_url
+        ),
+        categories:feed_algorithm_categories_relations (
+          category:feed_algorithm_categories (
+            id,
+            name,
+            slug,
+            icon
+          )
+        )
+      `)
+      .eq('slug', slug)
+      .single();
+
+    if (error) throw error;
+
+    // Check visibility
+    if (!algorithm.is_public && (!userId || userId !== algorithm.author_id)) {
+      throw new Error('Algorithm is private');
+    }
+
+    return algorithm;
+  }
+
   // Rate algorithm
   async rateAlgorithm(userId: string, algorithmId: string, rating: number) {
     // Note: This is a simplified version. In production, you'd want a separate ratings table.
@@ -169,3 +312,4 @@ export class FeedEngine {
     return { error };
   }
 }
+

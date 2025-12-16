@@ -1,8 +1,7 @@
-// components/post/post-card.tsx - MODERNI KOMBINOVANI STIL (Twitter + BlueSky + Extra)
+// components/post/post-card.tsx - ULTRA OPTIMIZOVANA VERZIJA
 "use client";
 
-import type React from "react";
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef, memo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,7 +33,9 @@ import {
   Eye,
   Clock,
   TrendingUp,
-  DollarSign
+  DollarSign,
+  Ban,
+  ShieldCheck
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
@@ -61,7 +62,8 @@ import { Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-// Type definitions
+// ============ TYPE DEFINITIONS ============
+
 interface PostProvenance {
   version: string;
   authorId: string;
@@ -122,15 +124,11 @@ interface PostCardProps {
   compact?: boolean;
   onRepost?: (postId: string) => Promise<void>;
   variant?: 'default' | 'elevated' | 'minimal';
-  hideAdBadges?: boolean; // NOVI PROP: da li sakriti AD badge-ove
+  hideAdBadges?: boolean;
+  onUserBlocked?: (blockedUserId: string) => void;
 }
 
-interface ProvenanceBadgeProps {
-  provenance?: PostProvenance;
-  postId: string;
-}
-
-// ============ IMAGE HELPER FUNCTIONS ============
+// ============ HELPER FUNCTIONS (MEMOIZED) ============
 
 const normalizeImageUrl = (url: string | null | undefined): string | null => {
   if (url === undefined || url === null) return null;
@@ -142,34 +140,28 @@ const normalizeImageUrl = (url: string | null | undefined): string | null => {
 const getImageUrl = (url: string | null): string | null => {
   const normalizedUrl = normalizeImageUrl(url);
   
-  if (!normalizedUrl) {
-    return null;
-  }
-
-  // Ako je već puni URL
+  if (!normalizedUrl) return null;
+  
   if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
     return normalizedUrl;
   }
-
-  // Ako je relativni path
+  
   if (normalizedUrl.startsWith('/')) {
     const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
     return baseUrl + normalizedUrl;
   }
-
-  // Ako je Supabase storage path
+  
   if (normalizedUrl.includes('/') && !normalizedUrl.includes('http')) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (supabaseUrl) {
       return `${supabaseUrl}/storage/v1/object/public/${normalizedUrl}`;
     }
   }
-
-  // DEVELOPMENT: Za test, vrati placeholder
+  
   if (process.env.NODE_ENV === 'development') {
     return `https://picsum.photos/800/600?random=${Math.random()}`;
   }
-
+  
   return normalizedUrl;
 };
 
@@ -184,35 +176,88 @@ const getOptimizedImageUrl = (url: string | null, options?: {
 
   const { width = 800, height = 600, quality = 85, format = 'webp' } = options || {};
   
-  // Ako je Supabase, dodaj query params za optimizaciju
   if (imageUrl.includes('supabase.co')) {
     return `${imageUrl}?width=${width}&height=${height}&quality=${quality}&format=${format}`;
   }
   
-  // Ako je Cloudinary ili drugi servis, možete dodati logiku
   return imageUrl;
 };
 
-// ============ PROVENANCE BADGE COMPONENT ============
+const isValidDate = (date: unknown): boolean => {
+  if (!date) return false;
+  const d = new Date(date as string);
+  return d instanceof Date && !isNaN(d.getTime());
+};
 
-function ProvenanceBadge({ provenance, postId }: ProvenanceBadgeProps): React.JSX.Element {
-  const verifyProvenance = useCallback((): 'verified' | 'unverified' | 'unknown' => {
-    if (!provenance) return 'unknown';
+const safeFormatDistanceToNow = (dateString: string): string => {
+  try {
+    if (!dateString) return 'Invalid date';
     
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return 'Invalid date';
+    
+    return formatDistanceToNow(date, { addSuffix: true });
+  } catch (error) {
+    return 'Invalid date';
+  }
+};
+
+const safeFormatDateMobile = (dateString: string): string => {
+  try {
+    if (!isValidDate(dateString)) return 'N/A';
+    
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInHours = (now.getTime() - date.getTime()) / (1000 * 60 * 60);
+    
+    if (diffInHours < 1) {
+      const diffInMinutes = diffInHours * 60;
+      if (diffInMinutes < 1) return "now";
+      return `${Math.floor(diffInMinutes)}m`;
+    } else if (diffInHours < 24) {
+      return `${Math.floor(diffInHours)}h`;
+    } else if (diffInHours < 168) {
+      return `${Math.floor(diffInHours / 24)}d`;
+    } else {
+      return date.toLocaleDateString("en-US", { 
+        month: "short", 
+        day: "numeric" 
+      });
+    }
+  } catch {
+    return 'N/A';
+  }
+};
+
+const getInitials = (name: string): string => {
+  if (!name) return "??";
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+};
+
+// ============ PROVENANCE BADGE (MEMOIZED) ============
+
+const ProvenanceBadge = memo(function ProvenanceBadge({ 
+  provenance, 
+  postId 
+}: { provenance?: PostProvenance; postId: string }) {
+  const status = useMemo(() => {
+    if (!provenance) return 'unknown';
     const { signature } = provenance;
     
     if (signature?.startsWith('nexus-sig-') || signature?.startsWith('nexus-basic-')) {
       return 'verified';
     }
-    
     return 'unverified';
   }, [provenance]);
 
-  const status = verifyProvenance();
   const isAI = provenance?.metadata?.isAIGenerated;
   const isRepost = provenance?.metadata?.originalPostId;
   const isEdit = provenance?.metadata?.editOf;
-  const repostChainLength = provenance?.metadata?.repostChain?.length || 0;
 
   return (
     <div className="flex flex-wrap gap-1">
@@ -252,105 +297,36 @@ function ProvenanceBadge({ provenance, postId }: ProvenanceBadgeProps): React.JS
       )}
     </div>
   );
-}
+});
 
-// ============ HELPER FUNCTIONS ============
+// ============ IMAGE PREVIEW COMPONENT ============
 
-const detectAIContent = (content: string): boolean => {
-  const aiIndicators = [
-    /as an ai language model/gi,
-    /i am an ai/gi,
-    /i cannot.*because/gi,
-    /based on.*training data/gi,
-    /my knowledge cutoff/gi,
-    /i don[']?t have real-time/gi,
-    /as a language model/gi
-  ];
-  
-  let score = 0;
-  aiIndicators.forEach(pattern => {
-    if (pattern.test(content)) score++;
-  });
-  
-  const sentences = content.split(/[.!?]+/).filter(s => s.trim().length > 0);
-  const avgSentenceLength = content.length / Math.max(sentences.length, 1);
-  
-  if (sentences.length > 5 && avgSentenceLength > 50) {
-    score += 0.5;
-  }
-  
-  return score >= 1.5;
-};
-
-const generateContentHash = (content: string): string => {
-  let hash = 0;
-  for (let i = 0; i < content.length; i++) {
-    const char = content.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return `hash-${Math.abs(hash).toString(36)}`;
-};
-
-const getInitials = (name: string): string => {
-  if (!name) return "??";
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase()
-    .slice(0, 2);
-};
-
-const formatDateMobile = (dateString: string): string => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const diffInHours = (now.getTime() - date.getTime()) / (1000 * 60 * 60);
-  
-  if (diffInHours < 1) {
-    const diffInMinutes = diffInHours * 60;
-    if (diffInMinutes < 1) {
-      return "now";
-    }
-    return `${Math.floor(diffInMinutes)}m`;
-  } else if (diffInHours < 24) {
-    return `${Math.floor(diffInHours)}h`;
-  } else if (diffInHours < 168) {
-    return `${Math.floor(diffInHours / 24)}d`;
-  } else {
-    return date.toLocaleDateString("en-US", { 
-      month: "short", 
-      day: "numeric" 
-    });
-  }
-};
-
-// ============ IMAGE PREVIEW COMPONENT (Enhanced) ============
-
-interface ImagePreviewProps {
-  imageUrl: string;
-  alt: string;
+const ImagePreview = memo(function ImagePreview({ 
+  imageUrl, 
+  alt, 
+  onClose 
+}: { 
+  imageUrl: string; 
+  alt: string; 
   onClose: () => void;
-}
-
-function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.Element {
+}) {
   const [isOpen, setIsOpen] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleClose = (): void => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
     setTimeout(onClose, 300);
-  };
+  }, [onClose]);
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       handleClose();
     }
-  };
+  }, [handleClose]);
 
-  const handleDownload = async (): Promise<void> => {
+  const handleDownload = useCallback(async () => {
     setIsDownloading(true);
     try {
       const response = await fetch(imageUrl);
@@ -368,36 +344,32 @@ function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.
     } finally {
       setIsDownloading(false);
     }
-  };
+  }, [imageUrl]);
 
-  const handleCopyLink = async (): Promise<void> => {
+  const handleCopyLink = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(imageUrl);
     } catch (error) {
       console.error('Copy failed:', error);
     }
-  };
+  }, [imageUrl]);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') handleClose();
+    if (e.key === 'z' || e.key === 'Z') setIsZoomed(!isZoomed);
+  }, [handleClose, isZoomed]);
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') {
-        handleClose();
-      }
-      if (e.key === 'z' || e.key === 'Z') {
-        setIsZoomed(!isZoomed);
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [isZoomed]);
+  }, [handleKeyDown]);
 
-  if (!isOpen) return <></>;
+  if (!isOpen) return null;
 
   return (
     <div 
@@ -460,7 +432,6 @@ function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.
               <div className="text-center">
                 <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
                 <p className="text-white text-lg font-medium">Unable to load image</p>
-                <p className="text-white/70 text-sm mt-2 max-w-md">{alt}</p>
               </div>
             </div>
           ) : (
@@ -474,33 +445,18 @@ function ImagePreview({ imageUrl, alt, onClose }: ImagePreviewProps): React.JSX.
               sizes="100vw"
               priority
               onClick={() => setIsZoomed(!isZoomed)}
-              onError={() => {
-                console.error('Failed to load image in preview:', imageUrl);
-                setImageError(true);
-              }}
+              onError={() => setImageError(true)}
             />
           )}
-        </div>
-        
-        {/* Footer info */}
-        <div className="mt-4 text-center text-white/80 text-sm flex items-center justify-center gap-6">
-          <div className="flex items-center gap-2">
-            <Eye className="h-4 w-4" />
-            <span>Click to zoom • Press Z to toggle</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
-            <span>Press ESC to close</span>
-          </div>
         </div>
       </div>
     </div>
   );
-}
+});
 
 // ============ MAIN POSTCARD COMPONENT ============
 
-export function PostCard({ 
+export const PostCard = memo(function PostCard({ 
   post, 
   showFollowButton = false,
   currentUserId,
@@ -509,295 +465,153 @@ export function PostCard({
   compact = false,
   onRepost,
   variant = 'default',
-  hideAdBadges = false // NOVI PROP: default false
-}: PostCardProps): React.JSX.Element {
+  hideAdBadges = false,
+  onUserBlocked
+}: PostCardProps) {
   const router = useRouter();
-  const [liked, setLiked] = useState<boolean>(post.user_has_liked);
-  const [likesCount, setLikesCount] = useState<number>(post.likes_count);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [authUserId, setAuthUserId] = useState<string | null>(null);
-  const [showLikesDialog, setShowLikesDialog] = useState<boolean>(false);
-  const [reposting, setReposting] = useState<boolean>(false);
   
-  // AI Explanation states
-  const [showExplanation, setShowExplanation] = useState<boolean>(false);
-  const [explanation, setExplanation] = useState<string>("");
-  const [explaining, setExplaining] = useState<boolean>(false);
-  const [explanationError, setExplanationError] = useState<string>("");
+  // State refs za bolje performanse
+  const stateRefs = useRef({
+    liked: post.user_has_liked,
+    likesCount: post.likes_count,
+    isAuthenticated: false,
+    authUserId: null as string | null,
+    isBlocked: false
+  });
 
-  // Image states
-  const [showImagePreview, setShowImagePreview] = useState<boolean>(false);
-  const [imageLoadError, setImageLoadError] = useState<boolean>(false);
-  const [imageHovered, setImageHovered] = useState<boolean>(false);
+  // Regular state samo za UI updates
+  const [likedUI, setLikedUI] = useState(post.user_has_liked);
+  const [likesCountUI, setLikesCountUI] = useState(post.likes_count);
+  const [loading, setLoading] = useState(false);
+  const [showLikesDialog, setShowLikesDialog] = useState(false);
+  const [reposting, setReposting] = useState(false);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [explanation, setExplanation] = useState("");
+  const [explaining, setExplaining] = useState(false);
+  const [showImagePreview, setShowImagePreview] = useState(false);
+  const [imageLoadError, setImageLoadError] = useState(false);
+  const [imageHovered, setImageHovered] = useState(false);
+  const [blocking, setBlocking] = useState(false);
 
-  // ============ KORIŠĆENJE AD-DETECTOR UTIL-A ============
-  const adDetection = detectAdvertisement(post.content || '');
-  // Ako su AD badge-ovi sakriveni, ne prikazuj ništa
-  const isAd = !hideAdBadges && (post.is_ad || 
-               post.provenance?.metadata?.isAd || 
-               adDetection.isAd);
+  // Refs za optimizaciju
+  const postRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Memoizovane vrednosti
+  const adDetection = useMemo(() => detectAdvertisement(post.content || ''), [post.content]);
+  const isAd = useMemo(() => {
+    return !hideAdBadges && (post.is_ad || 
+             post.provenance?.metadata?.isAd || 
+             adDetection.isAd);
+  }, [hideAdBadges, post.is_ad, post.provenance?.metadata?.isAd, adDetection.isAd]);
+
+  const currentUser = useMemo(() => currentUserId || stateRefs.current.authUserId, [currentUserId]);
+  const isFollowing = useMemo(() => isCurrentUserFollowing || false, [isCurrentUserFollowing]);
+
+  const imageUrl = useMemo(() => getImageUrl(post.image_url), [post.image_url]);
+  const optimizedImageUrl = useMemo(() => 
+    getOptimizedImageUrl(post.image_url, { 
+      width: 800, 
+      height: 600, 
+      quality: 90,
+      format: 'webp'
+    }), [post.image_url]);
+
+  // Memoizovane funkcije za datum
+  const formattedDate = useMemo(() => safeFormatDistanceToNow(post.created_at), [post.created_at]);
+  const formattedDateMobile = useMemo(() => safeFormatDateMobile(post.created_at), [post.created_at]);
+
+  // Intersection Observer za lazy loading slike
+  useEffect(() => {
+    if (!imageRef.current || !optimizedImageUrl) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            if (img.src !== optimizedImageUrl) {
+              img.src = optimizedImageUrl;
+            }
+            observerRef.current?.unobserve(img);
+          }
+        });
+      },
+      { rootMargin: '200px' }
+    );
+
+    observerRef.current.observe(imageRef.current);
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [optimizedImageUrl]);
 
   // Check authentication and user's like status
   useEffect(() => {
-    const checkAuth = async (): Promise<void> => {
+    const checkAuthAndBlockStatus = async () => {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      setIsAuthenticated(!!user);
-      setAuthUserId(user?.id || null);
+      
+      stateRefs.current.isAuthenticated = !!user;
+      stateRefs.current.authUserId = user?.id || null;
       
       if (user) {
+        // Check if user liked the post
         const { data: like } = await supabase
           .from("likes")
           .select("id")
           .eq("post_id", post.id)
           .eq("user_id", user.id)
           .maybeSingle();
-        setLiked(!!like);
+        
+        stateRefs.current.liked = !!like;
+        setLikedUI(!!like);
+
+        // Check if user blocked the post author
+        if (post.user_id) {
+          const { data: block } = await supabase
+            .from("user_blocks")
+            .select("id")
+            .eq("blocker_id", user.id)
+            .eq("blocked_id", post.user_id)
+            .maybeSingle();
+          
+          stateRefs.current.isBlocked = !!block;
+        }
       }
     };
     
-    void checkAuth();
-  }, [post.id]);
+    void checkAuthAndBlockStatus();
+  }, [post.id, post.user_id]);
 
-  // Current user
-  const currentUser = currentUserId || authUserId;
-  const isFollowing = isCurrentUserFollowing || false;
+  // ============ MEMOIZOVANI EVENT HANDLERI ============
 
-  // ============ HANDLERS ============
-
-  const handleLike = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!isAuthenticated) {
-      router.push("/login");
-      return;
-    }
-
-    setLoading(true);
-    const supabase = createClient();
-
-    const { data: { user } } = await supabase.auth.getUser();
-
-    if (!user) {
-      router.push("/login");
-      return;
-    }
-
-    try {
-      if (liked) {
-        await supabase
-          .from("likes")
-          .delete()
-          .eq("post_id", post.id)
-          .eq("user_id", user.id);
-        setLiked(false);
-        setLikesCount((prev) => Math.max(0, prev - 1));
-      } else {
-        await supabase
-          .from("likes")
-          .insert({ 
-            post_id: post.id, 
-            user_id: user.id 
-          });
-        setLiked(true);
-        setLikesCount((prev) => prev + 1);
-      }
-    } catch (error) {
-      console.error("Error toggling like:", error);
-    } finally {
-      setLoading(false);
-      router.refresh();
-    }
-  };
-
-  const handleRepost = async (e: React.MouseEvent<Element>): Promise<void> => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (!isAuthenticated) {
-      router.push("/login");
-      return;
-    }
-
-    if (!currentUser) {
-      console.error('No current user found');
-      return;
-    }
-
-    setReposting(true);
-
-    try {
-      // Get repost chain
-      const repostChain = await getRepostChain(post.id);
-      
-      // Detect if content is AI generated
-      const isAIGenerated = detectAIContent(post.content);
-      
-      // Create provenance for repost
-      const provenance = {
-        version: '1.0',
-        authorId: currentUser,
-        timestamp: new Date().toISOString(),
-        contentHash: generateContentHash(`REPOST: ${post.content}`),
-        metadata: {
-          isAIGenerated,
-          originalPostId: post.id,
-          repostChain: [post.id, ...repostChain].slice(0, 10),
-          platform: 'nexus',
-          algorithm: 'SHA-256',
-          characterCount: post.content.length,
-          wordCount: post.content.split(/\s+/).length,
-          hasLinks: /(https?:\/\/[^\s]+)/g.test(post.content),
-          hasHashtags: /#(\w+)/g.test(post.content),
-          client: 'web'
-        },
-        signature: `nexus-repost-${currentUser.substring(0, 8)}-${Date.now().toString(36)}`,
-        verification: {
-          selfSigned: true,
-          timestamped: true,
-          hashChain: true
-        }
-      };
-
-      const supabase = createClient();
-      const { error } = await supabase
-        .from("posts")
-        .insert({
-          user_id: currentUser,
-          content: post.content,
-          content_hash: provenance.contentHash,
-          signature: provenance.signature,
-          provenance: provenance,
-          is_repost: true,
-          original_post_id: post.id,
-          image_url: post.image_url
-        });
-
-      if (error) {
-        throw new Error(error.message);
-      }
-
-      if (onRepost) {
-        await onRepost(post.id);
-      }
-
-      router.refresh();
-      
-    } catch (error) {
-      console.error("Error reposting:", error);
-    } finally {
-      setReposting(false);
-    }
-  };
-
-  const getRepostChain = async (postId: string): Promise<string[]> => {
-    const supabase = createClient();
-    const chain: string[] = [];
-    
-    let current = postId;
-    let iterations = 0;
-    
-    while (iterations < 10) {
-      try {
-        const { data } = await supabase
-          .from('posts')
-          .select('provenance')
-          .eq('id', current)
-          .single();
-        
-        if (!data?.provenance?.metadata?.originalPostId) break;
-        
-        chain.push(data.provenance.metadata.originalPostId);
-        current = data.provenance.metadata.originalPostId;
-      } catch {
-        break;
-      }
-      iterations++;
-    }
-    
-    return chain;
-  };
-
-  const handleExplain = async (): Promise<void> => {
-    setShowExplanation(true);
-    
-    if (explanation) return;
-    
-    setExplaining(true);
-    setExplanationError("");
-    
-    try {
-      const response = await fetch('/api/explain', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: post.content.substring(0, 1000) })
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to get explanation');
-      }
-      
-      const data = await response.json();
-      setExplanation(data.explanation);
-    } catch (error) {
-      console.error('Explanation error:', error);
-      setExplanationError('Failed to generate explanation. Please try again.');
-    } finally {
-      setExplaining(false);
-    }
-  };
-
-  const handleExplainClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
-    e.stopPropagation();
-    void handleExplain();
-  };
-
-  const handleFollowStatusChange = (isFollowing: boolean): void => {
-    if (onFollowChange && post.user_id) {
-      onFollowChange(post.user_id, isFollowing);
-    }
-  };
-
-  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleCardClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLElement;
-    if (target.closest("a, button, [role='button']")) {
-      return;
-    }
+    if (target.closest("a, button, [role='button']")) return;
     router.push(`/post/${post.id}`);
-  };
+  }, [router, post.id]);
 
-  const handleCommentButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
+  const handleCommentButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     
-    if (!isAuthenticated) {
+    if (!stateRefs.current.isAuthenticated) {
       router.push("/login");
       return;
     }
     
     router.push(`/post/${post.id}`);
-  };
+  }, [router, post.id]);
 
-  const handleShowLikes = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    e.preventDefault();
+  const handleProfileLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.stopPropagation();
-    
-    if (likesCount === 0) return;
-    
-    setShowLikesDialog(true);
-  };
+  }, []);
 
-  const handleProfileLinkClick = (e: React.MouseEvent<HTMLAnchorElement>): void => {
-    e.stopPropagation();
-  };
-
-  const handleShare = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
-    e.preventDefault();
+  const handleShare = useCallback(async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     
     const shareUrl = `${window.location.origin}/post/${post.id}`;
@@ -815,9 +629,9 @@ export function PostCard({
     } else {
       await navigator.clipboard.writeText(shareUrl);
     }
-  };
+  }, [post.display_name, post.content]);
 
-  const handleShareDropdown = (): void => {
+  const handleShareDropdown = useCallback(() => {
     const shareUrl = `${window.location.origin}/post/${post.id}`;
     
     if (navigator.share) {
@@ -829,53 +643,231 @@ export function PostCard({
     } else {
       void navigator.clipboard.writeText(shareUrl);
     }
-  };
+  }, [post.display_name, post.content]);
 
-  const handleExplainDropdown = (): void => {
+  const handleExplainDropdown = useCallback(() => {
     setShowExplanation(true);
     if (!explanation) {
       void handleExplain();
     }
-  };
+  }, [explanation]);
 
-  const handleImageClick = (e: React.MouseEvent): void => {
-    e.preventDefault();
+  const handleImageClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     if (post.image_url) {
       setShowImagePreview(true);
     }
-  };
+  }, [post.image_url]);
 
-  const handleImageError = (): void => {
+  const handleImageError = useCallback(() => {
     setImageLoadError(true);
-  };
+  }, []);
 
-  const stopPropagation = (e: React.MouseEvent): void => {
-    e.preventDefault();
+  const stopPropagation = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
-  };
+  }, []);
 
-  // ============ IMAGE RENDER FUNCTION (MODERN HYBRID STYLE) ============
+  const handleFollowStatusChange = useCallback((isFollowing: boolean) => {
+    if (onFollowChange && post.user_id) {
+      onFollowChange(post.user_id, isFollowing);
+    }
+  }, [onFollowChange, post.user_id]);
 
-  const renderPostImage = (): React.ReactNode => {
-    const imageUrl = getImageUrl(post.image_url);
+  const handleShowLikes = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     
-    if (!imageUrl) {
-      return null;
+    if (stateRefs.current.likesCount === 0) return;
+    
+    setShowLikesDialog(true);
+  }, []);
+
+  const handleCloseImagePreview = useCallback(() => {
+    setShowImagePreview(false);
+  }, []);
+
+  // Funkcija za lajkovanje
+  const handleLike = useCallback(async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    if (!stateRefs.current.isAuthenticated) {
+      router.push("/login");
+      return;
     }
 
-    // Determine aspect ratio class
+    setLoading(true);
+    const supabase = createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+
+    try {
+      if (stateRefs.current.liked) {
+        await supabase
+          .from("likes")
+          .delete()
+          .eq("post_id", post.id)
+          .eq("user_id", user.id);
+        
+        stateRefs.current.liked = false;
+        stateRefs.current.likesCount = Math.max(0, stateRefs.current.likesCount - 1);
+        
+        setLikedUI(false);
+        setLikesCountUI(prev => Math.max(0, prev - 1));
+      } else {
+        await supabase
+          .from("likes")
+          .insert({ 
+            post_id: post.id, 
+            user_id: user.id 
+          });
+        
+        stateRefs.current.liked = true;
+        stateRefs.current.likesCount = stateRefs.current.likesCount + 1;
+        
+        setLikedUI(true);
+        setLikesCountUI(prev => prev + 1);
+      }
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    } finally {
+      setLoading(false);
+      router.refresh();
+    }
+  }, [post.id, router]);
+
+  // Funkcija za repostovanje
+  const handleRepost = useCallback(async (e: React.MouseEvent<Element>) => {
+    e.stopPropagation();
+
+    if (!stateRefs.current.isAuthenticated) {
+      router.push("/login");
+      return;
+    }
+
+    if (!currentUser) {
+      console.error('No current user found');
+      return;
+    }
+
+    setReposting(true);
+
+    try {
+      const supabase = createClient();
+      const { error } = await supabase
+        .from("posts")
+        .insert({
+          user_id: currentUser,
+          content: post.content,
+          is_repost: true,
+          original_post_id: post.id,
+          image_url: post.image_url
+        });
+
+      if (error) throw new Error(error.message);
+
+      if (onRepost) {
+        await onRepost(post.id);
+      }
+
+      router.refresh();
+      
+    } catch (error) {
+      console.error("Error reposting:", error);
+    } finally {
+      setReposting(false);
+    }
+  }, [stateRefs.current.isAuthenticated, currentUser, onRepost, post.content, post.id, post.image_url, router]);
+
+  // Funkcija za objašnjavanje sadržaja
+  const handleExplain = useCallback(async () => {
+    setShowExplanation(true);
+    
+    if (explanation) return;
+    
+    setExplaining(true);
+    
+    try {
+      const response = await fetch('/api/explain', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: post.content.substring(0, 1000) })
+      });
+      
+      if (!response.ok) throw new Error('Failed to get explanation');
+      
+      const data = await response.json();
+      setExplanation(data.explanation);
+    } catch (error) {
+      console.error('Explanation error:', error);
+    } finally {
+      setExplaining(false);
+    }
+  }, [explanation, post.content]);
+
+  const handleExplainClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    void handleExplain();
+  }, [handleExplain]);
+
+  // Funkcija za blokiranje korisnika
+  const handleBlockUser = useCallback(async (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    if (!stateRefs.current.isAuthenticated || !currentUser || currentUser === post.user_id) return;
+
+    setBlocking(true);
+    const supabase = createClient();
+
+    try {
+      if (stateRefs.current.isBlocked) {
+        await supabase
+          .from("user_blocks")
+          .delete()
+          .eq("blocker_id", currentUser)
+          .eq("blocked_id", post.user_id);
+        
+        stateRefs.current.isBlocked = false;
+      } else {
+        await supabase
+          .from("user_blocks")
+          .insert({
+            blocker_id: currentUser,
+            blocked_id: post.user_id
+          });
+        
+        stateRefs.current.isBlocked = true;
+        
+        if (onUserBlocked) {
+          onUserBlocked(post.user_id);
+        }
+      }
+      
+      router.refresh();
+    } catch (error) {
+      console.error("Error blocking/unblocking user:", error);
+    } finally {
+      setBlocking(false);
+    }
+  }, [stateRefs.current.isAuthenticated, stateRefs.current.isBlocked, currentUser, onUserBlocked, post.user_id, router]);
+
+  // Memoizovana funkcija za renderovanje slike
+  const renderPostImage = useMemo(() => {
+    if (!imageUrl || !optimizedImageUrl) return null;
+
     const aspectRatio = post.image_aspect_ratio || (post.image_width && post.image_height 
       ? post.image_width / post.image_height 
       : 16/9);
     
-    let aspectRatioClass = 'aspect-video'; // 16:9 default
-    
-    if (aspectRatio > 2) aspectRatioClass = 'aspect-[21/9]'; // Ultra wide
-    else if (aspectRatio > 1.5) aspectRatioClass = 'aspect-video'; // 16:9
-    else if (aspectRatio > 1.2) aspectRatioClass = 'aspect-[4/3]'; // 4:3
-    else if (aspectRatio > 0.9) aspectRatioClass = 'aspect-square'; // 1:1
-    else aspectRatioClass = 'aspect-[3/4]'; // Portrait
+    let aspectRatioClass = 'aspect-video';
+    if (aspectRatio > 2) aspectRatioClass = 'aspect-[21/9]';
+    else if (aspectRatio > 1.5) aspectRatioClass = 'aspect-video';
+    else if (aspectRatio > 1.2) aspectRatioClass = 'aspect-[4/3]';
+    else if (aspectRatio > 0.9) aspectRatioClass = 'aspect-square';
+    else aspectRatioClass = 'aspect-[3/4]';
 
     return (
       <div className="mt-4">
@@ -894,27 +886,18 @@ export function PostCard({
           onMouseLeave={() => setImageHovered(false)}
           role="button"
           tabIndex={0}
-          onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              handleImageClick(e as unknown as React.MouseEvent);
-            }
-          }}
         >
-          {/* Animated gradient border on hover */}
           <div className={cn(
             "absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500",
             "opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500",
             imageHovered && "opacity-30"
           )} />
           
-          {/* Main image container */}
           <div className={cn(
             "relative z-10 w-full",
             aspectRatioClass,
             "max-h-[510px]"
           )}>
-            {/* Loading/error state */}
             {imageLoadError ? (
               <div className="absolute inset-0 flex flex-col items-center justify-center 
                             bg-gradient-to-br from-gray-100 to-gray-200 
@@ -925,36 +908,17 @@ export function PostCard({
                                 flex items-center justify-center mb-4">
                     <ImageIcon className="h-10 w-10 text-gray-400 dark:text-gray-500" />
                   </div>
-                  <div className="absolute -top-1 -right-1">
-                    <div className="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 
-                                  flex items-center justify-center">
-                      <AlertCircle className="h-4 w-4 text-red-500" />
-                    </div>
-                  </div>
                 </div>
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
                   Image unavailable
                 </p>
-                <button 
-                  className="mt-2 text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setImageLoadError(false);
-                  }}
-                >
-                  Try again
-                </button>
               </div>
             ) : (
               <>
-                {/* Main image with optimized URL */}
+                {/* Lazy loaded image */}
                 <Image
-                  src={getOptimizedImageUrl(post.image_url, { 
-                    width: 800, 
-                    height: 600, 
-                    quality: 90,
-                    format: 'webp'
-                  }) || imageUrl}
+                  ref={imageRef}
+                  src={optimizedImageUrl || imageUrl}
                   alt={`Image posted by ${post.display_name}`}
                   fill
                   className={cn(
@@ -967,7 +931,6 @@ export function PostCard({
                   onError={handleImageError}
                 />
                 
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent 
                               to-transparent opacity-0 group-hover:opacity-100 
                               transition-opacity duration-300" />
@@ -975,7 +938,6 @@ export function PostCard({
             )}
           </div>
           
-          {/* Floating action button (BlueSky/Twitter style) */}
           <div className={cn(
             "absolute bottom-4 right-4 z-20 transform transition-all duration-300",
             imageHovered ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
@@ -997,13 +959,9 @@ export function PostCard({
               <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                 View
               </span>
-              <div className="w-5 opacity-0 group-hover/btn:opacity-100 transition-opacity">
-                <ArrowRight className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-              </div>
             </button>
           </div>
           
-          {/* Top right indicator */}
           <div className="absolute top-4 left-4 z-20">
             <div className="bg-black/70 backdrop-blur-sm rounded-full px-3 py-1">
               <span className="text-xs font-medium text-white">Image</span>
@@ -1011,7 +969,6 @@ export function PostCard({
           </div>
         </div>
         
-        {/* Subtle caption below image */}
         <div className="mt-2 text-center">
           <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
             <ImageIcon className="h-3 w-3" />
@@ -1020,17 +977,26 @@ export function PostCard({
         </div>
       </div>
     );
-  };
-
-  const handleCloseImagePreview = (): void => {
-    setShowImagePreview(false);
-  };
+  }, [
+    imageUrl, 
+    optimizedImageUrl, 
+    imageLoadError, 
+    imageHovered, 
+    variant, 
+    post.display_name, 
+    post.image_aspect_ratio, 
+    post.image_width, 
+    post.image_height,
+    handleImageClick,
+    handleImageError
+  ]);
 
   // ============ RENDER ============
 
   return (
     <>
       <div 
+        ref={postRef}
         onClick={handleCardClick}
         className={cn(
           "block transition-all duration-300 cursor-pointer relative",
@@ -1041,14 +1007,7 @@ export function PostCard({
         )}
         role="button"
         tabIndex={0}
-        onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            router.push(`/post/${post.id}`);
-          }
-        }}
       >
-        {/* AD BADGE - VIDLJIV NA VRHU POSTA - SAMO AKO NIJE SAKRIVEN */}
         {isAd && (
           <div className="absolute -top-2 left-4 z-20">
             <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg animate-pulse">
@@ -1056,20 +1015,7 @@ export function PostCard({
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
               </svg>
               <span>AD • PAID</span>
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414l-3-3A1 1 0 0112 2zm-4.707 9.293a1 1 0 011.414 0L9 12.586V15a1 1 0 11-2 0v-2.414l-.293.293a1 1 0 01-1.414-1.414l2-2a1 1 0 011.414 0l2 2a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
             </div>
-            
-            {/* Dodatne oznake na osnovu sadržaja */}
-            {post.content?.toLowerCase().includes('popust') || 
-             post.content?.toLowerCase().includes('discount') ||
-             post.content?.toLowerCase().includes('sale') ? (
-              <div className="mt-1 flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[10px] font-bold rounded-full shadow">
-                <span>🔥</span>
-                <span>OFFER</span>
-              </div>
-            ) : null}
           </div>
         )}
         
@@ -1078,13 +1024,11 @@ export function PostCard({
           variant === 'elevated' && 'p-6'
         )}>
           <div className="flex gap-3">
-            {/* Avatar */}
             <div className="flex-shrink-0">
               <Link 
                 href={`/profile/${post.username}`} 
                 onClick={handleProfileLinkClick}
                 className="inline-block hover:opacity-90 transition-opacity group/avatar"
-                aria-label={`View ${post.display_name}'s profile`}
               >
                 <Avatar className={cn(
                   compact ? 'h-10 w-10' : 'h-12 w-12',
@@ -1096,9 +1040,6 @@ export function PostCard({
                     src={post.avatar_url || undefined} 
                     alt={post.display_name}
                     className="object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
                   />
                   <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500 text-white font-semibold">
                     {getInitials(post.display_name)}
@@ -1108,7 +1049,6 @@ export function PostCard({
             </div>
 
             <div className="flex-1 min-w-0">
-              {/* User info row */}
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center flex-wrap gap-1.5">
@@ -1134,30 +1074,25 @@ export function PostCard({
                     
                     <span 
                       className="text-gray-500 dark:text-gray-400 text-sm whitespace-nowrap hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-                      title={formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}
                     >
-                      <span className="md:hidden">{formatDateMobile(post.created_at)}</span>
+                      <span className="md:hidden">{formattedDateMobile}</span>
                       <span className="hidden md:inline">
-                        {formatDistanceToNow(new Date(post.created_at), { addSuffix: true })}
+                        {formattedDate}
                       </span>
                     </span>
                     
-                    {/* Public/Private badge */}
                     {post.is_public !== false && (
                       <Globe className="h-3.5 w-3.5 text-gray-400 ml-1" />
                     )}
                   </div>
                 </div>
 
-                {/* Right side controls */}
                 <div className="flex items-center gap-2">
-                  {/* Provenance badges */}
                   <ProvenanceBadge 
                     provenance={post.provenance} 
                     postId={post.id} 
                   />
                   
-                  {/* AD BADGE - u desnom uglu - SAMO AKO NIJE SAKRIVEN */}
                   {isAd && (
                     <Badge 
                       variant="default" 
@@ -1170,12 +1105,8 @@ export function PostCard({
                     </Badge>
                   )}
                   
-                  {showFollowButton && isAuthenticated && currentUser && currentUser !== post.user_id && (
-                    <div 
-                      className="hidden sm:block" 
-                      onClick={stopPropagation}
-                      role="none"
-                    >
+                  {showFollowButton && stateRefs.current.isAuthenticated && currentUser && currentUser !== post.user_id && (
+                    <div className="hidden sm:block" onClick={stopPropagation}>
                       <FollowButton
                         followerId={currentUser}
                         followingId={post.user_id}
@@ -1200,7 +1131,6 @@ export function PostCard({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" onClick={stopPropagation} className="w-56">
-                      {/* AD NOTIFIKACIJA U DROPDOWN MENU - SAMO AKO NIJE SAKRIVENA */}
                       {isAd && (
                         <div className="px-2 py-1.5 mb-1 border-b border-red-200 dark:border-red-800">
                           <div className="flex items-center gap-2 text-xs font-semibold text-red-600 dark:text-red-400">
@@ -1218,7 +1148,7 @@ export function PostCard({
                         <Sparkles className="h-4 w-4 mr-2" />
                         Explain with AI
                       </DropdownMenuItem>
-                      {isAuthenticated && currentUser !== post.user_id && (
+                      {stateRefs.current.isAuthenticated && currentUser !== post.user_id && (
                         <DropdownMenuItem 
                           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                             e.preventDefault();
@@ -1233,22 +1163,29 @@ export function PostCard({
                         </DropdownMenuItem>
                       )}
                       <DropdownMenuSeparator />
-                      {isAuthenticated && (
+                      {stateRefs.current.isAuthenticated && (
                         <DropdownMenuItem className="cursor-pointer">
                           <Bookmark className="h-4 w-4 mr-2" />
                           Save post
                         </DropdownMenuItem>
                       )}
-                      <DropdownMenuItem className="cursor-pointer">
-                        <BarChart3 className="h-4 w-4 mr-2" />
-                        View analytics
-                      </DropdownMenuItem>
-                      {currentUser === post.user_id && (
+                      
+                      {stateRefs.current.isAuthenticated && currentUser && currentUser !== post.user_id && (
                         <>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem className="text-red-600 dark:text-red-400 cursor-pointer">
-                            <X className="h-4 w-4 mr-2" />
-                            Delete post
+                          <DropdownMenuItem 
+                            onClick={handleBlockUser}
+                            disabled={blocking}
+                            className={`cursor-pointer ${stateRefs.current.isBlocked ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}
+                          >
+                            {blocking ? (
+                              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            ) : stateRefs.current.isBlocked ? (
+                              <ShieldCheck className="h-4 w-4 mr-2" />
+                            ) : (
+                              <Ban className="h-4 w-4 mr-2" />
+                            )}
+                            {stateRefs.current.isBlocked ? `Unblock @${post.username}` : `Block @${post.username}`}
                           </DropdownMenuItem>
                         </>
                       )}
@@ -1257,17 +1194,14 @@ export function PostCard({
                 </div>
               </div>
 
-              {/* Post content */}
               <div className="mb-4">
                 <p className="whitespace-pre-wrap text-pretty break-words text-gray-900 dark:text-gray-100 text-[15px] md:text-[16px] leading-relaxed font-normal">
                   {post.content}
                 </p>
                 
-                {/* Post image */}
-                {renderPostImage()}
+                {renderPostImage}
               </div>
 
-              {/* Stats row */}
               {post.impressions && post.impressions > 0 && (
                 <div className="flex items-center gap-6 text-gray-500 dark:text-gray-400 text-sm mb-3">
                   <div className="flex items-center gap-1.5 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
@@ -1283,9 +1217,7 @@ export function PostCard({
                 </div>
               )}
 
-              {/* Action buttons - Modern Twitter/BlueSky style */}
               <div className="flex items-center justify-between max-w-md -ml-2">
-                {/* Comment button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1304,7 +1236,6 @@ export function PostCard({
                   )}
                 </Button>
 
-                {/* Repost button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1313,7 +1244,7 @@ export function PostCard({
                     "hover:text-green-600 dark:hover:text-green-400 rounded-full"
                   )}
                   onClick={handleRepost}
-                  disabled={reposting || !isAuthenticated}
+                  disabled={reposting || !stateRefs.current.isAuthenticated}
                   title="Repost"
                 >
                   <Repeat className={cn(
@@ -1323,41 +1254,39 @@ export function PostCard({
                   {reposting ? 'Reposting' : 'Repost'}
                 </Button>
 
-                {/* Like button */}
                 <Button
                   variant="ghost"
                   size="sm"
                   className={cn(
                     "group h-10 px-3 rounded-full",
-                    liked 
+                    likedUI 
                       ? 'text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600' 
                       : 'text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-500'
                   )}
                   onClick={handleLike}
-                  disabled={loading || (!isAuthenticated && !liked)}
-                  title={liked ? "Unlike" : "Like"}
+                  disabled={loading || (!stateRefs.current.isAuthenticated && !likedUI)}
+                  title={likedUI ? "Unlike" : "Like"}
                 >
                   <Heart className={cn(
                     "h-5 w-5 group-hover:scale-110 transition-transform mr-2",
-                    liked && "fill-current"
+                    likedUI && "fill-current"
                   )} />
-                  {likesCount > 0 && (
+                  {likesCountUI > 0 && (
                     <span 
                       className={cn(
                         "text-sm",
-                        liked ? 'text-red-500' : 'text-gray-600 dark:text-gray-400',
+                        likedUI ? 'text-red-500' : 'text-gray-600 dark:text-gray-400',
                         "group-hover:text-red-500 cursor-pointer"
                       )}
                       onClick={handleShowLikes}
                       role="button"
                       tabIndex={0}
                     >
-                      {likesCount}
+                      {likesCountUI}
                     </span>
                   )}
                 </Button>
 
-                {/* Share button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1372,7 +1301,6 @@ export function PostCard({
                   Share
                 </Button>
 
-                {/* Explain button */}
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1388,13 +1316,8 @@ export function PostCard({
                 </Button>
               </div>
 
-              {/* Mobile follow button */}
-              {showFollowButton && isAuthenticated && currentUser && currentUser !== post.user_id && (
-                <div 
-                  className="sm:hidden mt-3" 
-                  onClick={stopPropagation}
-                  role="none"
-                >
+              {showFollowButton && stateRefs.current.isAuthenticated && currentUser && currentUser !== post.user_id && (
+                <div className="sm:hidden mt-3" onClick={stopPropagation}>
                   <FollowButton
                     followerId={currentUser}
                     followingId={post.user_id}
@@ -1407,17 +1330,12 @@ export function PostCard({
                 </div>
               )}
               
-              {/* AD FOOTER NOTICE - na dnu posta - SAMO AKO NIJE SAKRIVEN */}
               {isAd && (
                 <div className="mt-3 pt-3 border-t border-red-200 dark:border-red-800">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
                     <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
                       <AlertCircle className="h-3 w-3" />
-                      <span className="font-medium">Paid Content • Sponsored • Реклама • Publicité • Werbung</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                      <span className="text-[10px]">💰</span>
-                      <span>Advertisement • Anuncio • 広告 • 广告</span>
+                      <span className="font-medium">Paid Content • Sponsored</span>
                     </div>
                   </div>
                 </div>
@@ -1427,108 +1345,89 @@ export function PostCard({
         </article>
       </div>
 
-      {/* Image Preview */}
       {post.image_url && showImagePreview && (
         <ImagePreview
-          imageUrl={getImageUrl(post.image_url)!}
+          imageUrl={imageUrl!}
           alt={`Image posted by ${post.display_name}`}
           onClose={handleCloseImagePreview}
         />
       )}
 
-      {/* Likes List Dialog */}
       <LikesList
         postId={post.id}
         open={showLikesDialog}
         onOpenChange={setShowLikesDialog}
       />
 
-      {/* Explanation Dialog */}
-      <AlertDialog open={showExplanation} onOpenChange={setShowExplanation}>
-        <AlertDialogContent className="max-w-2xl">
-          <AlertDialogHeader>
-            <AlertDialogTitle className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
-                <Sparkles className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <div className="text-lg font-bold">AI Explanation</div>
-                <AlertDialogDescription className="text-sm">
-                  Analysis of post by @{post.username}
-                </AlertDialogDescription>
-              </div>
-            </AlertDialogTitle>
-          </AlertDialogHeader>
-          
-          <div className="py-4">
-            {explaining ? (
-              <div className="flex flex-col items-center justify-center py-12">
-                <div className="relative">
-                  <Loader2 className="h-12 w-12 animate-spin text-purple-500 mb-4" />
-                  <div className="absolute inset-0 animate-ping rounded-full bg-purple-200/50" />
+      {showExplanation && (
+        <AlertDialog open={showExplanation} onOpenChange={setShowExplanation}>
+          <AlertDialogContent className="max-w-2xl">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
+                  <Sparkles className="h-5 w-5 text-white" />
                 </div>
-                <p className="mt-4 text-gray-600 dark:text-gray-400 font-medium">
-                  AI is analyzing the post...
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-                  This may take a few seconds
-                </p>
-              </div>
-            ) : explanationError ? (
-              <div className="rounded-xl bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 border border-red-200 dark:border-red-800 p-6">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="h-6 w-6 text-red-500 mt-0.5" />
-                  <div>
-                    <p className="font-medium text-red-700 dark:text-red-400">{explanationError}</p>
-                    <p className="text-sm text-red-600/70 dark:text-red-400/70 mt-2">
-                      Please try again or check your internet connection.
+                <div>
+                  <div className="text-lg font-bold">AI Explanation</div>
+                  <AlertDialogDescription className="text-sm">
+                    Analysis of post by @{post.username}
+                  </AlertDialogDescription>
+                </div>
+              </AlertDialogTitle>
+            </AlertDialogHeader>
+            
+            <div className="py-4">
+              {explaining ? (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <div className="relative">
+                    <Loader2 className="h-12 w-12 animate-spin text-purple-500 mb-4" />
+                  </div>
+                  <p className="mt-4 text-gray-600 dark:text-gray-400 font-medium">
+                    AI is analyzing the post...
+                  </p>
+                </div>
+              ) : explanation ? (
+                <div className="space-y-4">
+                  <div className="rounded-xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-900/50 dark:to-gray-800 border border-gray-200 dark:border-gray-700 p-6">
+                    <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
+                      {explanation}
                     </p>
                   </div>
                 </div>
-              </div>
-            ) : explanation ? (
-              <div className="space-y-4">
-                <div className="rounded-xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-900/50 dark:to-gray-800 border border-gray-200 dark:border-gray-700 p-6">
-                  <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap leading-relaxed">
-                    {explanation}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-                  <div className="flex items-center gap-4">
-                    <span>Powered by DeepSeek AI</span>
-                    <span className="h-1 w-1 rounded-full bg-gray-300 dark:bg-gray-600" />
-                    <span>{explanation.split(' ').length} words</span>
-                  </div>
-                  <span className="text-gray-400 dark:text-gray-500">
-                    AI-generated content may not always be accurate
-                  </span>
-                </div>
-              </div>
-            ) : null}
-          </div>
-          
-          <AlertDialogFooter>
-            <AlertDialogCancel className="rounded-full">Close</AlertDialogCancel>
-            {explanation && (
-              <Button
-                variant="outline"
-                className="rounded-full gap-2"
-                onClick={() => {
-                  void navigator.clipboard.writeText(explanation);
-                }}
-              >
-                <Copy className="h-4 w-4" />
-                Copy Explanation
-              </Button>
-            )}
-            {explanation && (
-              <AlertDialogAction className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
-                Save Analysis
-              </AlertDialogAction>
-            )}
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+              ) : null}
+            </div>
+            
+            <AlertDialogFooter>
+              <AlertDialogCancel className="rounded-full">Close</AlertDialogCancel>
+              {explanation && (
+                <Button
+                  variant="outline"
+                  className="rounded-full gap-2"
+                  onClick={() => {
+                    void navigator.clipboard.writeText(explanation);
+                  }}
+                >
+                  <Copy className="h-4 w-4" />
+                  Copy Explanation
+                </Button>
+              )}
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
     </>
   );
-}
+}, (prevProps, nextProps) => {
+  // Custom shouldComponentUpdate za sprečavanje nepotrebnih re-rendera
+  return (
+    prevProps.post.id === nextProps.post.id &&
+    prevProps.post.likes_count === nextProps.post.likes_count &&
+    prevProps.post.comments_count === nextProps.post.comments_count &&
+    prevProps.post.user_has_liked === nextProps.post.user_has_liked &&
+    prevProps.isCurrentUserFollowing === nextProps.isCurrentUserFollowing &&
+    prevProps.showFollowButton === nextProps.showFollowButton &&
+    prevProps.compact === nextProps.compact &&
+    prevProps.variant === nextProps.variant &&
+    prevProps.hideAdBadges === nextProps.hideAdBadges
+  );
+});

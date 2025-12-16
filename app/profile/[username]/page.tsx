@@ -11,9 +11,13 @@ interface ProfilePageProps {
 export default async function ProfilePage({ params }: ProfilePageProps) {
   const { username } = await params
   const supabase = await createClient()
-
+  
   // Get the profile
-  const { data: profile } = await supabase.from("profiles").select("*").eq("username", username).maybeSingle()
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("username", username)
+    .maybeSingle()
 
   if (!profile) {
     notFound()
@@ -23,7 +27,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-
+  
   const isOwnProfile = user?.id === profile.id
 
   // Get follower and following counts
@@ -59,14 +63,18 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     <div className="min-h-screen bg-background">
       <ProfileHeader
         profile={profile}
-        currentUserId={user?.id} // Dodajte ovo
+        currentUserId={user?.id}
         isOwnProfile={isOwnProfile}
         isFollowing={isFollowing}
         followersCount={followersCount ?? 0}
         followingCount={followingCount ?? 0}
         postsCount={postsCount ?? 0}
       />
-      <ProfileTabs userId={profile.id} username={username} />
+      <ProfileTabs 
+        userId={profile.id} 
+        username={username}
+        isOwnProfile={isOwnProfile} // Prosleđujemo isOwnProfile
+      />
     </div>
   )
 }

@@ -1,16 +1,16 @@
-// components/feed/AlgorithmFeed.tsx - SA KONTROLOM REKLAMA I FILTRIRANJEM
+// components/feed/AlgorithmFeed.tsx - ULTRA OPTIMIZOVAN KOD BEZ VIRTUAL SCROLLING-A
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { FeedGenerator } from '@/lib/feed-engine/generator';
 import { PostCard } from '@/components/post/post-card';
-import type { Post as PostCardPost } from '@/components/post/post-card'; // Importuj tip iz PostCard
+import type { Post as PostCardPost } from '@/components/post/post-card';
 import { AdPost } from '@/components/ads/AdPost';
 import { ExplanationPanel } from './ExplanationPanel';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, Sparkles, Info, Settings, TrendingUp, Bell, Eye, EyeOff } from 'lucide-react';
+import { RefreshCw, Sparkles, Info, Settings, TrendingUp, Bell, Eye, EyeOff, Save, RotateCcw } from 'lucide-react';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 import { 
@@ -21,9 +21,10 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { adService } from '@/lib/ads/ad-service';
-import type { ScoredAd } from '@/lib/ads/ad-service';
+import type { ScoredAd, AdExplanation } from '@/lib/ads/ad-service';
 import { Switch } from '@/components/ui/switch';
 import { detectAdvertisement } from '@/components/utils/ad-detector';
+import { toast } from 'sonner';
 
 interface AlgorithmFeedProps {
   userId?: string;
@@ -31,10 +32,8 @@ interface AlgorithmFeedProps {
   showExplanations?: boolean;
 }
 
-// Koristite isti tip kao u PostCard
 type Post = PostCardPost;
 
-// Definišite interfejs za podatke iz baze
 interface PostData {
   id: string;
   content: string;
@@ -52,7 +51,7 @@ interface PostData {
   is_ad?: boolean;
   content_hash?: string;
   signature?: string;
-  provenance?: any; // Možete specificirati ovaj tip ako želite
+  provenance?: any;
   image_width?: number;
   image_height?: number;
   image_aspect_ratio?: number;
@@ -64,12 +63,51 @@ interface FeedItem {
   data: Post | ScoredAd;
 }
 
-const feedGenerator = new FeedGenerator();
+interface AdPreferences {
+  show_ads: boolean;
+  max_ads: number;
+  ads_interval: number;
+  hide_ads_completely: boolean;
+}
 
+// ============ SIMPLE CACHE SYSTEM ============
+class SimpleCache {
+  private cache = new Map<string, { data: any; timestamp: number }>();
+  
+  set(key: string, data: any, ttl = 30000): void {
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now()
+    });
+    
+    // Auto cleanup
+    setTimeout(() => {
+      this.cache.delete(key);
+    }, ttl);
+  }
+  
+  get<T>(key: string): T | null {
+    const item = this.cache.get(key);
+    if (!item) return null;
+    
+    if (Date.now() - item.timestamp > 30000) {
+      this.cache.delete(key);
+      return null;
+    }
+    
+    return item.data as T;
+  }
+  
+  clear(): void {
+    this.cache.clear();
+  }
+}
+
+const cache = new SimpleCache();
+
+// ============ HELPER FUNCTIONS ============
 const normalizeImageUrl = (url: string | null | undefined): string | null => {
-  if (url === undefined || url === null) return null;
-  if (typeof url !== 'string') return null;
-  if (url.trim() === '') return null;
+  if (!url) return null;
   return url.trim();
 };
 
@@ -98,43 +136,16 @@ const convertPostDataToPost = (postData: PostData): Post => {
   };
 };
 
-/**
- * Proveri da li je post reklama koristeći detektor reklama
- */
-const isPostAnAd = (post: Post): boolean => {
-  // Prvo proveri eksplicitne oznake
-  if (post.is_ad) return true;
-  if (post.provenance?.metadata?.isAd) return true;
-  
-  // Zatim proveri sadržaj koristeći detektor
-  const adDetection = detectAdvertisement(post.content || '');
-  return adDetection.isAd;
-};
-
-/**
- * Filtriraj reklame iz postova ako korisnik ne želi da ih vidi
- */
-const filterAdsFromPosts = (posts: Post[], hideAds: boolean): Post[] => {
-  if (!hideAds) {
-    return posts;
-  }
-  
-  // Filter out posts that are detected as ads
-  const filteredPosts = posts.filter(post => !isPostAnAd(post));
-  
-  if (filteredPosts.length < posts.length) {
-    console.log(`🔕 Filtered out ${posts.length - filteredPosts.length} ads from regular posts`);
-  }
-  
-  return filteredPosts;
-};
-
+// ============ MAIN COMPONENT - SIMPLIFIED ============
 export function AlgorithmFeed({ 
   userId, 
   initialAlgorithm,
   showExplanations = false 
 }: AlgorithmFeedProps) {
   const router = useRouter();
+  const supabase = createClient();
+  
+  // State
   const [feedItems, setFeedItems] = useState<FeedItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -143,94 +154,51 @@ export function AlgorithmFeed({
   const [showAllExplanations, setShowAllExplanations] = useState(showExplanations);
   const [activeExplanation, setActiveExplanation] = useState<string | null>(null);
   
-  // State-ovi za kontrolu reklama
+  // Ad preferences
   const [adsInterval, setAdsInterval] = useState<number>(5);
   const [showAds, setShowAds] = useState<boolean>(true);
   const [maxAdsToShow, setMaxAdsToShow] = useState<number>(3);
   const [hideAdsCompletely, setHideAdsCompletely] = useState<boolean>(false);
+  
+  // Persistence
+  const [preferencesLoaded, setPreferencesLoaded] = useState<boolean>(false);
+  const [savingPreferences, setSavingPreferences] = useState<boolean>(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
+  const [originalPreferences, setOriginalPreferences] = useState<AdPreferences | null>(null);
 
-  const supabase = createClient();
+  // Refs
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const isMountedRef = useRef(true);
 
-  /**
-   * Kombinuj postove sa reklamama
-   */
-  const interleavePostsWithAds = useCallback((
-    posts: Post[],
-    ads: ScoredAd[],
-    options?: {
-      adsInterval?: number;
-      maxAds?: number;
-      skipFirst?: boolean;
-      skipLast?: boolean;
-      showAds?: boolean;
-    }
-  ): FeedItem[] => {
-    const feed: FeedItem[] = [];
+  // ============ CREATE DEFAULT AD EXPLANATION ============
+  const createDefaultAdExplanation = useCallback((): AdExplanation => ({
+    reasons: ['user_interaction'],
+    hashtag_matches: [],
+    category_matches: [],
+    interest_score: 0,
+    engagement_score: 0
+  }), []);
+
+  // ============ GET AD BY ID HELPER ============
+  const getAdById = useCallback((promotedPostId: string): ScoredAd | null => {
+    const adItem = feedItems.find(item => 
+      item.type === 'ad' && (item.data as ScoredAd).promoted_post.id === promotedPostId
+    );
     
-    const {
-      adsInterval = 5,
-      maxAds = Math.ceil(posts.length / adsInterval),
-      skipFirst = true,
-      skipLast = true,
-      showAds = true,
-    } = options || {};
-    
-    // Ako su reklame potpuno isključene, vrati samo postove
-    if (!showAds || maxAds === 0) {
-      return posts.map(post => ({
-        type: 'post',
-        id: post.id,
-        data: post
-      }));
-    }
-    
-    let adIndex = 0;
-    let postsSinceLastAd = 0;
-    let adsShown = 0;
+    return adItem?.type === 'ad' ? (adItem.data as ScoredAd) : null;
+  }, [feedItems]);
 
-    for (let postIndex = 0; postIndex < posts.length; postIndex++) {
-      const post = posts[postIndex];
-      
-      // Dodaj post
-      feed.push({
-        type: 'post',
-        id: post.id,
-        data: post
-      });
-      
-      postsSinceLastAd++;
-      
-      // Proveri da li je vreme za posebnu reklamu
-      const shouldShowAd = (
-        adIndex < ads.length &&
-        adsShown < maxAds &&
-        postsSinceLastAd >= adsInterval &&
-        (!skipFirst || postIndex > 0) &&
-        (!skipLast || postIndex < posts.length - 1)
-      );
-      
-      if (shouldShowAd) {
-        const ad = ads[adIndex];
-        feed.push({
-          type: 'ad',
-          id: `ad-${ad.promoted_post.id}`,
-          data: ad
-        });
-        
-        adIndex++;
-        adsShown++;
-        postsSinceLastAd = 0;
-      }
-    }
-
-    console.log(`📊 Feed stats: ${posts.length} posts, ${adsShown} ads shown, maxAds: ${maxAds}, showAds: ${showAds}`);
-    return feed;
-  }, []);
-
-  const fetchPostsWithImages = useCallback(async () => {
+  // ============ OPTIMIZED FETCH FUNCTIONS ============
+  const fetchPostsWithImages = useCallback(async (): Promise<Post[]> => {
     try {
-      console.log('🤖 ALGORITHM FEED: Direct fetch with JOIN');
+      const cacheKey = `posts_${userId}_${initialAlgorithm}`;
+      const cached = cache.get<Post[]>(cacheKey);
       
+      if (cached) {
+        console.log('📦 Using cached posts');
+        return cached;
+      }
+
       const { data: postsWithProfiles, error } = await supabase
         .from('posts')
         .select(`
@@ -244,155 +212,269 @@ export function AlgorithmFeed({
         .order('created_at', { ascending: false })
         .limit(20);
 
-      if (error) {
-        console.error('Error fetching posts:', error);
-        return [];
-      }
-
+      if (error) throw error;
       if (!postsWithProfiles) return [];
 
-      const formattedPosts: Post[] = postsWithProfiles.map((post: any) => {
-        const normalizedImageUrl = normalizeImageUrl(post.image_url);
-        
-        return {
-          id: post.id,
-          content: post.content,
-          image_url: normalizedImageUrl,
-          created_at: post.created_at,
-          user_id: post.user_id,
-          username: post.profiles?.username || 'user',
-          display_name: post.profiles?.display_name || 'User',
-          avatar_url: post.profiles?.avatar_url || null,
-          likes_count: 0,
-          comments_count: 0,
-          user_has_liked: false,
-          is_public: post.is_public,
-          impressions: post.impressions,
-          is_ad: post.is_ad || false,
-          content_hash: post.content_hash,
-          signature: post.signature,
-          provenance: post.provenance,
-          image_width: post.image_width,
-          image_height: post.image_height,
-          image_aspect_ratio: post.image_aspect_ratio,
-        };
-      });
+      const formattedPosts: Post[] = postsWithProfiles.map((post: any) => ({
+        id: post.id,
+        content: post.content,
+        image_url: normalizeImageUrl(post.image_url),
+        created_at: post.created_at,
+        user_id: post.user_id,
+        username: post.profiles?.username || 'user',
+        display_name: post.profiles?.display_name || 'User',
+        avatar_url: post.profiles?.avatar_url || null,
+        likes_count: 0,
+        comments_count: 0,
+        user_has_liked: false,
+        is_public: post.is_public,
+        impressions: post.impressions,
+        is_ad: post.is_ad || false,
+        content_hash: post.content_hash,
+        signature: post.signature,
+        provenance: post.provenance,
+        image_width: post.image_width,
+        image_height: post.image_height,
+        image_aspect_ratio: post.image_aspect_ratio,
+      }));
 
+      cache.set(cacheKey, formattedPosts);
       return formattedPosts;
     } catch (err) {
-      console.error('Error in fetchPostsWithImages:', err);
+      console.error('Error fetching posts:', err);
       return [];
     }
-  }, [supabase]);
+  }, [supabase, userId, initialAlgorithm]);
 
-  const loadFeed = useCallback(async () => {
-    setLoading(true);
+const fetchAds = useCallback(async (): Promise<ScoredAd[]> => {
+  if (!showAds || maxAdsToShow === 0 || hideAdsCompletely) {
+    return [];
+  }
+
+  try {
+    const cacheKey = `ads_${userId || 'anonymous'}`;
+    const cached = cache.get<ScoredAd[]>(cacheKey);
+    
+    if (cached) {
+      return cached.slice(0, maxAdsToShow);
+    }
+
+    // Jasno definisanje tipa
+    const userIdParam: string | null = userId ? userId : null;
+    
+    const allAds = await adService.getRelevantAdsForUser(userIdParam, 20);
+    const shuffledAds = [...allAds].sort(() => Math.random() - 0.5);
+    
+    cache.set(cacheKey, shuffledAds);
+    return shuffledAds.slice(0, maxAdsToShow);
+  } catch (adError) {
+    console.error('Error loading ads:', adError);
+    return [];
+  }
+}, [showAds, maxAdsToShow, hideAdsCompletely, userId]);
+
+  // ============ LOAD USER PREFERENCES ============
+  const loadUserPreferences = useCallback(async () => {
+    if (!userId) {
+      setPreferencesLoaded(true);
+      return;
+    }
+
     try {
-      // 1. Učitaj postove
-      const result = await feedGenerator.generateFeed({
-        userId,
-        algorithmSlug: initialAlgorithm,
-        limit: 20,
-        includeExplanations: showAllExplanations
-      });
+      const cacheKey = `prefs_${userId}`;
+      const cached = cache.get<AdPreferences>(cacheKey);
       
-      setAlgorithm(result.algorithm);
-      if (result.explanations) {
-        setExplanations(result.explanations);
+      if (cached) {
+        setShowAds(cached.show_ads);
+        setMaxAdsToShow(cached.max_ads);
+        setAdsInterval(cached.ads_interval);
+        setHideAdsCompletely(cached.hide_ads_completely);
+        setOriginalPreferences(cached);
+        setPreferencesLoaded(true);
+        return;
       }
 
-      let posts: Post[] = [];
-      if (result.posts && result.posts.length > 0) {
-        const convertedPosts: Post[] = result.posts.map(convertPostDataToPost);
-        const hasImages = convertedPosts.some((post: Post) => post.image_url);
+      const response = await fetch('/api/user/ad-preferences', {
+        cache: 'force-cache'
+      });
+      
+      if (response.ok) {
+        const prefs: AdPreferences = await response.json();
+        cache.set(cacheKey, prefs);
         
-        if (!hasImages) {
-          const directPosts = await fetchPostsWithImages();
-          posts = directPosts;
-        } else {
-          posts = convertedPosts;
+        setShowAds(prefs.show_ads);
+        setMaxAdsToShow(prefs.max_ads);
+        setAdsInterval(prefs.ads_interval);
+        setHideAdsCompletely(prefs.hide_ads_completely);
+        setOriginalPreferences(prefs);
+      }
+    } catch (error) {
+      console.error('Error loading preferences:', error);
+    } finally {
+      setPreferencesLoaded(true);
+    }
+  }, [userId]);
+
+  // ============ SIMPLE FEED LOADER ============
+  const loadFeed = useCallback(async (forceRefresh = false) => {
+    if (!preferencesLoaded) return;
+
+    // Cancel previous
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
+    setLoading(true);
+    
+    try {
+      // Clear cache if force refresh
+      if (forceRefresh) {
+        cache.clear();
+      }
+
+      // Parallel fetch - optimized
+      const [posts, ads, algorithmData] = await Promise.allSettled([
+        fetchPostsWithImages(),
+        fetchAds(),
+        new FeedGenerator().generateFeed({
+          userId,
+          algorithmSlug: initialAlgorithm,
+          limit: 20,
+          includeExplanations: showAllExplanations
+        })
+      ]);
+
+      if (controller.signal.aborted) return;
+
+      // Process results
+      const postsResult = posts.status === 'fulfilled' ? posts.value : [];
+      const adsResult = ads.status === 'fulfilled' ? ads.value : [];
+      const algorithmResult = algorithmData.status === 'fulfilled' ? algorithmData.value : null;
+
+      if (algorithmResult) {
+        setAlgorithm(algorithmResult.algorithm);
+        if (algorithmResult.explanations) {
+          setExplanations(algorithmResult.explanations);
         }
-      } else {
-        const directPosts = await fetchPostsWithImages();
-        posts = directPosts;
       }
 
-      // 2. FILTRIRANJE: Ako korisnik ne želi reklame, ukloni ih iz postova
-      if (hideAdsCompletely || maxAdsToShow === 0) {
-        posts = filterAdsFromPosts(posts, true);
-      }
+      // Interleave posts with ads
+      const feed: FeedItem[] = [];
+      let postIndex = 0;
+      let adIndex = 0;
+      let postsSinceLastAd = 0;
 
-      // 3. Učitaj posebne reklame samo ako nisu potpuno isključene
-      let ads: ScoredAd[] = [];
-      if (showAds && maxAdsToShow > 0 && !hideAdsCompletely) {
-        try {
-          const allAds = await adService.getRelevantAdsForUser(
-            userId || null,
-            20
-          );
+      while (postIndex < postsResult.length) {
+        // Add post
+        feed.push({
+          type: 'post',
+          id: postsResult[postIndex].id,
+          data: postsResult[postIndex]
+        });
+        
+        postsSinceLastAd++;
+        postIndex++;
+
+        // Check if we should add ad
+        if (
+          showAds && 
+          !hideAdsCompletely && 
+          maxAdsToShow > 0 &&
+          adIndex < adsResult.length &&
+          postsSinceLastAd >= adsInterval &&
+          postIndex > 0 &&
+          postIndex < postsResult.length
+        ) {
+          feed.push({
+            type: 'ad',
+            id: `ad-${adsResult[adIndex].promoted_post.id}`,
+            data: adsResult[adIndex]
+          });
           
-          // SHUFFLE reklama za varijaciju + limit
-          const shuffledAds = [...allAds].sort(() => Math.random() - 0.5);
-          ads = shuffledAds.slice(0, maxAdsToShow);
-          
-          console.log(`📢 Loaded ${ads.length}/${allAds.length} ads (shuffled)`);
-        } catch (adError) {
-          console.error('Error loading ads:', adError);
+          adIndex++;
+          postsSinceLastAd = 0;
         }
       }
 
-      // 4. Kombinuj postove i posebne reklame
-      const combinedFeed = interleavePostsWithAds(posts, ads, {
-        adsInterval,
-        maxAds: ads.length,
-        skipFirst: true,
-        skipLast: true,
-        showAds: showAds && !hideAdsCompletely && maxAdsToShow > 0 // Ne prikazuj posebne reklame ako su potpuno isključene
-      });
-      
-      setFeedItems(combinedFeed);
+      setFeedItems(feed);
 
     } catch (error) {
-      console.error('Error loading feed:', error);
-      
-      try {
-        const directPosts = await fetchPostsWithImages();
+      if ((error as Error).name !== 'AbortError') {
+        console.error('Error loading feed:', error);
         
-        // Filtriraj reklame i u fallback slučaju
-        const filteredPosts = (hideAdsCompletely || maxAdsToShow === 0) 
-          ? filterAdsFromPosts(directPosts, true)
-          : directPosts;
-          
-        setFeedItems(filteredPosts.map(post => ({
-          type: 'post',
-          id: post.id,
-          data: post
-        })));
-      } catch (fallbackError) {
-        console.error('Fallback also failed:', fallbackError);
+        // Fallback to cached posts
+        const cachedPosts = cache.get<Post[]>(`posts_${userId}_${initialAlgorithm}`);
+        if (cachedPosts) {
+          setFeedItems(cachedPosts.map(post => ({
+            type: 'post',
+            id: post.id,
+            data: post
+          })));
+        }
       }
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted && isMountedRef.current) {
+        setLoading(false);
+      }
     }
   }, [
-    userId, 
-    initialAlgorithm, 
-    showAllExplanations, 
-    fetchPostsWithImages, 
-    interleavePostsWithAds, 
-    adsInterval, 
-    showAds, 
+    userId,
+    initialAlgorithm,
+    showAllExplanations,
+    preferencesLoaded,
+    fetchPostsWithImages,
+    fetchAds,
+    adsInterval,
+    showAds,
     maxAdsToShow,
-    hideAdsCompletely // Dodaj dependency
+    hideAdsCompletely
   ]);
 
+  // ============ USE EFFECTS ============
   useEffect(() => {
-    loadFeed();
-  }, [loadFeed]);
+    isMountedRef.current = true;
+    
+    const init = async () => {
+      await loadUserPreferences();
+      if (preferencesLoaded) {
+        loadFeed();
+      }
+    };
+    
+    init();
 
+    return () => {
+      isMountedRef.current = false;
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, [loadUserPreferences, loadFeed, preferencesLoaded]);
+
+  // Check for unsaved changes
+  useEffect(() => {
+    if (!originalPreferences) {
+      setHasUnsavedChanges(false);
+      return;
+    }
+
+    const changed = 
+      originalPreferences.show_ads !== showAds ||
+      originalPreferences.max_ads !== maxAdsToShow ||
+      originalPreferences.ads_interval !== adsInterval ||
+      originalPreferences.hide_ads_completely !== hideAdsCompletely;
+
+    setHasUnsavedChanges(changed);
+  }, [showAds, maxAdsToShow, adsInterval, hideAdsCompletely, originalPreferences]);
+
+  // ============ EVENT HANDLERS ============
   const handleRefresh = async () => {
     setRefreshing(true);
-    await loadFeed();
+    cache.clear();
+    await loadFeed(true);
     setRefreshing(false);
   };
 
@@ -401,78 +483,80 @@ export function AlgorithmFeed({
   };
 
   const toggleAllExplanations = () => {
-    setShowAllExplanations(!showAllExplanations);
-    if (!showAllExplanations) {
+    const newState = !showAllExplanations;
+    setShowAllExplanations(newState);
+    if (newState) {
       loadFeed();
     }
   };
 
-  const handleAdView = async (promotedPostId: string, userId: string | undefined) => {
+  // ============ POPRAVLJENI AD HANDLERI ============
+  const handleAdView = useCallback(async (promotedPostId: string) => {
     if (!userId) return;
     
-    const adItem = feedItems.find(item => 
-      item.type === 'ad' && (item.data as ScoredAd).promoted_post.id === promotedPostId
-    );
+    const ad = getAdById(promotedPostId);
+    const explanation = ad?.explanation || createDefaultAdExplanation();
+    const score = ad?.score || 50;
     
-    if (adItem && adItem.type === 'ad') {
-      const ad = adItem.data as ScoredAd;
+    try {
       await adService.recordAdImpression(
         promotedPostId,
         userId,
         'view',
-        ad.explanation,
-        ad.score
+        explanation,
+        score
       );
+    } catch (error) {
+      console.error('Error recording ad view:', error);
     }
-  };
+  }, [userId, getAdById, createDefaultAdExplanation]);
 
-  const handleAdLike = async (promotedPostId: string, userId: string | undefined) => {
+  const handleAdLike = useCallback(async (promotedPostId: string) => {
     if (!userId) return;
     
-    const adItem = feedItems.find(item => 
-      item.type === 'ad' && (item.data as ScoredAd).promoted_post.id === promotedPostId
-    );
+    const ad = getAdById(promotedPostId);
+    const explanation = ad?.explanation || createDefaultAdExplanation();
+    const score = ad?.score || 50;
     
-    if (adItem && adItem.type === 'ad') {
-      const ad = adItem.data as ScoredAd;
+    try {
       await adService.recordAdImpression(
         promotedPostId,
         userId,
         'like',
-        ad.explanation,
-        ad.score
+        explanation,
+        score
       );
+    } catch (error) {
+      console.error('Error recording ad like:', error);
     }
-  };
+  }, [userId, getAdById, createDefaultAdExplanation]);
 
-  const handleAdFollow = async (promotedPostId: string, userId: string | undefined) => {
+  const handleAdFollow = useCallback(async (promotedPostId: string) => {
     if (!userId) return;
     
-    const adItem = feedItems.find(item => 
-      item.type === 'ad' && (item.data as ScoredAd).promoted_post.id === promotedPostId
-    );
+    const ad = getAdById(promotedPostId);
+    const explanation = ad?.explanation || createDefaultAdExplanation();
+    const score = ad?.score || 50;
     
-    if (adItem && adItem.type === 'ad') {
-      const ad = adItem.data as ScoredAd;
+    try {
       await adService.recordAdImpression(
         promotedPostId,
         userId,
         'follow',
-        ad.explanation,
-        ad.score
+        explanation,
+        score
       );
+    } catch (error) {
+      console.error('Error recording ad follow:', error);
     }
-  };
+  }, [userId, getAdById, createDefaultAdExplanation]);
 
   const handleAdsIntervalChange = (interval: number) => {
     setAdsInterval(interval);
-    loadFeed();
   };
 
   const handleMaxAdsChange = (count: number) => {
     setMaxAdsToShow(count);
-    
-    // Ako je count = 0, automatski postavi hideAdsCompletely na true
     if (count === 0) {
       setHideAdsCompletely(true);
       setShowAds(false);
@@ -480,50 +564,80 @@ export function AlgorithmFeed({
       setHideAdsCompletely(false);
       setShowAds(true);
     }
-    
-    loadFeed();
   };
 
-  const toggleShowAds = () => {
-    const newShowAds = !showAds;
-    setShowAds(newShowAds);
-    
-    // Ako isključujemo reklame, takođe postavi hideAdsCompletely na true
-    if (!newShowAds) {
-      setHideAdsCompletely(true);
-      setMaxAdsToShow(0); // Force 0 ads
-    } else {
-      setHideAdsCompletely(false);
-      setMaxAdsToShow(3); // Reset na default
-    }
-  };
-
-  // Dodaj posebnu funkciju za potpuno isključivanje reklama
   const toggleHideAdsCompletely = () => {
     const newHideState = !hideAdsCompletely;
     setHideAdsCompletely(newHideState);
-    
     if (newHideState) {
-      setShowAds(false); // Isključi i posebne reklame
-      setMaxAdsToShow(0); // Nema reklama
+      setShowAds(false);
+      setMaxAdsToShow(0);
     } else {
-      setShowAds(true); // Uključi reklame
-      setMaxAdsToShow(3); // Reset na default
+      setShowAds(true);
+      setMaxAdsToShow(3);
     }
   };
 
-  // Izračunaj statistiku za prikaz
-  const calculateAdsStats = () => {
-    const totalPosts = feedItems.filter(item => item.type === 'post').length;
-    const totalAds = feedItems.filter(item => item.type === 'ad').length;
-    const adsPercentage = totalPosts > 0 ? ((totalAds / totalPosts) * 100).toFixed(1) : '0';
+const saveUserPreferences = async () => {
+  if (!userId) {
+    toast.error('You must be logged in to save preferences');
+    return;
+  }
+
+  setSavingPreferences(true);
+  
+  try {
+    const preferences: AdPreferences = {
+      show_ads: showAds,
+      max_ads: maxAdsToShow,
+      ads_interval: adsInterval,
+      hide_ads_completely: hideAdsCompletely
+    };
+
+    await fetch('/api/user/ad-preferences', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(preferences),
+      keepalive: true
+    });
+
+    cache.set(`prefs_${userId}`, preferences);
+    setOriginalPreferences(preferences);
+    setHasUnsavedChanges(false);
     
-    return { totalPosts, totalAds, adsPercentage };
+    toast.success('Ad preferences saved');
+  } catch (error) {
+    toast.error('Failed to save ad preferences');
+  } finally {
+    setSavingPreferences(false);
+  }
+};
+
+const resetPreferences = async () => {
+  const defaultPrefs: AdPreferences = {
+    show_ads: true,
+    max_ads: 3,
+    ads_interval: 5,
+    hide_ads_completely: false
   };
 
-  const adsStats = calculateAdsStats();
+  if (userId) {
+    fetch('/api/user/ad-preferences', { method: 'DELETE' }).catch(() => {});
+    cache.set(`prefs_${userId}`, defaultPrefs);
+  }
 
-  if (loading && !refreshing) {
+  setShowAds(true);
+  setMaxAdsToShow(3);
+  setAdsInterval(5);
+  setHideAdsCompletely(false);
+  setHasUnsavedChanges(false);
+  setOriginalPreferences(defaultPrefs);
+  
+  toast.success('Ad preferences reset to default');
+};
+
+  // ============ RENDER ============
+  if (loading && !refreshing && !preferencesLoaded) {
     return (
       <div className="space-y-6">
         {[...Array(5)].map((_, i) => (
@@ -534,6 +648,14 @@ export function AlgorithmFeed({
       </div>
     );
   }
+
+  const adsStats = {
+    totalPosts: feedItems.filter(item => item.type === 'post').length,
+    totalAds: feedItems.filter(item => item.type === 'ad').length,
+    adsPercentage: feedItems.filter(item => item.type === 'post').length > 0 
+      ? ((feedItems.filter(item => item.type === 'ad').length / feedItems.filter(item => item.type === 'post').length) * 100).toFixed(1)
+      : '0'
+  };
 
   return (
     <div className="space-y-6">
@@ -549,11 +671,10 @@ export function AlgorithmFeed({
         </div>
         
         <div className="flex flex-wrap items-center gap-3">
-          {/* Kontrola za reklame - POBOLJŠANA VERZIJA */}
-          <div className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-1.5">
+          {/* Ad Controls */}
+          <div className="flex items-center gap-2 bg-muted/50 rounded-lg px-3 py-1.5 border">
             <Bell className="h-4 w-4 text-muted-foreground" />
             
-            {/* Switch za potpuno isključivanje reklama */}
             <div className="flex items-center gap-2">
               {hideAdsCompletely || maxAdsToShow === 0 ? (
                 <EyeOff className="h-4 w-4 text-gray-400" />
@@ -579,7 +700,6 @@ export function AlgorithmFeed({
               </div>
             </div>
             
-            {/* Kontrole samo ako reklame nisu potpuno isključene */}
             {!(hideAdsCompletely || maxAdsToShow === 0) && (
               <>
                 <span className="text-sm text-muted-foreground">Every:</span>
@@ -611,6 +731,43 @@ export function AlgorithmFeed({
               </>
             )}
           </div>
+
+          {/* Save/Reset Buttons */}
+          {userId && (
+            <div className="flex items-center gap-2">
+              {hasUnsavedChanges && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                  onClick={saveUserPreferences}
+                  disabled={savingPreferences}
+                >
+                  {savingPreferences ? (
+                    <>
+                      <RefreshCw className="h-4 w-4 animate-spin" />
+                      Saving...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="h-4 w-4" />
+                      Save
+                    </>
+                  )}
+                </Button>
+              )}
+              
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-2"
+                onClick={resetPreferences}
+                title="Reset to default"
+              >
+                <RotateCcw className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -648,28 +805,37 @@ export function AlgorithmFeed({
         </div>
       </div>
 
-      {/* Statistika reklama */}
-      <div className="flex items-center gap-4 text-sm text-muted-foreground bg-muted/30 rounded-lg p-3">
-        <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4" />
-          <span>Feed stats:</span>
+      {/* Stats Bar */}
+      <div className="flex items-center justify-between gap-4 text-sm text-muted-foreground bg-muted/30 rounded-lg p-3">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <TrendingUp className="h-4 w-4" />
+            <span>Feed stats:</span>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <span>{adsStats.totalPosts} posts</span>
+            {!(hideAdsCompletely || maxAdsToShow === 0) ? (
+              <>
+                <span>{adsStats.totalAds} ads</span>
+                <span>{adsStats.adsPercentage}% ad density</span>
+                <span>Interval: every {adsInterval} posts</span>
+                <span>Max: {maxAdsToShow} ads</span>
+              </>
+            ) : (
+              <span className="text-green-600 font-medium">✓ All ads disabled</span>
+            )}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-4">
-          <span>{adsStats.totalPosts} posts</span>
-          {!(hideAdsCompletely || maxAdsToShow === 0) ? (
-            <>
-              <span>{adsStats.totalAds} ads</span>
-              <span>{adsStats.adsPercentage}% ad density</span>
-              <span>Interval: every {adsInterval} posts</span>
-              <span>Max: {maxAdsToShow} ads</span>
-            </>
-          ) : (
-            <span className="text-green-600 font-medium">✓ All ads disabled</span>
-          )}
-        </div>
+        
+        {hasUnsavedChanges && userId && (
+          <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+            <div className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
+            <span className="text-xs font-medium">Unsaved changes</span>
+          </div>
+        )}
       </div>
 
-      {/* Feed Items */}
+      {/* Feed Items - SIMPLE LIST WITHOUT VIRTUAL SCROLLING */}
       {feedItems.length === 0 ? (
         <div className="text-center py-12">
           <Sparkles className="h-12 w-12 mx-auto mb-4 text-muted-foreground/50" />
@@ -691,8 +857,7 @@ export function AlgorithmFeed({
       ) : (
         <div className="space-y-8">
           {feedItems.map((item, index) => (
-            <div key={item.id} className="space-y-4">
-              {/* Indikator za posebne reklame (samo ako nisu potpuno isključene) */}
+            <div key={`${item.id}-${index}`} className="space-y-4">
               {!(hideAdsCompletely || maxAdsToShow === 0) && item.type === 'ad' && (
                 <div className="flex items-center gap-2 text-sm text-muted-foreground ml-2">
                   <div className="h-2 w-2 rounded-full bg-blue-500"></div>
@@ -700,25 +865,23 @@ export function AlgorithmFeed({
                 </div>
               )}
               
-              {/* Render Post or Ad */}
               {item.type === 'ad' && !(hideAdsCompletely || maxAdsToShow === 0) ? (
                 <AdPost
                   promotedPostId={(item.data as ScoredAd).promoted_post.id}
                   postData={(item.data as ScoredAd).post_data}
                   explanation={(item.data as ScoredAd).explanation}
-                  onView={() => handleAdView((item.data as ScoredAd).promoted_post.id, userId)}
-                  onLike={() => handleAdLike((item.data as ScoredAd).promoted_post.id, userId)}
-                  onFollow={() => handleAdFollow((item.data as ScoredAd).promoted_post.id, userId)}
+                  onView={() => handleAdView((item.data as ScoredAd).promoted_post.id)}
+                  onLike={() => handleAdLike((item.data as ScoredAd).promoted_post.id)}
+                  onFollow={() => handleAdFollow((item.data as ScoredAd).promoted_post.id)}
                 />
               ) : (
                 <div className="relative">
-<PostCard 
-  post={item.data as PostCardPost}
-  currentUserId={userId}
-  hideAdBadges={hideAdsCompletely || maxAdsToShow === 0} // DODAJTE OVAJ PROP
-/>
+                  <PostCard 
+                    post={item.data as PostCardPost}
+                    currentUserId={userId}
+                    hideAdBadges={hideAdsCompletely || maxAdsToShow === 0}
+                  />
                   
-                  {/* Explanation toggle button */}
                   {showAllExplanations && (
                     <Button
                       variant="ghost"
@@ -732,7 +895,6 @@ export function AlgorithmFeed({
                 </div>
               )}
               
-              {/* Explanation Panel for regular posts */}
               {item.type === 'post' && showAllExplanations && activeExplanation === item.id && (
                 <div className="ml-8">
                   <ExplanationPanel
@@ -743,7 +905,6 @@ export function AlgorithmFeed({
                 </div>
               )}
               
-              {/* Mini explanation summary for regular posts */}
               {item.type === 'post' && showAllExplanations && explanations[item.id] && !activeExplanation && (
                 <div className="ml-8">
                   <button

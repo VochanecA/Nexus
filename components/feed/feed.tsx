@@ -1,7 +1,7 @@
-// components/feed/feed.tsx - FINALNA ISPRAVLJENA VERZIJA
+// components/feed/feed.tsx - ULTRA OPTIMIZOVANA VERZIJA
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { PostCard } from "@/components/post/post-card";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,49 @@ interface FeedProps {
   onFollowChange?: (userId: string, isFollowing: boolean) => void;
 }
 
-// Helper function from public-feed.tsx
+// ============ CACHE SYSTEM ============
+class FeedCache {
+  private static instance: FeedCache;
+  private cache = new Map<string, { data: Post[]; timestamp: number }>();
+  private readonly CACHE_TTL = 30000; // 30 sekundi
+
+  static getInstance(): FeedCache {
+    if (!FeedCache.instance) {
+      FeedCache.instance = new FeedCache();
+    }
+    return FeedCache.instance;
+  }
+
+  set(key: string, data: Post[]): void {
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now()
+    });
+
+    // Auto cleanup
+    setTimeout(() => {
+      this.cache.delete(key);
+    }, this.CACHE_TTL);
+  }
+
+  get(key: string): Post[] | null {
+    const item = this.cache.get(key);
+    if (!item) return null;
+
+    if (Date.now() - item.timestamp > this.CACHE_TTL) {
+      this.cache.delete(key);
+      return null;
+    }
+
+    return item.data;
+  }
+
+  clear(): void {
+    this.cache.clear();
+  }
+}
+
+// ============ HELPER FUNCTIONS ============
 const normalizeImageUrl = (url: string | null | undefined): string | null => {
   if (url === undefined || url === null) return null;
   if (typeof url !== 'string') return null;
@@ -37,6 +79,21 @@ const normalizeImageUrl = (url: string | null | undefined): string | null => {
   return url.trim();
 };
 
+const formatPostFromData = (post: any): Post => ({
+  id: post.id,
+  content: post.content,
+  image_url: normalizeImageUrl(post.image_url),
+  created_at: post.created_at,
+  user_id: post.user_id,
+  username: post.profiles?.username || 'user',
+  display_name: post.profiles?.display_name || 'User',
+  avatar_url: post.profiles?.avatar_url || null,
+  likes_count: 0,
+  comments_count: 0,
+  user_has_liked: false,
+});
+
+// ============ MAIN COMPONENT ============
 export function Feed({ 
   userId, 
   followingUserIds = [], 
@@ -47,17 +104,46 @@ export function Feed({
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+  
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const isMountedRef = useRef(true);
+  const cache = FeedCache.getInstance();
 
-  const fetchPosts = useCallback(async () => {
-    const supabase = createClient();
-    setLoading(true);
+  // ============ OPTIMIZED FETCH POSTS ============
+  const fetchPosts = useCallback(async (forceRefresh = false) => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
+    const fetchStartTime = performance.now();
+    
+    if (!refreshing && !forceRefresh) {
+      setLoading(true);
+    }
     setError(null);
 
     try {
-      console.log("🚀 Fetching posts WITH PROPER QUERY...");
+      // Cache key based on props
+      const cacheKey = `feed_${userId || 'anon'}_${followingUserIds.join(',')}_${isAuthenticated}`;
       
-      // ✅ KORISTI POTPUNO ISTI QUERY KAO U PUBLIC-FEED.TSX
-      const { data: postsWithProfiles, error: fetchError } = await supabase
+      // Check cache first (unless force refresh)
+      if (!forceRefresh) {
+        const cached = cache.get(cacheKey);
+        if (cached) {
+          console.log("📦 Using cached posts");
+          setPosts(cached);
+          return;
+        }
+      }
+
+      const supabase = createClient();
+      
+      // Build query
+      let query = supabase
         .from("posts")
         .select(`
           *,
@@ -66,148 +152,175 @@ export function Feed({
             display_name,
             avatar_url
           )
-        `)
-        .order("created_at", { ascending: false })
-        .limit(50);
+        `);
 
-      console.log("📊 Query results:", postsWithProfiles?.length || 0, "posts");
-      
-      if (fetchError) {
-        console.error("❌ Query error:", fetchError);
-        throw fetchError;
-      }
-
-      if (!postsWithProfiles || postsWithProfiles.length === 0) {
-        console.log("ℹ️ No posts found");
-        setPosts([]);
-        return;
-      }
-
-      // ✅ DEBUG: Prikaži detalje prvog posta
-      const firstPost = postsWithProfiles[0];
-      console.log("🔍 FIRST POST DETAILS:", {
-        id: firstPost.id,
-        content: firstPost.content.substring(0, 50),
-        image_url: firstPost.image_url,
-        type: typeof firstPost.image_url,
-        hasImageUrl: !!firstPost.image_url,
-        profile: firstPost.profiles
-      });
-
-      // ✅ Formatiraj postove - KORISTI NORMALIZE FUNKCIJU
-      const formattedPosts: Post[] = postsWithProfiles.map((post: any) => {
-        // Normalizuj image_url
-        const normalizedImageUrl = normalizeImageUrl(post.image_url);
-        
-        console.log(`📝 Processing ${post.id}:`, {
-          dbImageUrl: post.image_url,
-          normalized: normalizedImageUrl,
-          profileExists: !!post.profiles
-        });
-
-        return {
-          id: post.id,
-          content: post.content,
-          image_url: normalizedImageUrl, // OVO JE SADA ISPRAVNO
-          created_at: post.created_at,
-          user_id: post.user_id,
-          username: post.profiles?.username || 'user',
-          display_name: post.profiles?.display_name || 'User',
-          avatar_url: post.profiles?.avatar_url || null,
-          likes_count: 0,
-          comments_count: 0,
-          user_has_liked: false,
-        };
-      });
-
-      console.log("✅ FINAL POSTS SUMMARY:", {
-        total: formattedPosts.length,
-        withImages: formattedPosts.filter(p => p.image_url !== null).length,
-        firstPostImage: formattedPosts[0]?.image_url
-      });
-      
-      // Filter za following ako je potrebno
+      // Apply following filter if needed
       if (isAuthenticated && followingUserIds.length > 0) {
-        const filtered = formattedPosts.filter(p => 
-          followingUserIds.includes(p.user_id)
-        );
-        console.log("🔍 Filtered to following:", filtered.length, "posts");
-        setPosts(filtered);
-      } else {
-        setPosts(formattedPosts);
+        query = query.in('user_id', followingUserIds);
       }
+
+      // Execute query
+      const { data: postsWithProfiles, error: fetchError } = await query
+        .order("created_at", { ascending: false })
+        .limit(50)
+        .abortSignal(controller.signal);
+
+      if (controller.signal.aborted) return;
+      
+      if (fetchError) throw fetchError;
+
+      // Format posts
+      const formattedPosts = (postsWithProfiles || []).map(formatPostFromData);
+
+      // Cache results
+      cache.set(cacheKey, formattedPosts);
+
+      // Performance logging
+      const fetchTime = performance.now() - fetchStartTime;
+      console.log(`✅ Loaded ${formattedPosts.length} posts in ${fetchTime.toFixed(0)}ms`);
+
+      setPosts(formattedPosts);
 
     } catch (err) {
+      if (controller.signal.aborted) return;
+      
       console.error("❌ Error in fetchPosts:", err);
       setError(err instanceof Error ? err.message : "Unknown error");
+      
+      // Try cache fallback
+      const cacheKey = `feed_${userId || 'anon'}_${followingUserIds.join(',')}_${isAuthenticated}`;
+      const cached = cache.get(cacheKey);
+      if (cached) {
+        setPosts(cached);
+        setError(null);
+      }
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted && isMountedRef.current) {
+        setLoading(false);
+        setRefreshing(false);
+      }
     }
-  }, [isAuthenticated, followingUserIds]);
+  }, [isAuthenticated, followingUserIds, userId, refreshing]);
 
+  // ============ EFFECTS ============
   useEffect(() => {
+    isMountedRef.current = true;
     fetchPosts();
+
+    return () => {
+      isMountedRef.current = false;
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
   }, [fetchPosts]);
 
-  const handleFollowChangeWrapper = (userId: string, isFollowing: boolean) => {
-    onFollowChange?.(userId, isFollowing);
-  };
+  // ============ EVENT HANDLERS ============
+  const handleRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await fetchPosts(true);
+  }, [fetchPosts]);
 
-  if (loading) {
-    return (
-      <div className="p-8 text-center">
-        <Loader2 className="h-6 w-6 animate-spin mx-auto mb-2" />
-        <p>Loading posts...</p>
-      </div>
-    );
+  const handleFollowChangeWrapper = useCallback((userId: string, isFollowing: boolean) => {
+    onFollowChange?.(userId, isFollowing);
+  }, [onFollowChange]);
+
+  // ============ MEMOIZED COMPONENTS ============
+  const LoadingState = useMemo(() => (
+    <div className="p-8 text-center">
+      <Loader2 className="h-6 w-6 animate-spin mx-auto mb-2" />
+      <p className="text-sm text-muted-foreground">Loading posts...</p>
+    </div>
+  ), []);
+
+  const ErrorState = useMemo(() => (
+    <div className="p-8 text-center">
+      <div className="text-destructive mb-2">Error loading posts</div>
+      <p className="text-muted-foreground text-sm mb-4">{error}</p>
+      <Button onClick={handleRefresh} variant="outline" size="sm">
+        <RefreshCw className="h-4 w-4 mr-2" />
+        Try Again
+      </Button>
+    </div>
+  ), [error, handleRefresh]);
+
+  const EmptyState = useMemo(() => (
+    <div className="p-8 text-center">
+      <p className="text-muted-foreground mb-2">
+        {isAuthenticated && followingUserIds.length === 0 
+          ? "Follow some people to see their posts!" 
+          : "No posts yet"}
+      </p>
+      <Button onClick={handleRefresh} variant="outline" size="sm">
+        <RefreshCw className="h-4 w-4 mr-2" />
+        Refresh
+      </Button>
+    </div>
+  ), [isAuthenticated, followingUserIds.length, handleRefresh]);
+
+  // ============ RENDER ============
+  if (loading && !refreshing) {
+    return LoadingState;
   }
 
   if (error) {
-    return (
-      <div className="p-8 text-center">
-        <p className="text-destructive mb-2">Error loading posts</p>
-        <p className="text-muted-foreground text-sm mb-4">{error}</p>
-        <Button onClick={fetchPosts} variant="outline">
-          <RefreshCw className="h-4 w-4 mr-2" />
-          Try Again
-        </Button>
-      </div>
-    );
+    return ErrorState;
   }
 
   if (posts.length === 0) {
-    return (
-      <div className="p-8 text-center">
-        <p className="text-muted-foreground">No posts yet</p>
-        <Button onClick={fetchPosts} variant="outline" className="mt-4">
-          <RefreshCw className="h-4 w-4 mr-2" />
-          Refresh
-        </Button>
-      </div>
-    );
+    return EmptyState;
   }
 
-  console.log("🎨 Rendering", posts.length, "posts with images");
-
   return (
-    <div className="divide-y">
-      {posts.map((post) => {
-        console.log(`➡️ Rendering PostCard ${post.id}:`, {
-          hasImage: !!post.image_url,
-          imageUrl: post.image_url
-        });
-        
-        return (
+    <div className="space-y-6">
+      {/* Refresh Button */}
+      <div className="flex justify-end">
+        <Button 
+          onClick={handleRefresh}
+          variant="ghost" 
+          size="sm"
+          disabled={refreshing}
+          className="gap-2"
+        >
+          <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+          {refreshing ? 'Refreshing...' : 'Refresh'}
+        </Button>
+      </div>
+
+      {/* Posts List */}
+      <div className="space-y-6">
+        {posts.map((post) => (
           <PostCard 
-            key={post.id} 
+            key={post.id}
             post={post}
             showFollowButton={showFollowButton && isAuthenticated}
             currentUserId={userId}
             isCurrentUserFollowing={followingUserIds.includes(post.user_id)}
             onFollowChange={handleFollowChangeWrapper}
           />
-        );
-      })}
+        ))}
+      </div>
+
+      {/* Load More Indicator */}
+      {posts.length >= 50 && (
+        <div className="text-center py-4">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={handleRefresh}
+            disabled={refreshing}
+          >
+            {refreshing ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Loading more...
+              </>
+            ) : (
+              'Load more posts'
+            )}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
